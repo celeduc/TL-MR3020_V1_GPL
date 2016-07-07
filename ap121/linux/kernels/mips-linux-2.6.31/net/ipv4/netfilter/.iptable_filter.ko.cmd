@@ -1,0 +1,1 @@
+cmd_net/ipv4/netfilter/iptable_filter.ko := mips-linux-uclibc-ld -r  -m elf32btsmip  --build-id -o net/ipv4/netfilter/iptable_filter.ko net/ipv4/netfilter/iptable_filter.o net/ipv4/netfilter/iptable_filter.mod.o

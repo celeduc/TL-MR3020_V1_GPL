@@ -1,0 +1,35 @@
+#!/bin/bash
+
+COMMON=$1
+OEM=$2
+DEST=$3
+
+rm -rf $3
+echo $3 Removed.
+
+mkdir $3
+cp -rf $COMMON/* $DEST
+cp -rf $OEM/* $DEST
+echo Files copied.
+
+
+folder=`find $DEST -name *.htm`
+
+
+for file in $folder
+do	
+	./rmtag $file
+done
+
+echo Tag removed.
+
+svn_folder=`find $DEST -name .svn`
+
+
+for file in $svn_folder
+do
+	rm -rf $file
+done
+
+echo .svn removed.
+

@@ -1,0 +1,429 @@
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<SCRIPT language="javascript" src="../localiztion/3g.js" type="text/javascript"></SCRIPT>
+<SCRIPT language="JavaScript" src="../dynaform/custom.js" type="text/JavaScript"></SCRIPT>
+<SCRIPT language="JavaScript" src="../dynaform/common.js" type="text/JavaScript"></SCRIPT>
+<SCRIPT type="text/javascript"><!--
+var i;
+var tag;
+var timerId = 0;
+var locationname = "";
+
+var pinMessage = new Array(
+"<span id=\"t_msg_pin_not_enable\">PIN protection is disabled.</\span>",
+"<span id=\"t_msg_pin_enable\">PIN protection is enabled.</\span>",
+"<span id=\"t_puk_lock_msg\" style=\"color:red\">The SIM/UIM card is locked. please unlock the SIM/UIM card first with your PUK code on PC/Laptop.</\span>", 
+"<span id=\"t_pin_err_msg\" style=\"color:red\">The PIN code is invalid. Please check it and try again.</\span>",
+"<span id=\"t_pin_success_msg\" style=\"color:green\">PIN code verification is successful.</\span>",
+"<span id=\"t_no_interface_msg\">Unknow PIN status, please insure that your SIM/UIM is on unlock status.</\span>",
+"<span id=\"t_not_executed\">Unlock SIM/UIM failed, please unlock it on you PC/Laptop using the PIN code.</\span>",
+"<span id=\"t_no_identifying\">Identifying 3G/4G modem.</\span>"
+);
+
+function setWindowTop()
+{
+	window.scroll(0, 0);
+}
+
+function doBlur()
+{
+	if (mobileParam[0] ==0 || mobileParam[0] == 2 || mobileParam[1] != 2 || mobileParam[11] == 2)
+	{
+		timerId = window.setTimeout("doRefresh()",10000);
+	}
+}
+
+function doFocus()
+{
+	if (timerId != 0)
+	{	
+		window.clearTimeout(timerId);
+	}
+	timerId = 0;
+}
+
+function style_display_on()
+{
+	if (window.ActiveXObject)
+	{ // IE
+		return "block";
+	}
+	else if (window.XMLHttpRequest)
+	{ // Mozilla, Safari,...
+		return "table-row";
+	}
+}
+
+function doCheck()
+{
+	if (document.getElementById("manualdns").disabled != true)
+	{
+		if (document.getElementById("manualdns").checked == true)
+		{
+			document.getElementById("primedns").disabled = false;
+			document.getElementById("secdns").disabled = false;
+		}
+		else
+		{
+			document.getElementById("primedns").disabled = true;
+			document.getElementById("secdns").disabled = true;
+		}
+	}
+	if (document.getElementById("manualmobile").disabled != true)
+	{
+		if (document.getElementById("manualmobile").checked == true)
+		{
+			document.getElementById("loc").innerHTML = "-- --";
+			document.getElementById("ispname").innerHTML = "-- --";
+			document.getElementById("username").readOnly = false;
+			document.getElementById("username").style.backgroundColor = "#FFFFFF";
+			document.getElementById("passwd").readOnly = false;
+			document.getElementById("passwd").style.backgroundColor = "#FFFFFF";
+			document.getElementById("def_dail_row").style.display="none";
+			document.getElementById("def_APN_row").style.display="none";
+			document.getElementById("usr_dail_row").style.display="";
+			document.getElementById("usr_APN_row").style.display="";
+			
+			if((mobileParam[7] == 1) && (mobileParam[20] == 1))
+			{
+				document.getElementById("username").value = mobileParam[5];
+				document.getElementById("passwd").value = mobileParam[6];
+				document.getElementById("manualdn").value = mobileParam[8];
+				document.getElementById("manualapn").value = mobileParam[9];
+			}
+		}
+		else
+		{
+			locationname = "location" + mobileParam[3];
+			document.getElementById("loc").innerHTML = w3gisp_js[locationname]["location_name"];
+			tag = "isp" + mobileParam[4];
+			
+			//document.getElementById("ispname").innerHTML = w3gisp_js[locationname][tag]["isp_name"];
+			//for bug 19017
+			if (w3gisp_js[locationname][tag]["isp_name"] == "AT&T")
+			{
+				document.getElementById("ispname").innerHTML = "AT&amp;T";
+			}
+			else
+			{
+				document.getElementById("ispname").innerHTML = w3gisp_js[locationname][tag]["isp_name"];
+			}
+			document.getElementById("username").readOnly = true;
+			document.getElementById("username").style.backgroundColor = "#CDCDC1";
+			document.getElementById("passwd").readOnly = true;
+			document.getElementById("passwd").style.backgroundColor = "#CDCDC1";
+			document.getElementById("def_dail_row").style.display="";
+			document.getElementById("def_APN_row").style.display="";
+			document.getElementById("usr_dail_row").style.display="none";
+			document.getElementById("usr_APN_row").style.display="none";
+			
+			document.getElementById("manualdn").value = w3gisp_js[locationname][tag]["dial_num"];
+			document.getElementById("manualapn").value = w3gisp_js[locationname][tag]["apn"];
+			displayPara();
+		}
+	}
+}
+
+function doJudgeDisableAll()
+{
+	if (mobileParam[0] == 3)
+	{
+		disableTag(document, "INPUT");
+	}
+	else if (mobileParam[0] == 0 || mobileParam[0] == 2)
+	{
+		document.getElementById("mtu").disabled = true;
+		document.getElementById("manualdns").disabled = true;
+		document.getElementById("primedns").disabled = true;
+		document.getElementById("secdns").disabled = true;
+	}
+}
+
+function displayPara()
+{
+	var locationname = "location" + mobileParam[3];
+	var isp = "isp" + mobileParam[4];
+	var dialnumvalue = w3gisp_js[locationname][isp]["dial_num"];
+	var apnvalue = w3gisp_js[locationname][isp]["apn"];
+   
+    var usrvalue = w3gisp_js[locationname][isp]["username"];
+    var password = w3gisp_js[locationname][isp]["password"];
+    
+	document.getElementById("manualdn").value = dialnumvalue;
+	document.getElementById("manualapn").value = apnvalue;
+    
+    document.getElementById("username").value = usrvalue;
+    document.getElementById("passwd").value = password;
+    
+	document.getElementById("autodn").innerHTML = dialnumvalue;
+	document.getElementById("autoapn").innerHTML = apnvalue;
+}
+
+function getValidPin(pinVal)
+{
+	var checkPattern = new RegExp("^[0-9]+$");
+    
+	if (pinVal.length == 0)
+	{
+		alert(js_enpty_pin="The SIM PIN can not be empty.");
+        return false;
+	}
+	if(pinVal.length < 4)
+	{
+		alert(js_pin_len="The SIM PIN can not be less than 4 arabic numerals.");
+        return false;
+	}
+	if(!checkPattern.test(pinVal))
+	{
+		if(pinVal != "hello123")
+		{
+			alert(js_invalid_pin="Invalid PIN, please check it.");
+			return false;
+		}
+	}
+
+    return pinVal;
+}
+
+function doRefresh()
+{
+	location.href = "../userRpm/MobileCfgAdvRpm.htm?adv=1&selloc="+document.getElementById("loc").innerHTML+"&isp="+document.getElementById("ispname").innerHTML+"&session_id="+session_id;
+}
+
+function doBack()
+{
+	location.href="/userRpm/MobileCfgRpm.htm"+"?session_id="+session_id;
+}
+
+function doSubmit()
+{
+	var checkPattern = new RegExp("^[0-9*#]+$");
+    var element = document.getElementById("manualdn");
+	
+	if (document.getElementById("manualmobile").checked == true)
+	{
+		if(!checkPattern.test(element.value))
+		{
+			alert(js_wrong_dialnum = "The Dial Number must be composed of numbers, * and #.");
+			element.focus();
+			element.select();
+			return false;
+		}
+	}
+	
+	element = document.getElementById("mtu");
+	if(element.value =="" || !is_number(element.value, 576, 1492))
+	{
+		alert(js_bad_mtu = "The MTU should be an integer between 576 and 1492. The default MTU is 1480.");	
+		element.focus();
+		element.select();
+		return false;
+	}
+	if(document.getElementById("manualdns").checked)
+	{
+		element = document.getElementById("primedns");
+		if(!is_dnsaddr(element.value))
+		{
+			if(element)
+			{
+				element.focus();
+				element.select();
+			}
+			return false;
+		}
+		element = document.getElementById("secdns");
+		if(element.value != "")
+		{
+			if(!is_dnsaddr(element.value))
+			{
+				if(element)
+				{
+					element.focus();
+					element.select();
+				}
+				return false;
+			}
+		}
+	}
+    
+	element = document.getElementById("pin");
+    if(false == getValidPin(element.value))
+    {
+        if(element)
+        {
+            element.focus();
+            element.select();
+        }
+        return false;
+    }
+	
+	setWindowTop();
+	return true;
+}
+//--></SCRIPT>
+
+</HEAD>
+<BODY onLoad="doJudgeDisableAll();doCheck();setTagStr(document,'ntw_mobile_setting_adv');LoadHelp('MobileCfgAdvHelpRpm.htm'); resize(this);" onResize="resize(this);">
+<CENTER>
+	<FORM action="MobileCfgAdvRpm.htm" enctype="multipart/form-data" method="get" onSubmit="return doSubmit();">
+		<TABLE id="autoWidth">
+			<TR>
+				<TD class="h1" colspan="2" id="t_title">3G/4G Advanced Settings</TD>
+			</TR>
+			<TR>
+				<TD class="blue" colspan="2"></TD>
+			</TR>
+			<TR>
+				<TD class="Item" id="t_location">Location:</TD>
+				<TD><SPAN id="loc" name="loc"></SPAN></TD>			
+			</TR>
+			<TR>
+				<TD class="Item" id="t_isp">Mobile ISP:</TD>
+				<TD><SPAN id="ispname" name="ispname"></SPAN></TD>
+			</TR>
+			<tr colspan="3" id="pin_input_area" style="display:none">
+                <td class="Item" id="t_pin">SIM/UIM PIN:</td>
+				<td><input name="pin" id="pin" type="password" class="text" size="16" maxlength="16">&nbsp;
+				</td>
+            </tr>
+            <tr id="pin_msg_area" style="display:none">
+                <td class="Item" id="t_pin_msg">Message:</td>
+                <td ><SPAN id="pin_message"></SPAN></td>
+            </tr>
+			<TR><TD>&nbsp;</TD></TR>
+			<TR>
+			<TD></TD>
+			<TD>
+			<INPUT name="manualmobile" id="manualmobile" type="checkbox" value="2" onClick="doCheck()" onFocus="doFocus()" onBlur="doBlur()">
+			<SPAN id="t_manual_mobile">Set the Dial Number, APN, Username and Password manually</SPAN>
+			</TD>
+			</TR>
+			<TR id="def_dail_row">
+				<TD class="Item" id="t_dial" name="t_dial">Dial Number:</TD>
+				<TD><SPAN id="autodn" name="autodn"></SPAN></TD>
+			</TR>
+			<TR id="usr_dail_row">
+				<TD class="Item" id="t_dial" name="t_dial">Dial Number:</TD>
+				<TD><INPUT name="manualdn" id="manualdn" type="text" class="text" size="20" maxlength="118" onFocus="doFocus()" onBlur="doBlur()"></TD>
+			</TR>
+			<TR id="def_APN_row">
+				<TD class="Item" id="t_apn" name="t_apn">APN:</TD>
+				<TD><SPAN id="autoapn" name="autoapn"></SPAN></TD>
+			</TR>
+			<TR id="usr_APN_row">
+				<TD class="Item" id="t_apn" name="t_apn">APN:</TD>
+				<TD><INPUT name="manualapn" id="manualapn" type="text" class="text" size="20" maxlength="118" onFocus="doFocus()" onBlur="doBlur()"></TD>
+			</TR>
+			<TR>
+				<TD class="Item" id="t_user">Username:</TD>
+				<TD><INPUT name="username" id="username" type="text" class="text" size="20" maxlength="118" onFocus="doFocus()" onBlur="doBlur()">&nbsp;<SPAN id="t_optional" name="t_optional">(optional)</SPAN></TD>
+			</TR>
+			<TR>
+				<TD class="Item" id="t_pwd">Password:</TD>
+				<TD><INPUT name="passwd" id="passwd" type="password" class="text" size="20" maxlength="118" onFocus="doFocus()" onBlur="doBlur()">&nbsp;<SPAN id="t_optional" name="t_optional">(optional)</SPAN></TD>
+			</TR>
+			<TR><TD>&nbsp;</TD></TR>
+			<TR>
+				<TD class="Item" id="t_mtu">MTU Size (in bytes):</TD>
+				<TD><INPUT name="mtu" id="mtu" type="text" class="text" size="4" maxlength="4" onFocus="doFocus()" onBlur="doBlur()">&nbsp;&nbsp;<SPAN id="t_note_mtu">(The default is 1480, do not change unless necessary)</SPAN></TD>
+			</TR>
+			<TR><TD></TD></TR>
+			<TR>
+			<TD class="Item">&nbsp;</TD>
+			<TD><INPUT name="manualdns" id="manualdns" type="checkbox" value="2" onClick="doCheck()" onFocus="doFocus()" onBlur="doBlur()"><SPAN id="t_manual_dns">Use the following DNS Servers</SPAN></TD>
+			</TR>
+			<TR>
+				<TD class="Item" id="t_prime_dns">Primary DNS:</TD>
+				<TD><INPUT name="primedns" id="primedns" type="text" class="text" size="15" maxlength="15" onFocus="doFocus()" onBlur="doBlur()"></TD>
+			</TR>
+			<TR>
+				<TD class="Item" id="t_sec_dns">Secondary DNS:</TD>
+				<TD><INPUT name="secdns" id="secdns" type="text" class="text" size="15" maxlength="15" onFocus="doFocus()" onBlur="doBlur()">&nbsp;<SPAN id="t_optional" name="t_optional">(Optional)</SPAN></TD>
+			</TR>
+			<TR>
+				<TD class="blue" colspan="2"></TD>
+			</TR>
+			<TR>
+				<TD>&nbsp;</TD>				
+				<TD>
+					<INPUT name="Save" id="Save" type="submit" class="buttonBig" value="Save">
+					&nbsp;&nbsp;
+					<INPUT id="Back" name="Back" type="button" class="buttonBig" onClick="doBack();" value="Back">
+					&nbsp;&nbsp;
+					<INPUT name="Advanced" type="hidden" value="Advanced">
+					<SCRIPT type="text/javascript">
+						document.write('<input name="session_id" id="session_id" type="hidden" value="'+session_id +'">');
+					</SCRIPT>
+				</TD>
+			</TR>
+		</TABLE>
+	</FORM>
+</CENTER>
+</BODY>
+</HTML>
+<SCRIPT type="text/javascript">
+//Remove PIN code message.
+//display_str=style_display_on();
+//document.getElementById("pin_input_area").style.display=(display_pin_settings)?display_str:"none";
+//document.getElementById("pin_msg_area").style.display=(display_pin_settings)?display_str:"none";
+
+if(mobileParam[18] == 2)
+{
+	disableTag(document, "INPUT");
+	disableTag(document, "SELECT");
+	document.getElementById("Back").disabled = false;
+}
+
+if (mobileParam[7] == 0)
+{
+	locationname = "location" + mobileParam[3];
+	document.getElementById("loc").innerHTML = w3gisp_js[locationname]["location_name"];
+
+	tag = "isp" + mobileParam[4];
+	document.getElementById("ispname").innerHTML = w3gisp_js[locationname][tag]["isp_name"];
+	var newDialnum = w3gisp_js[locationname][tag]["dial_num"];
+	var newApn = w3gisp_js[locationname][tag]["apn"];
+}
+else
+{
+	document.getElementById("loc").innerHTML = "-- --";
+	document.getElementById("ispname").innerHTML = "-- --";
+}
+
+if((mobileParam[7] == 1))
+{
+	document.getElementById("manualmobile").checked = true;
+	document.getElementById("manualdn").value = mobileParam[8];
+	document.getElementById("manualapn").value = mobileParam[9];
+	document.getElementById("username").value = mobileParam[5];
+	document.getElementById("passwd").value = mobileParam[6];
+}else
+{
+	document.getElementById("manualmobile").checked = false;
+	displayPara();
+}
+document.getElementById("mtu").value = mobileParam[13];
+document.getElementById("manualdns").checked = mobileParam[14] ? true : false;
+document.getElementById("primedns").value = mobileParam[15];
+document.getElementById("secdns").value = mobileParam[16];
+if (mobileParam[0] ==0 || mobileParam[0] == 2 || mobileParam[1] != 2 || mobileParam[11] == 2 || mobileParam[12] == 2)
+{
+	timerId = window.setTimeout("doRefresh()",12000);
+}
+document.getElementById("pin").value = mobileParam[17];
+
+/*modem ????,???,?????,????*/
+if(mobileParam[1] == 2 && mobileParam[18] != 5)
+{
+	document.getElementById("pin_message").innerHTML = pinMessage[mobileParam[18]];
+}
+else
+{
+	document.getElementById("pin_msg_area").style.display="none";
+}
+
+if(mobileParam[1] == 1)
+{
+	document.getElementById("pin_message").innerHTML = pinMessage[7];
+}
+
+</SCRIPT>

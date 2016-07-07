@@ -1,0 +1,1 @@
+#define UTS_RELEASE "2.6.31--LSDK-9.2.0.312"

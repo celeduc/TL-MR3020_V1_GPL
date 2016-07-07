@@ -1,0 +1,227 @@
+
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<SCRIPT language="JavaScript" src="../dynaform/custom.js" type="text/JavaScript"></SCRIPT>
+<SCRIPT type="text/javascript"><!-- 
+var g_wpsStatus = wpsInf[0];
+var g_wpsPIN = wpsInf[1];
+var g_enWlan = wpsInf[2];
+var g_wpsLockEnabled = wpsInf[4];
+var g_vapIdx = wpsInf[5];
+var g_vapEnabled = wpsInf[6];
+
+function doSubmit()
+{
+	return true;
+}
+
+function doOnClick()
+{
+    location.href = "/userRpm/WpsCfgRpm.htm?NewDev=value&vapIdx="+document.forms[0].vapIdx.value+"&session_id="+session_id;
+}
+
+function onChangeMbssid()
+{
+		location.href = "/userRpm/WpsCfgRpm.htm?vapIdx="+document.forms[0].vapIdx.value+"&session_id="+session_id;
+}
+
+function onClickPinLockCheckbox()
+{
+	var isLocked;
+	if (document.forms[0].pin_lock.checked == true)
+	{
+		isLocked = 1;		
+	}
+	else
+	{
+		isLocked = 0;		
+	}
+	location.href = "/userRpm/WpsCfgRpm.htm?is_pin_locked=" + isLocked + "&vapIdx=" + document.forms[0].vapIdx.value+"&session_id="+session_id;
+}
+//--></SCRIPT>
+</HEAD>
+<BODY onLoad="setTagStr(document,'ntw_wlan_wps');LoadHelp('WlanWpsHelpRpm.htm'); resize(this);" onResize="resize(this);">
+<FORM action="WpsCfgRpm.htm" enctype="multipart/form-data" method="get" onSubmit="return doSubmit();">
+  <TABLE id="autoWidth"  width="562" border="0" cellspacing="0" cellpadding="0">
+    <TR>
+		<SCRIPT type="text/javascript">
+			document.write("<TD colspan=2 class=h1 id='t_title'>"+str_wps_name_short + " (" + str_wps_name_long + ")</TD>");
+		</SCRIPT>
+    </TR>
+    <TR id="line_blue">
+      <TD colspan=2 class=blue>&nbsp;</TD>
+    </TR>
+    <TR id="line_OperMode">
+				<TD class="Item" id="t_oper_mode">Operation Mode:</TD>
+				<TD class=emp><span>
+					<SCRIPT type="text/javascript">
+						//add to be compatible with other system mode
+						if(typeof(operMode) != 'undefined')
+						{
+							var operModeIdx = getOperModeIdxByValue(operMode);
+							if(operModeIdx != null)
+							{
+								document.write(getOperModeName(operModeIdx));
+							}
+						}
+					</SCRIPT>
+					</span>&nbsp;&nbsp;
+					<select name="vapIdx" id="vapIdx" onChange="onChangeMbssid();">
+					</select>
+					<SCRIPT type="text/javascript">
+						//add to be compatible with other system mode
+						if(typeof(operMode) != 'undefined')
+						{
+							for(var i=0, j=0; i<4; i++ )
+							{
+								if(ssidList[i] != "")
+									document.forms[0].vapIdx.options[j++] = new Option(ssidList[i], i+1, false, false);
+							}
+						}
+					</SCRIPT>
+				</TD>
+		</TR>
+    <TR>
+      <TD colspan=2 class=blue>&nbsp;</TD>
+    </TR>
+    <TR id="enWlan">
+      <TD colspan=2><B><FONT color="#FF0000"><SPAN id="t_allow">You should turn on wireless first, </SPAN>
+		<SCRIPT type="text/javascript">
+		document.write('<A href="/userRpm/WlanNetworkRpm.htm?session_id=' + session_id +'" id="t_click_here">');
+		</SCRIPT>
+		Click here </A><SPAN id="t_enb_radio">to Enable Wireless Radio.</SPAN></FONT></B></TD>
+    </TR>
+    <TR id="enWlanBr">
+      <TD colspan=2>&nbsp;</TD>
+    </TR>
+    <TR>
+      <SCRIPT type="text/javascript">document.write("<TD class='Item' id='t_qos_stat'>"+str_wps_name_short+" Status:</TD>");</SCRIPT>
+      <TD class="emp"><SCRIPT type="text/javascript">
+		if (g_wpsStatus == 0 || g_vapEnabled == 0)
+		{
+			document.write("<span id=\"t_disabled\">Disabled<\/span>");
+		}
+		else
+		{
+			document.write("<span id=\"t_enabled\">Enabled<\/span>");
+		}
+		</SCRIPT>
+        &nbsp;&nbsp;
+        <SCRIPT type="text/javascript">
+		document.write('<INPUT name=\"EnWps\"  type=\"submit\" class=\"buttonBig\" value=\"Enable '+ str_wps_name_short + '\">');
+		document.write('<INPUT name=\"DisWps\" type=\"submit\" class=\"buttonBig\" value=\"Disable '+ str_wps_name_short + '\">');
+		</SCRIPT></TD>
+    </TR>
+    <!--<TR><TD class="Item" id="t_pinsetting">PIN Settings</TD><TD></TD></TR>-->
+    <TR>
+      <TD colspan=2>&nbsp;</TD>
+    </TR>
+    <TR>
+      <TD class="Item" height="60" id="t_cur_pin">Current PIN:</TD>
+      <TD><SCRIPT type="text/javascript">
+		document.write("<B style='font-size: 18px; vertical-align: middle;'>" + g_wpsPIN + "<\/B>");
+		document.write('<input name="session_id" id="session_id" type="hidden" value="'+session_id +'">');
+		</SCRIPT>
+        &nbsp;&nbsp;
+        <INPUT name="DefPin" type="submit" class="buttonBig" value="Restore PIN">
+        <INPUT name="NewPin" type="submit" class="buttonBig" value="Gen New PIN"></TD>
+    </TR>
+    <TR>
+    	<TD></TD>
+		<TD>
+			<INPUT type="checkbox" name="pin_lock" onClick = "onClickPinLockCheckbox();">
+			<SPAN id="t_withpsw">&nbsp;Disable PIN of this Device</SPAN>
+		</TD>
+	</TR>
+    <TR>
+      <TD colspan=2>&nbsp;</TD>
+    </TR>
+    <TR>
+      <TD class="Item" id="t_add_dev">Add A New Device:</TD>
+      <TD><INPUT name="NewDev" type="button" class="buttonBig" value="Add Device" onclick = "doOnClick()"></TD>
+    </TR>
+    <SCRIPT type="text/javascript">
+if(wpsInf[3] == 1)
+{
+//added by ZQQ.08.12.05
+    document.write('<TR><TD colspan=2><span style="color:#FF0000" id="t_chng">The change of wireless config will not take effect until the AP reboots, please <\/span><A href="../userRpm/SysRebootRpm.htm?session_id=' + session_id +'" id="t_click">click here<\/A><span id="t_to_reboot" style="color:#FF0000"> to reboot.<\/span> <\/TD><\/TR>');
+}
+</SCRIPT>
+    <TR>
+      <TD colspan=2 class=blue>&nbsp;</TD>
+    </TR>
+  </TABLE>
+</FORM>
+</BODY>
+</HTML>
+<SCRIPT type="text/javascript"><!--
+var cf = document.forms[0];
+
+document.getElementById("line_OperMode").style.display="none";
+document.getElementById("line_blue").style.display="none";
+
+if (g_vapIdx >= 1 && g_vapIdx <= 4)
+{
+	document.forms[0].vapIdx.value = g_vapIdx;
+}
+else if(g_vapIdx == 0)
+{
+	document.getElementById("vapIdx").style.display="none";
+	document.forms[0].vapIdx.value = 1;
+}
+if (g_wpsStatus == 0)
+{
+	document.forms[0].DisWps.style.display = "none";
+	//add to be compatible with other system mode
+	if(typeof(operMode) != 'undefined')
+	{
+		if((operMode>1 && operMode<7) || (operMode==1 && vlanEnable==1))
+		{
+			document.forms[0].EnWps.disabled = true;
+		}
+	}
+	document.forms[0].NewDev.disabled = true;
+	document.forms[0].pin_lock.disabled = true;
+}
+else
+{
+	document.forms[0].EnWps.style.display = "none";
+}
+if (g_enWlan == 0)
+{
+	for (var i = 1; i < cf.length; i++)
+	{
+		cf[i].disabled = true;
+	}
+}
+else
+{
+	document.getElementById("enWlan").style.display = "none";
+	document.getElementById("enWlanBr").style.display = "none";
+}
+
+//when wps lock is enabled
+if (g_wpsLockEnabled)
+	document.forms[0].pin_lock.checked = true;
+else
+	document.forms[0].pin_lock.checked = false;
+
+//add to be compatible with other system mode
+if(typeof(operMode) != 'undefined')
+{
+	if((operMode > 1 && operMode <= 7) || (operMode == 1 && vlanEnable == 1))
+	{
+		for(var i=1; i<cf.length; i++)
+		{
+			cf[i].disabled = true;
+		}
+	}
+}
+if (g_vapEnabled == 0)
+{
+	for (var i = 1; i < cf.length; ++i)
+	{
+		cf[i].disabled = true;
+	}
+}
+//-->
+</SCRIPT>

@@ -1,0 +1,1 @@
+cmd_net/ipv4/netfilter/nf_nat_proto_gre.ko := mips-linux-uclibc-ld -r  -m elf32btsmip  --build-id -o net/ipv4/netfilter/nf_nat_proto_gre.ko net/ipv4/netfilter/nf_nat_proto_gre.o net/ipv4/netfilter/nf_nat_proto_gre.mod.o

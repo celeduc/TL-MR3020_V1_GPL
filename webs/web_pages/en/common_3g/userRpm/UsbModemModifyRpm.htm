@@ -1,0 +1,160 @@
+<SCRIPT type="text/javascript">
+var usbModemParam = new Array(
+"6574",
+"5784",
+"984ifkashdiguhadhfdhf -d fodiglkdjfadfoid -s hgdjlfjaoshgkldfak",
+0,
+0,
+2,
+1234,
+23556,
+0,0);
+</SCRIPT>
+<HTML>
+<HEAD>
+<TITLE>UsbModemSettings</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META http-equiv=Pragma content=no-cache>
+<META http-equiv=Cache-Control content=no-cache>
+<META http-equiv=Expires content="wed, 26 Feb 1997 08:21:57 GMT">
+<LINK href="../dynaform/css_main.css" rel=stylesheet>
+<SCRIPT language=javascript src="../dynaform/common.js" type=text/javascript></SCRIPT>
+<!--<TP_C_TAG>-->
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<SCRIPT type="text/javascript"><!--
+function doSubmit()
+{
+	var c;
+	var ch = "0123456789abcdefABCDEF";
+	var element;
+	element = document.getElementById("vendorid");
+	
+	if (element.value == "")
+	{
+		alert(js_no_vendorid = "Please input the Vendor ID.");
+		element.focus();
+		element.select();
+		return false;
+	}
+	for (var i = 0; i < element.value.length; i++)
+    {
+		c = element.value.charAt(i);
+		if (ch.indexOf(c) == -1)
+		{
+			alert(js_wrong_vendorid = "The Vendor ID should be composed of 1 to 4 hexadecimal characters.");
+			element.focus();
+			element.select();
+			return false;
+		}
+	}		
+	
+	element = document.getElementById("productid");
+	if (element.value == "")
+	{
+		alert(js_no_vendorid = "Please input the Product ID.");
+		element.focus();
+		element.select();
+		return false;
+	}
+	for (var i = 0; i < element.value.length; i++)
+    {
+		c = element.value.charAt(i);
+		if (ch.indexOf(c) == -1)
+		{
+			alert(js_wrong_productid = "The Product ID should be composed of 1 to 4 hexadecimal characters.");
+			element.focus();
+			element.select();
+			return false;
+		}
+	}	
+	
+	element = document.getElementById("cmdstr");
+	if(element.value == "")
+	{
+		alert(js_bad_cmdstr= "Please input the Command String.");
+		element.focus();
+		element.select();
+		return false;
+	}
+	return true;
+}
+//--></SCRIPT>
+</HEAD>
+<BODY onLoad="setTagStr(document,'ntw_usb_modem_adv');LoadHelp('UsbModemHelpRpm.htm'); resize(this);" onResize="resize(this);">
+<CENTER>
+	<FORM action="UsbModemListRpm.htm" enctype="multipart/form-data" method="get" onSubmit="return doSubmit();">
+		<TABLE id="autoWidth">
+			<TR>
+				<TD class=h1 colspan=2>Modify a 3G/4G USB Modem Entry</TD>
+			</TR>
+			<TR>
+				<TD class=blue colspan=2></TD>
+			</TR>
+			<TR>
+				<TD class=Item id="t_vendor_id">Vendor ID:</TD>
+				<TD>0x&nbsp;<INPUT name=vendorid id=vendorid type=text class=text size=4 maxlength=4>&nbsp;&nbsp;Current:&nbsp;<SPAN id="cur_vid"></SPAN></TD>
+			</TR>
+			<TR>
+				<TD class=Item id="t_product_id">Product ID:</TD>
+				<TD>0x&nbsp;<INPUT name=productid id=productid type=text class=text size=4 maxlength=4>&nbsp;&nbsp;Current:&nbsp;<SPAN id="cur_pid"></SPAN></TD>
+			</TR>
+			<TR>
+				<TD class=Item id="t_cmd_str">Command String:</TD>
+				<TD><INPUT name=cmdstr id=cmdstr type=text class=text size=40 maxlength=255></TD>
+			</TR>
+			<TR>
+				<TD class=blue colspan=2></TD>
+			</TR>
+			<TR>
+				<TD>&nbsp;</TD>
+				<TD>
+					<INPUT name="Changed" id="Changed" type="hidden" value="">
+					<INPUT name="SelIndex" id="SelIndex" type="hidden" value="">
+					<INPUT name=Save type=submit class=buttonBig value=Save>
+					<SCRIPT type="text/javascript">
+						document.write('<INPUT name=Back type=button class=buttonBig value=Back onClick="location.href=\'UsbModemListRpm.htm?session_id=' + session_id + '\'">');
+						document.write('<input name="session_id" id="session_id" type="hidden" value="'+session_id +'">');
+					</SCRIPT>
+				</TD>
+			</TR>
+		</TABLE>			
+	</FORM>
+</CENTER>
+</BODY>
+</HTML>
+<SCRIPT type="text/javascript">
+
+if (usbModemParam[3])
+{
+	document.getElementById("vendorid").value = usbModemParam[0];
+	document.getElementById("productid").value = usbModemParam[1];
+}
+else
+{
+	document.getElementById("vendorid").value = "";
+	document.getElementById("productid").value = "";
+}
+document.getElementById("cmdstr").value = usbModemParam[2];
+document.getElementById("Changed").value = usbModemParam[3];
+document.getElementById("SelIndex").value = usbModemParam[4];
+switch (usbModemParam[5])
+{
+case 0:
+	document.getElementById("cur_vid").innerHTML = "<SPAN id=\"t_unplugged\" name=\"t_unplugged\">USB Modem Unplugged</SPAN>";
+	document.getElementById("cur_pid").innerHTML = "<SPAN id=\"t_unplugged\" name=\"t_unplugged\">USB Modem Unplugged</SPAN>";
+	break;
+case 1:
+	document.getElementById("cur_vid").innerHTML = "<SPAN id=\"t_ident\" name=\"t_ident\">USB Modem Identifying</SPAN>";
+	document.getElementById("cur_pid").innerHTML = "<SPAN id=\"t_ident\" name=\"t_ident\">USB Modem Identifying</SPAN>";
+	break;
+case 2:
+case 3:
+	document.getElementById("cur_vid").innerHTML = "0x" + usbModemParam[6].toString(16);
+	document.getElementById("cur_pid").innerHTML = "0x" + usbModemParam[7].toString(16);
+	break;
+default:
+	document.getElementById("cur_vid").innerHTML = "<SPAN id=\"t_unkown\" name=\"t_unkown\">Unkown USB Device</SPAN>";
+	document.getElementById("cur_pid").innerHTML = "<SPAN id=\"t_unkown\" name=\"t_unkown\">Unkown USB Device</SPAN>";
+	break;
+}
+</SCRIPT>

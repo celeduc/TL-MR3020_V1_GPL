@@ -1,0 +1,9 @@
+TIMEOUT 5
+ABORT   'BUSY'
+ABORT   'NO ANSERT'
+ABORT   'ERROR'
+
+""	ATZ
+SAY	"Start...\n"
+OK 'AT+GMI'
+OK

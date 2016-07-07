@@ -1,0 +1,6 @@
+#!/bin/bash
+
+rm -rf $INSTALL_ROOT_FOR_BOARD/dev/*
+$TOPDIR/util/mkdev.new
+
+$TOPDIR/util/mksquashfs $INSTALL_ROOT_FOR_BOARD $IMAGEPATH/$BOARD_TYPE-squashfs -noappend -be -always-use-fragments -nolzma -all-root

@@ -1,0 +1,1974 @@
+
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<SCRIPT type="text/javascript">
+var t_zujian = new Array
+(
+"t_ssid_ap",			1,	0,	0,	0,	1,	1,
+"t_ssid_client",		0,	0,	1,	0,	0,	0,
+"t_ssid_client_wds",	0,	0,	1,	0,	0,	0,
+"t_ssid_rep",			0,	0,	0,	1,	0,	0,
+"t_ssid_rep_name",		0,	0,	0,	1,	0,	0,
+"t_ssid_rep_mac",		0,	0,	0,	1,	0,	0,
+"t_ssid_rep_warn",		0,	0,	1,	1,	0,	1,
+"t_ssid_multi_vlan",	0,	1,	0,	0,	0,	0,
+"t_ssid_multi_1",		0,	1,	0,	0,	0,	0,
+"t_ssid_multi_2",		0,	1,	0,	0,	0,	0,
+"t_ssid_multi_3",		0,	1,	0,	0,	0,	0,
+"t_ssid_multi_4",		0,	1,	0,	0,	0,	0,
+"t_region_r",			1,	1,	0,	1,	1,	1,
+"t_region_warn",		1,	1,	0,	1,	1,	1,
+"t_channel",			1,	1,	0,	0,	1,	1,
+"t_bridge_ssid_space",	0,	0,	0,	0,	1,	0,
+"t_bridge_ssid_scan",	0,	0,	0,	0,	1,	0,
+"t_bridge_ssid_1",		0,	0,	0,	0,	1,	0,
+"t_bridge_ssid_2",		0,	0,	0,	0,	1,	0,
+"t_bridge_ssid_3",		0,	0,	0,	0,	1,	0,
+"t_bridge_ssid_4",		0,	0,	0,	0,	1,	0,
+"t_bridge_ssid_warn",	0,	0,	0,	0,	1,	0,
+"t_sec_mode",			1,	1,	1,	1,	1,	0,
+1
+);
+
+var t_sec_zujian = new Array
+(
+"t_multi_sec",			-1,	 5,	-1,	-1,	-1,
+"t_none_warn",			 0,	 0,	 0,	 0,	-1,
+"t_s_wep",				 1,	-1,	-1,	-1,	-1,
+"t_warn_wep",			 1,	-1,	 1,	 1,	-1,
+"t_s_wep_type",			-1,	-1,	 1,	 1,	-1,
+"t_s_wep_form",			-1,	-1,	 1,	 1,	-1,
+"t_s_wep_key",			-1,	-1,	 1,	 1,	-1,
+"t_s_psk_ver",			-1,	-1,	 3,	 3,	-1,
+"t_s_psk_encry",		-1,	-1,	 3,	 3,	-1,
+"t_s_psk",				 3,	 3,	 3,	 3,	-1,
+"t_warn_psk",			 3,	 3,	 3,	 3,	-1,
+"t_s_psk_per",			-1,	-1,	 3,	 3,	-1,
+"t_multi_save",			-1,	 5,	-1,	-1,	-1,
+1
+);
+
+var t_survey_zujian = new Array(
+"ssid_client",//0
+"mac_client",
+"rptSsid",
+"rptBssid",
+"mptBssid1",
+"mptBssid2",
+"mptBssid3",
+"mptBssid4",
+"channel",
+"wds_enable",//9
+"Region",
+"uni_wds_r",
+"secType",
+"wepSecret",
+"wepSecOpt",
+"keytype",
+"keynum",
+"key1",
+"key2",
+"key3",
+"key4",
+"length1",
+"length2",
+"length3",
+"length4",
+"pskSecOpt",
+"pskCipher",
+"pskSecret",
+"interval",//28
+1
+);
+
+var key1dis = 0;
+var key2dis = 0;
+var key3dis = 0;
+var key4dis = 0;
+var keylength1 = 10;
+var keylength2 = 10;
+var keylength3 = 10;
+var keylength4 = 10;
+var is_Hex = true;
+
+var randomlength = 0;
+
+function getValLen(val)
+{
+	var len = 0;
+	var i = 0;
+	for (i = 0; i < val.length; i ++)
+	{
+		var c = val.charAt(i);
+		len += ((c >= ' ') && (c <= '~')) ? 1 : 2;
+	}
+	return len;
+}
+
+function checkbrlssid()
+{
+	var cf = document.forms[0];
+	return getValLen(cf.brlssid.value);
+}
+
+//yong
+function doSurvey()
+{
+	var wzd_url = "1=1";
+	var i = 0;
+	var mun = 0;
+	while(t_survey_zujian[i]!=1)
+	{
+		if(t_survey_zujian[i] == "uni_wds_r")
+		{
+			if(document.forms[0].uni_wds_r[0].checked == true)
+				num = 0;
+			else
+				num = 1;
+			wzd_url += "&"+t_survey_zujian[i] + "=" + num;
+		}
+		else if(t_survey_zujian[i] == "keynum")
+		{
+			if(document.forms[0].keynum[0].checked == true)
+				num = 0;
+			else if(document.forms[0].keynum[1].checked == true)
+				num = 1;
+			else if(document.forms[0].keynum[2].checked == true)
+				num = 2;
+			else if(document.forms[0].keynum[3].checked == true)
+				num = 3;
+			else 
+				num = 0;
+			wzd_url += "&"+t_survey_zujian[i] + "=" + num;
+		}
+		else
+		{
+			if (null == document.getElementById(t_survey_zujian[i]))//for firefox and chrome
+				wzd_url += "&"+t_survey_zujian[i] + "=" + 0;
+			else
+				wzd_url += "&"+t_survey_zujian[i] + "=" + document.getElementById(t_survey_zujian[i]).value;
+		}
+		i++;
+	}
+	
+	location.href="WzdWlanSiteSurveyRpm_AP.htm?" + wzd_url + "&session_id=" + session_id;
+}
+/*
+¦Ì¡À¨¦¡§?¨¨¡¤¦Ì??¨º¡À¡ê?¡¤¦Ì???¦Ì¡¤?¡Àe?a1¡ê?2¡ê?¨¨?2?¨º?¨¦¡§?¨¨¡¤¦Ì???¦Ì?a0
+¦Ì¡À?¦Ì?a0¨º¡À¡ê?2?¡Á?¨¨?o??3?¦Ì2¨´¡Á¡Â
+¦Ì¡À?¦Ì?a1¨º¡À¡ê?¨º??¨²¨¦¡§?¨¨¨°3??¦Ì??¡Â¨¢?back¡ê????¨¹D????¡ã¡ä?¨º?¦Ì?2?¨ºy
+¦Ì¡À?¦Ì?a2¨º¡À¡ê??¦Ì?¡Â¨º?¦Ì??¡Â¨¢?¨¢??¨®¡ê??¨°?¨¹D??¨¤¨®|¦Ì?ssid¦Ì¨¨
+*/
+function aftersurvey()
+{
+	var cf = document.forms[0];
+	var i = 0;
+	if(Number(wzdSurvey[29]) == 0)
+	{
+		return ;
+	}
+	else  if(Number(wzdSurvey[29]) == 1  || wzdSurvey[29] == 2)
+	{
+		i = 0;
+		while(t_survey_zujian[i]!=1)
+		{
+			if(t_survey_zujian[i] == "uni_wds_r")
+			{
+				document.forms[0].uni_wds_r[wzdSurvey[i]].checked = true;
+			}
+			else if(t_survey_zujian[i] == "keynum")
+			{
+				document.forms[0].keynum[wzdSurvey[i]].checked = true;
+			}
+			else
+			{
+				document.getElementById(t_survey_zujian[i]).value = wzdSurvey[i];
+			}
+			i++;
+		}
+		if( Number(wzdSurvey[29]) == 2)
+		{
+			cf.channel.value = wzdSurvey[32];
+			switch(wzdWlanInf[39])
+			{
+			case 3: 
+				cf.ssid_client.value = wzdSurvey[30];
+				cf.mac_client.value = wzdSurvey[31];
+				break;
+			case 4:
+			case 5:
+				cf.rptSsid.value = wzdSurvey[30];
+				cf.rptBssid.value = wzdSurvey[31];
+				break;
+			case 7: 
+				if(cf.mptBssid1.value == "")
+					cf.mptBssid1.value = wzdSurvey[31];
+				else if(cf.mptBssid2.value == "")
+					cf.mptBssid2.value = wzdSurvey[31];
+				else if(cf.mptBssid3.value == "")
+					cf.mptBssid3.value = wzdSurvey[31];
+				else if(cf.mptBssid4.value == "")
+					cf.mptBssid4.value = wzdSurvey[31];
+				else
+					cf.mptBssid1.value = wzdSurvey[31];
+				break;
+			case 8:
+				cf.brlssid.value = wzdSurvey[30];
+				cf.brlbssid.value = wzdSurvey[31];
+				break;
+			default: 
+				break;
+			}
+		}
+	}
+}
+
+function checkssid(ssid_len)
+{
+	return getValLen(ssid_len);
+}
+
+function checkname(szname)
+{
+	var c;
+	var ch = "0123456789ABCDEFabcdefGHIJKLMNOPQRSTUVWXYZghijklmnopqrstuvwxyz`~!@#$%^&*()-=_+[]{};:\'\"\\|/?.,<>/ ";
+
+	for (var i = 0; i < szname.length; i++)
+	{
+		c = szname.charAt(i);
+		if (ch.indexOf(c) == -1)
+			return false;
+	}
+	return true;
+}
+//no use
+//added by songwei
+
+//yong
+function checkMptBssid()
+{
+		var cf = document.forms[0];
+		if(getValLen(cf.mptBssid1.value)==0 && getValLen(cf.mptBssid2.value)==0 && getValLen(cf.mptBssid3.value)==0 && getValLen(cf.mptBssid4.value)==0)
+		{
+			alert(js_pl_input_bssid="Please input at least one Bridged BSSID!");
+			cf.mptBssid1.focus();
+			cf.mptBssid1.select();
+			return false;
+		}
+		if(getValLen(cf.mptBssid1.value)>0 && !macverify(cf.mptBssid1.value))
+		{
+			cf.mptBssid1.focus();
+			cf.mptBssid1.select();
+			return false
+		}
+		if(getValLen(cf.mptBssid2.value)>0 && !macverify(cf.mptBssid2.value))
+		{
+			cf.mptBssid2.focus();
+			cf.mptBssid2.select();
+			return false
+		}
+		if(getValLen(cf.mptBssid3.value)>0 && !macverify(cf.mptBssid3.value))
+		{
+			cf.mptBssid3.focus();
+			cf.mptBssid3.select();
+			return false
+		}
+		if(getValLen(cf.mptBssid4.value)>0 && !macverify(cf.mptBssid4.value))
+		{
+			cf.mptBssid4.focus();
+			cf.mptBssid4.select();
+			return false
+		}
+		if (("" != cf.mptBssid1.value) && ((cf.mptBssid1.value.toLowerCase() == cf.mptBssid2.value.toLowerCase()) || (cf.mptBssid1.value.toLowerCase() == cf.mptBssid3.value.toLowerCase()) || (cf.mptBssid1.value.toLowerCase() == cf.mptBssid4.value.toLowerCase())))
+		{
+			alert(js_two_same_mac="Two or more Bridged AP have the same MAC.");
+			cf.mptBssid1.focus();
+			cf.mptBssid1.select();
+			return false;
+		}
+		if (("" != cf.mptBssid2.value) && ((cf.mptBssid2.value.toLowerCase() == cf.mptBssid1.value.toLowerCase()) || (cf.mptBssid2.value.toLowerCase() == cf.mptBssid3.value.toLowerCase()) || (cf.mptBssid2.value.toLowerCase() == cf.mptBssid4.value.toLowerCase())))
+		{
+			alert(js_two_the_same_mac="Two or more Bridged AP have the same MAC.");
+			cf.mptBssid2.focus();
+			cf.mptBssid2.select();
+			return false;
+		}
+		if (("" != cf.mptBssid3.value) && ((cf.mptBssid3.value.toLowerCase() == cf.mptBssid1.value.toLowerCase()) || (cf.mptBssid3.value.toLowerCase() == cf.mptBssid2.value.toLowerCase()) || (cf.mptBssid3.value.toLowerCase() == cf.mptBssid4.value.toLowerCase())))
+		{
+			alert(js_more_same_mac="Two or more Bridged AP have the same MAC.");
+			cf.mptBssid3.focus();
+			cf.mptBssid3.select();
+			return false;
+		}
+		if (("" != cf.mptBssid4.value) && ((cf.mptBssid4.value.toLowerCase() == cf.mptBssid1.value.toLowerCase()) || (cf.mptBssid4.value.toLowerCase() == cf.mptBssid2.value.toLowerCase()) || (cf.mptBssid4.value.toLowerCase() == cf.mptBssid3.value.toLowerCase())))
+		{
+			alert(js_more_the_same_mac="Two or more Bridged AP have the same MAC.");
+			cf.mptBssid4.focus();
+			cf.mptBssid4.select();
+			return false;
+		}
+		return true;
+}
+//yong
+
+function checkwephexkey(szkey)
+{
+	var c;
+	var ch = "0123456789ABCDEFabcdef";
+
+	for (var i = 0; i < szkey.length; i++)
+	{
+		c = szkey.charAt(i);
+		if (ch.indexOf(c) == -1)
+			return false;
+	}
+	return true;
+}
+
+function doSubmit()
+{
+	var cf = document.forms[0];
+	var ressid;
+	var ssid_value;
+
+	switch(wzdWlanInf[39])
+	{
+	case 0:
+	case 7:
+	case 8:
+		ssid_value = cf.ssid_ap.value;
+		break;
+	case 1:
+		ssid_value = cf.ssid1.value;
+		break;
+	case 3:
+		ssid_value = cf.ssid_client.value;
+		break;
+	case 4:
+	case 5:
+		ssid_value = cf.rptSsid.value;
+		break;
+	}
+	ressid = checkssid(ssid_value);
+	if(0 == ressid)
+	{
+		alert(document.getElementById("t_ssid_input_any").innerHTML + (wzdWlanInf[39]==1?"1":"") + "!");
+		return false;
+	}
+	if(ressid > 32)
+	{
+		alert(js_ssid_exe="The SSID cannot exceed 32 characters. Please input correctly!");
+		return false;
+	}
+	if (!checkname(cf.ssid_ap.value))
+	{
+		alert(js_ssid_ill="The SSID contains illegal characters, please input another one!");	
+		return false;
+	}
+	
+	if(wzdWlanInf[39] == 1)//multi
+	{
+		if(getValLen(cf.ssid2.value) > 32 || getValLen(cf.ssid3.value) > 32 || getValLen(cf.ssid4.value) > 32)
+		{
+			alert(js_ssid_exe="The SSID cannot exceed 32 characters. Please input correctly!");
+			return false;
+		}
+		if (cf.vlanEnable[1].checked)
+		{
+			if(is_digit(cf.vlanId1.value) == false)
+			{
+						cf.vlanId1.focus();
+						cf.vlanId1.select();
+						return false;
+			}
+					
+			if ((cf.vlanId1.value < 1 || cf.vlanId1.value > 4095) && (cf.vlanId1.value != "" || cf.ssid1.value != ""))
+			{
+					alert(js_vlanId="The value of VLAN ID 1 must be between 1 and 4095, please input a correct one !");
+					cf.vlanId1.focus();
+					cf.vlanId1.select();
+					return false;
+			}
+			
+			if(is_digit(cf.vlanId2.value) == false)
+			{
+						cf.vlanId2.focus();
+						cf.vlanId2.select();
+						return false;
+			}
+					
+			if ((cf.vlanId2.value < 1 || cf.vlanId2.value > 4095) && (cf.vlanId2.value != "" || cf.ssid2.value != ""))
+			{
+					alert(js_vlanId="The value of VLAN ID 2 must be between 1 and 4095, please input a correct one !");
+					cf.vlanId2.focus();
+					cf.vlanId2.select();
+					return false;
+			}
+			
+			if(is_digit(cf.vlanId3.value) == false)
+			{
+						cf.vlanId3.focus();
+						cf.vlanId3.select();
+						return false;
+			}
+					
+			if ((cf.vlanId3.value < 1 || cf.vlanId3.value > 4095) && (cf.vlanId3.value != "" || cf.ssid3.value != ""))
+			{
+					alert(js_vlanId="The value of VLAN ID 3 must be between 1 and 4095, please input a correct one !");
+					cf.vlanId3.focus();
+					cf.vlanId3.select();
+					return false;
+			}
+			
+			if(is_digit(cf.vlanId4.value) == false)
+			{
+						cf.vlanId4.focus();
+						cf.vlanId4.select();
+						return false;
+			}
+					
+			if ((cf.vlanId4.value < 1 || cf.vlanId4.value > 4095) && (cf.vlanId4.value != "" || cf.ssid4.value != ""))
+			{
+					alert(js_vlanId="The value of VLAN ID 4 must be between 1 and 4095, please input a correct one !");
+					cf.vlanId4.focus();
+					cf.vlanId4.select();
+					return false;
+			}
+		}
+	}
+
+	if(wzdWlanInf[39] == 4 || wzdWlanInf[39] == 5)//Repeater
+	{
+		if(!is_macaddr(cf.rptBssid.value))
+		{
+			cf.rptBssid.focus();
+			cf.rptBssid.select();
+			return false;
+		}
+	}
+	
+	if(wzdWlanInf[39] == 7)//Bridge
+	{
+		if(!checkMptBssid())
+			return false;
+	}
+	
+	//?¨¬2¨¦Channel
+	if(wzdSurvey[29] == 2 && (wzdWlanInf[39] == 7 || wzdWlanInf[39] == 3 || wzdWlanInf[39] == 4 || wzdWlanInf[39] == 5 || wzdWlanInf[39] == 8))
+	{
+		if(cf.channel.value != wzdSurvey[32])
+		{
+			alert(js_chn_same_AP="The channel must be same as the remote AP in this operation mode!");
+			return false;
+		}
+	}
+	if(cf.channel.value == 15)
+	{
+		if(wzdWlanInf[39] == 7 || wzdWlanInf[39] == 3 || wzdWlanInf[39] == 4 || wzdWlanInf[39] == 5 || wzdWlanInf[39] == 8)
+		{
+			alert(js_chn_not_auto="The channel can't be set to auto in this operation mode!");
+			return false;
+		}
+	}
+	//survey??o¨®?¨¬2¨¦¨º?¡¤??¨®?¨¹
+	if(wzdSurvey[29] == 2 && (wzdWlanInf[39] == 7 || wzdWlanInf[39] == 3 || wzdWlanInf[39] == 4 || wzdWlanInf[39] == 5))
+	{
+		if (wzdSurvey[33] == 1)
+		{
+			if(cf.secType.value == 0)
+			{
+				alert(js_AP_has_sec="The remote AP you want to connect has security, so you can't set your AP's security to none.");
+				return false;
+			}
+			else if(cf.secType.value == 4)
+			{
+				if(wzdWlanInf[14] == 0)
+				{
+					alert(js_AP_has_sec="The remote AP you want to connect has security, so you can't set your AP's security to none.");
+					return false;
+				}
+			}
+		}
+		else if(wzdSurvey[33] == 0)//??¡¤??T?¨®?¨¹
+		{
+			if(cf.secType.value == 1 || cf.secType.value == 3)
+			{
+				alert(js_AP_no_sec="The remote AP you want to connect has not security, so you can't set security for your AP.");
+				return false;
+			}
+			else if(cf.secType.value == 4)
+			{
+				if(wzdWlanInf[13])
+				{
+					alert(js_AP_no_sec="The remote AP you want to connect has not security, so you can't set security for your AP.");
+					return false;
+				}
+			}
+		}
+	}
+	//?¨®?¨¹?¨¬2¨¦
+	if (cf.secType.value == 3)
+	{
+		var len = getValLen(cf.pskSecret.value);
+		if (len <= 0)
+		{
+			alert(js_empty_psk_password="Empty password, please input one!");
+			cf.pskSecret.focus();
+			return false;
+		}
+		if ((len > 0) && (len < 8))
+		{
+			alert(js_psk_char="Password should not be less than 8 characters, please input again!");
+			cf.pskSecret.focus();
+			cf.pskSecret.select();
+			return false;
+		}
+        if(len >= 64)
+        {
+			var ch = "0123456789ABCDEFabcdefGHIJKLMNOPQRSTUVWXYZghijklmnopqrstuvwxyz`~!@#$^&*()-=_+[]{};:\'\"\\|/?.,<>/% ";
+            var c;
+            for(i = 0; i < len; i++)
+            {
+                c = cf.pskSecret.value.charAt(i);
+                if(ch.indexOf(c) == -1)
+                {
+                    alert(js_psk_hex="The 64 bytes password include non-ASCII characters, please input again.");
+                    cf.pskSecret.focus();
+                    cf.pskSecret.select();
+                    return false;
+                }
+            }
+        }
+        
+		if ((0 != cf.interval.value) && (cf.interval.value < 30))
+		{
+			if ("" != cf.interval.value)
+			{
+				alert(js_inv_group_per="Invalid Group Key Update Period, please input again!");
+				return false;
+			}
+		}
+	}
+	else if(cf.secType.value == 1)
+	{
+		if(wzdWlanInf[39]==0)
+		{
+			if(!checkkey_ap(cf.wepSecret.value))
+			{
+				return false;
+			}
+		}
+		else
+		{
+			var renum;
+			renum = checkWEP_sta();
+			if (0 == renum)
+			{
+				if (!confirm(js_no_wep_key = "The WEP key is empty, are you sure to continue?"))
+					return false;
+			}
+			if (renum < 5 && renum >0)
+			{
+				if (is_Hex == true)
+				{
+					alert (js_wep_key_inv_hex="WEP key is invalid!\nThe WEP Key Format is Hexadecimal currently.\nMake sure that all digits are Hexadecimal (zero key is illegal) and the length meets the requirement.");
+				}
+				else
+				{
+					alert (js_wep_key_inv_asc="WEP key is invalid!\nThe WEP Key Format is ASCII currently.\nMake sure that all characters are ASCII (not including any other character) and the length meets the requirement.");
+				}
+				
+				if (renum == 1 &&cf.key1.disabled == false)				{	cf.key1.focus();	cf.key1.select();	}
+				else if (renum == 2 &&cf.key2.disabled == false)		{	cf.key2.focus();	cf.key2.select();	}
+				else if (renum == 3 &&cf.key3.disabled == false)		{	cf.key3.focus();	cf.key3.select();	}
+				else if (renum == 4 &&cf.key4.disabled == false)		{	cf.key4.focus();	cf.key4.select();	}
+				return false;
+			}
+		}
+	}
+	
+	if (cf.wdsbrl.checked && wzdWlanInf[39] == 8)
+	{
+		brlressid = checkbrlssid();
+		if(brlressid > 32)
+		{
+			alert(js_ssid_exe="The SSID cannot exceed 32 characters. Please input correctly!");
+			doSelKeytype();
+			return false;
+		}
+		if(0 == brlressid)
+		{
+			alert(js_pl_ssid="Please input Bridged SSID!");
+			doSelKeytype();
+			return false;
+		}
+		var bssid = cf.brlbssid.value;
+		if (bssidverify(bssid) == false)
+		{
+			//alert(js_bridge_corret="You must make sure the bridged BSSID is correct.");
+			doSelKeytype();
+			return false;
+		}
+		if ((cf.keytypeWds.value == 2)&&((getValLen(cf.keytext.value)!=5) && (getValLen(cf.keytext.value)!=13) && (getValLen(cf.keytext.value)!=16)))
+		{
+			alert(js_key_corret="The ASCII key'length must be 5,13 or 16!");
+			doSelKeytype();
+			return false;
+		}
+		else if ((cf.keytypeWds.value == 3)&&((getValLen(cf.keytext.value)!=10) && (getValLen(cf.keytext.value)!=26) && (getValLen(cf.keytext.value)!=32)))
+		{
+			alert(js_key_corret="The WEP key'length must be 10,26 or 32!");
+			doSelKeytype();
+			return false;
+		}
+		if (cf.keytypeWds.value == 3)
+		{
+			if (checkwephexkey(cf.keytext.value) == false)
+			{
+				alert(js_wepkey_corret="The hex wep key includes illegal characters!");
+				doSelKeytype();
+				return false;
+			}
+		}
+
+		if (wzdWlanInf[13]==1 && wzdWlanInf[14] == 1 && cf.keytypeWds.value == 4)
+		{
+			doSelKeytype();
+			alert(js_security_not_set="Your AP's security is WEP, so you can't use the wpa_psk as bridge's security.");
+			return false;
+		}
+	}
+
+	if (cf.keytype.value == 4)
+	{
+		if (doCheckPskPasswd() == false)
+		{
+			doSelKeytype();
+			return false;
+		}
+	}
+
+	return true;
+}
+//yong
+function changeRegion()
+{
+	var cf = document.forms[0];
+	var oldChannel = cf.channel.value;
+
+	cf.channel.options.length = 0;
+	var channelIndex;
+	if (wzdWlanInf[9] == 1)
+		channelIndex = document.forms[0].region.value;
+	else
+		channelIndex = 17;
+	channelIndex = (channelIndex)*4;
+	var j=0;
+	if (wzdWlanInf[39] != 8)
+	{
+		var autooptObj = new Option("Auto",15,false,false);
+		cf.channel.options[j++] = autooptObj;
+	}
+	var oldRegion = regionInfo[channelIndex];
+	while(oldRegion == regionInfo[channelIndex])
+	{	
+		for (var i=regionInfo[channelIndex+1]; i<=regionInfo[channelIndex+2]; i++)
+		{
+			if ((i == 14) && (document.forms[0].mode.value == 2))
+				continue;
+			var optionObj = new Option(i,i,false,false);
+			cf.channel.options[j++]=optionObj;
+			if (i == oldChannel)
+				cf.channel.value =i;
+		}
+		channelIndex =channelIndex+4;
+	}
+}
+
+//yong
+function onVlanEnable(value)
+{
+	/*if(wzdWlanInf[15] != 1)
+		return;*/
+	if( value == 2)
+	{
+		document.forms[0].vlanId1.disabled = false;
+		if(document.forms[0].chk_ssid2.checked == true)
+			document.forms[0].vlanId2.disabled = false;
+		if(document.forms[0].chk_ssid3.checked == true)
+			document.forms[0].vlanId3.disabled = false;
+		if(document.forms[0].chk_ssid4.checked == true)
+			document.forms[0].vlanId4.disabled = false;
+	}
+	else
+	{
+		document.forms[0].vlanId1.disabled = true;
+		document.forms[0].vlanId2.disabled = true;
+		document.forms[0].vlanId3.disabled = true;
+		document.forms[0].vlanId4.disabled = true;
+	}
+}
+
+function changeSecurity()
+{
+	var i = 0, j = 0;
+	var sec_mode = document.forms[0].secType.value;
+	var cf = document.forms[0];
+	if(wzdWlanInf[39] == 0 &&	cf.secType.value == 1)
+	{
+		if(wzdWlanInf[14] == 1 && wlanList[2*secInf[2]-1] )
+		{
+			if(secInf[1] == 1)
+			{
+				cf.wepSecret.maxLength = 2 * wlanList[2*secInf[2]-1];
+				randomlength = 2 * wlanList[2*secInf[2]-1];
+			}
+			else
+			{
+				cf.wepSecret.maxLength = wlanList[2*secInf[2]-1];
+				randomlength = wlanList[2*secInf[2]-1];
+			}
+		}
+		else
+		{
+			cf.wepSecret.maxLength = 13;
+			randomlength = 13;
+		}
+		if (cf.wepSecret.value.length > randomlength)
+			cf.wepSecret.value = cf.wepSecret.value.substring(0,randomlength);
+	}
+	else if(cf.secType.value == 3)
+	{
+		randomlength = 10;
+	}
+	switch(wzdWlanInf[39])
+	{
+		case 0: j = 1;	break;
+		case 1: j = 2;	break;
+		case 3: j = 3;	break;
+		case 4:
+		case 5: j = 3;	break;
+		case 7: j = 4;	break;
+		case 8: j = 5;	break;
+	}
+	while( t_sec_zujian[6 * i] != 1 )
+	{
+		if( ( sec_mode != t_sec_zujian[6 * i + j]) && (t_sec_zujian[6 * i + j] != 5) )
+		{
+			document.getElementById(t_sec_zujian[6 * i]).style.display = "none";
+		}
+		else
+		{
+			document.getElementById(t_sec_zujian[6 * i]).style.display = "";
+		}	
+		i++;
+	}
+	
+	if( (wzdWlanInf[39] == 1 && sec_mode == 3 ) || ( wzdWlanInf[39] ==0 && (sec_mode == 1 || sec_mode == 3) ))
+		document.getElementById("t_random").style.display = "";
+	else
+		document.getElementById("t_random").style.display = "none";
+}
+//yong
+function doSave()
+{
+    var cf = document.forms[0];
+	var ssid = cf.multi_sec.value;
+	pwd = doCheckPwd();
+	if( ssid == 0 )
+	{
+		cf.ssid_type1.value = cf.secType.value;
+		if(pwd != "")
+			cf.ssid_sec1.value = pwd;
+		alert(js_save_sec_SSID1="Save Security Success for SSID1 !");
+	}
+	else if(ssid == 1)
+	{
+		cf.ssid_type2.value = cf.secType.value;
+		if(pwd != "")
+			cf.ssid_sec2.value = pwd;
+		alert(js_save_sec_SSID2="Save Security Success for SSID2 !");
+	}
+	else if(ssid == 2)
+	{
+		cf.ssid_type3.value = cf.secType.value;
+		if(pwd != "")
+			cf.ssid_sec3.value = pwd;
+		alert(js_save_sec_SSID3="Save Security Success for SSID3 !");
+	}
+	else if(ssid == 3)
+	{
+		cf.ssid_type4.value = cf.secType.value;
+		if(pwd != "")
+			cf.ssid_sec4.value = pwd;
+		alert(js_save_sec_SSID4="Save Security Success for SSID4 !");
+	}
+	else
+	{
+		return false;
+    }
+	if(cf.secType.value == 3 && pwd == 0)
+	{
+		return false;
+	}
+    return true;
+}
+//yong
+function doCheckPwd()
+{
+	var cf = document.forms[0];
+	len = getValLen(cf.pskSecret.value);
+	if( cf.secType.value == 0 || cf.secType.value == 4 )
+    {
+        return "";
+    }
+	else if(cf.secType.value == 3)
+	{
+		if  (len <= 0)
+		{
+			alert(js_psk_empty="Empty password, please input one!");
+			return "";
+		}
+		else if ((len > 0) && (len < 8))
+		{
+			alert(js_psk_char="Password should not be less than 8 characters, please input again!");
+			return "";
+		}
+		else if(len <= 64)
+		{
+			var ch="0123456789ABCDEFabcdefGHIJKLMNOPQRSTUVWXYZghijklmnopqrstuvwxyz`~!@#$^&*()-=_+[]{};:\'\"\\|/?.,<>/% ";
+			var c;
+			for(i = 0; i < len; i++)
+			{
+				c = cf.pskSecret.value.charAt(i);
+				if(ch.indexOf(c) == -1)
+				{
+					alert(js_psk_hex="The 64 bytes password include non-ASCII characters, please input again.");
+					return "";
+				}
+			}
+			return cf.pskSecret.value;
+		}
+		else
+		{
+			alert(js_psk_hex="Password should not be more than 64 characters, please input again!");
+			return "";
+		}
+	}
+	return "";
+}
+
+//yong
+function checkkey_ap(szname)
+{
+	var c;
+	var zeronum = 0;
+	var ch = "0123456789ABCDEFabcdefGHIJKLMNOPQRSTUVWXYZghijklmnopqrstuvwxyz`~!@#$^&*()-=_+[]{};:\'\"\\|/?.,<>/% ";
+	
+	if	(wzdWlanInf[14] == 1 && secInf[1] == 1)
+		ch = ch.substring(0,22);
+	for (var i = 0; i < szname.length; i++)
+	{
+		c = szname.charAt(i);
+		if (c =="0")
+			zeronum ++;
+		if (ch.indexOf(c) == -1)
+			return false;
+		if (zeronum == szname.length && wzdWlanInf[14] == 1 && secInf[1] == 1)
+			return false;
+	}
+	return true;
+}
+//yong
+function checkWEP_sta()
+{
+	var cf = document.forms[0];
+	if (key1dis && key2dis && key3dis && key4dis)
+		return 0;
+	if (key1dis == 0 &&!(cf.key1.value=="" && !cf.secType[1].checked))	{if (checkkey(cf.key1.value,keylength1) == false)	return 1;}
+	if (key2dis == 0 &&!(cf.key2.value=="" && !cf.secType[1].checked))	{if (checkkey(cf.key2.value,keylength2) == false)	return 2;}
+	if (key3dis == 0 &&!(cf.key3.value=="" && !cf.secType[1].checked))	{if (checkkey(cf.key3.value,keylength3) == false)	return 3;}
+	if (key4dis == 0 &&!(cf.key4.value=="" && !cf.secType[1].checked))	{if (checkkey(cf.key4.value,keylength4) == false)	return 4;}
+	return 5;
+}
+//yong
+function checkkey(szname,strlength)
+{
+	var c;
+	var zeronum = 0;
+	var ch = "0123456789ABCDEFabcdefGHIJKLMNOPQRSTUVWXYZghijklmnopqrstuvwxyz`~!@#$^&*()-=_+[]{};:\'\"\\|/?.,<>/% ";
+	if (szname.length != strlength)
+		return false;
+	if	(is_Hex == 1)
+		ch = ch.substring(0,22);
+	for (var i = 0; i < szname.length; i++)
+	{
+		c = szname.charAt(i);
+		if (c =="0")
+			zeronum ++;
+		if (ch.indexOf(c) == -1)
+			return false;
+		if (zeronum == strlength && is_Hex == 1)
+			return false;
+	}
+	return true;
+}
+function randomsec()
+{
+	var i = 0;
+	var length = 0;
+	var ch = "ABC0123456789ABCDEFDEF";
+	var txt = "";
+	while(i<randomlength)
+	{
+		length = Math.round(16 * Math.random());
+		txt += ch.charAt(length+3);
+		i = txt.length;
+	}
+		
+	if( document.forms[0].secType.value == 1 )
+	{
+		document.forms[0].wepSecret.value = txt;
+	}
+	else if( document.forms[0].secType.value == 3 )
+	{
+		document.forms[0].pskSecret.value = txt;
+	}
+	changeSecurity();
+}
+
+//yong
+function setKey()
+{
+	getdisable();
+	auto_disable();
+	auto_length();
+}
+//yong
+function getdisable()
+{
+	var cf = document.forms[0];
+	key1dis = (cf.length1.selectedIndex == 0);
+	key2dis = (cf.length2.selectedIndex == 0);
+	key3dis = (cf.length3.selectedIndex == 0);
+	key4dis = (cf.length4.selectedIndex == 0);
+}
+//yong
+function auto_disable()
+{
+	var cf = document.forms[0];
+	var keychoosed;
+	cf.key1.readonly = cf.keynum[0].disabled = key1dis;
+	cf.key2.readonly = cf.keynum[1].disabled = key2dis;
+	cf.key3.readonly = cf.keynum[2].disabled = key3dis;
+	cf.key4.readonly = cf.keynum[3].disabled = key4dis;
+	for (i = 0; i < cf.keynum.length; i ++)
+	{
+		if (cf.keynum[i].checked)
+		{
+			keychoosed = cf.keynum[i].value;
+			break;
+		}
+	}
+	if ((0 == key1dis) || (0 == key2dis) || (0 == key3dis) || (0 == key4dis))
+	{
+		if ((keychoosed == 1 && cf.length1.selectedIndex == 0) ||
+			(keychoosed == 2 && cf.length2.selectedIndex == 0) ||
+			(keychoosed == 3 && cf.length3.selectedIndex == 0) ||
+			(keychoosed == 4 && cf.length4.selectedIndex == 0))
+		{
+			if (0 == key1dis)
+				cf.keynum[0].checked = 1;
+			else if (0 == key2dis)
+				cf.keynum[1].checked = 1;
+			else if (0 == key3dis)
+				cf.keynum[2].checked = 1;
+			else
+				cf.keynum[3].checked = 1;
+		}
+	}
+}
+//yong
+function auto_length()
+{
+	var cf = document.forms[0];
+
+	keylength1 =(1 == key1dis) ? keylength1 :(((3 == cf.length1.selectedIndex) ? 16 : ((2 == cf.length1.selectedIndex) ? 13 : 5)) *((0 == cf.keytype.selectedIndex) ? 2 : 1));
+	keylength2 =(1 == key2dis) ? keylength2 :(((3 == cf.length2.selectedIndex) ? 16 : ((2 == cf.length2.selectedIndex) ? 13 : 5)) *((0 == cf.keytype.selectedIndex) ? 2 : 1));
+	keylength3 =(1 == key3dis) ? keylength3 :(((3 == cf.length3.selectedIndex) ? 16 : ((2 == cf.length3.selectedIndex) ? 13 : 5)) *((0 == cf.keytype.selectedIndex) ? 2 : 1));
+	keylength4 =(1 == key4dis) ? keylength4 :(((3 == cf.length4.selectedIndex) ? 16 : ((2 == cf.length4.selectedIndex) ? 13 : 5)) *((0 == cf.keytype.selectedIndex) ? 2 : 1));
+
+	if ((cf.key1.value.length > keylength1) && (key1dis != 1))cf.key1.value = cf.key1.value.substring(0,keylength1);
+	if ((cf.key2.value.length > keylength2) && (key2dis != 1))cf.key2.value = cf.key2.value.substring(0,keylength2);
+	if ((cf.key3.value.length > keylength3) && (key3dis != 1))cf.key3.value = cf.key3.value.substring(0,keylength3);
+	if ((cf.key4.value.length > keylength4) && (key4dis != 1))cf.key4.value = cf.key4.value.substring(0,keylength4);
+
+	cf.key1.maxLength =  keylength1;
+	cf.key2.maxLength =  keylength2;
+	cf.key3.maxLength =  keylength3;
+	cf.key4.maxLength =  keylength4;
+
+	if (cf.keytype.selectedIndex == 0)
+		is_Hex = true;
+	else
+		is_Hex = false;
+}
+//yong
+function changeSecforSsid()
+{
+	var cf = document.forms[0];	
+	cf.pskSecret.value = "";
+	switch(cf.multi_sec.value)
+	{
+	case "0":
+		cf.secType.value = cf.ssid_type1.value;	
+		cf.pskSecret.value = cf.ssid_sec1.value;
+		break;
+	case "1":
+		cf.secType.value = cf.ssid_type2.value;	
+		cf.pskSecret.value = cf.ssid_sec2.value;
+		break;
+	case "2":
+		cf.secType.value = cf.ssid_type3.value;	
+		cf.pskSecret.value = cf.ssid_sec3.value;
+		break;
+	case "3":
+		cf.secType.value = cf.ssid_type4.value;	
+		cf.pskSecret.value = cf.ssid_sec4.value;
+		break;
+	default:
+		cf.secType.value = cf.ssid_type1.value;	
+		cf.pskSecret.value = cf.ssid_sec1.value;
+		break;
+	}
+}
+
+function doAddSsid(num)
+{
+	var cf = document.forms[0];
+	if(2 == num)
+	{
+		if(cf.chk_ssid2.checked == true)
+		{
+			cf.ssid2.disabled = false;
+			cf.ssid2.title = "";
+			
+			if(cf.vlanEnable[0].checked == true)
+			{
+				cf.vlanId2.disabled = true;
+			}
+			else
+			{
+				cf.vlanId2.disabled = false;
+			}
+			document.getElementById("ssid2_sec_en").style.display = "";
+		}
+		else
+		{
+			cf.ssid2.disabled = true;
+			cf.ssid3.disabled = true;
+			cf.ssid4.disabled = true;
+			cf.chk_ssid3.checked = false;
+			cf.chk_ssid4.checked = false;
+			cf.ssid2.title = "If you want config this ssid, please choose the checkbox ahead!";
+			cf.vlanId2.disabled = true;
+			cf.vlanId3.disabled = true;
+			cf.vlanId4.disabled = true;
+			document.getElementById("ssid2_sec_en").style.display = "none";
+			document.getElementById("ssid3_sec_en").style.display = "none";
+			document.getElementById("ssid4_sec_en").style.display = "none";
+		}
+	}
+	if(3 == num)
+	{
+		if(cf.chk_ssid2.checked != true)
+		{
+			cf.chk_ssid3.checked = false;
+			cf.chk_ssid4.checked = false;
+			alert(js_pl_chk_SSID2="Please check the SSID2 ");
+			return false;
+		}
+		if(cf.chk_ssid3.checked == true)
+		{
+			cf.ssid3.disabled = false;
+			cf.ssid3.title = "";
+			if(cf.vlanEnable[0].checked == true)
+			{
+				cf.vlanId3.disabled = true;
+			}
+			else
+			{
+				cf.vlanId3.disabled = false;
+			}
+			document.getElementById("ssid3_sec_en").style.display = "";
+		}
+		else
+		{
+			cf.ssid3.disabled = true;
+			cf.ssid4.disabled = true;
+			cf.chk_ssid4.checked = false;
+			document.getElementById("ssid3_sec_en").style.display = "none";
+			document.getElementById("ssid4_sec_en").style.display = "none";
+			cf.ssid3.title = "If you want config this ssid, please choose the checkbox ahead!";
+			cf.vlanId3.disabled = true;
+			cf.vlanId4.disabled = true;
+		}
+	}
+	if(4 == num)
+	{
+		if(cf.chk_ssid3.checked != true)
+		{
+			cf.chk_ssid4.checked = false;
+			alert(js_pl_chk_SSID3="Please check the SSID3 ");
+			return false;
+		}
+		if(cf.chk_ssid4.checked == true)
+		{
+			cf.ssid4.disabled = false;
+			cf.ssid4.title = "";
+			if(cf.vlanEnable[0].checked == true)
+			{
+				cf.vlanId4.disabled = true;
+			}
+			else
+			{
+				cf.vlanId4.disabled = false;
+			}
+			document.getElementById("ssid4_sec_en").style.display = "";
+		}
+		else
+		{
+			cf.ssid4.disabled = true;
+			document.getElementById("ssid4_sec_en").style.display = "none";
+			cf.ssid4.title = "If you want config this ssid, please choose the checkbox ahead!";
+			cf.vlanId4.disabled = true;
+		}
+	}
+}
+//yong
+function doBack()
+{
+	if (window.parent == window)
+	{
+		window.close();
+	}
+	else
+	{
+		parent.bottomLeftFrame.collapseAll();
+		parent.mainFrame.location.href = "/userRpm/WzdWlanApRpm.htm?Return=Return" + "&session_id=" + session_id;
+	}
+}
+
+//added by songwei
+function doBrl()
+{
+	var cf = document.forms[0];
+	if (wzdWlanInf[39] == 8)
+	{
+		cf.wdsbrl.checked = true;
+		document.getElementById("wdsshow").style.display = "";
+
+		if (cf.keytypeWds.value == 1)
+		{
+			cf.wepindex.disabled = true;
+			cf.authtype.disabled = true;
+			cf.keytext.disabled = true;
+		}
+		if ((cf.keytypeWds.value == 2) || (cf.keytypeWds.value == 3))
+		{
+			cf.wepindex.disabled = false;
+			cf.keytext.disabled = false;
+			cf.authtype.disabled = false;
+			cf.keytext.maxLength = (cf.keytypeWds.value == 2)? 16:32;
+		}
+		else if(cf.keytypeWds.value == 4)
+		{
+			cf.keytext.disabled = false;
+			cf.wepindex.disabled = true;
+			cf.authtype.disabled = true;
+			cf.keytext.maxLength = 64;
+		}
+	}
+	else
+	{
+		document.getElementById("wdsshow").style.display = "none";
+	}
+	return true;
+}
+
+function doSelKeytype()
+{
+	var cf = document.forms[0];
+
+	if ((cf.keytypeWds.value == 2) || (cf.keytypeWds.value == 3))
+	{
+		cf.wepindex.disabled = false;
+		cf.authtype.disabled = false;
+		cf.keytext.disabled = false;
+		cf.keytext.maxLength = (cf.keytypeWds.value == 2)? 16:32;
+		if(cf.wdsbrl.checked && (wzdWlanInf[39] == 8) && (wzdWlanInf[13]==1) && (wzdWlanInf[14] == 1))
+		{
+			document.getElementById("wep_note").style.display = "";
+		}
+		else
+		{
+			document.getElementById("wep_note").style.display = "none";
+		}
+	}
+	else if (cf.keytypeWds.value == 4)
+	{
+		cf.keytext.disabled = false;
+		cf.wepindex.disabled = true;
+		cf.authtype.disabled = true;
+		cf.keytext.maxLength = 64;
+		document.getElementById("wep_note").style.display = "none";
+	}
+	else
+	{
+		cf.keytext.disabled = true;
+		cf.wepindex.disabled = true;
+		cf.authtype.disabled = true;
+		document.getElementById("wep_note").style.display = "none";
+	}
+	return true;
+}
+
+function doCheckPskPasswd()
+{
+	var cf = document.forms[0];
+	len = getValLen(cf.keytext.value);
+	if (len <= 0)
+	{
+		alert(js_psk_empty="Empty PSK password, please input one!");
+		return false;
+	}
+	if ((len > 0) && (len < 8))
+	{
+		alert(js_psk_char="PSK password must be more than 8 characters, please input again!");
+		return false;
+	}
+	if (len <= 64)
+	{
+		var ch="ABCDEFabcdef0123456789";
+		var c;
+		for (i = 0; i < len; i++)
+		{
+			c = cf.pskSecret.value.charAt(i);
+			if (ch.indexOf(c) == -1)
+			{
+				alert(js_psk_hex="The 64 bytes PSK password include non-hexadecimal characters, please input again.");
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+var regionInfo = new Array(
+	"id=\"t_alb\">Albania<", 1, 13, 2,
+	"id=\"t_alg\">Algeria<", 1, 13, 2,
+	"id=\"t_arg\">Argentina<", 1, 13, 2,
+	"id=\"t_arm\">Armenia<", 1, 13, 2,
+	"id=\"t_ausl\">Australia<", 1, 13, 2,
+	"id=\"t_ausa\">Austria<", 1, 13, 2,
+	"id=\"t_aze\">Azerbaijan<", 1, 13, 2,
+	"id=\"t_bah\">Bahrain<", 1, 13, 2,
+	"id=\"t_bela\">Belarus<", 1, 13, 2,
+	"id=\"t_belg\">Belgium<", 1, 13, 2,
+	"id=\"t_beli\">Belize<", 1, 13, 2,
+	"id=\"t_bol\">Bolivia<", 1, 13, 2,
+	"id=\"t_bra\">Brazil<", 1, 13, 2,
+	"id=\"t_bru\">Brunei Darussalam<", 1, 13, 2,
+	"id=\"t_bul\">Bulgaria<", 1, 13, 2,
+	"id=\"t_can\">Canada<", 1, 11, 2,
+	"id=\"t_chi\">Chile<", 1, 13, 2,
+	"id=\"t_cn\">China<", 1, 13, 1,
+	"id=\"t_col\">Colombia<", 1, 11, 2,
+	"id=\"t_cos\">Costa Rica<", 1, 13, 2,
+	"id=\"t_cro\">Croatia<", 1, 13, 2,
+	"id=\"t_cyp\">Cyprus<", 1, 13, 2,
+	"id=\"t_cze\">Czech Republic<", 1, 13, 2,
+	"id=\"t_den\">Denmark<", 1, 13, 2,
+	"id=\"t_dom\">Dominican Republic<", 1, 11, 2,
+	"id=\"t_ecu\">Ecuador<", 1, 13, 2,
+	"id=\"t_egy\">Egypt<", 1, 13, 2,
+	"id=\"t_sal\">El Salvador<", 1, 13, 2,
+	"id=\"t_est\">Estonia<", 1, 13, 2,
+	"id=\"t_fin\">Finland<", 1, 13, 2,
+	"id=\"t_fra\">France<", 1, 13, 2,
+	"id=\"t_gro\">Georgia<", 1, 13, 2,
+	"id=\"t_ger\">Germany<", 1, 13, 2,
+	"id=\"t_gre\">Greece<", 1, 13, 2,
+	"id=\"t_gua\">Guatemala<", 1, 11, 2,
+	"id=\"t_hon\">Honduras<", 1, 13, 2,
+	"id=\"t_hnk\">Hong Kong<", 1, 13, 2,
+	"id=\"t_hun\">Hungary<", 1, 13, 2,
+	"id=\"t_ice\">Iceland<", 1, 13, 2,
+	"id=\"t_inda\">India<", 1, 13, 2,
+	"id=\"t_indn\">Indonesia<", 1, 13, 2,
+	"id=\"t_iran\">Iran<", 1, 13, 2,
+	"id=\"t_ire\">Ireland<", 1, 13, 2,
+	"id=\"t_isr\">Israel<", 1, 13, 2,
+	"id=\"t_itly\">Italy<", 1, 13, 2,
+	"id=\"t_jpn\">Japan<", 1, 14, 2,
+	"id=\"t_jpn1\">Japan1<", 1, 14, 2,
+	"id=\"t_jpn2\">Japan2<", 1, 11, 2,
+	"id=\"t_jpn3\">Japan3<", 1, 14, 2,
+	"id=\"t_jpn4\">Japan4<", 1, 14, 2,
+	"id=\"t_jpn5\">Japan5<", 1, 14, 2,
+	"id=\"t_jpn6\">Japan6<", 1, 13, 2,
+	"id=\"t_jor\">Jordan<", 1, 13, 2,
+	"id=\"t_kaz\">Kazakhstan<", 1, 13, 2,
+	"id=\"t_nko\">North Korea<", 1, 13, 2,
+	"id=\"t_rko\">Korea Republic<", 1, 13, 2,
+	"id=\"t_rko3\">Korea Republic3<", 1, 13, 2,
+	"id=\"t_kuw\">Kuwait<", 1, 13, 2,
+	"id=\"t_lat\">Latvia<", 1, 13, 2,
+	"id=\"t_leb\">Lebanon<", 1, 13, 2,
+	"id=\"t_lie\">Liechtenstein<", 1, 13, 2,
+	"id=\"t_lit\">Lithuania<", 1, 13, 2,
+	"id=\"t_lux\">Luxembourg<", 1, 13, 2,
+	"id=\"t_macau\">Macau<", 1, 13, 2,
+	"id=\"t_mace\">Macedonia<", 1, 13, 2,
+	"id=\"t_mala\">Malaysia<", 1, 13, 2,
+	"id=\"t_malt\">Malta<", 1, 13, 2,
+	"id=\"t_maxi\">Mexico<", 1, 11, 2,
+	"id=\"t_mon\">Monaco<", 1, 13, 2,
+	"id=\"t_mor\">Morocco<", 1, 13, 2,
+	"id=\"t_net\">Netherlands<", 1, 13, 2,
+	"id=\"t_nzl\">New Zealand<", 1, 13, 2,
+	"id=\"t_nor\">Norway<", 1, 13, 2,
+	"id=\"t_oman\">Oman<", 1, 13, 2,
+	"id=\"t_pak\">Pakistan<", 1, 13, 2,
+	"id=\"t_pan\">Panama<", 1, 11, 2,
+	"id=\"t_peru\">Peru<", 1, 13, 2,
+	"id=\"t_phi\">Philippines<", 1, 13, 2,
+	"id=\"t_pol\">Poland<", 1, 13, 2,
+	"id=\"t_port\">Portugal<", 1, 13, 2,
+	"id=\"t_pue\">Puerto Rico<", 1, 11, 2,
+	"id=\"t_qat\">Qatar<", 1, 13, 2,
+	"id=\"t_rome\">Romania<", 1, 13, 2,
+	"id=\"t_rus\">Russia<", 1, 13, 2,
+	"id=\"t_sau\">Saudi Arabia<", 1, 13, 2,
+	"id=\"t_siga\">Singapore<", 1, 13, 2,
+	"id=\"t_svk\">Slovak Republic<", 1, 13, 2,
+	"id=\"t_slo\">Slovenia<", 1, 13, 2,
+	"id=\"t_saf\">South Africa<", 1, 13, 2,
+	"id=\"t_spn\">Spain<", 1, 13, 2,
+	"id=\"t_swe\">Sweden<", 1, 13, 2,
+	"id=\"t_swi\">Switzerland<", 1, 13, 2,
+	"id=\"t_syr\">Syria<", 1, 13, 2,
+	"id=\"t_tw\">Taiwan<", 1, 11, 2,
+	"id=\"t_thai\">Thailand<", 1, 13, 2,
+	"id=\"t_tri\">Trinidad & Tobago<", 1, 13, 2,
+	"id=\"t_tun\">Tunisia<", 1, 13, 2,
+	"id=\"t_tur\">Turkey<", 1, 13, 2,
+	"id=\"t_ukr\">Ukraine<", 1, 13, 2,
+	"id=\"t_uae\">United Arab Emirates<", 1, 13, 2,
+	"id=\"t_uk\">United Kingdom<", 1, 13, 2,
+	"id=\"t_us\">United States<", 1, 11, 2,
+	"id=\"t_uru\">Uruguay<", 1, 13, 2,
+	"id=\"t_uzb\">Uzbekistan<", 1, 11, 2,
+	"id=\"t_ven\">Venezuela<", 1, 13, 2,
+	"id=\"t_viet\">Viet Nam<", 1, 13, 2,
+	"id=\"t_yem\">Yemen<", 1, 13, 2,
+	"id=\"t_zim\">Zimbabwe<", 1, 13, 2
+); 
+
+//-->
+</SCRIPT>
+</HEAD>
+<BODY onLoad="setTagStr(document,'ntw_wzd_wlan_ap');LoadHelp('WzdWlanApHelpRpm.htm'); resize(this);"  onresize="resize(this);">
+<FORM  name="wzdwlancfg" action="WzdWlanApRpm.htm" enctype="multipart/form-data" method="get" onSubmit="return doSubmit();">
+<TABLE id="autoWidth">
+	<TBODY>
+    <TABLE>
+		<TR><TD class=h1 colspan=2 id="t_title">Quick Setup - Wireless</TD></TR>
+	</TABLE>
+	<TABLE>
+		<TR>
+			<TABLE>
+			<TR>
+				<TD class=blue colspan=4></TD>
+			</TR>
+			<TR>
+				<SCRIPT type="text/javascript">
+					switch(wzdWlanInf[39])
+					{
+						case 0:
+							document.write('<TD class=h6 id=\"t_ap_mode\" name=\"t_ap_mode\" style=\"FONT-SIZE:15px; FONT-WEIGHT:bold;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AP Mode Setting:<\/TD>');
+							break;
+						case 1:
+							document.write('<TD class=h6 id=\"t_mulSSID_mode\" name=\"t_mulSSID_mode\" style=\"FONT-SIZE:15px; FONT-WEIGHT:bold;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multi SSID Mode Setting:<\/TD>');
+							break;
+						case 3:
+							document.write('<TD class=h6 id=\"t_client_mode\" name=\"t_client_mode\" style=\"FONT-SIZE:15px; FONT-WEIGHT:bold;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Client Mode Setting:<\/TD>');
+							break;
+						case 4:
+						case 5:
+							document.write('<TD class=h6 id=\"t_repeater_mode\" name=\"t_repeater_mode\" style=\"FONT-SIZE:15px; FONT-WEIGHT:bold;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Repeater Mode Setting:<\/TD>');
+							break;
+						case 7:
+						case 8:
+							document.write('<TD class=h6 id=\"t_bdgAP_mode\" name=\"t_bdgAP_mode\" style=\"FONT-SIZE:15px; FONT-WEIGHT:bold;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bridge with AP Mode Setting:<\/TD>');
+							break;
+						default:
+							document.write('<TD class=h6 id=\"t_setting\" name=\"t_setting\" style=\"FONT-SIZE:15px; FONT-WEIGHT:bold;\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Setting:<\/TD>');
+							break;
+					}
+				</SCRIPT>
+			</TR>
+			</TABLE>
+		</TR>
+		<TR><TABLE id="autoWidth">
+			<TR>
+				<TD>&nbsp;</TD>
+			</TR>
+			
+			<TR id="t_ssid_ap" ><TD id="t_wlanssid" name="t_wlanssid" class=Item style="padding-left:30px">Wireless Network Name(SSID):</TD>
+				<TD><INPUT name="ssid_ap" type="text" class="text" id="ssid_ap" size="32" maxlength="32"></TD>
+			</TR>
+		
+			<TR id="t_ssid_client" ><TD id="t_wlanssid" name="t_wlanssid" class=Item style="padding-left:30px">Wireless Network Name(SSID):</TD>
+				<TD><INPUT name="ssid_client" type="text" class="text" id="ssid_client" size="32" maxlength="32">&nbsp;&nbsp;
+				<INPUT name="survey_c" type="button" class="buttonBig" value="Survey" onclick = "doSurvey();"></TD>
+			</TR>
+			<TR id="t_ssid_rep" >
+				<TD class=Item id=" t_rpt_mode" name="t_rpt_mode" style="padding-left:90px">Repeater Mode:</TD>
+				<TD colspan=4><INPUT name="uni_wds_r" id="uni_wds_r" type="radio" value="0" checked="checked">
+				<SPAN id =" t_rpt">Repeater</SPAN>
+				<INPUT name="uni_wds_r" type="radio" id="uni_wds_r" value="1">
+				<SPAN id =" t_wds_rpt">WDS Repeater</SPAN></TD>
+				<TD></TD>
+			</TR>
+			<SCRIPT type="text/javascript">
+					document.getElementById("t_ssid_rep").style.display="none";
+			</SCRIPT>
+			
+			<TR id="t_ssid_rep_name" ><TD id="t_rmt_ap" name="t_rmt_ap" class=Item style="padding-left:55px">Name of remote AP(SSID):</TD>
+				<TD><INPUT name="rptSsid" type="text" class="text" id="rptSsid" size="32" maxlength="32">&nbsp;&nbsp;<INPUT name="survey_r" id="survey_r" type="button" class="button" value="Survey" onClick="doSurvey();"></TD>
+			</TR>
+			<TR id="t_ssid_rep_mac" ><TD class=item style="padding-left:90px"><span id="t_macOfAP1" name="t_macOfAP1">MAC Address:</span></TD>
+				<TD><input id="rptBssid" name="rptBssid" type="text" class="text" value="" size="17" maxlength="17"></TD>
+			</TR>
+			<TR id="t_ssid_rep_warn" >
+				<TD class="Item"style="padding-left:60px" disabled></TD>
+				<TD  id="t_warnSSIDNote" style="color:gray;" disabled>You can click the Survey button to scan the network SSIDs, and then choose the target one to setup the connection.</TD>
+			</TR>
+			<TR id="t_ssid_client_wds" >
+				<SCRIPT type="text/javascript">
+					document.getElementById("t_ssid_client_wds").style.display="none";
+				</SCRIPT>
+				<TD class="Item" style="padding-left:60px">&nbsp;</TD><TD><INPUT name="wds_enable" id="wds_enable" type="checkbox" value="2">Enable WDS</TD>
+			</TR>
+		
+			<TR id="t_ssid_multi_vlan" >
+				<td class=item style="padding-left:130px"><span id="t_enVLAN">Enable VLAN:</span></td>
+				<TD><input name="vlanEnable" id="vlanEnable" type="radio" value="1" onClick="onVlanEnable(1);"><span id="t_VLAN_OFF">OFF</span>
+				&nbsp;&nbsp;&nbsp;
+				<input name="vlanEnable" id="vlanEnable" type="radio" value="2" onClick="onVlanEnable(2);"><span id="t_VLAN_ON">ON</span></TD>
+			</TR>
+			<TR id="t_ssid_multi_1" >
+				<TD id="t_ssid1" class=item style="padding-left:130px">SSID1: </TD>
+				<TD><INPUT class="text" id="ssid1" name="ssid1" maxLength=32 size=32><span style="FONT-WEIGHT: bold;">&nbsp;&nbsp;&nbsp;&nbsp;VLAN&nbsp;ID:&nbsp;&nbsp;</span><INPUT class="text" name="vlanId1" value=1 maxLength=4 size=4></TD>
+			</TR>
+			<TR id="t_ssid_multi_2" >
+				<TD class=item style="padding-left:60px"><input type=checkbox name=chk_ssid2 id=chk_ssid2 value="2" onclick="doAddSsid(2);">&nbsp;&nbsp;&nbsp;SSID2: </TD>
+				<TD><INPUT class="text" id=ssid2 name="ssid2" maxLength=32 size=32><span style="FONT-WEIGHT: bold;">&nbsp;&nbsp;&nbsp;&nbsp;VLAN&nbsp;ID:&nbsp;&nbsp;</span><INPUT class="text" name="vlanId2" value=1 maxLength=4 size=4></TD>
+			</TR>
+			<TR id="t_ssid_multi_3" >
+				<TD class=item style="padding-left:60px"><input type=checkbox name=chk_ssid3 id=chk_ssid3 value="2" onclick="doAddSsid(3);">&nbsp;&nbsp;&nbsp;SSID3: </TD>
+				<TD><INPUT class="text" id=ssid3 name="ssid3" maxLength=32 size=32><span style="FONT-WEIGHT: bold;">&nbsp;&nbsp;&nbsp;&nbsp;VLAN&nbsp;ID:&nbsp;&nbsp;</span><INPUT class="text" name="vlanId3" value=1 maxLength=4 size=4></TD>
+			</TR>
+			<TR id="t_ssid_multi_4" >
+				<TD class=item style="padding-left:60px"><input type=checkbox name=chk_ssid4 id=chk_ssid4 value="2" onclick="doAddSsid(4);">&nbsp;&nbsp;&nbsp;SSID4: </TD>
+				<TD><INPUT class="text" id=ssid4 name="ssid4" maxLength=32 size=32><span style="FONT-WEIGHT: bold;">&nbsp;&nbsp;&nbsp;&nbsp;VLAN&nbsp;ID:&nbsp;&nbsp;</span><INPUT class="text" name="vlanId4" value=1 maxLength=4 size=4></TD>
+			</TR>
+				
+		
+			<TR id="t_region_r" >
+				<TD class=Item id="t_region">Region:</TD>
+				<TD><select name="region" id="Region" class="listL" onChange="changeRegion();">
+<SCRIPT type="text/javascript">
+var regionIndex = 0;
+var oldRegion;
+for (var i = 0; i < wzdWlanInf[3]; i++)
+{
+	regionIndex = regionIndex + 4;
+	if (oldRegion == regionInfo[regionIndex - 4])
+	{
+		
+		continue;
+	}
+	document.write('<option value='+i+' '+regionInfo[regionIndex-4]+'\/option>');
+	oldRegion = regionInfo[regionIndex-4];
+}
+document.forms[0].region.value = wzdWlanInf[4];
+</SCRIPT>
+				</select></TD>
+			</TR>
+			<TR id=t_region_warn>
+				<TD class="Item"   id="t_lwarn" class=item style="padding-left:60px" disabled>Warning:<br>&nbsp;</br></TD>
+				<TD  id="t_warnCountryNote" style="color:gray;" disabled>Ensure you select a correct country to conform local law.<br>Incorrect settings may cause interference. </TD>
+			</TR>
+		
+			<TR id="t_channel" >
+				<TD class=item style="padding-left:60px" id="t_ochannelname">Channel:</TD>
+				<TD><SELECT name="channel" id="channel" class="listL" id="channel">
+				</SELECT></TD>
+			</TR>
+		
+			<TR id="line_wlMode" style="display:none">
+				<TD class="Item" id="t_mode" class=item style="padding-left:60px">Mode:</TD>
+				<TD><SELECT name="mode" style = "width:110px" onChange="changeRegion();">
+				</SELECT></TD>
+			</TR>
+			<TR id=t_bridge_ssid_space >
+				<TD>&nbsp;</TD>
+			</TR>
+			<TR id="t_bridge_ssid_scan" ><TD id="t_add_rmt_ap" name="t_add_rmt_ap" class=item style="padding-left:60px">Add a remote AP:</TD>
+				<TD align="left"><INPUT name="survey_b" id="survey_b" type="button" class="button" value="Survey" onClick="doSurvey();"></TD></TR>
+			<TR id="t_bridge_ssid_1" ><TD class=item style="padding-left:60px"><span id="t_mac_r_a1">MAC of remote AP1:</span></TD>
+				<TD><input id="mptBssid1" name="mptBssid1" type="text" class="text" value="" size="17" maxlength="17"></TD></TR>
+			<TR id="t_bridge_ssid_2" ><TD class=item style="padding-left:60px"><span id="t_mac_r_a2">MAC of remote AP2:</span></TD>
+				<TD><input id="mptBssid2" name="mptBssid2" type="text" class="text" value="" size="17" maxlength="17"></TD></TR>
+			<TR id="t_bridge_ssid_3" ><TD class=item style="padding-left:60px"><span id="t_mac_r_a3">MAC of remote AP3:</span></TD>
+				<TD><input id="mptBssid3" name="mptBssid3" type="text" class="text" value="" size="17" maxlength="17"></TD></TR>
+			<TR id="t_bridge_ssid_4" ><TD class=item style="padding-left:60px"><span id="t_mac_r_a4">MAC of remote AP4:</span></TD>
+				<TD><input id="mptBssid4" name="mptBssid4" type="text" class="text" value="" size="17" maxlength="17"></TD></TR>
+			<TR id="t_bridge_ssid_warn" ><TD class="Item" class=item style="padding-left:60px" disabled></TD>
+				<TD  id="t_warnBridgeNote" style="color:gray;" disabled>To setup the bridge network, you should make sure the nearby <br>access point use the same channel and security mode.</TD>
+			</TR>
+			
+		</TABLE></TR>
+		<TR>
+			<TD>&nbsp;</TD>
+		</TR>
+		<TR><TABLE id="t_self_security">
+			<TR><TABLE>
+				<TD colspan=4 class="blue"></TD>
+			</TABLE></TR>
+			<TR><TABLE>
+				<TR>
+					<TD id="t_sec_set" name="t_sec_set" class=h6 style="FONT-SIZE:15px; FONT-WEIGHT:bold;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Security setting:</TD>
+				</TR>
+				<TR>
+					<TD>&nbsp;</TD>
+				</TR>
+				<TR id="t_multi_sec" >
+					<TD class="Item" style="padding-left:175px;">SSID:</TD>
+					<TD><select name="multi_sec" id="multi_sec" class="listL" onChange="changeSecforSsid();changeSecurity();">
+						<option value="0"><span>SSID1</span></option>
+						<option id="ssid2_sec_en" name="ssid2_sec_en" value="1">SSID2</option>
+						<option id="ssid3_sec_en" name="ssid3_sec_en" value="2">SSID3</option>
+						<option id="ssid4_sec_en" name="ssid4_sec_en" value="3">SSID4</option>
+						</SELECT>
+					</TD>
+				</TR>
+				<TR id="t_sec_mode" >
+					<TD id="t_security_mode" name="t_security_mode" class="Item" style="padding-left:120px;">Security Mode:</TD>
+					<TD><select name="secType" id="secType" class="listL" onChange="changeSecurity();" style="width:200px">
+						<option id="t_no_sec" name="t_no_sec" value="0">None</option>
+<SCRIPT type="text/javascript">
+if(wzdWlanInf[39] != 1)
+{
+	document.write('<option id=\"t_wep_muilt\" value=\"1\">WEP<\/option>');
+}
+if(wzdWlanInf[39] != 7)
+{
+	document.write('<option id=\"t_wpa_bridge\" name=\"t_wpa_bridge\" value=\"3\">WPA\/WPA2-Personal<\/option>');
+}
+</SCRIPT>
+						<option id="t_use_prev" name="t_use_prev" value="4">Use the Previous settings</option>
+						</SELECT>
+					</TD>
+				</TR>
+				<TR id=t_none_warn>
+					<TD class="Item" style="padding-left:60px;" disabled></TD>
+					<TD id="t_no_sec_warn" name="t_no_sec_warn" style="color:gray;" disabled>If you choose None security mode, the wireless stations will be able to connect <br>the AP without encryption. It is recommened strongly that you choose one of <br>following options to enable security.</TD>
+				</TR>
+				<TR id="t_random" >
+					<TD class="Item" style="padding-left:60px;">&nbsp;</TD>
+					<TD><INPUT type="button" class="buttonL" name="random" id="random" value="Generate A Random Key" style="color:red;FONT-SIZE:12px;" onclick="randomsec()"></TD>
+				</TR>
+				<TR id="t_s_wep" >
+					<TD class="Item" style="padding-left:60px;" id="t_key_upp" name="t_key_upp">KEY:</TD>
+					<TD><INPUT type="text" class="text" name="wepSecret" id="wepSecret" maxLength=32 size=32 value=""></TD>
+				</TR>
+				
+				<TR id="t_s_wep_type">
+					<TD class="Item" style="padding-left:60px;"><SPAN id="t_type" name="t_type">Type:</SPAN></TD>
+					<TD><SELECT name=wepSecOpt class="list" id=wepSecOpt>
+						<OPTION value="1" id="t_open_sys" name="t_open_sys">Open System</OPTION>
+						<OPTION value="2" id="t_shared_key" name="t_shared_key">Shared Key</OPTION>
+					</SELECT></TD>
+				</TR>
+				<TR id="t_s_wep_form">
+					<TD class="Item" style="padding-left:60px;" id="t_wep_key_fmt">WEP Key Format:</TD>
+					<TD><SELECT name=keytype class=list id=keytype onChange="setKey();">
+						<OPTION value=1 id="t_hex">Hexadecimal</OPTION>
+						<OPTION value=2 id="t_ascii">ASCII</OPTION>
+					</SELECT></TD>
+				</TR>
+
+				<TR id="t_s_wep_key">
+					<TD  style="padding-left:30px">
+					<TABLE border=0>
+						<TR>
+						<TD class="Item" style="padding-left:60px;" id="t_key_sel">Key Selected</TD>
+						</TR>
+<SCRIPT type="text/javascript">
+var j;
+for (var i=1; i<5; i++)
+{
+j = i-1;
+document.write('<TR><TD class=ListC1 style="padding-left:60px"><span id="t_key" name="t_key">Key</span> '+i+':&nbsp;<input type=radio id=keynum name=keynum value='+i+'></TD></TR>');
+}
+</SCRIPT>
+					</TABLE>
+					</TD>
+					<TD>
+					<TABLE border=0>
+						<TR>
+							<TD style="font-size:13px;font-weight:bold;" id="t_wep_key">WEP Key</TD>
+							<TD style="font-size:13px;font-weight:bold;" id="t_key_type">Key Type</TD>
+							<TD style = "width:100%">&nbsp;</TD>
+						</TR>
+<SCRIPT type="text/javascript">
+var j;
+for (var i=1; i<5; i++)
+{
+	j = i-1;
+	document.write('<TR><TD><input type=text class=text id=key'+i+' name=key'+i+' maxLength=32 size=32 value="" onfocus="if(key'+i+'dis) this.blur();else this.form.keynum['+j+'].checked=true;"></td>');
+	document.write('<TD><select name=length'+i+'  id=length'+i+' onchange="setKey();">');
+	document.write('<option value=0 id="t_disable" name="t_disable">Disabled</option>');
+	document.write('<option value=5 id="t_64">64bit</option>');
+	document.write('<option value=13 id="t_128">128bit</option>');
+	document.write('<option value=16 id="t_152">152bit</option>');
+	document.write('</select></td>');
+	document.write('<td style = "width:100%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>');
+}
+</SCRIPT>
+					</TABLE>
+					</TD>
+				</TR>
+							
+				<TR id="t_warn_wep" >
+					<TD class="Item" style="padding-left:60px;" disabled></TD>
+					<TD id="t_warn_wep_enc" name="t_warn_wep_enc" style="color: gray;" disabled>We do not recommend using the WEP encryption if the device operates in <br>802.11n mode due to the fact that WEP is notsupported by 802.11n specification.</TD>
+				</TR>
+		
+				<TR id="t_s_psk_ver">
+					<TD class="Item" style="padding-left:60px;" id="t_version" name="t_version">Version:</TD>
+					<TD><SELECT name="pskSecOpt" class="list" id="pskSecOpt" style="width:180px">
+						<OPTION value="3" id="t_auto" name="t_auto">Automatic(Recommended)</OPTION>
+						<OPTION value="1" id="t_wpa_psn" name="t_wpa_psn">WPA-Personal</OPTION>
+						<OPTION value="2" id="t_wpa2_psn" name="t_wpa2_psn">WPA2-Personal</OPTION>
+					</SELECT></TD>
+				</TR>
+				<TR id="t_s_psk_encry">
+					<TD class="Item" style="padding-left:60px" id="t_encrypt">Encryption:</TD>
+					<TD><SELECT name=pskCipher class=list id=pskCipher style="width:180px">
+<SCRIPT type="text/javascript">
+if(wzdWlanInf[18] != 3)
+{
+	document.write('<option value="1" id="t_auto" name="t_auto">Automatic(Recommended)</option>');
+	document.write('<option value="2">TKIP</option>');
+}
+</SCRIPT>
+						<OPTION value="3">AES</OPTION>
+					</SELECT></TD>
+				</TR>
+				<TR id="t_s_psk">
+					<TD class="Item" style="padding-left:60px;" id="t_psk_pwd">Password:</TD>
+					<TD><INPUT name=pskSecret type=text class=text id="pskSecret" value="" size="64" maxlength="64"></TD>
+				</TR>
+				<TR id="t_warn_psk" >
+					<TD class="Item" style="padding-left:60px;" disabled></TD>
+					<TD id="t_psk_warn" name="t_psk_warn" style="color:gray;" disabled>Enter an 8- to 63-character alphanumeric pass-phrase. For good security it <br>should be of ample length and should not be a commonly known pharse. </TD>
+				</TR>
+				
+				<TR id="t_s_psk_per">
+					<TD class="Item" style="padding-left:60px;" id="t_key_update_prd">Group Key Update Period:</TD>
+					<TD><INPUT name=interval type=text class=text id="interval" value="0" size="9" maxlength="9">
+					<A  id="t_key_update_prd_note">(in second, minimum is 30, 0 means no update)</A></TD>
+				</TR>
+				
+				
+				<TR id="t_multi_save" >
+					<TD>&nbsp;</TD>
+					<TD><INPUT name="Save" type="button" class="buttonBig" id="Save" value="Save" onClick="doSave();" title="You can click this button to save the security for each ssid!"></TD>
+				</TR>
+
+				<!-- add wds security -->
+				<TBODY style="display:none" id="wdsshow">
+					<TR style="display:none">
+						<TD></TD>
+						<TD align ="left" class="text" style="display:"><INPUT type="checkbox" value=2 name="wdsbrl" id="wdsbrl" onClick="doBrl()"><A id="t_enWdsbrl">enable WDS</A></TD>
+					</TR>
+					<TR>
+			          <TD class="Item" style="padding-left:90px;" id="t_brlssid">SSID(to be bridged):</TD>
+			          <TD><INPUT class="text" id="brlssid" name="brlssid" maxlength=32 size=32></TD>
+			        </TR>
+			        <TR>
+			          <TD class="Item" id="t_brlssid">BSSID(to be bridged):</TD>
+			          <TD><INPUT class="text" id="brlbssid" name="brlbssid" maxlength=17 size=17>
+			            Example:00-1D-0F-11-22-33</TD>
+			        </TR>
+			        <TR>
+			          <TD></TD>
+			          <TD align="left"><INPUT name="survey_d" id="survey_d" type="button" class="button" value="Survey" onClick="doSurvey();"></TD>
+			        </TR>
+			        <TR>
+			          <TD class="Item" id="t_keytype">Key type:</TD>
+			          <TD><SELECT name="keytypeWds" id="keytypeWds" style = "width:180px" onChange="doSelKeytype()">
+			              <OPTION value=1 id="t_none">None</OPTION>
+			              <OPTION value=2 id="t_wep_asc">WEP(ASCII)</OPTION>
+			              <OPTION value=3 id="t_wep_hex">WEP(HEX)</OPTION>
+			              <OPTION value=4 id="t_wpa">WPA-PSK/WPA2-PSK</OPTION>
+			            </SELECT></TD>
+			        </TR>
+			        <TR>
+			          <TD class="Item" id="t_wepindex">WEP Index:</TD>
+			          <TD><SELECT name="wepindex" style = "width:180px">
+			              <OPTION value=1>1</OPTION>
+			              <OPTION value=2>2</OPTION>
+			              <OPTION value=3>3</OPTION>
+			              <OPTION value=4>4</OPTION>
+			            </SELECT></TD>
+			        </TR>
+			        <TR>
+			          <TD class="Item" id="t_authtype">Auth type:</TD>
+			          <TD><SELECT name="authtype" id="authtype" style = "width:180px">
+			              <OPTION value=1 id="t_open">open</OPTION>
+			              <OPTION value=2 id="t_shared">shared</OPTION>
+			            </SELECT></TD>
+			        </TR>
+			        <TR>
+			          <TD class=Item style="padding-left:40px" id="t_keytext">Password:</TD>
+			          <TD colspan = "3"><INPUT name="keytext" type=text class=text id="keytext"></TD>
+			        </TR>
+			        <TR>
+			        	<TD></TD>
+			         	<TD><span style="color:#FF0000; display:none" name="wep_note" id="wep_note">Both your AP and bridge use WEP as security mode, then you should make sure the keys are the same, </br>which means the local wireless network will use the same security settings as the bridge link.</span></TD>
+			        </TR>
+				</TBODY>
+				<!-- end add wds security -->
+			</TABLE></TR>
+		</TABLE></TR>
+		<TR><TABLE>
+			<TR>
+				<TD colspan=5 class="blue"></TD>
+			</TR>
+			<TR>
+				<TD>&nbsp;</TD>
+			</TR>
+			<TR>
+				<TD>&nbsp;&nbsp;</TD>
+				<TD colspan=4 class=mbtn>
+					<INPUT name="Return" type="button" class="buttonBig" id="Return" value="Back" onClick="doBack();">
+					&nbsp; &nbsp;&nbsp;&nbsp;
+					<INPUT name="Next" type="Submit" class="buttonBig" id="Next"  value="Next">
+					<INPUT type="hidden" name="operMode" id="operMode" value="">
+					<INPUT type="hidden" name="ssid_type1" id="ssid_type1" value="4">
+					<INPUT type="hidden" name="ssid_type2" id="ssid_type2" value="4">
+					<INPUT type="hidden" name="ssid_type3" id="ssid_type3" value="4">
+					<INPUT type="hidden" name="ssid_type4" id="ssid_type4" value="4">
+					<INPUT type="hidden" name="ssid_sec1" id="ssid_sec1" value="">
+					<INPUT type="hidden" name="ssid_sec2" id="ssid_sec2" value="">
+					<INPUT type="hidden" name="ssid_sec3" id="ssid_sec3" value="">
+					<INPUT type="hidden" name="ssid_sec4" id="ssid_sec4" value="">
+					<INPUT type="hidden" name="mac_client" id="mac_client" value="">
+					<SCRIPT type="text/javascript">
+						document.write('<input name="session_id" id="session_id" type="hidden" value="'+session_id +'">');
+					</SCRIPT>
+				</TD>
+			</TR>
+		</TABLE></TR>
+	</TABLE></TR>
+	</TBODY>	
+</TABLE>  
+</FORM>
+<P style="display:none" id="t_ssid_input_any" name="t_ssid_input_any">Please input SSID</P>
+</BODY>
+</HTML>
+<SCRIPT type="text/javascript">
+changeRegion();
+var i = 0, j = 0;
+switch(wzdWlanInf[39])
+{
+case 0:
+	j = 1;
+	break;
+case 1:
+	j = 2;
+	document.forms[0].vlanEnable[0].checked = true;
+	onVlanEnable(1);
+	break;
+case 3:
+	j = 3;
+	document.forms[0].wds_enable.checked = false;
+	break;
+case 4: 
+case 5: 
+	j = 4; 
+	document.forms[0].uni_wds_r[0].checked = true;
+	break;
+case 7:
+	j = 5;
+	break;
+case 8:
+	j = 6;
+	break;
+default:
+	j = 1;
+	break;
+}
+i = 0;
+while( t_zujian[7 * i] != 1 )
+{
+	if( 0 == t_zujian[7 * i + j] )
+		document.getElementById(t_zujian[7 * i]).style.display = "none";
+	i++;
+}
+
+document.forms[0].ssid_ap.value = wzdWlanInf[1];
+document.forms[0].ssid_client.value = wzdWlanInf[26];
+if(wzdWlanInf[25])
+	document.forms[0].wds_enable.checked = true;
+else
+	document.forms[0].wds_enable.checked = false;
+if (wzdWlanInf[39] == 4 || wzdWlanInf[39] == 5)
+{
+	if (wzdWlanInf[39] == 4)
+	{
+		document.forms[0].rptBssid.value = wzdWlanInf[28];
+		document.forms[0].rptSsid.value = wzdWlanInf[43];
+		document.forms[0].uni_wds_r[1].checked = true;
+	}
+	else if (wzdWlanInf[39] == 5)
+	{
+		document.forms[0].rptBssid.value = wzdWlanInf[29];
+		document.forms[0].rptSsid.value = wzdWlanInf[44];
+		document.forms[0].uni_wds_r[0].checked = true;
+	}
+	else
+		document.forms[0].uni_wds_r[0].checked = true;
+}
+
+document.forms[0].ssid1.value = wzdWlanInf[1];
+document.forms[0].ssid2.value = wzdWlanInf[22];
+document.forms[0].ssid3.value = wzdWlanInf[23];
+document.forms[0].ssid4.value = wzdWlanInf[24];
+if(wzdWlanInf[40])
+	document.forms[0].chk_ssid2.checked = true;
+else
+	document.forms[0].chk_ssid2.checked = false;
+	
+if(wzdWlanInf[41])
+	document.forms[0].chk_ssid3.checked = true;
+else
+	document.forms[0].chk_ssid3.checked = false;
+	
+if(wzdWlanInf[42])
+	document.forms[0].chk_ssid4.checked = true;
+else
+	document.forms[0].chk_ssid4.checked = false;
+	
+if(wzdWlanInf[38])
+{
+	document.forms[0].vlanEnable[1].checked = true;
+	onVlanEnable(2);
+	document.forms[0].vlanId1.value = wzdWlanInf[34];
+	document.forms[0].vlanId2.value = wzdWlanInf[35];
+	document.forms[0].vlanId3.value = wzdWlanInf[36];
+	document.forms[0].vlanId4.value = wzdWlanInf[37];
+}
+else
+	document.forms[0].vlanEnable[1].checked = false;
+
+document.forms[0].Region.value = wzdWlanInf[4];
+if(wzdWlanInf[39] == 3 || wzdWlanInf[39] == 4 || wzdWlanInf[39] == 5 || wzdWlanInf[39] == 7 || wzdWlanInf[39] == 8)
+{
+	if(wzdWlanInf[10] == 15)
+		document.forms[0].channel.value = 6;
+	else
+		document.forms[0].channel.value = wzdWlanInf[10];
+}
+else
+	document.forms[0].channel.value = wzdWlanInf[10];
+document.forms[0].mptBssid1.value = wzdWlanInf[30];
+document.forms[0].mptBssid2.value = wzdWlanInf[31];
+document.forms[0].mptBssid3.value = wzdWlanInf[32];
+document.forms[0].mptBssid4.value = wzdWlanInf[33];
+//¨¦¨¨???¨®?¨¹
+if(!wzdWlanInf[13])
+	document.forms[0].secType.value = 0;
+else
+{
+	document.forms[0].secType.value = wzdWlanInf[14];
+	if( wzdWlanInf[39] == 1 && wzdWlanInf[14] == 1)
+		document.forms[0].secType.value = 0;
+}	
+document.forms[0].wepSecret.value = wlanList[2*(secInf[2]-1)];
+document.forms[0].wepSecOpt.value = secInf[0];
+document.forms[0].keytype.value = secInf[1];
+if(secInf[2] >0 && secInf[2] < 5)
+	document.forms[0].keynum[secInf[2]-1].checked = true;
+document.forms[0].key1.value = wlanList[0];
+document.forms[0].key2.value = wlanList[2];
+document.forms[0].key3.value = wlanList[4];
+document.forms[0].key4.value = wlanList[6];
+document.forms[0].length1.value = wlanList[1];
+document.forms[0].length2.value = wlanList[3];
+document.forms[0].length3.value = wlanList[5];
+document.forms[0].length4.value = wlanList[7];
+document.forms[0].pskSecOpt.value = secInf[7];
+document.forms[0].pskCipher.value = secInf[8];
+document.forms[0].pskSecret.value = secInf[9];
+document.forms[0].interval.value = 0;
+
+document.forms[0].ssid_sec1.value = secInf[9];	
+document.forms[0].ssid_type1.value = (secInf[10] == 1) ? 0 : secInf[10];
+document.forms[0].ssid_sec2.value = secInf[13];	
+document.forms[0].ssid_type2.value = (secInf[14] == 1) ? 0 : secInf[14];
+document.forms[0].ssid_sec3.value = secInf[17];	
+document.forms[0].ssid_type3.value = (secInf[18] == 1) ? 0 : secInf[18];
+document.forms[0].ssid_sec4.value = secInf[21];	
+document.forms[0].ssid_type4.value = (secInf[22] == 1) ? 0 : secInf[22];
+
+document.forms[0].wdsbrl.checked = wlanWds[0];
+document.forms[0].brlssid.value = wlanWds[1];
+document.forms[0].brlbssid.value = wlanWds[2];
+document.forms[0].keytypeWds.value = wlanWds[3];
+document.forms[0].keytext.value = wlanWds[6];
+document.forms[0].wepindex.value = wlanWds[4];
+document.forms[0].authtype.value = wlanWds[5];
+if ((wzdWlanInf[39] == 8) && (wzdWlanInf[13]==1) && (wzdWlanInf[14] == 1))
+{
+	if ((document.forms[0].keytypeWds.value == 2) || (document.forms[0].keytypeWds.value == 3))
+	{
+		document.getElementById("wep_note").style.display = "";
+	}
+	else
+	{
+		document.getElementById("wep_note").style.display = "none";
+	}
+}
+else
+{
+	document.getElementById("wep_note").style.display = "none";
+}
+
+aftersurvey();
+changeSecurity();
+setKey();
+doAddSsid(2);
+if(wzdWlanInf[40])
+	doAddSsid(3);
+if(wzdWlanInf[41])
+	doAddSsid(4);
+doBrl();
+
+document.forms[0].Next.focus();
+//
+</SCRIPT>

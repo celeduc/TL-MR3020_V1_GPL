@@ -1,0 +1,1 @@
+cmd_drivers/video/backlight/backlight.ko := mips-linux-uclibc-ld -r  -m elf32btsmip  --build-id -o drivers/video/backlight/backlight.ko drivers/video/backlight/backlight.o drivers/video/backlight/backlight.mod.o

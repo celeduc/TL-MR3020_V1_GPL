@@ -1,0 +1,745 @@
+Readme for 1.0.0 Release of Wi-Fi Simple Configuration
+Linux Reference Implementation from Intel Corporation 
+
+[Build 1.0.0 Released on May-12-2006]
+=============================================================================
+
+Contents
+--------
+    Overview
+    Push Button Configuration (PBC)
+    Using new WSC Information Elements (IEs) in 802.11 messages
+    Hardware and Software Requirements
+    Known issues and limitations
+    Building the WSC code
+    Instructions to update OpenSSL
+    Steps to integrate Intel modifications to wpa_supplicant and build it
+    Steps to integrate Intel modifications to hostapd and build hostapd
+    Preparing the Registrar/Client
+    Preparing the Access Point
+    Running the WSC command-line application (wsccmd)
+    Running the Scenarios
+    Change Log
+
+
+Overview
+--------
+
+This source code distribution is subject to the following license:
+
+-----------------------------------------------------------------------
+Copyright(c) 2006 Intel Corporation. All rights reserved.
+
+  Redistribution and use in source and binary forms, with or without 
+  modification, are permitted provided that the following conditions 
+  are met:
+
+    * Redistributions of source code must retain the above copyright 
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright 
+      notice, this list of conditions and the following disclaimer in 
+      the documentation and/or other materials provided with the 
+      distribution.
+    * Neither the name of Intel Corporation nor the names of its 
+      contributors may be used to endorse or promote products derived 
+      from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR 
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT 
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT 
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, 
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY 
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-----------------------------------------------------------------------
+
+
+The code contained in this package is used to run the Registrar, 
+Access Point (as Enrollee or with Registrar capabilities), and Client 
+(Enrollee) functionality. The following scenarios are currently 
+supported:
+
+1. Initial Access Point (AP) setup, with the Registrar configuring the Access 
+   Point
+    - One WiFi-enabled laptop is setup as the AP acting as an Enrollee
+    - Another WiFi-enabled laptop is setup as a station acting as the 
+      Registrar
+    - Two subcases are 1a) using EAP transport and 1b) using UPnP transport
+
+2. Configuration of a WiFi client, using an AP with a built-in registrar
+    - One WiFi-enabled laptop is setup as the AP with registrar functionality
+    - Another WiFi-enabled laptop is setup as a station acting as an 
+      Enrollee
+  
+3. Configuration of a WiFi client using an external registar. AP acts as a
+   proxy and communicates with the client over EAP and with the Registrar
+   over UPnP.
+    - One WiFi-enabled laptop is setup as a station acting as an Enrollee
+    - Second WiFi-enabled laptop is setup as the AP with proxy functionality
+    - Third laptop is setup as the registrar. The registrar and the AP are
+      connected over ethernet. 
+
+4. Configuration of a WiFi client when two registrars are present, one 
+   external and the other built-in to the AP. User chooses the registrar to
+   be used.
+    - One WiFi-enabled laptop is setup as a station acting as an Enrollee
+    - Second WiFi-enabled laptop is setup as the AP with proxy functionality
+      and built-in registrar functionality
+    - Third laptop is setup as the registrar. The registrar and the AP
+      communicate via UPnP over a pre-established IP connection.
+
+Note:  A new file named revision_history is included at the top level of the
+       build tree.  This file contains a list of changes made to source files
+       since the Beta 3.1d release (the list may not be comprehensive, but it
+       will hopefully be useful nevertheless).
+
+Push Button Configuration (PBC)
+-------------------------------
+A subset of the Push Button Configuration method has been implemented in this
+release. SetSelectedRegistrar functionality in the Beacon has been added, and
+the registration protocol processes the all-zero PIN, but the PBC
+related timeouts (Walk time, Monitor time) are not yet implemented.
+
+
+Using new WSC Information Elements (IEs) in 802.11 messages
+-----------------------------------------------------------
+Setting and processing new WSC IEs in beacons has been implemented in this
+release. The AP is able to set WSC IE in the beacons being sent out, and the 
+Registrar can receive and process the beacons with the new IE. Currently, the 
+SSID and the Simple Config State TLV is being used to start the WSC protocol. 
+This feature requires an updated MadWifi driver from Atheros. Code for setting
+the new IEs in probe-request and probe-response messages has been included, but
+it is currently commented out in the source code (with instructions explaining
+how to enable it. See line 2533 in MasterControl.cpp).  The reason this code is 
+commented out is that we have not been able to get it working correctly yet, 
+and we decided to disable it rather than delay the 1.0 release on this account.
+
+
+Hardware and Software Requirements
+----------------------------------
+The software required on the machines in addition to the WSC code is:
+1. Standalone Registrar / Client (Enrollee)
+    - OS: Linux Fedora Core 4, kernel version 2.6.11-1.1369_FC4
+    - Intel ipw driver version 1.0.10, firmware version 2.4
+    - wpa_supplicant, version 0.4.8 plus Intel mods
+    - If support for WSC_IE feature is needed, use MadWiFi Atheros driver
+          (madwifi-ng) with patch found in ticket #517 (New IOCTL interface
+           to allow application to pass IE to be sent in Management frames).
+2. Access Point (Enrollee) / AP with built-in or External Registrar
+    - OS: Linux Fedora Core 4, kernel version 2.6.22-1.1369_FC4
+    - MadWiFi Atheros driver (madwifi-ng).  If support for WSC_IE feature is
+	  needed, apply patch found in ticket #517(New IOCTL interface to allow 
+	  application to pass IE to be sent in Management frames).
+    - hostapd, version 0.4.8 plus Intel mods
+
+We have done our development and testing with version 1497 of the madwifi-ng
+branch.
+
+The new WSC IE feature has been tested with an updated MadWifi driver from
+Atheros on both the Client and the AP.
+
+Known issues and limitations
+----------------------------
+1. This software is beta quality, and is not fully tested. Therefore it is not
+   100% stable and may have security vulnerabilities related to implementation
+   issues.
+2. This software is based up on version 1.0a of the 7C Simple Config spec, but 
+   it has a few differences.  
+   - the Key Wrap Authenticator attribute has ID 0x101E, which eliminates a 
+     conflict with the ID of Secondary Device Type.
+   - The file name used for the UFD Enrollee Device Password and Key Hash is
+     00000000.WFA rather than being based on the device's MAC adddress.  As a
+     temporary workaround for interop testing with more correct implementations,
+     the file name can be changed manually on the UFD drive to match the name
+     expected by the receiving device.  
+   - The data stored in the unencrypted Settings File 00000000.WSC does not match
+     the 1.0a spec.  Instead, the only attributes written to the file are Version
+     and Credential (in that order).  
+   - The UFD feature does not support reading/writing Encrypted Settings files.
+   - Instead of including the Enrollee nonce in the beacon (and eventually the
+     probe response), the UUID-E is included.  The SetSelectedRegistrar SOAP action
+     also passes the UUID-E rather than the Enrollee nonce to the AP.
+   - Only one enrollee device can be added at a time.  The state machine of the 
+     Registrar and AP will not correctly handle multiple concurrent registration
+     sessions.
+   - The MAC address passed in the header of the WLANEvent UPnP event is hard-coded
+     to the value 00:09:6B:E0:B3:12.
+   - SetSelectedRegistrar function in AP device does not time out the information
+     after Walk Time expires.
+3. On the Registrar and AP/Registrar-configured devices, if an incorrect PIN is
+   entered, the protocol will fail with an EAP-Fail message, as it is supposed 
+   to. However, the WSC State Machine does not get not notified of this EAP 
+   failure, and the app will therefore not exit its "wait" state, and will 
+   continue to wait for a response from the underlying EAP layer. The app may
+   be terminated with a "Ctrl-C". Please also remember to ensure that the 
+   hostapd and wpa_supplicant applications are also terminated before running 
+   wsccmd again.
+4. The transfer of the the PIN via USB flash drive has been implemented, but
+   this feature has not undergone complete testing for all the different 
+   scenarios.  
+5. To enable the USB flash drive options, the variable USB_KEY=1 must 
+   be set in the wsc_config.txt file.  By default, this variable is set to 0.
+6. Fragmentation and re-assembly of the EAP messages has not yet been implemented.
+
+
+Building the WSC code
+---------------------
+The build process is common for all the different modes that a particular 
+device may be configured as. You will need to be root to run the application.
+
+Note: Lines prefixed with '#' indicate commands that are to be run.
+
+1. Unzip WscRefImpl_Intel_1_0_0.tar.gz to a local directory.
+    # tar -xzvf WscRefImpl_Intel_1_0_0.tar.gz
+    - This will result in a directory WscRefImpl_Intel_1_0_0 to be created, 
+      with the code contained within.
+2. # cd WscRefImpl_Intel_1_0_0/src/linux
+3. The application can be built in either debug or release modes.
+   To build the debug version:
+   # make
+   To build the release verion:
+   # make BLDTYPE=release
+   Note: You may have to download and install latest version of OpenSSL.
+         Please follow the directions in the next section.
+4. Successful completion of the build process should result in creation of the
+   executable "wsccmd" in src/linux.
+5. Copy the configuration file to src/linux. This file needs to be in the same 
+   directory as wsccmd. Depending on the mode the device needs to be in
+   (AP, Client, Registrar, AP with Registrar), one of the pre-set config files
+   may be copied over.
+    # cp ../common/wsc_config_xxx.txt wsc_config.txt
+
+
+Instructions to update OpenSSL
+------------------------------
+These instructions are specifically for RedHat Fedora Core 4 OS.
+
+- Download OpenSSL 0.9.8a from http://www.openssl.org/
+- Build and Install new OpenSSL
+	- ./config --prefix=/usr/local --openssldir=/usr/local/openssl
+	- make
+	- make test
+	- make install
+- Remove old OpenSSL include files
+	- rm -rf /usr/include/openssl
+	- OR (mv /usr/include/openssl /usr/include/old-openssl)
+
+
+Steps to integrate Intel modifications to wpa_supplicant and build it
+---------------------------------------------------------------------
+- Make sure that you have two archive files in the same folder
+	1) Original wpa_supplicant - wpa_supplicant-0.4.8.tar.gz
+	2) Intel modifications - wpa_supplicant-0.4.8_Intel_1_0_0.tar.gz
+- Unzip original 0.4.8 wpa_supplicant. This should create a folder 
+  wpa_supplicant-0.4.8 and unzip all the files and folders in it.
+	# tar xvfz wpa_supplicant-0.4.8.tar.gz
+- Unzip Intel modifications. This should overwrite a few files in
+  wpa_supplicant-0.4.8 folder and create a few new files as well.
+	# tar xvfz wpa_supplicant-0.4.8_Intel_1_0_0.tar.gz
+- See README_WSC for the list of new and modified files.
+- Change directory to wpa_supplicant-0.4.8 and copy defconfig file 
+  to .config file.
+- Do a 'make clean' and 'make' and it should produce wpa_supplicant
+  and wpa_cli executables with Intel modifications for WSC Reference 
+  Implementation.
+- To enable new WSC IE feature, uncomment CONFIG_WSC_IE in .config and
+  rebuild wpa_supplicant.
+
+
+Steps to integrate Intel modifications to hostapd and build hostapd
+-------------------------------------------------------------------
+- Make sure that you have two archive files in the same folder
+	1) Original hostapd - hostpad-0.4.8.tar.gz
+	2) Intel modifications - hostapd-0.4.8_Intel_1_0_0.tar.gz
+- Unzip original 0.4.8 hostapd. This should create a folder hostapd-0.4.8
+  and unzip all the files and folders in it.
+	# tar xvfz hostapd-0.4.8.tar.gz
+- Unzip Intel modifications. This should overwrite a few files in
+  hostapd-0.4.8 folder and create a few new files as well.
+	# tar xvfz hostapd-0.4.8_Intel_1_0_0.tar.gz
+- See README_WSC for the list of new and modified files.
+- Change directory to hostapd-0.4.8 and copy defconfig file to .config file.
+- Do a 'make clean' and 'make' and it should produce hostapd executable
+  with Intel modifications for WSC Reference Implementation.
+- To enable new WSC IE feature, uncomment CONFIG_WSC_IE in .config and
+  rebuild hostapd.
+
+Preparing the Registrar/Client
+------------------------------
+1. If you don't have the latest IPW2200 driver/firmware on the PC, download
+   from http://ipw2200.sourceforge.net and install them.
+2. Build wpa_supplicant with Intel modifications. Please see the section on
+   building wpa_supplicant in this document.
+3. Once wpa_supplicant is built, create softlinks to wpa_supplicant and wpa_cli
+   in src/linux (or wherever you will be running wsccmd from). If
+   /wpa_supplicant/wpa_supplicant is the path to those executables:
+    # ln -s /wpa_supplicant/wpa_supplicant wpa_supplicant
+    # ln -s /wpa_supplicant/wpa_cli wpa_cli
+
+Preparing the Access Point
+--------------------------
+1. Make sure you have downloaded a recent version of madWiFi driver and
+   installed it correctly on your PC that has Atheros chipset based WLAN card.
+2. Build hostapd  with Intel modifications. Please see the section on
+   building hostapd in this document.
+3. Once hostapd is built, create a softlink to hostapd in src/linux, or wherever
+   you will be running wsccmd from. If /hostapd/hostapd is the path to that
+   executable:
+    # ln -s /hostapd/hostapd hostapd
+4. Copy template.conf and hostapd.eap_user from the hostapd directory to
+   src/linux. 
+
+
+Running the WSC command-line application (wsccmd)
+-----------------------------------------------------
+The WSC command-line application (wsccmd) uses a configuration file called
+wsc_config.txt. This config file must be in the same directory as wsccmd.
+The config file has a number of parameters that can be changed depending
+on the desired mode of operation. Sample config files are provided for 
+all the scenarios mentioned above. 
+
+To run the application:
+# ./wsccmd 2> stderr.txt
+The application generates trace messages for debugging purposes, and this
+will cause all such messages to be written out to file stderr.txt. This
+file can be examined in real-time by running "tail -f stderr.txt" in 
+a separate console.
+
+Follow the prompts after the application is run. If the application fails 
+in its startup process, examine the trace file (stderr.txt) for errors.
+
+Once all required information is entered, the Registration process will start
+and the UI will indicate success/failure of the operation when complete.
+
+
+Running the Scenarios
+---------------------
+For each of the scenarios, sample configuration files are mentioned below.
+These files must be renamed/copied to wsc_config.txt before running the
+wsccmd application.
+
+Each scenario can be run in four different ways.
+
+i)   M2 : The enrollee's PIN is provided to the Registrar prior to initiating 
+     the registration protocol. The registrar will send an M2 message when M1 
+     is received from the enrollee.
+ii)  M2D : The registrar is not provided with the enrollee's PIN prior to 
+     initiating the registration protocol. The Registrar will send an M2D 
+     message when it receives an M1 from the enrollee, and then prompt the user
+     to enter a PIN for this enrollee. Once the PIN is entered, the registrar 
+     will respond with an M2 the next time the enrollee sends an M1 message.
+iii) PBC (Push Button) : A single option is chosen on both the registrar and
+     the enrollee, and the registration process is initiated with an
+     all-zero PIN.
+iv)  UFD (PIN transfer via USB Flash Drive) : Prior to the registration 
+     protocol being initiated, the enrollee's device PIN must first be 
+     written out to the USB drive using one of the menu options ("Write PIN")
+     on the enrollee. The PIN must then be read in on the registrar by 
+     selecting one of its menu options ("Read PIN"). Once this is done, the 
+     registration protocol can be initiated.
+
+Some of the scenarios may also enable WSC_IE support and writing out the 
+unencrypted settings to USB key. These extra options are detailed in the 
+appropriate scenarios below.
+
+
+(1a) Initial AP setup, with the Registrar configuring the AP (EAP)
+------------------------------------------------------------------------------
+
+   [Unconfigured AP]<----EAP--->[Registrar]
+
+1. [Unconf AP] Use wsc_config_1a_ap.txt.
+   Note: To use UFD for PIN transfer, set USB_KEY=1 in the configuration file.
+2. [Registrar] Use wsc_config_1a_reg.txt.
+   Note: To use UFD for PIN transfer, set USB_KEY=1 in the configuration file.
+3. Start wsccmd on both [Unconf AP] and [Registrar].
+4. Depending on the desired mode of operation, follow one of the options
+   below.
+
+(i) M2
+-  [Unconf AP] Select option 1 ("Get configured").
+-  [Registrar] Select option 1 ("Configure AP").
+-  [Registrar] Enter enrollee's PIN when prompted. Also enter the new SSID 
+   for the AP when prompted.
+-  The registration process will begin, and the application will display
+   the result of the process on completion.
+
+(ii) M2D
+-  [Unconf AP] Select option 1 ("Get configured").
+-  [Registrar] Select option 1 ("Configure AP").
+-  [Registrar] When prompted for the enrollee's PIN, hit <Enter> to simulate 
+   not knowing the PIN. Enter the new SSID for the AP when prompted. 
+-  The registration process will start. The Registrar will send an M2D to the
+   enrollee on receipt of an M1 and then prompt the user for the enrollee's 
+   PIN.
+-  [Registrar] Enter the enrollee's PIN
+-  The registration process will continue, and the application will display
+   the result of the process on completion.
+
+(iii) PBC
+-  [Unconf AP] Select option 2 ("Get configured via push-button").
+-  [Registrar] Select option 2 ("Configure AP with push-button").
+-  The registration process will start, and the application will display
+   the result of the process on completion.
+
+(iv) UFD
+-  [Unconf AP] Select option 4 ("Write PIN to USB key").
+-  [Unconf AP] When prompted, insert the USB key. The PIN will be written
+   out.
+-  [Registrar] Select option 6 ("Read PIN from USB key").
+-  [Registrar] When prompted, insert the USB key. The PIN will be read from
+   the device.
+-  [Unconf AP] Select option 1 ("Get configured").
+-  [Registrar] Selection option 1 ("Configure AP").
+-  [Registrar] Enter the new SSID for the AP when prompted.
+-  The registration process will begin, and the application will display
+   the result of the process on completion.
+
+(v) Beacon IE
+-  [Unconf AP] Select option 3 ("Get configured using IEs")
+-  [Registrar] Select option 3 ("Configure AP using IEs").
+-  [Registrar] Enter enrollee's PIN when prompted. Also enter the new SSID 
+   for the AP when prompted.
+-  The registration process will begin, and the application will display
+   the result of the process on completion.
+
+5. If the registration is successful, hostapd on the AP will be restarted
+   with the newly configured parameters. On the registrar, wpa_supplicant
+   will be re-configured with the new parameters, and will connect to the
+   AP with these new parameters.
+6. The WPA-PSK psk will be written out to the AP and registrar config files.
+
+
+(1b) Initial AP setup, with the Registrar configuring the AP (UPnP)
+------------------------------------------------------------------------------
+
+   [Unconfigured AP]<----UPnP--->[Registrar]
+
+1. [Unconf AP] Use wsc_config_1b_ap.txt.
+   Note: To use UFD for PIN transfer, set USB_KEY=1 in the configuration file.
+2. [Registrar] Use wsc_config_1b_reg.txt.
+   Note: To use UFD for PIN transfer, set USB_KEY=1 in the configuration file.
+3. Start wsccmd on both [Unconf AP] and [Registrar].
+4. Depending on the desired mode of operation, follow one of the options
+   as noted in senario (1a) above. Note that the selection on the registrar
+   needs to be made first, before selecting the correct option on the AP/
+   client menu. 
+   Also note that in this scenario, wpa_supplicant will not be started on 
+   the registrar - other than than, the sequence of events will be similar 
+   to those described in 1a.
+
+(2a) Adding an Enrollee to AP+Registrar (EAP)
+------------------------------------------------------------------------------
+
+   [AP+Registrar]<----EAP--->[Client]
+
+1. [AP+Registrar] Use wsc_config_2a_ap.txt.
+   Note: To use UFD for PIN transfer, set USB_KEY=1 in the configuration file.
+2. [Client] Use wsc_config_2a_cli.txt.
+   Note: To use UFD for PIN transfer, set USB_KEY=1 in the configuration file.
+3. Start wsccmd on both [AP+Registrar] and [Client].
+4. Depending on the desired mode of operation, follow one of the options
+   below.
+
+(i) M2
+-  [AP+Registrar] Select option 1 ("Configure Client").
+-  [AP+Registrar] Enter enrollee's PIN when prompted.
+-  [Client] Select option 1 ("Get configured").
+-  The registration process will begin, and the application will display
+   the result of the process on completion.
+
+(ii) M2D
+-  [AP+Registrar] Select option 1 ("Configure Client").
+-  [AP+Registrar] When prompted for the enrollee's PIN, hit <Enter> to simulate 
+   not knowing the PIN. 
+-  [Client] Select option 1 ("Get configured").
+-  The registration process will start. The Registrar will send an M2D to the
+   enrollee on receipt of an M1 and then prompt the user for the enrollee's 
+   PIN.
+-  [AP+Registrar] Enter the enrollee's PIN
+-  The registration process will continue, and the application will display
+   the result of the process on completion.
+
+(iii) PBC
+-  [AP+Registrar] Select option 2 ("Configure Client via push-button").
+-  [Client] Select option 2 ("Get configured via push-button").
+-  The registration process will start, and the application will display
+   the result of the process on completion.
+
+(iv) UFD (to transfer PIN)
+-  [Client] Select option 3 ("Write PIN to USB key").
+-  [Client] When prompted, insert the USB key. The PIN will be written
+   out.
+-  [AP+Registrar] Select option 3 ("Read PIN from USB key").
+-  [Registrar] When prompted, insert the USB key. The PIN will be read from
+   the device.
+-  [AP+Registrar] Select option 1 ("Configure client").
+-  [Client] Select option 1 ("Get configured").
+-  The registration process will begin, and application will display
+   the result of the process on completion.
+
+(v) Transfer unencrypted settings using UFD
+-  [AP+Registrar] Select option 4 ("Write unencrypted settings to USB"). Then,
+   insert the USB key. The unencrypted credential settings for the Enrollee 
+   will be transfered to the USB key. Remove the USB key.
+-  [Client] Select option 4 ("Get configured thru USB key"). Then, insert the
+   USB key that has the credential settings. 
+-  The wpa_supplicant configuration file will be written with the new
+   credentials and wpa_supplicant will be started to connect to the AP.
+
+   NOTE: The USB_KEY option must be set to 1 in wsc_config.txt for cases (iv)
+   and (v).
+
+5. If the registration is successful, wpa_supplicant on the client will
+   be re-configured with the new parameters, and will connect to the AP
+   with these new parameters.
+
+(3a) Adding an Enrollee with external Registrar (UPnP/EAP)
+------------------------------------------------------------------------------
+
+   [Registrar]<----UPnP--->[AP]<---EAP--->[Client]
+
+1. [Registrar] Use wsc_config_3a_reg.txt.
+   Note: To use UFD for PIN transfer, set USB_KEY=1 in the configuration file.
+   Note: The WPA_PSK value in the [Registrar] config file must match the 
+   WPA-PSK value in the [AP] config file.
+2. [AP] Use wsc_config_3a_ap.txt.
+3. [Client] Use wsc_config_3a_cli.txt.
+   Note: To use UFD for PIN transfer, set USB_KEY=1 in the configuration file.
+4. Start wsccmd on [Registrar], [AP] and [Client].
+5. Depending on the desired mode of operation, follow one of the options
+   below.
+
+(i) M2
+-  [Registrar] Select option 4 ("Configure Client").
+-  [Registrar] Enter enrollee's PIN when prompted.
+-  [AP] Nothing to be selected.
+-  [Client] Select option 1 ("Get configured").
+-  The registration process will begin, and the application will display
+   the result of the process on completion.
+
+(ii) M2D
+-  [Registrar] Select option 4 ("Configure Client").
+-  [Registrar] When prompted for the enrollee's PIN, hit <Enter> to simulate 
+   not knowing the PIN. 
+-  [AP] Nothing to be selected.
+-  [Client] Select option 1 ("Get configured").
+-  The registration process will start. The Registrar will send an M2D to the
+   enrollee on receipt of an M1 and then prompt the user for the enrollee's 
+   PIN.
+-  [Registrar] Enter the enrollee's PIN
+-  The registration process will continue, and the application will display
+   the result of the process on completion.
+
+(iii) PBC
+-  [Registrar] Select option 5 ("Configure Client with push-button").
+-  [AP] Nothing to be selected.
+-  [Client] Select option 2 ("Get configured via push-button").
+-  The registration process will start, and the application will display
+   the result of the process on completion.
+
+(iv) UFD (to transfer PIN)
+-  [Client] Select option 3 ("Write PIN to USB key").
+-  [Client] When prompted, insert the USB key. The PIN will be written
+   out.
+-  [Registrar] Select option 6 ("Read PIN from USB key").
+-  [Registrar] When prompted, insert the USB key. The PIN will be read from
+   the device.
+-  [Registrar] Select option 4 ("Configure client").
+-  [AP] Nothing to be selected.
+-  [Client] Select option 1 ("Get configured").
+-  The registration process will begin, and application will display
+   the result of the process on completion.
+
+(v) Transfer unencrypted settings using UFD
+-  [Registrar] Select option 7 ("Write unencrypted settings to USB"). Then,
+   insert the USB key. The unencrypted credential settings for the Enrollee 
+   will be transfered to the USB key. Remove the USB key.
+-  [Client] Select option 4 ("Get configured thru USB key"). Then, insert the
+   USB key that has the credential settings. 
+-  The wpa_supplicant configuration file will be written with the new
+   credentials and wpa_supplicant will be started to connect to the AP.
+
+   NOTE: The USB_KEY option must be set to 1 in wsc_config.txt for cases (iv)
+   and (v)
+
+6. If the registration is successful, wpa_supplicant on the client will
+   be re-configured with the new parameters, and will connect to the AP
+   with these new parameters.
+
+(4a) Adding an Enrollee with multiple registrars (UPnP/EAP)
+------------------------------------------------------------------------------
+
+   [Registrar]<----UPnP--->[AP+Registrar]<---EAP--->[Client]
+
+1. [Registrar] Use wsc_config_4a_reg.txt.
+   Note: To use UFD for PIN transfer, set USB_KEY=1 in the configuration file.
+   Note: The WPA_PSK value in the [Registrar] config file must match the 
+   WPA-PSK value in the [AP+Registrar] config file.
+2. [AP+Registrar] Use wsc_config_4a_ap.txt.
+   Note: To use UFD for PIN transfer, set USB_KEY=1 in the configuration file.
+3. [Client] Use wsc_config_4a_cli.txt.
+   Note: To use UFD for PIN transfer, set USB_KEY=1 in the configuration file.
+4. Start wsccmd on [Registrar], [AP+Registrar] and [Client].
+5. Depending on the desired mode of operation, follow one of the options
+   below.
+
+(4a1) Choose external registrar [Registrar] as the registrar to run the 
+      protocol with
+
+(i) M2
+-  [Registrar] Select option 4 ("Configure Client").
+-  [Registrar] Enter enrollee's PIN when prompted.
+-  [AP+Registrar] Select option 1 ("Configure Client").
+-  [AP+Registrar] When prompted for the enrollee's PIN, hit <Enter> to simulate 
+   not knowing the PIN. 
+-  [Client] Select option 1 ("Get configured").
+-  The registration process will begin, and the application will display
+   the result of the process on completion.
+
+(ii) M2D
+-  [Registrar] Select option 4 ("Configure Client").
+-  [Registrar] When prompted for the enrollee's PIN, hit <Enter> to simulate 
+   not knowing the PIN. 
+-  [AP+Registrar] Select option 1 ("Configure Client").
+-  [AP+Registrar] When prompted for the enrollee's PIN, hit <Enter> to simulate 
+   not knowing the PIN. 
+-  [Client] Select option 1 ("Get configured").
+-  The registration process will start. Both [Registrar] and [AP+Registrar]
+   will send M2Ds to the enrollee on receipt of an M1 and then prompt the user 
+   for the enrollee's PIN.
+-  [Registrar] Enter the enrollee's PIN
+-  The registration process will continue, and the application will display
+   the result of the process on completion.
+
+(iii) PBC
+-  [Registrar] Select option 5 ("Configure Client with push-button").
+-  [AP+Registrar] Select option 1 ("Configure Client").
+-  [AP+Registrar] When prompted for the enrollee's PIN, hit <Enter> to simulate 
+   not knowing the PIN. 
+-  [Client] Select option 2 ("Get configured via push-button").
+-  The registration process will start, and the application will display
+   the result of the process on completion.
+
+(iv) UFD
+-  [Client] Select option 3 ("Write PIN to USB key").
+-  [Client] When prompted, insert the USB key. The PIN will be written
+   out.
+-  [Registrar] Select option 6 ("Read PIN from USB key").
+-  [Registrar] When prompted, insert the USB key. The PIN will be read from
+   the device.
+-  [Registrar] Select option 4 ("Configure client").
+-  [AP+Registrar] Select option 1 ("Configure Client").
+-  [AP+Registrar] When prompted for the enrollee's PIN, hit <Enter> to simulate 
+   not knowing the PIN. 
+-  [Client] Select option 1 ("Get configured").
+-  The registration process will begin, and application will display
+   the result of the process on completion.
+
+6. If the registration is successful, wpa_supplicant on the client will
+   be re-configured with the new parameters, and will connect to the AP
+   with these new parameters.
+
+
+(4a2) Choose AP with built-in registrar [AP+Registrar] as the registrar to run 
+     the protocol with
+
+(i) M2
+-  [Registrar] Select option 4 ("Configure Client").
+-  [Registrar] When prompted for the enrollee's PIN, hit <Enter> to simulate 
+   not knowing the PIN. 
+-  [AP+Registrar] Select option 1 ("Configure Client").
+-  [AP+Registrar] Enter enrollee's PIN when prompted.
+-  [Client] Select option 1 ("Get configured").
+-  The registration process will begin, and the application will display
+   the result of the process on completion.
+
+(ii) M2D
+-  [Registrar] Select option 4 ("Configure Client").
+-  [Registrar] When prompted for the enrollee's PIN, hit <Enter> to simulate 
+   not knowing the PIN. 
+-  [AP+Registrar] Select option 1 ("Configure Client").
+-  [AP+Registrar] When prompted for the enrollee's PIN, hit <Enter> to simulate 
+   not knowing the PIN. 
+-  [Client] Select option 1 ("Get configured").
+-  The registration process will start. Both [Registrar] and [AP+Registrar]
+   will send M2Ds to the enrollee on receipt of an M1 and then prompt the user 
+   for the enrollee's PIN.
+-  [AP+Registrar] Enter the enrollee's PIN
+-  The registration process will continue, and the application will display
+   the result of the process on completion.
+
+(iii) PBC
+-  [Registrar] Select option 1 ("Configure Client").
+-  [Registrar] When prompted for the enrollee's PIN, hit <Enter> to simulate 
+   not knowing the PIN. 
+-  [AP+Registrar] Select option 5 ("Configure Client with push-button").
+-  [Client] Select option 2 ("Get configured via push-button").
+-  The registration process will start, and the application will display
+   the result of the process on completion.
+
+(iv) UFD
+-  [Client] Select option 3 ("Write PIN to USB key").
+-  [Client] When prompted, insert the USB key. The PIN will be written
+   out.
+-  [AP+Registrar] Select option 3 ("Read PIN from USB key").
+-  [AP+Registrar] When prompted, insert the USB key. The PIN will be read from
+   the device.
+-  [Registrar] Select option 4 ("Configure Client").
+-  [Registrar] When prompted for the enrollee's PIN, hit <Enter> to simulate 
+   not knowing the PIN. 
+-  [AP+Registrar] Select option 1 ("Configure client").
+-  [Client] Select option 1 ("Get configured").
+-  The registration process will begin, and application will display
+   the result of the process on completion.
+
+6. If the registration is successful, wpa_supplicant on the client will
+   be re-configured with the new parameters, and will connect to the AP
+   with these new parameters.
+
+
+Change Log
+----------
+
+Build 1.0.0 Released on May-12-2006
+
+- Changed EAP header Vendor ID value to 00 37 2A.  
+- Changed OUI in WSC IEs to 00 50 f2 04.  
+- Added SetSelectedRegistrar functionality (but AP does not time out the info)
+- Modified message processing to ignore unrecognized attributes encountered at 
+  the place where Vendor Extension attributes are allowed in the 1.0a spec.
+- Included fixes to the passcode and PSK TLV that were made prior to the first 
+  plugfest.
+- Added support for reading/writing unencrypted credentials to a UFD drive.
+- Fixed the UPnP Service ID for the AP device.
+
+More details can be found in the revision_history file.
+
+Build 0.3.0 Released on Mar-10-2006
+-----------------------------------
+1. Added new WSC IE setting and processing. This feature requires an updated
+   MadWiFi driver from Atheros.
+2. Earlier message type from EAP header was being used by the protcool engine
+   even over UPnP transport. This issue is fixed.
+3. Use of UPnP actions and events (GetDeviceInfo, PutMessage, WLANEvent,
+   PutWLANResponse) fixed as per the latest spec.
+
+Build 0.2.1 Released on Feb-10-2006
+-----------------------------------
+1. Registration Protocol modified to comply with 7C Simple Config proposal
+   Version 1.0.
+
+Build 0.2.0 Released on Feb-02-2006
+-----------------------------------
+1. Added UPnP transport and minimal Push-Button configuration.
+2. Added Registrar and UPnP proxy functionality to Access Point.
+
+Build 0.1.0 Released on Dec-20-2005
+-----------------------------------
+1. First release. 
+
+

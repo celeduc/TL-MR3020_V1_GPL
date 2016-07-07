@@ -1,0 +1,7 @@
+########################################Build MR3020UN 1.0##########################################
+mr3020nv1_fs_en:
+	make apxxfus_fs_prep enet=ag7240 lang=en oem_dir=MR3020_1.0 conf_file=mr3020nv1_en.conf	
+	make mk_squashfs_build fs_size=0x2C0000
+	make image_build prefix=mr3020nv1_en
+	
+302001:linux_build_all httpd_build mr3020nv1_fs_en

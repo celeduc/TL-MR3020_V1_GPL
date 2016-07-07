@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<TITLE>Setup Wizard</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META http-equiv="pragma" content="no-cache">
+<META http-equiv="expires" content="wed, 26 Feb 1997 08:21:57 GMT">
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<LINK href="../dynaform/css_main.css" rel=stylesheet>
+<SCRIPT language=javascript src="../dynaform/common.js" type=text/javascript>
+</SCRIPT>
+<!--test Data & test JS-->
+<!--<TP_C_TAG>-->
+<META http-equiv="pragma" content="no-cache">
+<SCRIPT type="text/javascript">
+<!--
+
+function goRetry()
+{
+	window.location.reload();
+}
+function goBack()
+{
+	window.location.href="/userRpm/WzdWanTypeRpm.htm?session_id=" + session_id;
+}
+
+function Click()
+{
+	var evt = window.event || arguments[0];
+	evt.returnValue=false;
+}
+document.oncontextmenu=Click;
+//-->
+</SCRIPT>
+</HEAD>
+<!-- change XXXX to your dest page.-->
+<BODY onLoad="setTagStr(document,'ntw_wzd_wan_disconn');LoadHelp('WzdWanTypeHelpRpm.htm');focusElement('Retry');resize(this);" onResize="resize(this);">
+<CENTER>
+  <FORM action="WzdWanTypeRpm.htm" enctype="multipart/form-data" method="get">
+    <TABLE id="autoWidth" >
+      <TBODY>
+        <!--chang your title below.-->
+        <TR>
+          <TD class=h1 id = "t_title">Setup Wizard - WAN Connection Type</TD>
+        </TR>
+        <TR>
+          <TD class=blue></TD>
+        </TR>
+        <!--Content-->
+        <TR>
+          <TD><SPAN style="color:#FF0000" id="t_cable_unplgged">The cable is unplugged.</SPAN></TD>
+        </TR>
+        <TR>
+          <TD><B><SPAN id="t_pl_plug">Before continuing, please make sure the cable of the WAN port is well connected to your device.</SPAN></B></TD>
+        </TR>
+        <TR>
+          <TD class=blue></TD>
+        </TR>
+        <TR>
+          <TD class = "mbtn"><!--Button-->
+            <INPUT name="Return" type="button" class="buttonBig" value="Back" onClick="goBack();">&nbsp;&nbsp;&nbsp;&nbsp;
+            <INPUT id="Retry" name="Retry" type="button" class="buttonBig" value="Retry" onClick="goRetry();">
+            <INPUT type="hidden" name="ClientId" value="">
+			<SCRIPT type="text/javascript">
+				document.write('<input name="session_id" id="session_id" type="hidden" value="'+session_id +'">');
+			</SCRIPT>
+			</TD>
+        </TR>
+      </TBODY>
+    </TABLE>
+  </FORM>
+</CENTER>
+<!--JS page up & page down-->
+</BODY>
+</HTML>

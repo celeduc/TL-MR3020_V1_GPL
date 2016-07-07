@@ -1,0 +1,14 @@
+#
+# USB device configuration
+#
+
+menu "AR724x GPIO Setting Support"
+	depends on MACH_HORNET
+
+config GPIO_DEBUG
+	bool "GPIO DEBUG turn on/off"
+	default n if MACH_AR7240
+	default n
+	
+endmenu
+

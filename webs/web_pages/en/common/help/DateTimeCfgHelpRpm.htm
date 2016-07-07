@@ -1,0 +1,54 @@
+<LINK href="../dynaform/css_help.css" rel=stylesheet> 
+<!--<TP_C_TAG>-->
+<HTML><HEAD><TITLE></TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+</head>
+
+<H1>Time Settings Help</H1>
+<P>This page allows you to set the time manually or to configure automatic time synchronization. The Device can automatically update the time from an NTP server via the Internet.
+This page also allows you to active the Daylight Saving Time function.</P>
+<p><B>Time Zone</B> - Select your local time zone from this pull-down list.
+<p><B>To set time manually:</B>
+<ol type=1>
+<lI>Select your local time zone.</lI>
+<lI>Enter the <B>Date</B> in Month/Day/Year format.</lI>
+<lI>Enter the <B>Time</B> in Hour/Minute/Second format.</lI>
+<lI>Click <B>Save</B>.</lI>
+</ol>
+<p><B>For automatic time synchronization:</B>
+<ol type=1>
+	<lI>Enter the address or domain of the <B>NTP Server 1</B> or <B>NTP Server 2</B>.</lI>
+	<lI>Click the <B>Get GMT</B> button to get GMT from the Internet.</lI>
+</ol>
+<p id="syncPCTimeTitle" style="display:none;"><B>To synchronize time with PC:</B>
+<ol type=1 id="syncPCTimeDetails" style="display:none;">
+	<lI>Click the <B>Sync with my PC</B> button to synchronize <B>Time zone</B>, <B>Date</B> and <B>Time</B> with your PC.</lI>
+</ol>
+<p><B>To enable Daylight Saving:</B>
+<ol type=1>
+	<lI>Select the <B>Enable Daylight Saving</B> checkbox to enable daylight saving function.</lI>
+	<lI>Schedule the span of time which this function will effect. For example, if you want this function work at 0 o'clock(am) on the 1st Sunday of April and last until at 6 o'clock(pm) on the 2nd Saturday of September, you need choose "Apr", "1st", "Sun", "0am" at <B>Start</B> part and choose "Sep", "2nd", "Sat", "6pm" at the <B>End</B> part.</lI>
+	<LI>Click the <B>Save</B> button to effect this function.</Li>
+</ol>
+<p><B>Note:</B>
+<ol type=1>
+	<lI>This setting will be used for some time-based functions such as firewall functions.  These time dependant functions will not work if time is not set.  So, it is important to specify time settings as soon as you successfully login to the Device.</lI>
+	<lI>The time will be lost if the Device is turned off. </lI>
+	<lI>The Device will automatically obtain GMT from the Internet if it is configured accordingly.</lI>
+	<lI>In daylight saving configuration, start time shall be earlier than end time.</lI>
+</ol>
+	</BODY></HTML>
+
+<SCRIPT type="text/javascript">
+
+	var args = new Object();
+	args = getUrlParms();
+
+	if(args["PCtime"] == "1")
+	{
+		document.getElementById("syncPCTimeTitle").style.display = "block";
+		document.getElementById("syncPCTimeDetails").style.display = "block";
+	}
+
+</SCRIPT>
+

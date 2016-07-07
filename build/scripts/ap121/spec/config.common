@@ -1,0 +1,10 @@
+#system mode value
+export SYSTEM_MODE_NORMAL_ROUTER=0
+export SYSTEM_MODE_AP=1
+export SYSTEM_MODE_APC_ROUTER=2
+export SYSTEM_MODE_3G_ROUTER=3
+export SYSTEM_MODE_MAX=4
+
+#enable or disable software system mode
+export SYSTEM_MODE_SOFT_ENABLE=19	
+export SYSTEM_MODE_SOFT_DISABLE=20

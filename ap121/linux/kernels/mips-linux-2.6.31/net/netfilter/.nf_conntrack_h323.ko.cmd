@@ -1,0 +1,1 @@
+cmd_net/netfilter/nf_conntrack_h323.ko := mips-linux-uclibc-ld -r  -m elf32btsmip  --build-id -o net/netfilter/nf_conntrack_h323.ko net/netfilter/nf_conntrack_h323.o net/netfilter/nf_conntrack_h323.mod.o

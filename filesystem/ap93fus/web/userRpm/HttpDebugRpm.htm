@@ -1,0 +1,147 @@
+<SCRIPT LANGUAGE="JavaScript">
+var bIsonFocus = 0;
+var LIST_LEN = 20;
+var cmdList = new Array(LIST_LEN);
+cmdList[1] = "";
+var head = 0;
+var tail = 1;
+var cur = 1;
+function doSend(s)
+{
+	cmdList[tail] = s;
+	if (tail == head)
+	{
+		head++;
+		head%=LIST_LEN;
+	}
+	tail++;
+	tail%=LIST_LEN;
+	cmdList[tail] = "";
+	cur = tail;
+	
+	frames["frame1"].location.href = "/userRpm/DebugResultRpm.htm?cmd=" + s + "&usr=" + document.getElementById("usr").value + "&passwd=" + document.getElementById("passwd").value;
+	document.getElementById("cmd").value = "";
+	document.getElementById("result").scrollTop = document.getElementById("result").scrollHeight;
+	document.getElementById("cmd").focus();
+}
+function doClear()
+{
+	document.getElementById("result").value = "";
+	document.getElementById("cmd").focus();
+}
+function doPre()
+{
+	if (cur != ((head + 1) % LIST_LEN) )
+	{
+		if (cur == 0)
+			cur = LIST_LEN;
+		else
+			cur--;
+	}
+	document.getElementById("cmd").value = cmdList[cur];
+}
+function doNxt()
+{
+	if (cur != tail)
+	{
+		cur++;
+		cur%=LIST_LEN;
+	}
+	document.getElementById("cmd").value = cmdList[cur];
+}
+</SCRIPT>
+</HEAD>
+<BODY>
+<CENTER>
+<TABLE style="width:100%">
+<TR>
+<TD>
+<TABLE style="width:100%">
+<TR>
+	<TD width=10%>用户名</TD>
+	<TD width=35%><INPUT type="text" id="usr" name="usr" size="40" value="" style="width:50%">
+	<TD width=10%>密码</TD>
+	<TD width=35%><INPUT type="password" id="passwd" name="passwd" size="40" value="" style="width:50%"></TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+<TR>
+<TD>
+<TABLE style="width:100%">
+<TR>
+	<TD width=10%>&nbsp;</TD>
+	<TD width=10%><INPUT type="button" name="pre" value="上一条" style="width:100%" ONCLICK="doPre()"></TD>
+	<TD width=10%><INPUT type="button" name="nxt" value="下一条" style="width:100%" ONCLICK="doNxt()"></TD>
+	<TD width=60%>&nbsp;</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+<TR>
+<TD>
+<TABLE style="width:100%">
+
+<TR>
+	<TD width="10%">指令:</TD>
+	<TD width="50%"><INPUT type="text" id="cmd" name="cmd"  STYLE="width:100%" size="80" value=""></TD>
+	<TD width="10%"><INPUT type="submit" value="发送" name="Send" STYLE="width:100%" ONCLICK='doSend(document.getElementById("cmd").value)'></TD>
+	<TD width="10%"><INPUT type="button" value="清空" name="Clear" STYLE="width:100%" ONCLICK="doClear()"></TD>
+	<TD width="10%"><INPUT type="button" value="退出" name="Exit" STYLE="width:100%" ONCLICK='doSend("exit")'></TD>
+</TR>
+
+<TR>
+	<TD COLSPAN=4 width="80%"><TEXTAREA STYLE="overflow:auto;word-wrap:normal;height:700;width:100%;" id="result" value="" ReadOnly=true OnFocus="bIsonFocus=1;" OnBlur="bIsonFocus=0;"></TEXTAREA>
+	</TD>
+
+<TD>
+<TABLE style="width:100%">
+<TR><TD width="10%">
+<INPUT TYPE="button" VALUE="查看进程" STYLE="width:100%" ONCLICK='doSend("ps")'>
+</TD></TR>
+<TR><TD>
+<INPUT TYPE="button" VALUE="查看网络" STYLE="width:100%" ONCLICK='doSend("ifconfig")'>
+</TD></TR>
+<TR><TD>
+<INPUT TYPE="button" VALUE="查看路由" STYLE="width:100%" ONCLICK='doSend("route")'>
+</TD></TR>
+<TR><TD>
+<INPUT TYPE="button" VALUE="查看NAT" STYLE="width:100%" ONCLICK='doSend("iptables -t nat -L")'>
+</TD></TR>
+<TR><TD>
+<INPUT TYPE="button" VALUE="查看内存" STYLE="width:100%" ONCLICK='doSend("cat /proc/meminfo")'>
+</TD></TR>
+<TR><TD>
+<INPUT TYPE="button" VALUE="查看内核模块" STYLE="width:100%" ONCLICK='doSend("lsmod")'>
+</TD></TR>
+<TR><TD>
+<INPUT TYPE="button" VALUE="查看防火墙" STYLE="width:100%" ONCLICK='doSend("iptables -t filter -L")'>
+</TD></TR>
+<TR><TD>
+<INPUT TYPE="button" VALUE="查看日志" STYLE="width:100%" ONCLICK='doSend("logread")'>
+</TD></TR>
+<TR><TD>
+<INPUT TYPE="button" VALUE="查看连接数" STYLE="width:100%" ONCLICK='doSend("cat /proc/sys/net/ipv4/netfilter/ip_conntrack_count")'>
+</TD></TR>
+<TR><TD>
+<INPUT TYPE="button" VALUE="查看ARP" STYLE="width:100%" ONCLICK='doSend("cat /proc/net/arp")'>
+</TD></TR>
+<TR><TD>
+<INPUT TYPE="button" VALUE="查看流量" STYLE="width:100%" ONCLICK='doSend("cat /proc/net/dev")'>
+</TD></TR>
+</TABLE>
+</TD>
+</TR>
+</TABLE>
+</TD></TR>
+<TR STYLE="display:none"><TD>
+	<iframe name="frame1" id="frame1" src="/userRpm/DebugResultRpm.htm"  frameborder="1" width="20" height="20"></iframe>
+</TD></TR>
+</TABLE>
+</CENTER>
+</BODY>
+<head><meta http-equiv="pragma" content="no-cache"></head>
+</HTML>
+<SCRIPT LANGUAGE="JavaScript">
+	document.getElementById("usr").focus();
+</SCRIPT>

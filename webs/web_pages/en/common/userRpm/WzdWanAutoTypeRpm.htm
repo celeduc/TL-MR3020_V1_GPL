@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+<TITLE>Detecting</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<META http-equiv="pragma" content="no-cache">
+<META http-equiv="expires" content="wed, 26 Feb 1997 08:21:57 GMT">
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<LINK href="../dynaform/css_main.css" rel=stylesheet>
+<SCRIPT language=javascript src="../dynaform/common.js" type=text/javascript></SCRIPT>
+<!--test Data & test JS-->
+<!--<TP_C_TAG>-->
+<!--JS-->
+<META http-equiv="pragma" content="no-cache">
+<SCRIPT type="text/javascript"><!-- 
+function LoadPage()
+{
+	window.location.href = "/userRpm/WzdWanAutoTypeRpm.htm?detected=1&session_id=" + session_id;
+}
+function goBack()
+{
+	window.location.href="/userRpm/WzdWanTypeRpm.htm?session_id=" + session_id;
+}
+window.setTimeout("LoadPage()", 4500);
+//--></SCRIPT>
+</HEAD>
+<!-- change XXXX to your dest page.-->
+<BODY onLoad="setTagStr(document,'ntw_wzd_wan_auto_type');LoadHelp('WzdWanTypeHelpRpm.htm');focusElement('Back');resize(this);" onResize="resize(this);">
+<CENTER>
+<FORM action="WzdWanAutoTypeRpm.htm" enctype=multipart/form-data method="get">
+  <TABLE id="autoWidth" >
+    <TBODY>
+      <!--chang your title below.-->
+      <TR>
+        <TD class=h1 id = "t_title">Quick Setup - WAN Connection Type</TD>
+      </TR>
+      <TR>
+        <TD class=blue></TD>
+      </TR>
+      <!--Content-->
+      <TR>
+        <TD><B><SPAN id="t_detecting_network">Detecting the connection type your ISP provides, please wait...</SPAN></B></TD>
+      </TR>
+      <TR>
+        <TD class=blue></TD>
+      </TR>
+      <TR>
+        <TD class = "mbtn"><!--Button-->
+          <INPUT name="Back" type="button" class="buttonBig" id="Back" value="Back" onClick="return goBack();">
+          &nbsp;
+			<SCRIPT type="text/javascript">
+				document.write('<input name="session_id" id="session_id" type="hidden" value="'+session_id +'">');
+			</SCRIPT>
+		</TD>
+      </TR>
+    </TBODY>
+  </TABLE>
+</FORM>
+</CENTER>
+<!--JS page up & page down-->
+</BODY>
+</HTML>

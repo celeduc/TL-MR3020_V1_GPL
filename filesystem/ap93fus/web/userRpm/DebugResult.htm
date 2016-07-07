@@ -1,0 +1,20 @@
+<script language="Javascript">
+function doGetResult()
+{
+	location.href="/userRpm/DebugResultRpm.htm";
+}
+</script>
+</head>
+<body>
+</body>
+</html>
+<script language="JavaScript">
+	var	timeInterVal = 2000;
+	obj = parent.document.getElementById("result");
+	var temp = obj.scrollTop;
+	obj.value += cmdResult[0];
+	obj.scrollTop = temp;
+	if(parent.bIsonFocus == 0)
+		obj.scrollTop = obj.scrollHeight;
+	setTimeout("doGetResult()",timeInterVal);
+</script>

@@ -1,0 +1,104 @@
+
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<SCRIPT language=Javascript src="../dynaform/custom.js" type=text/javascript></SCRIPT>
+<SCRIPT language="JavaScript"><!--
+function Click(){ return false;}
+document.oncontextmenu=Click;
+//--></SCRIPT>
+<SCRIPT language="JavaScript"><!-- 
+function doFinish()
+{
+	if (window.parent == window)
+		window.close();
+	else 
+	{
+		parent.bottomLeftFrame.collapseAll();
+		wzd_end_go_url();
+	}
+} 
+function doPrev()
+{
+	history.go(-1);
+}
+
+function doReboot()
+{
+	if(confirm("您确定要重启路由器吗？"))
+	{
+		if (!self.opener)
+		{
+			location.href = "/userRpm/SysRebootRpm.htm?Reboot=Reboot";
+		}
+		else
+		{
+			self.opener.location.href = "/userRpm/SysRebootRpm.htm?Reboot=Reboot&WzdReboot=1";
+			window.close();
+		}		
+		return true;
+	}
+	else 
+	{
+		window.close();
+		return false;
+	}
+}
+//--></SCRIPT></HEAD>
+<BODY >
+<CENTER><FORM action="WzdEndRpm.htm" enctype="multipart/form-data" method="get">
+<TABLE width="502" border="0" cellspacing="0" cellpadding="0"><TR><TD width="7" class="title"><IMG src="/images/arc.gif" width="7" height="24"></TD>
+<TD width="495" align="left" valign="middle" class="title">设置向导</TD></TR><TR><TD colspan="2"><TABLE width="502" border="0" cellspacing="0" cellpadding="0">
+<TR><TD class="vline" rowspan="15"><BR> </TD><TD width="500"><TABLE width="400" border="0" align="center" cellpadding="0" cellspacing="0" class="space">
+<TR><TD>恭喜您！您已经顺利完成上网所需的基本网络参数的设置，现在您已经能够正常上网。</TD></TR>
+    <SCRIPT language ＝"Javascript">
+        if(wzdFinishInf[5] == 1)
+        {
+            document.write('<TR><TD colspan=2></TD></TR>');
+            document.write('<TR><TD COLSPAN=2><FONT color=#FF0000>您已经更改了无线设置，重启后生效。</FONT> </TD></TR>'); 
+        }
+    </SCRIPT>
+</TABLE>
+<TABLE width="400" border="0" align="center" cellpadding="0" cellspacing="0" class="space">
+
+<TR><TD>
+	<SCRIPT language="JavaScript">
+	 if ((wzdFinishInf[5] == 1))
+     {
+    	document.write('请单击“重启”使无线设置生效。');
+     }
+     else
+     {		
+		document.write('请单击“完成”结束设置向导。');
+     }
+	</SCRIPT>
+	</TD></TR></TABLE></TD><TD class="vline" rowspan="15"><BR> </TD></TR>		
+<TR><TD class="hline"><IMG src="/images/empty.gif" width="1" height="1"></TD></TR><TR><TD height="30" class="tail" align="right"><INPUT name="Return" type="submit" class="button" id="PrevStep"  value="上一步" >&nbsp;
+<SCRIPT language="JavaScript">
+if(wzdFinishInf[0])
+{
+	document.write('<input name=\"SecWzd\" type=\"submit\" class=\"button\" id=\"Submit\" value=\"防火墙设置\" >&nbsp; &nbsp;');
+}
+     if ((wzdFinishInf[5] == 1))
+     {
+    	document.write('<INPUT class=button id=Submit type=button value=重启 name="Reboot" onClick="doReboot();">');
+     }
+     else
+     {
+	document.write('<input name="Complete" type="button" class="button" id="Complete" value="完 成" onClick="doFinish();">&nbsp;');
+     }
+
+</SCRIPT>
+<INPUT type="hidden" name="ClientId" value="">
+
+</TD></TR><TR><TD class="hline"><IMG src="/images/empty.gif" width="1" height="1"></TD></TR>
+</TABLE></TD></TR></TABLE>
+</FORM></CENTER>
+</BODY><HEAD><META http-equiv="pragma" content="no-cache"></HEAD></HTML>
+<SCRIPT language="JavaScript">
+document.forms[0].ClientId.value = wzdFinishInf[1];
+if (window.parent == window)
+{
+	window.resizeTo(550,260);
+}
+</SCRIPT>
+
+

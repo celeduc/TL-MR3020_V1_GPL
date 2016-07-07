@@ -1,0 +1,1 @@
+cmd_net/netfilter/nf_conntrack_pptp.ko := mips-linux-uclibc-ld -r  -m elf32btsmip  --build-id -o net/netfilter/nf_conntrack_pptp.ko net/netfilter/nf_conntrack_pptp.o net/netfilter/nf_conntrack_pptp.mod.o

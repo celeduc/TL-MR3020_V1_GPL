@@ -1,0 +1,248 @@
+#
+# This file is subject to the terms and conditions of the GNU General Public
+# License.  See the file "COPYING" in the main directory of this archive
+# for more details.
+#
+# Copyright © 2003 Atheros Communications, Inc.,  All Rights Reserved.
+#
+
+# Makefile for Atheros ar531x boards
+#
+# Note! Dependencies are done automagically by 'make dep', which also
+# removes any old dependencies. DON'T put your own dependencies here
+# unless it's something special (ie not a .c file).
+#
+
+#.S.s:
+#	$(CPP) $(CFLAGS) $< -o $*.s
+#.S.o:
+#	$(CC) $(CFLAGS) -D__ASSEMBLY__ -c $< -o $*.o
+
+obj-y	+=	prom.o	\
+			gpio.o	\
+			irq.o	\
+			setup.o	\
+			ar7240.o \
+			platform.o \
+			wdt.o
+
+ifdef CONFIG_CUS100
+CFLAGS_gpio.o += -DCONFIG_CUS100=1
+endif
+
+#the common macro
+ifdef SYSTEM_MODE_MIN
+CFLAGS_gpio.o += -DSYSTEM_MODE_MIN=$(SYSTEM_MODE_MIN)
+endif
+
+ifdef SYSTEM_MODE_NORMAL_ROUTER
+CFLAGS_gpio.o += -DSYSTEM_MODE_NORMAL_ROUTER=$(SYSTEM_MODE_NORMAL_ROUTER)
+endif
+
+ifdef SYSTEM_MODE_AP
+CFLAGS_gpio.o += -DSYSTEM_MODE_AP=$(SYSTEM_MODE_AP)
+endif
+
+ifdef SYSTEM_MODE_APC_ROUTER
+CFLAGS_gpio.o += -DSYSTEM_MODE_APC_ROUTER=$(SYSTEM_MODE_APC_ROUTER)
+endif
+
+ifdef SYSTEM_MODE_3G_ROUTER
+CFLAGS_gpio.o += -DSYSTEM_MODE_3G_ROUTER=$(SYSTEM_MODE_3G_ROUTER)
+endif
+
+ifdef SYSTEM_MODE_MAX
+CFLAGS_gpio.o += -DSYSTEM_MODE_MAX=$(SYSTEM_MODE_MAX)
+endif
+
+ifdef SYSTEM_MODE_SOFT_ENABLE
+CFLAGS_gpio.o += -DSYSTEM_MODE_SOFT_ENABLE=$(SYSTEM_MODE_SOFT_ENABLE)
+endif
+
+ifdef SYSTEM_MODE_SOFT_DISABLE
+CFLAGS_gpio.o += -DSYSTEM_MODE_SOFT_DISABLE=$(SYSTEM_MODE_SOFT_DISABLE)
+endif
+
+#the specific macro
+ifdef CONFIG_PID_MR302001
+CFLAGS_gpio.o += -DCONFIG_PID_MR302001=$(CONFIG_PID_MR302001)
+endif
+
+ifdef CONFIG_PID_WR74104
+CFLAGS_gpio.o += -DCONFIG_PID_WR74104=$(CONFIG_PID_WR74104)
+endif
+
+ifdef CONFIG_PID_WR74302CN
+CFLAGS_gpio.o += -DCONFIG_PID_WR74302CN=$(CONFIG_PID_WR74302CN)
+endif
+
+ifdef CONFIG_PID_MR322002
+CFLAGS_gpio.o += -DCONFIG_PID_MR322002=$(CONFIG_PID_MR322002)
+endif
+
+ifdef CONFIG_PID_WR70301
+CFLAGS_gpio.o += -DCONFIG_PID_WR70301=$(CONFIG_PID_WR70301)
+endif
+
+ifdef CONFIG_PID_WA70102
+CFLAGS_gpio.o += -DCONFIG_PID_WA70102=$(CONFIG_PID_WA70102)
+endif
+
+ifdef GPIO_JUMPSTART_LED_BIT
+CFLAGS_gpio.o += -DGPIO_JUMPSTART_LED_BIT=$(GPIO_JUMPSTART_LED_BIT)
+endif
+
+ifdef GPIO_RSSI_LED_SUPPORT
+CFLAGS_gpio.o += -DGPIO_RSSI_LED_SUPPORT=$(GPIO_RSSI_LED_SUPPORT)
+endif
+
+ifdef GPIO_JUMPSTART_LED_ON
+CFLAGS_gpio.o += -DGPIO_JUMPSTART_LED_ON=$(GPIO_JUMPSTART_LED_ON)
+endif
+
+ifdef GPIO_INTERNET_LED_BIT
+CFLAGS_gpio.o += -DGPIO_INTERNET_LED_BIT=$(GPIO_INTERNET_LED_BIT)
+endif
+
+ifdef GPIO_INTERNET_LED_ON
+CFLAGS_gpio.o += -DGPIO_INTERNET_LED_ON=$(GPIO_INTERNET_LED_ON)
+endif
+
+ifdef GPIO_WLAN_LED_BIT
+CFLAGS_gpio.o += -DGPIO_WLAN_LED_BIT=$(GPIO_WLAN_LED_BIT)
+endif
+
+ifdef GPIO_WLAN_LED_ON
+CFLAGS_gpio.o += -DGPIO_WLAN_LED_ON=$(GPIO_WLAN_LED_ON)
+endif
+
+ifdef GPIO_RESET_FAC_BIT
+CFLAGS_gpio.o += -DGPIO_RESET_FAC_BIT=$(GPIO_RESET_FAC_BIT)
+endif
+
+ifdef GPIO_FAC_RST_HOLD_TIME
+CFLAGS_gpio.o += -DGPIO_FAC_RST_HOLD_TIME=$(GPIO_FAC_RST_HOLD_TIME)
+endif
+
+ifdef SUPPORT_HARDWARE_MULTI_MODE
+CFLAGS_gpio.o += -DSUPPORT_HARDWARE_MULTI_MODE=$(SUPPORT_HARDWARE_MULTI_MODE)
+endif
+
+ifdef SYS_MODE_GPIO_1
+CFLAGS_gpio.o += -DSYS_MODE_GPIO_1=$(SYS_MODE_GPIO_1)
+endif
+
+ifdef SYS_MODE_GPIO_2
+CFLAGS_gpio.o += -DSYS_MODE_GPIO_2=$(SYS_MODE_GPIO_2)
+endif
+
+ifdef JUMPSTART_RST_MULTIPLEXED
+CFLAGS_gpio.o += -DJUMPSTART_RST_MULTIPLEXED=$(JUMPSTART_RST_MULTIPLEXED)
+endif
+
+ifdef GPIO_USB_POWER_SUPPORT
+CFLAGS_gpio.o += -DGPIO_USB_POWER_SUPPORT=$(GPIO_USB_POWER_SUPPORT)
+endif
+
+ifdef GPIO_WLAN_BTN_BIT
+CFLAGS_gpio.o += -DGPIO_WLAN_BTN_BIT=$(GPIO_WLAN_BTN_BIT)
+endif
+
+ifdef GPIO_WLAN_HOLD_TIME
+CFLAGS_gpio.o += -DGPIO_WLAN_HOLD_TIME=$(GPIO_WLAN_HOLD_TIME)
+endif
+
+ifdef GPIO_USB_POWER_ON
+CFLAGS_gpio.o += -DGPIO_USB_POWER_ON=$(GPIO_USB_POWER_ON)
+endif
+
+ifdef GPIO_SYS_LED_BIT
+CFLAGS_gpio.o += -DGPIO_SYS_LED_BIT=$(GPIO_SYS_LED_BIT)
+endif
+
+ifdef GPIO_SYS_LED_ON
+CFLAGS_gpio.o += -DGPIO_SYS_LED_ON=$(GPIO_SYS_LED_ON)
+endif
+
+ifdef GPIO_JUMPSTART_SW_BIT
+CFLAGS_gpio.o += -DGPIO_JUMPSTART_SW_BIT=$(GPIO_JUMPSTART_SW_BIT)
+endif
+
+ifndef WPS_LED_GPIO_PIN
+WPS_LED_GPIO_PIN=5
+endif
+
+ifdef GPIO_SLOW_ETH_LED
+CFLAGS_gpio.o += -DGPIO_SLOW_ETH_LED=$(GPIO_SLOW_ETH_LED)
+endif
+
+ifdef CONFIG_PID_MR11U02
+CFLAGS_gpio.o += -DCONFIG_PID_MR11U02=$(CONFIG_PID_MR11U02)
+endif
+
+ifdef CONFIG_PID_TR86601
+CFLAGS_gpio.o += -DCONFIG_PID_TR86601=$(CONFIG_PID_TR86601)
+endif
+
+ifdef CONFIG_PID_TR86301
+CFLAGS_gpio.o += -DCONFIG_PID_TR86301=$(CONFIG_PID_TR86301)
+endif
+
+ifdef GPIO_MULTIPLEX_WLAN_WITH_WPS
+CFLAGS_gpio.o += -DGPIO_MULTIPLEX_WLAN_WITH_WPS=$(GPIO_MULTIPLEX_WLAN_WITH_WPS)
+endif
+
+#CFLAGS_gpio.o += -DJUMPSTART_GPIO=$(JUMPSTART_GPIO)
+CFLAGS_gpio.o += -DWPS_LED_GPIO=$(WPS_LED_GPIO_PIN)
+
+ifdef ATH_SUPPORT_LED
+CFLAGS_gpio.o += -DATH_SUPPORT_LED=$(ATH_SUPPORT_LED)
+CFLAGS_gpio.o += -DGPIO_PIN_FUNC_0=$(GPIO_PIN_FUNC_0)
+CFLAGS_gpio.o += -DGPIO_PIN_FUNC_1=$(GPIO_PIN_FUNC_1)
+CFLAGS_gpio.o += -DGPIO_PIN_FUNC_2=$(GPIO_PIN_FUNC_2) 
+endif
+
+# Normal router with Acess Point
+ifdef NORMAL_ROUTER_WITH_AP
+CFLAGS_gpio.o += -DNORMAL_ROUTER_WITH_AP=$(NORMAL_ROUTER_WITH_AP)
+endif
+
+ifdef MODE_NORMAL_ROUTER
+CFLAGS_gpio.o += -DMODE_NORMAL_ROUTER=$(MODE_NORMAL_ROUTER)
+endif
+
+ifdef MODE_AP
+CFLAGS_gpio.o += -DMODE_AP=$(MODE_AP)
+endif
+
+ifdef MODE_APC_ROUTER
+CFLAGS_gpio.o += -DMODE_APC_ROUTER=$(MODE_APC_ROUTER)
+endif
+
+ifdef MODE_3G_ROUTER
+CFLAGS_gpio.o += -DMODE_3G_ROUTER=$(MODE_3G_ROUTER)
+endif
+
+ifdef AP_USB_LED_GPIO
+CFLAGS_gpio.o += -DAP_USB_LED_GPIO=$(AP_USB_LED_GPIO)
+endif
+
+ifeq ($(BUILD_EMU), 24)
+EXTRA_CFLAGS += -DCONFIG_HORNET_EMULATION_WLAN_HARDI
+endif
+
+ifeq ($(CONFIG_HORNET_XTAL), 40)
+EXTRA_CFLAGS += -DCONFIG_40MHZ_XTAL_SUPPORT
+endif
+
+ifndef AP_RESET_GPIO
+AP_RESET_GPIO=21
+endif
+
+EXTRA_CFLAGS += -DAP_RESET_GPIO=$(AP_RESET_GPIO)
+
+ifeq ($(AP_WATCHDOG_RESET_DISABLE), 1)
+CFLAGS_wdt.o += -DAP_WATCHDOG_RESET_DISABLE
+endif
+
+#EXTRA_CFLAGS				+=	-fno-schedule-insns -fno-schedule-insns2

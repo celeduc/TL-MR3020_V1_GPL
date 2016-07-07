@@ -1,0 +1,82 @@
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<SCRIPT type="text/javascript">
+<!--
+function Click()
+{
+	var evt = window.event || arguments[0];
+	evt.returnValue=false;
+}
+document.oncontextmenu=Click;
+//-->
+</SCRIPT>
+<style type="text/css">
+<!--
+.STYLE2 {color: #66CC00}
+.STYLE3 {color: #000000}
+-->
+</style>
+</HEAD>
+<BODY onLoad="setTagStr(document,'wzd_accesstype');LoadHelp('WzdAccessTypeHelpRpm.htm'); resize(this);" onResize="resize(this);">
+<CENTER>
+  <FORM action="WzdAccessTypeRpm.htm" method="get" enctype="multipart/form-data">
+    <TABLE width="487" id="autoWidth">
+      <TBODY>
+        <TR>
+          <TD class="h1" colspan="2" id="t_title">Quick Setup - Internet Access</TD>
+        </TR>
+			<TR>
+				<TD class="blue" colspan="2"></TD>
+			</TR>
+			<TR id="line_order">
+			  <TD colspan="2" class="info" STYLE1 ><strong>Start &gt;&gt; <span class="STYLE2">Internet Access</span><span class="STYLE3"> &gt;&gt; WAN / 3G/4G &gt;&gt; Wireless &gt;&gt; Finish</span></strong></TD>
+			</TR>
+			<TR><TD class="info" colspan="2" id="t_note_isp">The Device provides four Internet access mode for you to choose:</TD></TR>
+			<TR>
+				<TD class="clk">&nbsp;</TD>
+				<TD><INPUT name="access" id="access" type="radio" value="0"><B id="t_3gprime_opt">3G/4G Preferred</B> - <SPAN id="t_3gprime">Use 3G/4G as the primary access, WAN as a backup.</SPAN></TD>
+			</TR>
+			<TR>
+				<TD class="clk">&nbsp;</TD>
+				<TD><INPUT name="access" id="access" type="radio" value="1" checked><B id="t_3gonly_opt">3G/4G Only</B> - <SPAN id="t_3gonly">Only use 3G/4G as the access to the Internet.</SPAN></TD>
+			</TR>
+			<TR>
+				<TD class="clk">&nbsp;</TD>
+				<TD><INPUT name="access" id="access" type="radio" value="2"><B id="t_wanprime_opt">WAN Preferred</B> - <SPAN id="t_wanprime">Use WAN as the primary access, 3G/4G as a backup.</SPAN></TD>
+			</TR>
+			<TR>
+				<TD class="clk">&nbsp;</TD>
+				<TD><INPUT name="access" id="access" type="radio" value="3"><B id="t_wanonly_opt">WAN Only</B> - <SPAN id="t_wanonly">Only use WAN as the access to the Internet.</SPAN></TD>
+			</TR>
+			<TR>
+				<TD class="blue" colspan="2"></TD>
+			</TR>
+        <TR>
+          <TD class="mbtn" colspan="2"><INPUT class="buttonBig" id="Return" type="submit" value="Back" name="Return">
+            &nbsp; 
+            &nbsp;
+            <INPUT class="buttonBig" id="Submit" type="submit" value="Next" name="Next">
+            &nbsp;
+            <INPUT type="hidden" name="ClientId">
+			<SCRIPT type="text/javascript">
+				document.write('<input name="session_id" id="session_id" type="hidden" value="'+session_id +'">');
+			</SCRIPT></TD>
+        </TR>
+      </TBODY>
+    </TABLE>
+  </FORM>
+</CENTER>
+</BODY>
+<HEAD>
+<META http-equiv="pragma" content="no-cache">
+</HEAD>
+</HTML>
+<SCRIPT type="text/javascript"><!--
+document.getElementById("line_order").style.display="none";
+
+document.getElementsByName("access")[wzdAccessTypeInf[0]].checked = true;
+
+document.forms[0].ClientId.value = wzdAccessTypeInf[1];
+
+document.forms[0].Submit.focus();
+-->
+</SCRIPT>

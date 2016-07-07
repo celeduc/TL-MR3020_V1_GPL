@@ -1,0 +1,10 @@
+#!/bin/sh
+#/sbin/hotplug
+if [ "$ACTION" = "add" -a "$1" = "usb_device" ] ; then
+        `handle_card -a -m 0 >> /dev/ttyS0`
+fi
+if [ "$ACTION" = "remove" -a "$1" = "usb_device" ] ; then
+        `handle_card -d >> /dev/ttyS0`
+fi
+exit 0
+

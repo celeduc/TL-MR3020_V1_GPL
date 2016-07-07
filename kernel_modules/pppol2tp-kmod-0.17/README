@@ -1,0 +1,21 @@
+This PPPoL2TP kernel driver was derived from an early version written
+by Martijn van Oosterhout <kleptog@svana.org>. The original version
+can be obtained from
+
+http://svana.org/kleptog/kl2tp/kl2tp-0.2.tar.gz
+
+The kernel PPPoL2TP module may be built here for convenience. However,
+it is recommended that the module is built in a kernel source tree
+using one of the patches in the patches subdirectory.
+
+If you do want to build your PPPoL2TP module here, make sure that
+KERNEL_SRCDIR and KERNEL_VERSION are properly defined. See the
+makefile.
+
+For systems with 2.6 kernels, the makefile derives the kernel version
+and the location of its sources. It automatically derives the correct
+compile flags for the module to be compatible with the kernel. Things
+are a little more complicated for 2.4 - the builder must specify
+KERNEL_VERSION=2.4 and KERNEL_SRCDIR manually.
+
+For installation instructions, see INSTALL in this directory.

@@ -1,0 +1,1055 @@
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/nameif.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/nameif.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/ipcalc.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/ipcalc.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ipcalc/fancy.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/ifupdown.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/ifupdown.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ifupdown/mapping.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ifupdown/ip.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ifupdown/ipx.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ifupdown/ipv6.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ifupdown/ipv4.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/telnet.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/telnet.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/telnet/ttype.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/telnet/autologin.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/autowidth.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/ping.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/ping.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/fancy/ping.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/traceroute.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/traceroute.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/inet_common.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/inet_common.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/traceroute/verbose.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/traceroute.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/traceroute/so/debug.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/nslookup.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/nslookup.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/vconfig.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/vconfig.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/tftp.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/tftp.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/tftp/blocksize.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/tftp/debug.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/tftp/get.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/tftp/put.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/iptunnel.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/iptunnel.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/ip.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/ip.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ip/address.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ip/route.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ip/link.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ip/tunnel.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/ftpgetput.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/ftpgetput.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/ftpget.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/ftpput.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/wget.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/wget.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/wget/statusbar.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/wget/authentication.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/wget/ip6/literal.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/brctl.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/brctl.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/arping.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/arping.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/iproute.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/iproute.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/ping6.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/ping6.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/fancy/ping6.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/fancy/ping.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/libiproute/libnetlink.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/libiproute/libnetlink.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/libiproute/ll_addr.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/libiproute/ll_addr.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/libiproute/iptunnel.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/libiproute/iptunnel.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/libiproute/iproute.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/libiproute/iproute.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/libiproute/ipaddress.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/libiproute/ipaddress.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/libiproute/iplink.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/libiproute/iplink.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/libiproute/ip_parse_common_args.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/libiproute/ip_parse_common_args.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/libiproute/utils.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/libiproute/utils.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/ifconfig.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/ifconfig.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/inet_common.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/inet_common.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ifconfig/slip.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ipv6.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ifconfig/broadcast/plus.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ifconfig/hw.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ifconfig/memstart/ioaddr/irq.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ifconfig/status.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/hostname.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/hostname.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/telnetd.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/telnetd.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ipv6.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/login.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/telnetd/inetd.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/devpts.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/httpd.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/httpd.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/lfs.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/httpd/usage/from/inetd/only.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/httpd/basic/auth.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/httpd/cgi.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/httpd/config/with/mime/types.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/httpd/encode/url/str.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/httpd/set/remote/port/to/env.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/httpd/auth/md5.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/httpd/reload/config/sighup.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/httpd/setuid.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/inetd.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/inetd.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/inetd/support/biltin/echo.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/inetd/support/biltin/discard.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/inetd/support/biltin/time.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/inetd/support/biltin/daytime.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/inetd/support/biltin/chargen.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/ipaddr.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/ipaddr.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/route.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/route.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/inet_common.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/inet_common.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ipv6.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/iplink.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/iplink.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/netstat.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/netstat.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/inet_common.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/inet_common.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/route.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ipv6.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/nc.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/networking/nc.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/modutils/rmmod.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/modutils/rmmod.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/2/6/modules.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/query/module/interface.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/modutils/modprobe.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/modutils/modprobe.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/2/6/modules.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/modutils/lsmod.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/modutils/lsmod.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/check/tainted/module.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/query/module/interface.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/modutils/insmod.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/modutils/insmod.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/2/4/modules.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/2/6/modules.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/insmod/loadinkmem.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/insmod/version/checking.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/use/list.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/list/archtype.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/use/single.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/use/plt/entries.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/use/got/entries.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/use/plt/list.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/got/entry/size.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/plt/entry/size.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/check/tainted/module.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/insmod/ksymoops/symbols.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/insmod/load/map.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/insmod/load/map/full.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/applets/busybox.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/applets/busybox.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/locale/support.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/installer.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/init.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/autowidth.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/applets/applets.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/applets/applets.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/usage.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/usage.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/applets.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/applets.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/applets.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/applets.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/suid.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/suid/config.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/grp_.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/grp_.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/suid/config/quiet.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/file.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/init/mesg.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/init/mesg.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/init/init.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/init/init.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/syslogd.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/init/coredumps.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/extra/quiet.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/init/swapon.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/use/inittab.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/initrd.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/init/poweroff.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/init/poweroff.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/init.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/init/reboot.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/init/reboot.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/init.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/init/halt.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/init/halt.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/init.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/init/init_shared.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/init/init_shared.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/initrd.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/init.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/dpkg_deb.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/dpkg_deb.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/deb/tar/gz.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/deb/tar/bz2.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/cpio.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/cpio.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/get_header_cpio.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/get_header_cpio.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/init_handle.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/init_handle.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/data_skip.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/data_skip.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/filter_accept_all.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/filter_accept_all.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/header_list.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/header_list.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/decompress_uncompress.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/decompress_uncompress.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/config.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/config.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/seek_by_jump.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/seek_by_jump.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/unarchive/tape.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/data_extract_to_buffer.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/data_extract_to_buffer.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/get_header_ar.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/get_header_ar.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ar/long/filenames.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/filter_accept_list_reassign.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/filter_accept_list_reassign.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/deb/tar/gz.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/deb/tar/bz2.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/unpack_ar_archive.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/unpack_ar_archive.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/data_extract_all.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/data_extract_all.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/decompress_bunzip2.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/decompress_bunzip2.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/open_transformer.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/open_transformer.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/data_extract_to_stdout.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/data_extract_to_stdout.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/header_verbose_list.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/header_verbose_list.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/filter_accept_list.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/filter_accept_list.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/check_header_gzip.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/check_header_gzip.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/get_header_tar_bz2.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/get_header_tar_bz2.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/data_align.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/data_align.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/decompress_unzip.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/decompress_unzip.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/config.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/config.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/header_skip.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/header_skip.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/archive_xread_all_eof.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/archive_xread_all_eof.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/get_header_tar.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/get_header_tar.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/tar/gnu/extensions.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/tar/oldgnu/compatability.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/filter_accept_reject_list.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/filter_accept_reject_list.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/find_list_entry.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/find_list_entry.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/seek_by_char.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/seek_by_char.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/get_header_tar_gz.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/get_header_tar_gz.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/archive_xread_all.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/libunarchive/archive_xread_all.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/gzip.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/gzip.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/gunzip.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/rpm2cpio.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/rpm2cpio.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/gunzip.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/gunzip.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/gunzip/uncompress.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/uncompress.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/uncompress.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/unzip.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/unzip.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/dpkg.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/dpkg.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/deb/tar/gz.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/deb/tar/bz2.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/ar.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/ar.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/bunzip2.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/bunzip2.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/tar.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/tar.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/tar/create.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/tar/from.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/tar/gzip.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/tar/compress.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/tar/bzip2.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/tar/long/options.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/rpm.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/archival/rpm.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/procps/top.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/procps/top.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/use/termios.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/selinux.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/procps/sysctl.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/procps/sysctl.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/procps/free.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/procps/free.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/procps/renice.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/procps/renice.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/procps/ps.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/procps/ps.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/selinux.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/procps/kill.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/procps/kill.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/killall.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/procps/pidof.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/procps/pidof.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/procps/uptime.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/procps/uptime.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/findutils/find.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/findutils/find.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/find/type.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/find/perm.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/find/mtime.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/find/xdev.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/find/newer.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/find/inum.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/findutils/grep.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/findutils/grep.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/grep/context.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/grep/egrep/alias.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/grep/fgrep/alias.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/findutils/xargs.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/findutils/xargs.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/xargs/support/confirmation.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/xargs/support/quotes.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/xargs/support/termopt.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/xargs/support/zero/term.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/shell/cmdedit.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/shell/cmdedit.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/../shell/cmdedit.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/../shell/cmdedit.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/locale/support.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/command/tab/completion.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/command/editing.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/command/username/completion.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/sh/fancy/prompt.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/getusername/and/homedir.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/command/history.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/nonprintable/inverse/put.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/ash.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/command/savehistory.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/shell/lash.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/shell/lash.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/locale/support.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/lash/pipe/n/redirects.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/sh/fancy/prompt.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/lash/job/control.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/command/editing.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/sh/standalone/shell.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/sh/extra/quiet.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/shell/ash.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/shell/ash.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/ash/job/control.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/ash/alias.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/ash/optimize/for/size.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/ash/math/support.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/ash/cmdcmd.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/ash/getopts.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/sh/extra/quiet.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/ash/mail.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/ash/math/support/64.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/ash/random/support.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/locale/support.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/command/savehistory.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/command/editing.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/sh/fancy/prompt.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/sh/standalone/shell.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/command/tab/completion.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/shell/msh.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/shell/msh.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/command/editing.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/sh/fancy/prompt.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/sh/extra/quiet.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/sh/standalone/shell.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/shell/hush.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/shell/hush.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/sh/fancy/prompt.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/command/editing.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/sh/standalone/shell.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/sh/extra/quiet.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/pivot_root.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/pivot_root.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/swaponoff.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/swaponoff.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/dmesg.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/dmesg.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/freeramdisk.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/freeramdisk.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/fsck_minix.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/fsck_minix.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/minix2.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/rdate.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/rdate.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/more.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/more.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/use/termios.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/fdflush.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/fdflush.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/getopt.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/getopt.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/fbset.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/fbset.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/fbset/fancy.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/fbset/readmode.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/hexdump.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/hexdump.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/dump.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/dump.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/umount.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/umount.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/mount/force.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/mount/loop.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/mtab/support.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/losetup.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/losetup.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/fdformat.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/fdformat.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/fdisk.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/fdisk.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/sun/label.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/sgi/label.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/aix/label.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/osf/label.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/fdisk/writable.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/fdisk/advanced.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/weird/partition/types.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/fdisk/blksize.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/mkswap.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/mkswap.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/hwclock.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/hwclock.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/hwclock/longoptions.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/nfsmount.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/nfsmount.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/mount.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/mount.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/nfsmount.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/mount/loop.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/mtab/support.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/mkfs_minix.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/util-linux/mkfs_minix.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/minix2.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/passwd.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/passwd.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/shadowpasswds.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/delgroup.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/delgroup.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/deluser.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/shadowpasswds.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/adduser.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/adduser.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/shadowpasswds.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/addgroup.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/sulogin.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/sulogin.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/shadowpasswds.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/getty.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/getty.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/utmp.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/syslogd.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/wtmp.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/addgroup.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/addgroup.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/grp_.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/grp_.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/shadowpasswds.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/adduser.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/login.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/login.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/selinux.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/utmp.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/securetty.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/wheel/group.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/wtmp.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/su.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/su.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/utmp.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/selinux.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/vlock.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/vlock.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/shadowpasswds.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/deluser.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/deluser.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/shadowpasswds.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/delline.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/loginutils/delline.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/hostid.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/hostid.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/cat.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/cat.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/du.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/du.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/human/readable.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/du/defalt/blocksize/1k.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/basename.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/basename.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/df.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/df.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/human/readable.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/mkfifo.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/mkfifo.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/true.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/true.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/chown.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/chown.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/id.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/id.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/selinux.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/false.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/false.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/seq.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/seq.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/dd.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/dd.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/dirname.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/dirname.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/uniq.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/uniq.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/tail.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/tail.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/fancy/tail.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/touch.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/touch.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/cut.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/cut.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/sync.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/sync.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/usleep.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/usleep.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/uudecode.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/uudecode.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/fold.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/fold.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/date.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/date.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/date/isofmt.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/rmdir.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/rmdir.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/ln.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/ln.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/cp.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/cp.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/head.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/head.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/fancy/head.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/yes.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/yes.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/dos2unix.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/dos2unix.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/echo.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/echo.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/fancy/echo.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/length.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/length.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/test.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/test.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/test/64.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/install.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/install.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/pwd.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/pwd.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/tty.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/tty.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/md5_sha1_sum.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/md5_sha1_sum.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/md5/sha1/sum/check.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/md5sum.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/sha1sum.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/ls.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/ls.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/selinux.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ls/timestamps.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ls/sortfiles.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ls/followlinks.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/human/readable.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ls/filetypes.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ls/color.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/autowidth.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ls/recursive.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/locale/support.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ls/username.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/uname.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/uname.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/rm.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/rm.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/who.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/who.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/env.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/env.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/chroot.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/chroot.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/uuencode.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/uuencode.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/mkdir.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/mkdir.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/cmp.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/cmp.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/tee.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/tee.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/tee/use/block/io.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/whoami.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/whoami.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/chgrp.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/chgrp.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/mv.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/mv.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/watch.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/watch.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/sleep.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/sleep.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/fancy/sleep.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/realpath.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/realpath.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/tr.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/tr.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/mknod.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/mknod.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/od.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/od.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/dump.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/dump.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/printf.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/printf.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/stty.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/stty.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/cal.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/cal.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/locale/support.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/libcoreutils/cp_mv_stat.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/libcoreutils/cp_mv_stat.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/libcoreutils/xgetoptfile_sort_uniq.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/libcoreutils/xgetoptfile_sort_uniq.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/libcoreutils/getopt_mk_fifo_nod.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/libcoreutils/getopt_mk_fifo_nod.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/expr.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/expr.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/sort.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/sort.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/logname.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/logname.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/chmod.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/chmod.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/wc.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/coreutils/wc.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/locale/support.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/debianutils/mktemp.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/debianutils/mktemp.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/debianutils/pipe_progress.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/debianutils/pipe_progress.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/debianutils/readlink.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/debianutils/readlink.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/debianutils/run_parts.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/debianutils/run_parts.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/debianutils/start_stop_daemon.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/debianutils/start_stop_daemon.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/debianutils/which.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/debianutils/which.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/console-tools/chvt.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/console-tools/chvt.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/console-tools/openvt.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/console-tools/openvt.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/console-tools/loadfont.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/console-tools/loadfont.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/console-tools/setkeycodes.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/console-tools/setkeycodes.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/console-tools/loadkmap.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/console-tools/loadkmap.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/console-tools/deallocvt.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/console-tools/deallocvt.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/console-tools/dumpkmap.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/console-tools/dumpkmap.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/console-tools/clear.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/console-tools/clear.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/console-tools/reset.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/console-tools/reset.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libpwdgrp/pwd_grp.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libpwdgrp/pwd_grp.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/grp_.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/grp_.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/shadow_.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/shadow_.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/last.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/last.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/crond.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/crond.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/crond/call/sendmail.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/watchdog.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/watchdog.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/time.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/time.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/mt.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/mt.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/crontab.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/crontab.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/hdparm.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/hdparm.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/hdparm/get/identity.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/hdparm/hdio/getset/dma.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/hdparm/hdio/unregister/hwif.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/hdparm/hdio/scan/hwif.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/hdparm/hdio/tristate/hwif.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/hdparm/hdio/drive/reset.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/dc.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/dc.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/rx.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/rx.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/makedevs.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/makedevs.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/adjtimex.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/adjtimex.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/strings.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/strings.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/devfsd.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/miscutils/devfsd.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/devfsd/modload.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/devfsd/verbose.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/debug.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/devfsd/fg/np.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/file.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/modules/devfs.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/sysklogd/logread.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/sysklogd/logread.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/logread/reduced/locking.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/sysklogd/logger.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/sysklogd/logger.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/syslogd.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/sysklogd/syslogd.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/sysklogd/syslogd.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/rotate/logfile.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/remote/log.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ipc/syslog.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ipc/syslog/buffer/size.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/sysklogd/klogd.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/sysklogd/klogd.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/editors/patch.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/editors/patch.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/editors/sed.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/editors/sed.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/editors/vi.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/editors/vi.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/locale/support.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/vi/optimize/cursor.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/vi/use/signals.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/vi/crashme.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/vi/dot/cmd.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/vi/yankmark.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/vi/readonly.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/vi/search.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/vi/colon.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/vi/win/resize.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/vi/setopts.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/vi/set.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/editors/awk.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/editors/awk.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/awk/math.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/inode_hash.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/inode_hash.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/simplify_path.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/simplify_path.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/llist_add_to.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/llist_add_to.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/unarchive.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/correct_password.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/correct_password.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/shadowpasswds.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/my_getpwnam.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/my_getpwnam.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/grp_.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/grp_.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/verror_msg.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/verror_msg.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/full_read.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/full_read.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/perror_nomsg_and_die.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/perror_nomsg_and_die.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/restricted_shell.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/restricted_shell.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/xgethostbyname2.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/xgethostbyname2.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ipv6.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/xgethostbyname.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/xgethostbyname.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/herror_msg_and_die.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/herror_msg_and_die.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/chomp.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/chomp.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/copyfd.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/copyfd.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/my_getgrnam.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/my_getgrnam.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/grp_.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/grp_.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/get_terminal_width_height.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/get_terminal_width_height.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/autowidth.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/procps.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/procps.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/selinux.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/error_msg.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/error_msg.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/mtab_file.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/mtab_file.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/mtab/support.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/mtab/filename.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/concat_path_file.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/concat_path_file.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/get_console.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/get_console.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/my_getpwuid.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/my_getpwuid.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/pwd_.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/wfopen_input.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/wfopen_input.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/mtab.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/mtab.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/my_getgrgid.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/my_getgrgid.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/grp_.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/grp_.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/create_icmp_socket.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/create_icmp_socket.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/parse_number.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/parse_number.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/fclose_nonstdin.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/fclose_nonstdin.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/inet_common.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/inet_common.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/inet_common.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/inet_common.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ipv6.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/fgets_str.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/fgets_str.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/safe_strtol.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/safe_strtol.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/change_identity.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/change_identity.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/getopt_ulflags.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/getopt_ulflags.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/xfuncs.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/xfuncs.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/wfopen.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/wfopen.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/warn_ignoring_args.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/warn_ignoring_args.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/speed_table.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/speed_table.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/vdprintf.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/vdprintf.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/find_mount_point.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/find_mount_point.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/copy_file.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/copy_file.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/preserve/hardlinks.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/concat_subpath_file.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/concat_subpath_file.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/perror_msg_and_die.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/perror_msg_and_die.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/kernel_version.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/kernel_version.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/interface.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/interface.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/inet_common.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/inet_common.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ipv6.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/clean/up.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/xconnect.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/xconnect.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/last_char_is.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/last_char_is.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/print_file.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/print_file.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/setup_environment.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/setup_environment.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/obscure.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/obscure.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/make_directory.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/make_directory.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/default_error_retval.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/default_error_retval.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/skip_whitespace.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/skip_whitespace.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/syscalls.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/syscalls.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/full_write.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/full_write.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/xreadlink.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/xreadlink.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/error_msg_and_die.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/error_msg_and_die.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/login.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/login.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/my_getug.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/my_getug.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/loop.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/loop.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/xgetlarg.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/xgetlarg.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/vherror_msg.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/vherror_msg.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/pwd2spwd.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/pwd2spwd.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/shadow_.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/shadow_.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/run_shell.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/run_shell.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/selinux.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/safe_strncpy.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/safe_strncpy.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/module_syscalls.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/module_syscalls.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/trim.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/trim.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/herror_msg.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/herror_msg.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/find_pid_by_name.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/find_pid_by_name.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/selinux.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/dump.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/dump.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/dump.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/dump.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/remove_file.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/remove_file.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/safe_read.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/safe_read.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/get_line_from_file.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/get_line_from_file.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/fflush_stdout_and_exit.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/fflush_stdout_and_exit.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/hash_fd.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/hash_fd.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/sha1sum.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/md5sum.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/human_readable.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/human_readable.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/read_package_field.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/read_package_field.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/safe_write.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/safe_write.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/ask_confirmation.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/ask_confirmation.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/perror_msg.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/perror_msg.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/printf.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/printf.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/vfork_daemon_rexec.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/vfork_daemon_rexec.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/recursive_action.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/recursive_action.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/pw_encrypt.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/pw_encrypt.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/sha1/passwords.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/perror_nomsg.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/perror_nomsg.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/device_open.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/device_open.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/vperror_msg.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/vperror_msg.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/xgetularg.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/xgetularg.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/bb_asprintf.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/bb_asprintf.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/run_parts.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/run_parts.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/isdirectory.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/isdirectory.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/parse_mode.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/parse_mode.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/xgetcwd.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/xgetcwd.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/process_escape_sequence.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/process_escape_sequence.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/xregcomp.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/xregcomp.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/create_icmp6_socket.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/create_icmp6_socket.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/ipv6.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/qmodule.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/qmodule.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/messages.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/messages.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/busybox.h) \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h)
+/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/find_root_device.o: /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/libbb/find_root_device.c \
+ /home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h $(dep_/home/project/svn/TL-MR3020_V1_GPL/apps/busybox-1.01/include/libbb.h) \
+   $(wildcard /home/project/svn/TL-MR3020_V1_GPL/config/feature/devfs.h)

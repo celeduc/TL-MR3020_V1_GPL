@@ -1,0 +1,405 @@
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<SCRIPT type="text/javascript">
+<!--
+function Click()
+{
+	var evt = window.event || arguments[0];
+	evt.returnValue=false;
+}
+document.oncontextmenu=Click;
+
+var nextOrBackFlag = 0;
+
+function getValLen(val)
+{
+	var len = 0;
+	var i = 0;
+	for (i = 0; i < val.length; i ++)
+	{
+		var c = val.charAt(i);
+		len += ((c >= ' ') && (c <= '~')) ? 1 : 2;
+	}
+	return len;
+}
+
+function isBroadcast(macAddr)
+{
+	for (var i=0; i < macAddr.length; i++)
+	{
+		if ((i + 1) % 3 == 0)
+				continue;
+		if ((macAddr.charAt(i) != 'f')
+					&& (macAddr.charAt(i) != 'F'))
+					return false;
+	}
+	return true;
+}
+function isAllzero(macAddr)
+{
+	for (var i=0; i < macAddr.length; i++)
+	{
+		if ((i + 1) % 3 == 0)
+				continue;
+		if (macAddr.charAt(i) != '0')
+					return false;
+	}
+	return true;
+}
+
+function isMulticast(macAddr)
+{
+	return ((macAddr.charAt(0) == '0') && (macAddr.charAt(1) == '1'));
+}
+
+function checkwephexkey(szkey)
+{
+	var c;
+	var ch = "0123456789ABCDEFabcdef";
+
+	for (var i = 0; i < szkey.length; i++)
+	{
+		c = szkey.charAt(i);
+		if (ch.indexOf(c) == -1)
+			return false;
+	}
+	return true;
+}
+
+function checkname(szname)
+{
+	var c;
+	var ch = "0123456789ABCDEFabcdefGHIJKLMNOPQRSTUVWXYZghijklmnopqrstuvwxyz`~!@#$%^&*()-=_+[]{};:\'\"\\|/?.,<>/ ";
+
+	for (var i = 0; i < szname.length; i++)
+	{
+		c = szname.charAt(i);
+		if (ch.indexOf(c) == -1)
+			return false;
+	}
+	return true;
+}
+
+function doSelKeytype()
+{
+	var cf = document.forms[0];
+	if ((cf.keytype.value == 2) || (cf.keytype.value == 3))
+	{
+		cf.wepindex.disabled = false;
+		cf.authtype.disabled = false;
+		cf.keytext.disabled = false;
+		cf.keytext.maxLength = (cf.keytype.value == 2)? 16:32;
+	}
+	else if(cf.keytype.value == 4)
+	{
+		cf.keytext.disabled = false;
+		cf.wepindex.disabled = true;
+		cf.authtype.disabled = true;
+		cf.keytext.maxLength = 64;
+	     }
+	else
+    	    {
+		cf.keytext.disabled = true;
+        	cf.wepindex.disabled = true;
+		cf.authtype.disabled = true;
+    }
+	return true;
+}
+
+function doCheckPskPasswd()
+{
+	var cf = document.forms[0];
+	len = getValLen(cf.keytext.value);
+	if  (len <= 0)
+	{
+		alert(js_psk_empty="Empty PSK password, please input one!");
+		return false;
+	}
+	if ((len > 0) && (len < 8))
+	{
+		alert(js_psk_char="PSK password should not be less than 8 characters, please input again!");
+		return false;
+	}
+        if(len <= 64)
+        {
+            var ch="ABCDEFabcdef0123456789";
+            var c;
+            for(i = 0; i < len; i++)
+            {
+                c = cf.pskSecret.value.charAt(i);
+                if(ch.indexOf(c) == -1)
+                {
+                    alert(js_psk_hex="The 64 bytes PSK password include non-hexadecimal characters, please input again.");
+                    return false;
+                }
+            }
+        }
+	return true;
+}
+
+function transToURL(str)
+{
+	for (var i = 0; i < transMatrixURL.length; i+=2)
+	{
+		str = str.replace(transMatrixURL[i], transMatrixURL[i+1]);
+	}
+	return str;
+}
+
+function doSurvey()
+{
+	location.href="WzdWlanSiteSurveyRpm.htm?session_id=" + session_id;
+}
+
+// check len of ssid
+function checkssid(str)
+{
+	return getValLen(str);
+}
+
+function doCheckValue()
+{
+	var cf = document.forms[0];
+	//check WISP SSID
+	brlressid = checkssid(cf.wispSsid.value);
+	if(brlressid > 32)
+	{
+		alert(js_ssid_exe="WISP's SSID cannot exceed 32 characters. Please input correctly!");
+		doSelKeytype();
+		return false;
+	}
+	if(0 == brlressid)
+	{
+		alert(js_pl_ssid="Please input WISP's SSID!");
+		doSelKeytype();			
+		return false;
+	}
+	
+	//check Local SSID
+	ssidLen = checkssid(cf.ssid.value);
+	if(ssidLen > 32)
+	{
+		alert(js_ssid_exe="Local SSID cannot exceed 32 characters. Please input correctly!");
+		doSelKeytype();
+		return false;
+	}
+	if(0 == ssidLen)
+	{
+		alert(js_pl_ssid="Please input Local SSID!");
+		doSelKeytype();			
+		return false;
+	}
+	
+	if (cf.wispSsid.value == cf.ssid.value)
+	{
+		alert(js_pl_bridge_ssid="Local SSID can not equal to WISP's SSID! Please change it!");
+		doSelKeytype();			
+		return false;
+	}
+	
+	var bssid = cf.wispBssid.value;
+	if (bssidverify(bssid) == false)
+	{
+		doSelKeytype();
+		return false;
+	}
+	if (isBroadcast(bssid) == true)
+	{
+		alert(js_bridge_broadcast="WISP's BSSID is broadcast address, please input again!");
+		doSelKeytype();
+		return false;
+	}	
+    if (isAllzero(bssid) == true)
+	{
+		alert(js_bridge_broadcast="WISP's BSSID is invalid, please input again!");
+		doSelKeytype();
+		return false;
+	}
+		
+	if (isMulticast(bssid) == true)
+	{
+		alert(js_bridge_multicast="WISP's BSSID is multicast address, please input again!");
+		doSelKeytype();
+		return false;
+	}
+
+	if ((cf.keytype.value == 2)&&((getValLen(cf.keytext.value)!=5) && (getValLen(cf.keytext.value)!=13) && (getValLen(cf.keytext.value)!=16)))
+	{
+		alert(js_key_corret="The ASCII key'length must be 5,13 or 16!");
+		doSelKeytype();			
+		return false;
+	}
+	else if ((cf.keytype.value == 3)&&((getValLen(cf.keytext.value)!=10) && (getValLen(cf.keytext.value)!=26) && (getValLen(cf.keytext.value)!=32)))
+	{
+		alert(js_key_corret="The HEX key'length must be 10,26 or 32!");
+		doSelKeytype();
+		return false;
+	}
+		
+	if (cf.keytype.value == 3)
+	{ 
+		if (checkwephexkey(cf.keytext.value) == false)
+		{
+			alert(js_key_corret="The hex wep key includes illegal characters!");
+			doSelKeytype();
+			return false;
+        }
+	}
+    if (cf.keytype.value == 4)
+	{
+		if ((getValLen(cf.keytext.value) == 64) && (checkwephexkey(cf.keytext.value) == false))
+		{
+			alert(js_pskkey_corret="The Hex PSK key includes illegal characters!");
+			doSelKeytype();
+			return false;
+		}
+	}
+		
+	if (!checkname(cf.wispSsid.value))
+	{
+		alert(js_ssid_ill="WISP's SSID contains illegal characters, please input another one!");
+		doSelKeytype();		
+		return false;
+	}
+	
+	if (!checkname(cf.ssid.value))
+	{
+		alert(js_ssid_ill="Local SSID contains illegal characters, please input another one!");
+		doSelKeytype();		
+		return false;
+	}
+	
+	if (cf.keytype.value == 4)
+	{
+		if (doCheckPskPasswd() == false)
+		{
+			doSelKeytype();
+			return false;
+	    }
+	}	
+	return true;
+}
+
+function doSubmit()
+{
+	if(nextOrBackFlag)
+		return doCheckValue();		
+	else
+		return true;
+}
+
+function displayPage()
+{
+	var cf = document.forms[0];
+	cf.wispSsid.value = wzdWkModeInf[0];
+	cf.wispBssid.value = wzdWkModeInf[1];
+	cf.ClientId.value = wzdWkModeInf[2];
+	cf.ssid.value = wzdWkModeInf[3];
+	
+	cf.keytype.value = wzdWkModeSecInf[0];
+	cf.keytext.value = wzdWkModeSecInf[1];
+	cf.wepindex.value = wzdWkModeSecInf[2];   
+	cf.authtype.value = wzdWkModeSecInf[3]; 
+	
+	if (cf.keytype.value == 1)
+	{
+		cf.wepindex.disabled = true;
+		cf.authtype.disabled = true;
+		cf.keytext.disabled = true;
+	}
+}
+
+function doBack()
+{
+	nextOrBackFlag = 0;
+}
+function doNext()
+{
+	nextOrBackFlag = 1;
+}
+
+//-->
+</SCRIPT>
+</HEAD>
+<BODY onload="setTagStr(document,'ntw_wzd_wlan_apc');LoadHelp('WzdWlanApcHelpRpm.htm'); resize(this);" onResize="resize(this);">
+<center>
+<form action="WzdWlanApcRpm.htm" enctype="multipart/form-data" method="get" onSubmit="return doSubmit()">
+<TABLE id="autoWidth">
+<TR><TD class=h1 colspan=2 id="t_title">Quick Setup - Wireless</TD></TR>
+<TR><TD class=blue colspan=2></TD></TR>
+<TR><TD class="h2" colspan=3 id="t_client_set">Client Setting</TD></TR>
+
+<TR>
+	<TD class=item style="padding-left:60px"><span id="t_wispSsid">SSID:</span></TD>
+	<TD><input name="wispSsid" type="text" class="text" id = "wispSsid" size="32" maxlength="32"></TD>
+</TR>
+
+<TR>
+	<TD class=item style="padding-left:60px"><span id="t_wispSsid">BSSID:</span></TD>
+	<TD>
+		<input name="wispBssid" type="text" class="text" id="wispBssid" size="32" maxlength="32"/>
+		<span id="t_wispBssid">&nbsp;Example:00-1D-0F-11-22-33</span>
+	</TD>
+</TR>
+
+<TR>
+<TD></TD>
+<TD align="left"><INPUT name="survey" id="survey" type="button" class="button" value="Survey" onClick="doSurvey();"></TD>
+</TR>
+        <TR>
+          <TD class="Item" id="t_keytype">Key type:</TD>
+          <TD><SELECT name="keytype" style = "width:250px" onChange="doSelKeytype()">
+              <OPTION value=1 id="t_none">None</OPTION>
+              <OPTION value=2 id="t_wep_asc">WEP(ASCII)</OPTION>
+              <OPTION value=3 id="t_wep_hex">WEP(HEX)</OPTION>
+              <OPTION value=4  id="t_wpa">WPA-PSK/WPA2-PSK</OPTION>
+            </SELECT></TD>
+        </TR>
+        <TR>
+          <TD class="Item" size="32" id="t_wepindex">WEP Index:</TD>
+          <TD><SELECT name="wepindex" style = "width:250px">
+              <OPTION value=1>1</OPTION>
+              <OPTION value=2>2</OPTION>
+              <OPTION value=3>3</OPTION>
+              <OPTION value=4>4</OPTION>
+            </SELECT></TD>
+        </TR>
+        <TR>
+          <TD class="Item" size="32" id="t_authtype">Auth type:</TD>
+          <TD><SELECT name="authtype" id="authtype" style = "width:250px">
+              <OPTION value=1 id="t_open">open</OPTION>
+              <OPTION value=2 id="t_shared">shared</OPTION>
+            </SELECT></TD>
+        </TR>
+        <TR>
+          <TD class=Item style="padding-left:40px" id="t_keytext">Password:</TD>
+          <TD colspan = "3"><INPUT name="keytext" size="32" type=text class=text id="keytext"></TD>
+        </TR>
+		
+		<TR>
+          <TD class="blue" colspan=2></TD>
+        </TR>
+
+        <TR>
+          <TD class="h2" colspan=3 id="t_ap_set">AP Setting</TD>
+        </TR>
+
+		<TR>
+          <TD class="Item" id="t_ssid">Local SSID:</TD>
+          <TD><INPUT class="text" id="ssid" name="ssid" maxlength=32 size=32></TD>
+        </TR>
+<TR><TD class=blue colspan=2></TD></TR>
+<TR>
+	<TD class=mbtn colSpan=2>
+		<INPUT name="Return" class=buttonBig id=PrevStep type="submit" value="Back" onClick="doBack()">&nbsp;&nbsp;
+		<INPUT name="Next" class=buttonBig id=Submit type=submit value="Next" onClick="doNext()">&nbsp;
+		<INPUT type=hidden name=ClientId>
+		<SCRIPT type="text/javascript">
+			document.write('<input name="session_id" id="session_id" type="hidden" value="'+session_id +'">');
+		</SCRIPT>
+	</TD>
+</TR></TABLE>
+</form></center></BODY></HTML>
+<script language="JavaScript"><!--//
+displayPage();
+document.forms[0].Submit.focus();
+//--></script>

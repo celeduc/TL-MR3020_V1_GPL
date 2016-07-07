@@ -1,0 +1,323 @@
+
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<script language="Javascript"><!--
+var wanType = new Array(
+"动态IP",	//	WAN_TYPE_DHCP = 0,
+"静态IP",	//	WAN_TYPE_STATIC_IP, 
+"PPPoE",	//	WAN_TYPE_PPPOE, 
+"802.1x 动态IP",	//	WAN_TYPE_802_1X_DHCP,
+"802.1x 静态IP",	//	WAN_TYPE_802_1X_STATIC_IP,
+"BPA",	//	WAN_TYPE_BPA,
+"L2TP",	//	WAN_TYPE_L2TP,
+"PPTP",	//	WAN_TYPE_PPTP,
+"DHCP+",	//WAN_TYPE_DHCP_PLUS,
+""	//	WAN_TYPE_END
+);
+
+var L2TPLinkStat = new Array(
+"未连接",
+"已连接",
+"正在连接..."
+);
+function doSubmit()
+{
+	var val;
+	val=document.forms[0].mtu.value;
+	if(val<576||val>1460||val=="")
+	{
+		alert("MTU值输入错误, 请重新输入！\n(576 ~ 1460, 默认是1460)");
+		return false;
+	}
+	if(document.forms[0].IpType[1].checked == true){
+		if(!is_ipaddr(document.forms[0].ip.value))
+		{
+			var element =document.forms[0].ip;
+			if(element)
+			{
+				element.focus();element.select();
+			}
+			return false;
+		}
+		if(!is_maskaddr(document.forms[0].mask.value))
+		{
+			var element =document.forms[0].mask;
+			if(element)
+			{
+				element.focus();element.select();
+			}
+			return false;
+		}
+		if(document.forms[0].gateway.value != "")
+		{
+			if(!is_gatewayaddr(document.forms[0].gateway.value))
+			{
+				var element =document.forms[0].gateway;
+				if(element)
+				{
+					element.focus();element.select();
+				}
+				return false;
+			}
+		}
+	}
+	if(document.forms[0].idletime.value !=""){
+		if(!is_number(document.forms[0].idletime.value)){
+			alert("时间输入有误，请重新输入!");
+			return false;
+		}
+	}
+	return true;
+}
+function doChange()
+{
+	n = document.forms[0].wantype.value;
+	if(n == 0)
+	{
+		location.href = "WanDynamicIpCfgRpm.htm?ieeeType=0";
+	}
+	if(n == 1)
+	{
+		location.href = "WanStaticIpCfgRpm.htm?ieeeType=1";
+	}
+	if(n == 2)
+	{
+		location.href = "PPPoECfgRpm.htm";
+	}
+	if(n == 3)
+	{
+		location.href = "WanDynamicIpCfgRpm_8021X.htm?ieeeType=3";
+	}
+	if(n == 4)
+	{
+		location.href = "WanStaticIpCfgRpm_8021X.htm?ieeeType=4";
+	}
+	if(n == 5)
+	{
+		location.href = "WanBpaCfgRpm.htm";
+	}
+	if(n == 6)
+	{
+		location.href = "L2TPCfgRpm.htm";
+	}
+	if(n == 7)
+	{
+		location.href = "PPTPCfgRpm.htm";
+	}
+	if (n == 8)
+	{
+		location.href = "WanDhcpPlusCfgRpm.htm"
+	}
+}
+function changeIpType(){
+	var IPtype;
+	if(document.forms[0].IpType[0].checked==true) {IPtype=0;} else {IPtype=1;};
+	location.href = "L2TPCfgRpm.htm?IpType="+IPtype;
+}
+function doHelp(){location.href="/help/L2tpCfgHelpRpm.htm";}
+var stopRefresh=0;
+function doClick()
+{stopRefresh=1; return true;}
+function doRefresh()
+{
+	if (0==stopRefresh)
+	{
+		location.href="L2TPCfgRpm.htm?dorefresh=1";
+	} 
+	return true;
+}	
+function doDetect()
+{
+	location.href="L2TPCfgRpm.htm?detect=1";
+}
+
+function refresh()
+{	
+	location.href="L2TPCfgRpm.htm?dorefresh=1";	
+}
+
+//--></script></head>
+<BODY>
+<center><form action="L2TPCfgRpm.htm" enctype="multipart/form-data" method="get" onSubmit="return doSubmit();">
+<table width="502" border="0" cellspacing="0" cellpadding="0">
+<tr><td width="7" class="title"><img src="/images/arc.gif" width="7" height="24"></td>
+<td width="495" align="left" valign="middle" class="title">WAN口设置</td></tr>
+<tr><td colspan="2"><table width="502" border="0" cellspacing="0" cellpadding="0">
+<tr><td class="vline" rowspan="15"><br></td>
+<td width="500">
+<table width="460" border="0" align="center" cellpadding="2" cellspacing="0" class="space">
+<tr>
+<td width="110">WAN口连接类型：</td>
+<td width="331"><select name="wantype" class="list" id="wantype" onChange="doChange()" onFocus="doClick();">
+<option value="0">动态IP</option>
+<option value="1" Selected>静态IP</option>
+<option value="2">PPPoE</option>
+<!--<option value="3">802.1X + 动态IP</option>
+<option value="4">802.1X + 静态IP</option>-->
+<option value="6">L2TP</option>
+<option value="7">PPTP</option>
+<option value="8">DHCP+</option>
+</select>
+</td>
+</tr>
+<tr>
+<td >&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td >上网帐号：</td>
+<td><input name="L2TPName" type="text" class="text" value="" size="25" maxlength="31" onFocus="doClick();"></td>
+</tr>
+<tr>
+<td >上网口令：</td>
+<td><input name="L2TPPwd" type="password" class="text" value="" size="25" maxlength="63" onFocus="doClick();"></td>
+</tr>
+<tr>
+<td >&nbsp;</td>
+<td><input name="Connect" type="submit" class="button" value="连 接">
+&nbsp;&nbsp; <input name="Disconnect" type="submit" class="button" value="断 线">
+<script language="JavaScript">
+//document.write('&nbsp;&nbsp;'+l2tpInf[8]+'</TD></TR>');
+var linkStatusIndex = l2tpInf[8];
+document.write('&nbsp;&nbsp;'+L2TPLinkStat[linkStatusIndex]+'</TD></TR>');
+</script> </td>
+</tr>
+<tr>
+<td >&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td >&nbsp;</td>
+<td><input type="radio" name="IpType" value="0" onClick="changeIpType();">
+动态 IP&nbsp;&nbsp;
+<input type="radio" name="IpType" value="1" onClick="changeIpType();">
+静态 IP</td>
+</tr>
+<tr>
+<td >服务器 IP /域名：</td>
+<td><input name="L2TPServerName" type="text" class="text" value="" size="32" maxlength="63" onFocus="doClick();"></td>
+</tr>
+<tr>
+<td >IP 地址：</td>
+<td><script language="JavaScript">
+if (l2tpInf[3]==0){
+	document.write('<div id=ip>-</div>');
+}else{
+	document.write('<input name="ip" type="text" class="text" value="" size="15" maxlength="15" onFocus="doClick();">');
+}
+</script></td>
+</tr>
+<tr>
+<td >子网掩码：</td>
+<td><script language="JavaScript">
+if (l2tpInf[3]==0){
+	document.write('<div id=mask>-</div>');
+}else{
+	document.write('<input name="mask" type="text" class="text" value="" size="15" maxlength="15" onFocus="doClick();">');
+}
+</script></td>
+</tr>
+<tr>
+<td >网关：</td>
+<td><script language="JavaScript">
+if (l2tpInf[3]==0){
+	document.write('<div id=gateway>-</div>');
+}else{
+	document.write('<input name="gateway" type="text" class="text" value="" size="15" maxlength="15" onFocus="doClick();">&nbsp;');
+}
+</script></td>
+</tr>
+<tr>
+<td >DNS：</td>
+<td><script language="JavaScript">
+if (l2tpInf[3]==0){
+	document.write('<div id=DhcpDns>-</div>');
+}else{
+	document.write('<input name="dnsAddr" type="text" class="text" value="" size="15" maxlength="15" onFocus="doClick();">');
+}
+</script></td>
+</tr>
+<tr><td colspan=2>&nbsp;</td></tr><tr>
+<td >Internet IP：</td>
+<td><script language="JavaScript">
+document.write('<div id=InetAddr>-</div>');
+</script></td>
+</tr>
+<tr>
+<td >Internet DNS：</td>
+<td><script language="JavaScript">
+document.write('<div id=InetDns>-</div>');
+</script></td>
+</tr>
+<tr>
+<td >数据包MTU(字节)：</td>
+<td><input name="mtu" type="text" class="text" value="" size="5" maxlength="5" onFocus="doClick();">
+（缺省值为1460，如非必要，请勿修改）</td>
+</tr>
+<tr>
+<td >&nbsp;</td>
+<td >&nbsp;</td>
+</tr>
+<tr>
+<td colspan="2" >根据您的需要，请选择对应的连接模式：</td>
+</tr>
+<tr>
+<td >自动断线等待时间：</td>
+<td><input name="idletime" class="text" value="5" size="5" maxlength="2" onFocus="doClick();">
+分 （0 表示不自动断线）</td>
+</tr>
+<tr>
+<td >&nbsp;</td>
+<td><input name="linktype" type="radio" value="1" onFocus="doClick();">
+按需连接，在有访问数据时自动进行连接</td>
+</tr>
+<tr>
+<td >&nbsp;</td>
+<td><input type="radio" name="linktype" value="2" onFocus="doClick();">
+自动连接，在开机和断线后自动连接</td>
+</tr>
+<tr>
+<td >&nbsp;</td>
+<td><input name="linktype" type="radio" value="3" onFocus="doClick();">
+手动连接，由用户手动连接</td>
+</tr>
+</table></td><td class="vline" rowspan="15"><br></td></tr>
+<tr><td class="hline"><img src="/images/empty.gif" width="1" height="1"></td></tr>
+<tr><td height="30" class="tail">&nbsp;
+<input name="Save" type="submit" class="button" id="save" value="保 存">&nbsp;
+<input name="help" type="button" class="button" id="help" onClick="doHelp();" value="帮 助">
+</td></tr><tr><td class="hline"><img src="/images/empty.gif" width="1" height="1"></td>
+</tr></table></td></tr></table>
+</form></center></BODY><head><meta http-equiv="pragma" content="no-cache"></head></HTML>
+<script language="JavaScript">
+if(true==l2tpInf[22]){window.setTimeout("doRefresh()",6000);}
+document.forms[0].wantype.value = l2tpInf[2];
+if (l2tpInf[3]==0){
+	document.forms[0].IpType[0].checked =true;
+	document.getElementById("ip").innerHTML = l2tpInf[9];
+	document.getElementById("mask").innerHTML = l2tpInf[10];
+	document.getElementById("gateway").innerHTML = l2tpInf[11];
+	document.getElementById("DhcpDns").innerHTML = l2tpInf[20]+' , ' + l2tpInf[21];
+}else{
+	document.forms[0].IpType[1].checked =true;
+	document.forms[0].ip.value = l2tpInf[9];
+	document.forms[0].mask.value = l2tpInf[10];
+	document.forms[0].gateway.value = l2tpInf[11];
+	document.forms[0].dnsAddr.value = l2tpInf[23];
+}
+document.forms[0].L2TPServerName.value = l2tpInf[4];
+document.forms[0].L2TPName.value = l2tpInf[5];
+document.forms[0].L2TPPwd.value = l2tpInf[6];
+document.forms[0].Connect.disabled = (l2tpInf[7])?true:false;
+document.forms[0].Disconnect.disabled = (l2tpInf[7])?false:true;
+document.forms[0].mtu.value = l2tpInf[12];
+document.forms[0].idletime.value = l2tpInf[13];
+if (l2tpInf[14]==1){
+	document.forms[0].linktype[0].checked =true;
+}else if(l2tpInf[14]==2){
+	document.forms[0].linktype[1].checked =true;
+}else{
+	document.forms[0].linktype[2].checked =true;
+}
+document.getElementById("InetAddr").innerHTML = l2tpInf[17];
+document.getElementById("InetDns").innerHTML = l2tpInf[18]+' , ' + l2tpInf[19];
+</script>

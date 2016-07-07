@@ -1,0 +1,1 @@
+cmd_net/ipv4/netfilter/nf_conntrack_ipv4.o := mips-linux-uclibc-ld  -m elf32btsmip   -r -o net/ipv4/netfilter/nf_conntrack_ipv4.o net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.o net/ipv4/netfilter/nf_conntrack_proto_icmp.o net/ipv4/netfilter/nf_conntrack_l3proto_ipv4_compat.o 

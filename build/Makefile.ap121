@@ -1,0 +1,532 @@
+ifndef BOARD_TYPE
+export BOARD_TYPE=ap121
+$(error "You have to define Board Type to use this Makefile")
+endif
+
+ifndef PID
+$(error "You have to define product id (PID) to use this Makefile. eg: PID=74104. 741 is product type, 04 is version.")
+endif
+
+
+##################################################Start Include############################################
+
+include scripts/$(BOARD_TYPE)/spec/config.$(PID)
+include scripts/$(BOARD_TYPE)/spec/config.common
+include scripts/$(BOARD_TYPE)/config.$(BOARD_TYPE)
+
+#
+# Build product
+#
+include Makefile.product
+
+##################################################End include##############################################
+
+#
+# Config Flash Size
+#
+ifndef FLASH_SIZE
+export FLASH_SIZE=4
+export BOARD_FLASH_TYPE = $(BOARD_TYPE)
+else
+export BOARD_FLASH_TYPE = $(BOARD_TYPE)_$(FLASH_SIZE)MB
+endif
+
+#
+# Config Memory Size
+#
+ifdef MEMORY_SIZE
+BOARD_FLASH_TYPE := $(BOARD_FLASH_TYPE)_m$(MEMORY_SIZE)MB
+endif
+
+
+ifndef TOOLCHAIN
+$(error "Must specify TOOLCHAIN value")
+endif
+
+ifndef TOOLARCH
+$(error "Must specify TOOLARCH value")
+endif
+
+ifndef KERNEL
+$(error "Must specify KERNEL value")
+endif
+
+ifndef KERNELVER
+$(error "Must specify KERNELVER value")
+endif
+
+ifndef KERNELTARGET
+$(error "Must specify KERNELTARGET value")
+endif
+
+ifndef KERNELARCH
+$(error "Must specify KERNELARCH value")
+endif
+
+ifndef BUSYBOX
+$(error "Must specify BUSYBOX value")
+endif
+
+ifndef TFTPPATH
+export TFTPPATH=$(TOPDIR)/tftpboot/$(BOARD_TYPE)/
+endif
+
+# To enable library optimization (removing unused object code from
+# shared libraries) set BUILD_LIBRARYOPT to 'y' else 'n'
+BUILD_LIBRARYOPT := n
+
+ifndef  BUILD_OPTIMIZED
+export BUILD_OPTIMIZED=n
+export STRIP=$(TOOLPREFIX)strip
+endif
+
+ifeq ($(BUILD_OPTIMIZED), y)
+export OLDSTRIP=$(TOOLPREFIX)strip
+export STRIP=$(TOOLPREFIX)sstrip
+endif 
+
+ifndef COMPRESSED_UBOOT
+export COMPRESSED_UBOOT=0
+endif
+
+ifndef ATH_CONFIG_NVRAM
+export ATH_CONFIG_NVRAM=0
+endif
+
+ifndef ATH_SINGLE_CFG
+export ATH_SINGLE_CFG=0
+endif
+
+ifndef INSTALL_BLACKLIST
+export INSTALL_BLACKLIST="None"
+endif
+
+export IMAGEPATH=$(TOPDIR)/images/$(BOARD_TYPE)$(BUILD_CONFIG)$(BUILD_EXT)
+export MODCPPATH=$(TOPDIR)/modules/$(BOARD_TYPE)$(BUILD_CONFIG)$(BUILD_EXT)
+
+ifeq ($(BOOT_FROM_NAND),1)
+export NAND=-nand
+else
+export NAND=
+endif
+
+export IMAGEPATH=$(TOPDIR)/images/$(BOARD_TYPE)$(BUILD_CONFIG)$(BUILD_EXT)$(NAND)
+
+
+ifneq ($(COMPRESSED_UBOOT),1)
+export UBOOTFILE=u-boot$(BUILD_CONFIG)$(BUILD_EXT).bin
+export UBOOT_BINARY=u-boot.bin
+else
+export UBOOTFILE=u-boot$(BUILD_CONFIG)$(BUILD_EXT).bin
+export UBOOT_BINARY=tuboot.bin
+endif
+#
+# Other environmental variables that are configured as per the configuration file
+# specified above.  These contain all platform specific configuration items.
+#
+
+export TOPDIR=$(PWD)/..
+export INSTALL_ROOT=$(TOPDIR)/rootfs.build.$(KERNELVER)
+export INSTALL_ROOT_FOR_BOARD=$(TOPDIR)/rootfs.$(BOARD_TYPE)
+export IMAGE_ROOT=$(TOPDIR)/rootfs-$(BOARD_TYPE)$(BUILD_CONFIG)$(BUILD_EXT).optbuild
+temp_BOARD_TYPE = $(strip $(subst fus, , $(BOARD_TYPE)))
+
+ifeq ($(strip $(ATH_CARR_DIR)),)
+export KERNELPATH=$(TOPDIR)/$(BOARD_TYPE)/linux/kernels/$(KERNEL)
+export MAKEARCH=$(MAKE) ARCH=$(KERNELARCH) CROSS_COMPILE=$(TOOLPREFIX)
+
+export TOOLPATH=$(TOPDIR)/build/$(TOOLCHAIN)/$(TOOLARCH)/
+export BOOTLOADERDIR=$(TOPDIR)/$(BOARD_TYPE)/boot/u-boot
+
+export UBOOTDIR=$(TOPDIR)/$(BOARD_TYPE)/boot/u-boot
+endif
+
+# Save PATH for later use for compiling host-only tools etc.
+export ORIGINAL_PATH:=$(PATH)
+# Set PATH so we find target compiler when say "gcc", etc.
+# as well as other tools we expect to find.
+export PATH:=$(TOPDIR)/build/util:$(TOOLPATH)/bin:$(TOPDIR)/linux:$(TOPDIR)/build:$(BOOTLOADERDIR)/ecos/tools/bin:`pwd`:${PATH}
+
+#kernel
+export KTFILE=$(KERNELTARGET:.bin=$(BUILD_CONFIG).bin)
+
+ifeq ($(strip $(PID)),721002)
+export WLAN_DIR=wlan_9.2.0.1020
+else
+export WLAN_DIR=wlan
+endif
+
+# madwifi
+export HAL=$(TOPDIR)/$(BOARD_TYPE)/$(WLAN_DIR)/hal
+export ATH_PHYERR=$(TOPDIR)/$(BOARD_TYPE)/$(WLAN_DIR)/madwifi/dfs
+export ATH_RATE=$(TOPDIR)/$(BOARD_TYPE)/$(WLAN_DIR)/madwifi/ratectrl11n/
+export MODULEPATH=$(INSTALL_ROOT)/lib/modules/$(KERNELVER)/net
+export ENETDIR=$(TOPDIR)/$(BOARD_TYPE)/linux/drivers/$(ETHNET_PATH)
+
+# This is to allow the target file system size to be specified on the command
+# line, if desired
+ifndef TARGETFSSIZE
+export TARGETFSSIZE=2621440
+endif
+
+# This allows the target flash erase block size to specified... it MUST be specified
+# correctly or else e.g. jffs2 will break.
+ifndef ERASEBLOCKSIZE
+export ERASEBLOCKSIZE=0x10000
+endif
+
+
+ENTRY=`readelf -a vmlinux|grep "Entry"|cut -d":" -f 2`
+LDADR=`readelf -a vmlinux|grep "\[ 1\]"|cut -d" " -f 26`
+
+ifndef WIRELESSTOOLNAMES
+$(warning "Should specify WIRELESSTOOLNAMES value")
+## Note: WIRELESSTOOLNAMES can contain more files that we actually have...
+## e.g. WIRELESSTOOLNAMES := athstats athstatsclr athdebug 80211stats 80211debug \
+		athkey athampdutrc athcwm atrc pktlogconf pktlogdump radartool
+WIRELESSTOOLNAMES :=
+endif
+
+#
+# If configured in kernel config, an initramfs trampoline is used.
+# Should not hurt to build it anyway.
+#
+initramfs_prep:
+	cd $(TOPDIR)/boot/initramfs && $(MAKE) clean && \
+            $(MAKE) CC=$(TOOLPREFIX)gcc AR=$(TOOLPREFIX)ar LD=$(TOOLPREFIX)ld NM=$(TOOLPREFIX)nm all
+
+#
+# Use different kernel_build rules depending on the type of target
+#
+kernel_clean: 
+	cd $(KERNELPATH) &&  $(MAKEARCH) mrproper 
+
+
+# by zlp, for SOHO-LV, we define macro in config, transmit them to kernel. so must keep update for these *.o
+kernel_gpio_clean:
+	cd $(KERNELPATH)/arch/mips/ar7240 && rm *.o -rf
+
+kernel_build: kernel_gpio_clean
+	@echo " Making Kernel Build Version $(EXTRAVERSION)" at `date`
+	# [pangxing start] git version information makes kernel vermagic unhappy for repo build, so turn it off.
+	cd $(KERNELPATH) && sed 's/CONFIG_LOCALVERSION_AUTO=y/# CONFIG_LOCALVERSION_AUTO is not set/' \
+	arch/mips/configs/$(BOARD_FLASH_TYPE)_defconfig > arch/mips/configs/tmpcfg1
+ifdef CONFIG_TP_IGMP_SNOOPING
+	cd $(KERNELPATH) && sed 's/# CONFIG_TP_MULTICAST is not set/CONFIG_TP_MULTICAST=y/' arch/mips/configs/tmpcfg1 > arch/mips/configs/tmpcfg
+else
+	cd $(KERNELPATH) && sed 's/CONFIG_TP_MULTICAST=y/# CONFIG_TP_MULTICAST is not set/' arch/mips/configs/tmpcfg1 > arch/mips/configs/tmpcfg
+endif
+	cd $(KERNELPATH) && rm -f arch/mips/configs/tmpcfg1
+	# [pangxing end]
+	cd $(KERNELPATH) && mv arch/mips/configs/tmpcfg arch/mips/configs/$(BOARD_FLASH_TYPE)_defconfig
+	cd $(KERNELPATH) && $(MAKEARCH) $(BOARD_FLASH_TYPE)_defconfig
+	cd $(KERNELPATH) && $(MAKEARCH) $(KERNELTARGET)
+	cd $(KERNELPATH) && $(MAKEARCH) modules
+	@echo $(KTFILE)
+	cd $(KERNELPATH)/arch/$(KERNELARCH)/boot && \
+	cp $(KERNELTARGET) $(TFTPPATH)/$(KTFILE) && \
+	cp $(KERNELTARGET) $(IMAGEPATH)/$(KTFILE) && \
+	rm -rf $(KERNELTARGET).lzma && \
+	$(TOPDIR)/util/lzma/bin/lzma --best --keep $(KERNELTARGET) && \
+	cp $(KERNELTARGET).lzma $(TFTPPATH)/$(KTFILE).gz && \
+	cp $(KERNELTARGET).lzma $(IMAGEPATH)/$(KTFILE).gz && \
+	cp $(KERNELPATH)/vmlinux $(IMAGEPATH)/vmlinux
+
+# [pangxing] happy to refactor git to repo.
+
+redboot_build:
+	@echo Making redboot at `date`
+	cd $(BOOTLOADERDIR) && make $(BOARD_TYPE)_rom
+	cp $(BOOTLOADERDIR)/rom_bld/install/bin/redboot.rom $(IMAGEPATH)/redboot.$(BOARD_TYPE).rom
+	cd $(BOOTLOADERDIR) && make $(BOARD_TYPE)_ram
+	cp $(BOOTLOADERDIR)/ram_bld/install/bin/redboot.bin $(IMAGEPATH)/redboot.$(BOARD_TYPE).bin
+	cp $(BOOTLOADERDIR)/ram_bld/install/bin/redboot.srec $(IMAGEPATH)/redboot.$(BOARD_TYPE).srec
+	@echo End Making redboot at `date`
+
+# [pangxing] happy to refactor git to repo.
+uboot:
+ifneq ($(wildcard $(UBOOTDIR)), )
+	@echo Making uboot at `date`
+ifeq ($(FIRMWARE_RECOVERY), 1)
+	cd $(UBOOTDIR)/common  && \
+	echo  "#ifndef FIRMWARE_RECOVERY_NAME" > recovery.h && \
+	echo "#define FIRMWARE_RECOVERY_NAME \"$(FIRMWARE_RECOVERY_NAME)\"" >> recovery.h && \
+	echo "#endif" >> recovery.h
+endif
+	cd $(UBOOTDIR) && $(MAKEARCH) mrproper
+
+    ifneq ($(BOARD_TYPE), $(temp_BOARD_TYPE))
+	echo ====Using $(temp_BOARD_TYPE) config for $(BOARD_TYPE) ===
+	cd $(UBOOTDIR) && $(MAKEARCH) $(temp_BOARD_TYPE)_config
+else
+	cd $(UBOOTDIR) && $(MAKEARCH) $(BOARD_TYPE)_config
+endif
+	@echo ========= build dir: $(TOPDIR)/build ============
+	cd $(UBOOTDIR) && $(MAKEARCH) all BUILD_DIR=$(TOPDIR)/build
+	cp -f $(UBOOTDIR)/${UBOOT_BINARY} ${IMAGEPATH}/${UBOOTFILE}
+	cp -f $(UBOOTDIR)/${UBOOT_BINARY} $(TFTPPATH)/${UBOOTFILE}
+	@echo End Making uboot at `date`
+else
+	@echo xtest, u-boot src NOT exist, skip uboot build.
+endif
+
+busybox_clean:
+	@echo Cleaning busybox
+	cd ../apps/$(BUSYBOX) && make clean;
+
+utelnetd:
+	@echo make utelnetd
+	cd ../apps/utelnetd-0.1.9 && make clean install
+
+busybox_build:
+	@echo Making busybox at `date`
+	if test -f  "../apps/$(BUSYBOX)/defconfig-$(BOARD_TYPE)$(BUILD_CONFIG)$(BUILD_DEBUG)"; then \
+	cd ../apps/$(BUSYBOX) && make clean && \
+	cp -f defconfig-$(BOARD_TYPE)$(BUILD_CONFIG)$(BUILD_DEBUG) .config && \
+	    $(MAKE) && $(MAKE) PREFIX=$(INSTALL_ROOT) install; \
+	else \
+	    cd ../apps/$(BUSYBOX) && make clean && \
+	    cp -f  defconfig-$(BOARD_TYPE)$(BUILD_DEBUG) .config && \
+	    $(MAKE) && $(MAKE) PREFIX=$(INSTALL_ROOT) install; \
+	fi;
+	@echo End Making busybox at `date`
+
+# wastemem is a very small but very useful development tool 
+# If you really don't want it in the build, 
+# add it to the optimzation blacklist file!
+wastemem_build:
+	@echo Making wastemem
+	cd ../apps/wastemem && make clean && make install
+wastemem_clean:
+	cd ../apps/wastemem && make clean
+# Ugly hack so you get wastemem if you get busybox...
+## use /proc/sys/vm/min_free_kbytes instead:   busybox_build: wastemem_build
+
+spectral_app_clean:
+	@echo Cleaning spectral
+	cd ../apps/spectral && make clean;
+
+spectral_app_build: spectral_app_clean   
+	@echo making Spectral tools
+	cd ../apps/spectral && $(MAKE) -f Makefile
+	cp ../apps/spectral/spectraldaemon $(INSTALL_ROOT)/sbin/
+
+diag_build:
+	@echo diag_build
+	cd $(HAL)/diag && make 
+	
+
+sar:
+	@echo making sar
+	cd ../$(BOARD_TYPE)/apps/sysstat-6.0.1/ && rm -f sysstat.cron.daily && rm -f sysstat.cron.hourly && $(MAKE) CC=$(TOOLPREFIX)gcc 
+	cd ../$(BOARD_TYPE)/apps/sysstat-6.0.1/ && cp sar $(WIRELESSPACKAGEPATH)
+	cd ../$(BOARD_TYPE)/apps/sysstat-6.0.1/ && cp sadc $(WIRELESSPACKAGEPATH)
+
+flash_mac:
+	@echo making flash_mac 
+	cd ../apps/flash_mac/ && make CC=$(TOOLPREFIX)gcc STRIP=$(TOOLPREFIX)strip && cp read_cfg $(INSTALL_ROOT)/usr/bin/
+	
+
+
+
+####################################### wireless ##########################################
+ifeq ($(BUILD_WPA2),y)  ####################################
+# apps/wpa2 provides a second generation (as compared with apps/wpa)
+#       of authentication (including WPS) programs:
+#       hostapd, wpa_supplicant, etc.
+# 	It installs via $(INSTALL_ROOT).
+# 	It depends only on header files from the driver, and linux driver
+# 	(madwifi) header files specified by $(MADWIFIPATH)
+
+wpa2: #wpa2_clean #rootfs_prep
+	@echo Making wpa2 at `date`
+	cd ../$(BOARD_TYPE)/apps/wpa2 && $(MAKE) 	\
+		CC=$(TOOLPREFIX)gcc AR=$(TOOLPREFIX)ar LD=$(TOOLPREFIX)ld
+	cp $(TOPDIR)/$(BOARD_TYPE)/apps/wpa2/hostapd/hostapd $(WIRELESSPACKAGEPATH)
+	cp $(TOPDIR)/$(BOARD_TYPE)/apps/wpa2/common/libwpa_common.so $(WIRELESSPACKAGEPATH)
+	cp $(TOPDIR)/$(BOARD_TYPE)/apps/wpa2/common/libwpa_ctrl.so $(WIRELESSPACKAGEPATH)
+	cp $(TOPDIR)/$(BOARD_TYPE)/apps/wpa2/wpa_supplicant/wpa_supplicant $(WIRELESSPACKAGEPATH)
+	$(TOOLPREFIX)strip $(WIRELESSPACKAGEPATH)/hostapd
+	$(TOOLPREFIX)strip $(WIRELESSPACKAGEPATH)/wpa_supplicant
+	@echo End Making wpa2 at `date`
+
+wpa2_clean:
+	cd ../$(BOARD_TYPE)/apps/wpa2 && $(MAKE) clean
+clean: wpa2_clean
+
+else  ####(BUILD_WPA2),y####
+# apps/wpa provides older generation of hostapd, wpa_supplicant, etc.
+
+hostapd: openssl
+	if ( test -e ../apps/wpa/hostapd-0.4.8 ) then \
+	cd ../apps/wpa/hostapd-0.4.8; cp -f defconfig .config; make clean; make; \
+	make PREFIX=$(INSTALL_ROOT)/sbin CONFIG_PATH=$(INSTALL_ROOT)/etc/ath DEFAULT_CFG=$(INSTALL_ROOT)/etc/ath/default install; \
+	fi
+
+openssl:
+	if (test -e ../apps/wpa/wsc/lib/openssl-0.9.8a ) then \
+	chmod -R 755 ../apps/wpa/wsc/lib/openssl-0.9.8a; \
+	cd ../apps/wpa/wsc/lib/openssl-0.9.8a; make clean; make; fi
+
+wsc: hostapd
+	if (test -e ../apps/wpa/wsc/src/linux ) then \
+	chmod -R 755 ../apps/wpa/wsc/src/lunux; \
+	cd ../apps/wpa/wsc/src/linux; make clean; \
+	make PREFIX=$(INSTALL_ROOT)/sbin CONFIG_PATH=$(INSTALL_ROOT)/etc/ath DEFAULT_CFG=$(INSTALL_ROOT)/etc/ath/default install; \
+	fi
+
+wpa_supplicant:
+	if (test -e ../apps/wpa/wpa_supplicant-0.5.5 ) then \
+	cd ../apps/wpa/wpa_supplicant-0.5.5; cp -f defconfig .config; make clean; \
+    make; make PREFIX=$(INSTALL_ROOT)/sbin install; \
+	fi
+
+wps_enrollee:    
+	if (test -e ../apps/wpa/wps_enrollee) then \
+	cd ../apps/wpa/wps_enrollee; make clean; make; \
+    make PREFIX=$(INSTALL_ROOT)/sbin install; \
+	fi
+endif ####(BUILD_WPA2),y####
+
+export WIRELESSPACKAGEPATH=$(IMAGEPATH)/wireless/
+
+wireless_prep:
+	test -d $(WIRELESSPACKAGEPATH) || mkdir -p $(WIRELESSPACKAGEPATH)
+	
+# [pangxing] happy to refactor git to repo.
+ifneq ($(wildcard $(TOPDIR)/$(BOARD_TYPE)/$(WLAN_DIR)), )
+wireless: wireless_prep wireless_tools wpa2 
+else
+wireless: wireless_warning
+endif
+
+wireless_warning:
+	echo xtest, wireless src NOT exist, skip wireless build.
+
+wireless_tools:
+	@echo making wireless_tools 
+	if test -n "$(WIRELESSTOOLS)"; then \
+	cd $(TOPDIR)/$(BOARD_TYPE)/apps/$(WIRELESSTOOLS) &&  make clean && make; \
+	mkdir -p $(INSTALL_ROOT)/sbin; \
+	cp -f $(WIRELESSTOOLSLIB) $(WIRELESSPACKAGEPATH); \
+	cp -f iwpriv $(WIRELESSPACKAGEPATH); \
+	cp -f iwconfig $(WIRELESSPACKAGEPATH); \
+	cp -f iwlist $(WIRELESSPACKAGEPATH); \
+	fi
+
+wireless_install: art_install
+	cd $(WIRELESSPACKAGEPATH) && \
+	cp -f $(WIRELESSTOOLSLIB) $(INSTALL_ROOT_FOR_BOARD)/lib; \
+	ln -sf $(WIRELESSTOOLSLIB) $(INSTALL_ROOT_FOR_BOARD)/lib/libiw.so; \
+	cp -f *.so $(INSTALL_ROOT_FOR_BOARD)/lib; \
+	cp -f iwpriv $(INSTALL_ROOT_FOR_BOARD)/sbin; \
+	cp -f iwconfig $(INSTALL_ROOT_FOR_BOARD)/sbin; \
+	cp -f iwlist $(INSTALL_ROOT_FOR_BOARD)/sbin; \
+	cp -f wlanconfig $(INSTALL_ROOT_FOR_BOARD)/sbin; \
+	cp -f hostapd $(INSTALL_ROOT_FOR_BOARD)/sbin; \
+	cp -f wpa_supplicant $(INSTALL_ROOT_FOR_BOARD)/sbin; \
+	cp -f athstats $(INSTALL_ROOT_FOR_BOARD)/sbin; \
+	cp -f dumpregs $(INSTALL_ROOT_FOR_BOARD)/sbin; \
+	cp -f 80211stats $(INSTALL_ROOT_FOR_BOARD)/sbin; \
+	cp -f athstatsclr $(INSTALL_ROOT_FOR_BOARD)/sbin; \
+	cp -f pktlogconf $(INSTALL_ROOT_FOR_BOARD)/sbin; \
+	cp -f pktlogdump $(INSTALL_ROOT_FOR_BOARD)/sbin; \
+	cd $(WIRELESSPACKAGEPATH) && cp -f art.ko $(INSTALL_ROOT_FOR_BOARD)/lib/modules/$(KERNELVER)/net;
+
+art_mod:
+	@echo makeing ART Module
+	cd $(TOPDIR)/$(BOARD_TYPE)/apps/art2_ver_2_52ap_src/driver/linux && make -f makefile.artmod clean && \
+	make -f makefile.artmod hornet
+	cd $(TOPDIR)/$(BOARD_TYPE)/apps/art2_ver_2_52ap_src/driver/linux/modules && \
+	cp art.ko $(WIRELESSPACKAGEPATH)
+	cd $(TOPDIR)/$(BOARD_TYPE)/apps/art2_ver_2_52ap_src/art/obj && \
+	cp nart.out $(WIRELESSPACKAGEPATH)
+
+art_install:
+ifneq ($(wildcard $(TOPDIR)/$(BOARD_TYPE)/apps/art), )
+	cd $(TOPDIR)/$(BOARD_TYPE)/apps/art && cp art.ko $(WIRELESSPACKAGEPATH)
+else
+	echo xtest $(TOPDIR)/$(BOARD_TYPE)/apps/art not found, skip art install.
+endif
+
+####################################### END wireless #######################################
+
+############################################ 3G ############################################
+#
+# ap121 need usb driver, we only make usbserial.ko 
+# because usbcore and usb_echi are already compiled with kernel
+#
+usb_serial:
+	$(MAKEARCH) -C $(KERNELPATH) SUBDIRS=drivers/usb/serial modules	
+	cp $(KERNELPATH)/drivers/usb/serial/usbserial.ko $(KERNEL_MODULE_PATH)
+
+usb_storage:
+	cp $(KERNELPATH)/drivers/usb/storage/usb-storage.ko $(KERNEL_MODULE_PATH)
+	cp $(KERNELPATH)/fs/nls/nls_utf8.ko $(KERNEL_MODULE_PATH)
+	cp $(KERNELPATH)/fs/nls/nls_cp850.ko $(KERNEL_MODULE_PATH)
+	cp $(KERNELPATH)/fs/fat/fat.ko $(KERNEL_MODULE_PATH)
+	cp $(KERNELPATH)/fs/fat/vfat.ko $(KERNEL_MODULE_PATH)
+#added by ZQQ,10.10.24 copy the cdc-acm.ko and option.ko to filesystem directory
+	cp $(KERNELPATH)/drivers/usb/serial/option.ko $(KERNEL_MODULE_PATH)
+	cp $(KERNELPATH)/drivers/usb/class/cdc-acm.ko $(KERNEL_MODULE_PATH)
+#end add by ZQQ
+
+#added by ZQQ, 2012.02.23 add net/usb/ drivers
+usb_net:
+	cp $(KERNELPATH)/drivers/net/usb/cdc_ether.ko $(KERNEL_MODULE_PATH)
+	cp $(KERNELPATH)/drivers/net/usb/cdc_ncm.ko $(KERNEL_MODULE_PATH)
+	cp $(KERNELPATH)/drivers/net/usb/lg-vl600.ko $(KERNEL_MODULE_PATH)
+	#cp $(KERNELPATH)/drivers/net/usb/huawei_wwan.ko $(KERNEL_MODULE_PATH)	
+	cp $(KERNELPATH)/drivers/net/usb/qmi_wwan.ko $(KERNEL_MODULE_PATH)
+	cp $(KERNELPATH)/drivers/net/usb/usbnet.ko $(KERNEL_MODULE_PATH)
+	cp $(KERNELPATH)/drivers/net/usb/cdc_enc.ko $(KERNEL_MODULE_PATH)
+	cp $(KERNELPATH)/drivers/net/usb/rndis_host.ko $(KERNEL_MODULE_PATH)
+	#cp $(KERNELPATH)/drivers/net/usb/sierra_net.ko $(KERNEL_MODULE_PATH)
+#end added by ZQQ, 2012.02.23
+
+#
+# 3G tools build for apps build
+#
+export 3G_TOOLS_PATH = $(TOPDIR)/apps/3g_tools
+export 3G_PACKAGE_PATH = $(IMAGEPATH)/3g
+
+include $(3G_TOOLS_PATH)/Makefile
+	
+3g_prep:
+	test -d $(3G_PACKAGE_PATH) || mkdir -p $(3G_PACKAGE_PATH)
+
+3g_tools:  3g_prep
+	#-rm -rf $(3G_PACKAGE_PATH)/*
+	cd $(3G_TOOLS_PATH) && \
+	$(MAKE) CC=$(TOOLPREFIX)gcc AR=$(TOOLPREFIX)ar LD=$(TOOLPREFIX)ld 
+
+3g_tools_install: 3g_prep
+	cd $(3G_PACKAGE_PATH) && \
+	cp -f chat $(INSTALL_ROOT_FOR_BOARD)/usr/sbin && \
+	cp -f libusb-0.1.so.4.4.4 $(INSTALL_ROOT_FOR_BOARD)/lib && \
+	ln -sf libusb-0.1.so.4.4.4 $(INSTALL_ROOT_FOR_BOARD)/lib/libusb-0.1.so.4 && \
+	ln -sf libusb-0.1.so.4.4.4 $(INSTALL_ROOT_FOR_BOARD)/lib/libusb.so && \
+	cp -f handle_card $(INSTALL_ROOT_FOR_BOARD)/usr/sbin/ && \
+	cp -f usr/sbin/usb_modeswitch $(INSTALL_ROOT_FOR_BOARD)/usr/sbin/ && \
+	cp -f modem_scan $(INSTALL_ROOT_FOR_BOARD)/usr/sbin/ && \
+	cp -f mode_switch.conf.bin $(INSTALL_ROOT_FOR_BOARD)/etc/ && \
+	cp -f hotplug $(INSTALL_ROOT_FOR_BOARD)/sbin && \
+	cp -rf etc/ppp $(INSTALL_ROOT_FOR_BOARD)/etc && \
+	cp -rf etc/3gISP $(INSTALL_ROOT_FOR_BOARD)/etc && \
+	cd $(INSTALL_ROOT_FOR_BOARD) && \
+	ln -sf /tmp/conn-script etc/ppp/conn-script	
+	cd $(3G_PACKAGE_PATH) && \
+	if grep 'mount -t usbfs none /proc/bus/usb' $(INSTALL_ROOT_FOR_BOARD)/etc/rc.d/rcS > /dev/null 2>&1 ; then \
+	echo "rcS already have mount -t usbfs none /proc/bus/usb"  ;\
+	else \
+	sed 's/mount -t ramfs -n none \/var/mount -t ramfs -n none \/var\nmount -t usbfs none \/proc\/bus\/usb/' $(INSTALL_ROOT_FOR_BOARD)/etc/rc.d/rcS > $(INSTALL_ROOT_FOR_BOARD)/etc/rc.d/rcS.tmp && \
+	mv -f $(INSTALL_ROOT_FOR_BOARD)/etc/rc.d/rcS.tmp $(INSTALL_ROOT_FOR_BOARD)/etc/rc.d/rcS && \
+	chmod 755 $(INSTALL_ROOT_FOR_BOARD)/etc/rc.d/rcS ; \
+	fi
+######################################### END 3G ###################################################
+UTIL_PATH=$(TOPDIR)/util
+systat_build:
+	@echo making systat ...
+	cd $(UTIL_PATH)/sysstat/sysstat-10.1.4 && \
+	./configure --build=i686-linux --host=mips-linux CC=$(TOOLPREFIX)gcc CXX=$(TOOLPREFIX)g++ AR=$(TOOLPREFIX)ar && \
+	$(MAKE) CC=$(TOOLPREFIX)gcc LD=$(TOOLPREFIX)ld 

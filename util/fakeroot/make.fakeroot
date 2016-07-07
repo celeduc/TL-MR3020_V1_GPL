@@ -1,0 +1,16 @@
+export TOPDIR = $(PWD)
+
+export FAKEROOT_DIR = $(TOPDIR)/fakeroot
+
+.PHONY:fakeroot
+
+$(FAKEROOT_DIR)/.configured:
+	cd $(FAKEROOT_DIR); ./configure --prefix=/usr --disable-nls
+	touch $@
+
+fakeroot: $(FAKEROOT_DIR)/.configured
+	make -C $(FAKEROOT_DIR)
+	
+	sed -e 's,^PREFIX=.*,PREFIX=$(FAKEROOT_DIR),g' -e 's,^BINDIR=.*,BINDIR=$(FAKEROOT_DIR),g' -e 's,^PATHS=.*,PATHS=$(FAKEROOT_DIR)/.libs:/lib:/usr/lib,g' $(FAKEROOT_DIR)/scripts/fakeroot > $(FAKEROOT_DIR)/fakeroot
+	
+	chmod u+x $(FAKEROOT_DIR)/fakeroot

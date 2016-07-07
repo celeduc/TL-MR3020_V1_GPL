@@ -1,0 +1,1 @@
+cmd_net/ipv4/netfilter/ipt_REDIRECT.ko := mips-linux-uclibc-ld -r  -m elf32btsmip  --build-id -o net/ipv4/netfilter/ipt_REDIRECT.ko net/ipv4/netfilter/ipt_REDIRECT.o net/ipv4/netfilter/ipt_REDIRECT.mod.o

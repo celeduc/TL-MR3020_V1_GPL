@@ -1,0 +1,43 @@
+<!--<TP_C_TAG>-->
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<SCRIPT type="text/javascript"><!--
+if(window != window.parent)
+{
+    window.parent.location.href = "/userRpm/Index.htm?session_id=" + session_id;
+}
+--></script>
+<script type="text/javascript">
+<!--
+function doLoad()
+{
+	var mainFrame = document.getElementById("mainFrame");
+	var helpFrame = document.getElementById("helpFrame");
+	var bottomLeftFrame = document.getElementById("bottomLeftFrame");
+
+	bottomLeftFrame.src = "/userRpm/MenuRpm.htm?session_id=" + session_id;
+	if(0 == framePara[0])
+	{
+		mainFrame.src = "/userRpm/StatusRpm.htm?session_id=" + session_id;
+		helpFrame.src = "/help/StatusHelpRpm.htm";
+	}
+	else
+	{
+		mainFrame.src = "/userRpm/WzdStartRpm.htm?session_id=" + session_id;
+		helpFrame.src = "/help/WzdStartHelpRpm.htm";
+	}
+}
+-->
+</script>
+</head>
+<FRAMESET rows=90,* onLoad="doLoad();">
+	<FRAME name=topFrame marginWidth=0 marginHeight=0 src="/frames/top.htm" noResize scrolling=no frameSpacing=0 frameBorder=0>
+	<FRAMESET cols=182,55%,*>
+		<FRAME name=bottomLeftFrame id=bottomLeftFrame marginWidth=0 marginHeight=0 noResize frameBorder=1 scrolling=auto style="overflow-x:hidden">
+		<FRAME name=mainFrame id=mainFrame marginWidth=0 marginHeight=0 frameBorder=1>
+    	<FRAME name=helpFrame id=helpFrame marginWidth=0 marginHeight=0 src="/help/StatusHelpRpm.htm" frameBorder=1>
+   </FRAMESET>
+<noframes>
+	<body id="t_noFrame">Please upgrade to a version 4 or higher browser so that you can use this setup tool.</body>
+</noframes>
+<head><meta http-equiv="pragma" content="no-cache"></head>
+</FRAMESET></html>

@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<TITLE>UsbModemList</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META http-equiv=Pragma content=no-cache>
+<META http-equiv=Cache-Control content=no-cache>
+<META http-equiv=Expires content="wed, 26 Feb 1997 08:21:57 GMT">
+<LINK href="../dynaform/css_main.css" rel=stylesheet>
+<SCRIPT language=javascript src="../dynaform/common.js" type=text/javascript></SCRIPT>
+<!--<TP_C_TAG>-->
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="../dynaform/custom.js" type="text/JavaScript"></script>
+<SCRIPT type="text/javascript">
+<!--//
+function doSubmit()
+{
+	if(document.forms[0].filename.value == "")
+	{
+		alert(js_chs_file="Please choose a 3G/4G USB modem configuration file for loading!");
+		return false;
+	}
+	if(!confirm(js_to_load="Are you sure to upload 3G/4G USB modem configuration file?"))
+	{
+		return false;
+	}
+	document.getElementById("Upload").disabled = true;
+	document.getElementById("Back").disabled = true;
+	return true;
+}//-->
+</SCRIPT>
+</HEAD>
+<BODY onLoad="setTagStr(document,'ntw_usb_modem_upload');LoadHelp('UsbModemHelpRpm.htm'); resize(this);" onResize="resize(this);">
+<CENTER>
+	<FORM action="/incoming/UsbModemUploadPost.cfg" enctype="multipart/form-data" method="post" onSubmit="return doSubmit();">
+		<TABLE id="autoWidth" border = 0>
+			<TR>
+				<TD class="h1" colspan="4" id="t_title">Upload 3G/4G USB Modem Configuration File</TD>
+			</TR>
+			<TR><TD class="blue" colspan="4"></TD></TR>
+			<TR>
+				<TD class="Item" id="t_file">File:</TD>
+				<TD><INPUT class="text" name="filename" type="file" size="20" onKeyDown="return false">&nbsp;&nbsp;</TD>        
+				<TD width="100%">&nbsp;</TD>
+			</TR>
+			<TR>
+				<TD style="white-space:normal" colspan="4">
+					<span id="t_nt_msg_1">Please Note: If you restore the Device's factory setting, the bin file will be lost.In the event that you do lose the bin file, you will need to re-upload it, or download our latest firmware from </span>
+					<a href="#" onClick="openWindow();">
+					<script language="JavaScript" type="text/JavaScript">
+						document.write(our_web_site);
+					</script>	
+					</a>
+					<span id="t_nt_msg_2">. The updated firmware will be installed into your 3G/4G Device and restore all of its functions.</span>
+				</TD>
+			</TR>
+			<TR><TD class="blue" colspan="4"></TD></TR>
+			<TR>
+				<TD>&nbsp;</TD>
+				<TD>
+					<SCRIPT type="text/javascript">
+						document.write('<INPUT name="Upload" type="submit" class="buttonBig" id="Submit" value="Upload">&nbsp;&nbsp;&nbsp;<INPUT name="Back" type="button" class="buttonBig" value="Back" onClick="location.href=\'/userRpm/UsbModemListRpm.htm?session_id='+session_id+'\'">');
+						document.write('<input name="session_id" id="session_id" type="hidden" value="'+session_id +'">');
+					</SCRIPT>
+				</TD>
+				<TD>&nbsp;</TD>
+				<TD>&nbsp;</TD>
+			</TR>
+		</TABLE>
+	</FORM>
+</CENTER>
+</BODY>
+</HTML>
+
+<script language="JavaScript">
+var tpNewWin; 
+function openWindow()	
+{
+	if(tpNewWin) 
+		tpNewWin.close();
+
+	tpNewWin = window.open("http://"  + our_web_site, "", "" );
+}
+</SCRIPT>

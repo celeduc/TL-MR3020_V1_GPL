@@ -1,0 +1,46 @@
+
+<SCRIPT language=javascript src="/dynaform/help.js" type=text/javascript></SCRIPT>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+</head>
+<body>
+<SCRIPT type="text/javascript">
+dohelp("帮助－PPPoE设置", 400);
+	begin();
+		writeline("WAN口连接类型：", "请根据您的Internet服务供应商（ISP）所提供的上网方式来选择相应的连接类型。例如，如果您可以从ISP获取由DHCP服务器自动分配的IP地址，请选择“动态IP”；如果您拥有ISP提供的固定IP地址，请选择“静态IP”；如果您的上网的方式为ADSL虚拟拨号方式，请选择 “PPPoE”。如果您不清楚应选择何种连接类型，请点击“自动检测”按钮来查看ISP所提供的上网方式。检测结果仅供参考，详情请咨询您的ISP。");
+	end();
+
+	begin();
+		writeline("上网账号：", "填入ISP为您指定的ADSL上网帐号，不清楚可向ISP询问。");
+		writeline("上网口令：", "填入ISP为您指定的ADSL上网口令，不清楚可向ISP询问。");						
+	end();
+	begin();
+		writeline("第二连接：", "仅启用PPPoE连接时可选。如果您的ISP额外提供了以动态IP或静态IP连接到局域性网络的连接，那么您可以相应选择动态IP或静态IP来启动这个连接。");
+		writeline("禁用：", "默认选项，只有PPPoE连接会启动。建议选择此项设置。");
+		writeline("动态IP：", "使用动态IP的方式访问ISP提供的局域性网络。");
+		writeline("静态IP：", "使用静态IP的方式访问ISP提供的局域性网络。");
+		blank();
+	end();
+	begin();
+		writeline("连接模式");
+	end();
+	begin();		
+		writeline("按需连接：", "如果选择了按需连接，则在有来自局域网的网络访问请求时，自动进行连接操作。");
+		writeline("自动断线等待时间：", "如果自动断线等待时间T不等于0，则在检测到连续T分钟内没有网络访问流量时自动断开网络连接，保护您的上网资源。此项设置仅对“按需连接”和“手动连接”生效。");
+		blank();
+		writeline("自动连接：", "如果选择了自动连接，则在开机后自动进行连接操作。在使用过程中，如果由于外部原因，网络被断开，则每隔一段时间（10秒）尝试进行连接，直到连接上为止。");
+		blank();
+		writeline("定时连接：", "如果选择了定时连接，则在“连接时段”指定的起始时间自动进行连接操作，在指定的终止时间自动进行断线操作。");
+		blank();
+		writeline("手动连接：", "开机后由用户手动进行ADSL拨号连接。");
+		blank();
+	end();	
+	begin();
+		writeline("按钮功能");
+	end();
+	begin();
+		writeline("连接：", "单击此按钮，进行即时的连接操作。");
+		writeline("断线：", "单击此按钮，进行即时的断开操作。");
+	end();				
+done();
+</SCRIPT>
+</body></html>

@@ -1,0 +1,4 @@
+***How to compile GPL software ***
+run build_mr3020v1_en.sh in root authority
+
+

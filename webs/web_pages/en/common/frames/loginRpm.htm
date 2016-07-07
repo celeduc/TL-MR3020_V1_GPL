@@ -1,0 +1,58 @@
+<link rel="stylesheet" type="text/css" href="../login/jsAndCss/loginRpm.css"></link>
+</head>
+<body onkeypress="PCWin(event)" onload="pageLoad()">
+	<SCRIPT type="text/javascript">
+	if(window.location.href != window.top.location.href)
+	{
+		window.top.location.reload();
+	}
+	window.document.title = "Welcome to " + devName + " Setting Page";
+	</script>
+	<script type="text/javascript"  src="../login/jsAndCss/loginRpm.js" ></script>
+	<iframe height=90 width=100% name=loginTopFrame marginWidth=0 marginHeight=0 src="/frames/top.htm" noResize scrolling=no frameSpacing=0 frameBorder=0 border-bottom=1></iframe>
+	<div id="panelThre" align="center">
+		<div id="noteDiv" class="noteDiv" style="display:none">
+			<div class="note">NOTE: </div>
+			<div id="info" class="info"></div>
+			<div style="clear:both"></div>
+		</div>
+		<div align="center" class="picDiv">
+			<input class="pcAdmin" id="pcAdmin" type="text" maxlength="15" onfocus="this.className='pcAdminFocus'" onblur="this.className='pcAdmin'" />
+			<input class="pcPassword" id="pcPassword" type="password" maxlength="15" onfocus="this.className='pcPasswordFocus'" onblur="this.className='pcPassword'" />
+			<input class="loginBtn" id="pcSub" type="button" value="Login" onclick="PCSubWin()" />
+		</div>
+		<script type="text/javascript">
+			if(isDefaultName)
+			{
+				$("pcAdmin").value="admin";
+			}
+			switch (httpAutErrorArray[0])
+			{
+				case 1:
+				$("noteDiv").style.display="";
+				$("info").innerHTML="The username or password is incorrect, please input again.";
+				break;
+				case 2:
+				$("noteDiv").style.display="";
+				$("info").innerHTML="You have exceeded ten attempts, please try again in two hours.";
+				$("pcAdmin").disabled=true;
+				$("pcPassword").disabled=true;
+				$("pcSub").disabled=true;
+				break;
+				case 3:
+				$("noteDiv").style.display="";
+				$("info").innerHTML="The router allows only one administrator to login at the same time, please try again later.";
+				$("pcAdmin").disabled=true;
+				$("pcPassword").disabled=true;
+				$("pcSub").disabled=true;
+				break;
+				default:
+				$("pcAdmin").disabled=false;
+				$("pcPassword").disabled=false;
+				$("pcSub").disabled=false;
+				break;
+			}
+		</script>
+	</div>
+</body>
+</html>

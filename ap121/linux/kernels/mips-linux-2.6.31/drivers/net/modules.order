@@ -1,0 +1,10 @@
+kernel/drivers/net/pppol2tp.ko
+kernel/drivers/net/usb/cdc_ether.ko
+kernel/drivers/net/usb/rndis_host.ko
+kernel/drivers/net/usb/usbnet.ko
+kernel/drivers/net/usb/cdc_ncm.ko
+kernel/drivers/net/usb/lg-vl600.ko
+kernel/drivers/net/usb/cdc_enc.ko
+kernel/drivers/net/usb/qmi_wwan.ko
+kernel/drivers/net/usb/sierra_net.ko
+kernel/drivers/net/usb/rndis_host.ko

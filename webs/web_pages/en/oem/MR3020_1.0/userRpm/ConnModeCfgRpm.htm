@@ -1,0 +1,164 @@
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<SCRIPT type="text/javascript"><!--
+function changeInfo()
+{
+	var objs = document.getElementsByName("connmode");
+    var opt = 0;
+	var i = 0;
+	
+    for(i = 0; i < objs.length; i++)
+    {
+        if(objs[i].checked)
+        {
+            opt = i;
+        }
+    }
+	
+	/* modified by chengdanhao, 2013-5-2, because the value order is 1-0-2-3 */
+	if (0 != opt && 1 == connModeParam[0])
+	{
+		document.getElementById("line_connModeWarn_1").style.display="none";
+		document.getElementById("line_connModeWarn_2").style.display="";
+	}
+	else if (0 == opt && 1 != connModeParam[0])
+	{
+		document.getElementById("line_connModeWarn_1").style.display="";
+		document.getElementById("line_connModeWarn_2").style.display="none";
+	}
+	else
+	{
+		document.getElementById("line_connModeWarn_1").style.display="none";
+		document.getElementById("line_connModeWarn_2").style.display="none";
+	}
+	/* end modified by chengdanhao, 2013-5-2 */
+}
+
+function doSubmit()
+{
+	var mode_array = document.getElementsByName("connmode");
+    var opt = 0;
+
+    for(i = 0; i < mode_array.length; i++)
+    {
+        if(mode_array[i].checked)
+        {
+			opt = mode_array[i].value;	/* modified by chengdanhao, 2013-5-2, because the value order is 1-0-2-3 */
+        }
+    }
+    
+    if(opt == connModeParam[0])
+        return false;
+    
+	if (connModeParam[0] == 4 && connModeParam[0] != opt)
+	{
+		if(!confirm(js_modi_conn_mode_1="Modification of access mode will result in the rebooting of the Device, OK?"))
+		{
+			return false;
+		}
+	}
+	else if (opt == 4 && connModeParam[0] != opt)
+	{
+		if(!confirm(js_modi_conn_mode_2="Modification of access mode will result in the rebooting of the Device, OK?"))
+		{
+			return false;
+		}
+	}
+	else
+	{
+		if( 0 == connModeParam[0] || connModeParam[0] == 2)
+		{
+			if(true == confirm(js_conn_info="This process will take a few seconds, please wait. Are you sure to continue?"))
+			{
+				return  true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+	}
+    return true;
+}
+//--></SCRIPT>
+</HEAD>
+<BODY onLoad="setTagStr(document,'ntw_conn_mode_cfg');LoadHelp('ConnModeCfgHelpRpm.htm'); resize(this);" onResize="resize(this);">
+<CENTER>
+	<FORM action="ConnModeCfgRpm.htm" enctype="multipart/form-data" method="get" onSubmit="return doSubmit();">
+		<TABLE id="autoWidth">
+			<TR>
+				<TD class="h1" colspan="2">Internet Access</TD>
+			</TR>
+			<TR>
+				<TD class="blue" colspan="2"></TD>
+			</TR>
+			<TR><TD class="info" colspan="2" id="t_note_isp">The router provides some Internet access modes for you to choose:</TD></TR>
+			<TR id="line_3gOnlyAsLan">
+				<TD class="clk">&nbsp;</TD>
+				<TD><INPUT name="connmode" id="connmode1" type="radio" value="1" onClick="changeInfo()"/><B id="t_3gonlyaslan_opt">3G/4G Only (Recommended)</B> - <SPAN id="t_3gonlyaslan">Only use 3G/4G as the access to the Internet.</SPAN>&nbsp;&nbsp;<SPAN id="t_RJ45_lan">(RJ45 Ethernet Port as LAN)</SPAN></TD>
+			</TR>
+			<TR>
+				<TD class="clk">&nbsp;</TD>
+				<TD><INPUT name="connmode" id="connmode0" type="radio" value="0" onClick="changeInfo()"/><B id="t_3gprime_opt">3G/4G Preferred</B> - <SPAN id="t_3gprime">Use 3G/4G as the primary access, WAN as a backup.</SPAN>&nbsp;&nbsp;<SPAN id="t_RJ45_wan">(RJ45 Ethernet Port as WAN)</SPAN></TD>
+			</TR>
+			<TR>
+				<TD class="clk">&nbsp;</TD>
+				<TD><INPUT name="connmode" id="connmode2" type="radio" value="2" onClick="changeInfo()"/><B id="t_wanprime_opt">WAN Preferred</B> - <SPAN id="t_wanprime">Use WAN as the primary access, 3G/4G as a backup.</SPAN>&nbsp;&nbsp;<SPAN id="t_RJ45_wan">(RJ45 Ethernet Port as WAN)</SPAN></TD>
+			</TR>
+			<TR>
+				<TD class="clk">&nbsp;</TD>
+				<TD><INPUT name="connmode" id="connmode3" type="radio" value="3" onClick="changeInfo()"/><B id="t_wanonly_opt">WAN Only</B> - <SPAN id="t_wanonly">Only use WAN as the access to the Internet.</SPAN>&nbsp;&nbsp;<SPAN id="t_RJ45_wan">(RJ45 Ethernet Port as WAN)</SPAN></TD>
+			</TR>
+			<TR id="line_connModeWarn_1">
+				<TD class="clk">&nbsp;</TD>
+				<TD><span id="t_change_mode_warn_1" style="color:red;">The ethernet port is currently used as WAN, the router will restart if the port is changed to LAN!</span></TD>
+            </TR>
+			<TR id="line_connModeWarn_2">
+				<TD class="clk">&nbsp;</TD>
+				<TD><span id="t_change_mode_warn_2" style="color:red;">The ethernet port is currently used as LAN, the router will restart if the port is changed to WAN!</span></TD>
+			</TR>
+			<TR id="line_reboot">
+				<TD class="clk">&nbsp;</TD>
+				<TD colspan="2"><span style="color:#FF0000" id="t_chng">The LAN WAN change of the ethernet port will not take effect until the Router reboots, please </span>
+				<SCRIPT type="text/javascript">
+					document.write('<A href="../userRpm/SysRebootRpm.htm?session_id=' + session_id +'" id="t_click">');
+				</SCRIPT>
+				click here</A><span id="t_to_reboot" style="color:#FF0000"> to reboot.</span> </TD>
+			</TR> 
+			<TR>
+				<TD class="blue" colspan="2"></TD>
+			</TR>
+			<TR>
+				<TD class="mbtn" colspan="2">
+				<SCRIPT type="text/javascript">
+					document.write('<input name="session_id" id="session_id" type="hidden" value="'+session_id +'">');
+				</SCRIPT>
+				<INPUT name="Save" type="submit" class="buttonBig" value="Save"/></TD>
+			</TR>
+		</TABLE>			
+	</FORM>
+</CENTER>
+</BODY>
+<HEAD>
+<META http-equiv="pragma" content="no-cache">
+</HEAD>
+</HTML>
+<SCRIPT type="text/javascript">
+document.getElementById("line_reboot").style.display="none";
+
+var choose_mode = document.getElementsByName("connmode");
+var i = 0;
+
+if (choose_mode.length){
+	for (i = 0; i < choose_mode.length; i++)
+	{
+		//alert("choose_mode[" + i + "].value = " + choose_mode[i].value + "; connModeParam[0] = " + connModeParam[0]);
+		if (choose_mode[i].value == connModeParam[0])
+			choose_mode[i].checked = true;
+	}
+}
+
+changeInfo();
+
+if (connModeParam[2] == 1)
+	document.getElementById("line_reboot").style.display="";
+</SCRIPT>

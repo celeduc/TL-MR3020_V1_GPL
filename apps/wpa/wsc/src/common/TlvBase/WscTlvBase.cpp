@@ -1,0 +1,327 @@
+/*============================================================================
+//
+// Copyright(c) 2006 Intel Corporation. All rights reserved.
+//   All rights reserved.
+// 
+//   Redistribution and use in source and binary forms, with or without 
+//   modification, are permitted provided that the following conditions 
+//   are met:
+// 
+//     * Redistributions of source code must retain the above copyright 
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright 
+//       notice, this list of conditions and the following disclaimer in 
+//       the documentation and/or other materials provided with the 
+//       distribution.
+//     * Neither the name of Intel Corporation nor the names of its 
+//       contributors may be used to endorse or promote products derived 
+//       from this software without specific prior written permission.
+// 
+//   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
+//   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+//   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR 
+//   A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT 
+//   OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+//   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT 
+//   LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, 
+//   DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY 
+//   THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
+//   (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+//   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+//  File Name: WscTlvBase.cpp
+//  Description: Implementation for base TLV types.
+//
+****************************************************************************/
+
+#include "WscCommon.h"
+#include "WscError.h"
+#include "WscTlvBase.h"
+#include "tutrace.h"
+
+/******************************************************************************
+ *                           Buffer class methods                             *
+ ******************************************************************************/
+#define BUF_BLOCK_SIZE 256
+
+BufferObj::BufferObj()
+        :pBase(NULL), 
+         m_bufferLength(BUF_BLOCK_SIZE), 
+         m_currentLength(0), 
+         m_dataLength(0), 
+         m_allocated(true)
+{
+    pBase = (uint8 *) malloc(m_bufferLength);
+    if(!pBase)
+        throw "memory allocate error";
+    pCurrent = pBase;
+}
+
+uint8 * BufferObj::Advance(uint32 offset)
+{
+    //Advance the pCurrent pointer. update current length
+    //Don't disturb the dataLength variable here
+    if(m_currentLength+offset > m_bufferLength)
+        return NULL;
+    
+    m_currentLength += offset;
+    pCurrent+=offset;
+    return pCurrent;
+}
+
+uint8 * 
+BufferObj::Append(uint32 length, uint8 *pBuff)
+{
+    if((pBuff == NULL) || (length == 0))
+        return pCurrent;
+
+    //IMPORTANT: if this buffer was not allocated by us
+    //and points to an existing buffer, then we should be extremely careful
+    //how much data we append
+    if((!m_allocated) && (Remaining() < length))
+    {
+        TUTRACE((TUTRACE_INFO, "TLV: Explicitly allocating memory\n"));
+
+        //now we need to explicitly allocate memory. 
+        //while in the process, allocate some extra mem
+        uint8 *ptr = (uint8 *) malloc(m_bufferLength+BUF_BLOCK_SIZE);
+        if(!ptr)
+            throw "memory allocate error";
+
+        //copy the existing data
+        memcpy(ptr, pBase, m_currentLength);
+
+        //update internal variables
+        pBase = ptr;
+        pCurrent = pBase + m_currentLength;
+        m_bufferLength += BUF_BLOCK_SIZE;
+        m_allocated = true;
+    }
+
+    if(m_bufferLength - m_currentLength < length)
+    {
+        //the available bufferspace isn't sufficient for the current data
+
+        //determine how much more space we need, either the block size or
+        //the data length, whichever is bigger
+        int tempLen = (length>BUF_BLOCK_SIZE)?length:BUF_BLOCK_SIZE;
+
+        //Allocate more memory
+        //pBase = (uint8 *)realloc(pBase, m_bufferLength+tempLen);
+        pBase = (uint8 *)realloc(pBase, m_currentLength+tempLen);
+        if(!pBase)
+            throw "Realloc error";
+
+        //m_bufferLength += BUF_BLOCK_SIZE;
+        m_bufferLength = (m_currentLength+tempLen);
+        pCurrent = pBase + m_currentLength;
+    }
+    
+    memcpy(pCurrent, pBuff, length);
+    pCurrent += length;
+    m_currentLength += length;
+
+    //the data length needs to be updated based on the pointer locations,
+    //since the pointers could have been moved around (using rewind and
+    //advance) before the call to append.
+    m_dataLength = pCurrent - pBase;
+
+    return pCurrent-length; //return the location at which the data was copied
+}
+
+uint8 *
+BufferObj::Set(uint8 *pos) 
+{
+    if(pos < pBase)
+        throw "Buffer underflow";
+    if(pos > pBase + m_bufferLength)
+        throw "Buffer overflow";
+    
+    //Perform operation as if pos lies before pCurrent. 
+    //If it lies after pCurrent, offset will be negative, so we'll be OK
+    int32 offset = (int32)(pCurrent-pos);
+    pCurrent = pos;
+    m_currentLength -= offset;
+    return pCurrent;
+}
+
+uint16 
+BufferObj::NextType() 
+{
+    if(Remaining() < 4)//at least size of the header
+        return 0;
+
+    return WscNtohs(*(__unaligned uint16 *)pCurrent); 
+}
+
+uint8 *BufferObj::Reset()
+{
+    pCurrent = pBase;
+    m_currentLength = m_dataLength = 0;
+    return pBase;
+}
+
+uint8 *BufferObj::Rewind(uint32 length)
+{
+    if(length > m_currentLength)
+        throw "Buffer underflow error";
+
+    m_currentLength-=length;
+    pCurrent = pBase + m_currentLength;
+    return pCurrent;
+}
+
+uint8 *BufferObj::Rewind()
+{
+    m_currentLength = 0;
+    pCurrent = pBase;
+    return pCurrent;
+}
+/******************************************************************************
+ *                             TLV Base class                                 *
+ ******************************************************************************/
+//Deserealizing constructor
+tlvbase::tlvbase(uint16 theType, BufferObj & theBuf, uint16 minDataSize) 
+        : m_pos(theBuf.Pos()) 
+{ 
+
+    uint32 remaining = theBuf.Remaining();
+    if ( remaining < sizeof(S_WSC_TLV_HEADER) + minDataSize)
+        throw "insufficient buffer size";
+
+    if (theType != WscNtohs(*((__unaligned uint16 *) m_pos)) )
+    {
+        TUTRACE((TUTRACE_ERR, "TLVBASE: Expected TLV type: %d, received: %d", 
+                theType, WscNtohs(*((__unaligned uint16 *) m_pos)) ));
+        throw "unexpected type";
+    }
+
+    m_type = theType;
+
+    m_pos += sizeof(uint16 ); // advance to length field
+
+    m_len = WscNtohs(*((__unaligned uint16 *) m_pos));
+    if (minDataSize > m_len) 
+        throw "length field too small";
+    
+    if (m_len + sizeof(S_WSC_TLV_HEADER) > remaining) 
+        throw "buffer overflow error";
+    
+    m_pos += sizeof(uint16 ); // advance to data field
+    theBuf.Advance( 2 * sizeof(uint16) + m_len);
+}
+
+tlvbase::tlvbase(uint16 theType, 
+                 BufferObj & theBuf, 
+                 uint16 minDataSize, 
+                 uint16 maxDataSize) 
+        : m_pos(theBuf.Pos()) 
+{ 
+
+    uint32 remaining = theBuf.Remaining();
+    if ( remaining < sizeof(S_WSC_TLV_HEADER) + minDataSize)
+        throw "insufficient buffer size";
+
+    if (theType != WscNtohs(*((__unaligned uint16 *) m_pos)) ) 
+    {
+        TUTRACE((TUTRACE_ERR, "TLVBASE: Expected TLV type: %d, received: %d", 
+                theType, WscNtohs(*((__unaligned uint16 *) m_pos)) ));
+        throw "unexpected type";
+    }
+
+    m_type = theType;
+
+    m_pos += sizeof(uint16); // advance to length field
+
+    m_len = WscNtohs(*((__unaligned uint16 *) m_pos));
+    if (m_len < minDataSize) 
+        throw "length field too small";
+    
+    if (maxDataSize && (m_len > maxDataSize))
+        throw "length greater than expectated";
+
+    if (m_len + sizeof(S_WSC_TLV_HEADER) > remaining) 
+        throw "buffer overflow error";
+    
+    m_pos += sizeof(uint16 ); // advance to data field
+    theBuf.Advance( 2 * sizeof(uint16) + m_len);
+}
+
+//Serealizing constructor
+tlvbase::tlvbase(uint16 theType, 
+                 BufferObj & theBuf, 
+                 uint16 dataSize, 
+                 uint8 *data)
+        :m_type(theType), m_len(dataSize)
+{
+    serialize(theBuf, data);
+}
+
+void tlvbase::serialize(BufferObj &theBuf, uint8 *data)
+{
+    uint8 temp[sizeof(uint32)];
+#if 0 // Open network key length can be 0
+    if((NULL == data) || (0 == m_len))
+        throw WSC_ERR_INVALID_PARAMETERS;
+#endif
+    //Copy the type
+    *(unsigned short *)temp = WscHtons(m_type);
+    theBuf.Append(sizeof(uint16 ), temp);
+    
+    //Copy the length
+    *(unsigned short *)temp = WscHtons(m_len);
+    theBuf.Append(sizeof(uint16), temp);
+
+    //Copy the value
+    m_pos = theBuf.Append(m_len, data);
+}
+
+/******************************************************************************
+ *                       Base class for complex TLVs                          *
+ ******************************************************************************/
+void 
+cplxtlvbase::parseHdr(uint16 theType, BufferObj & theBuf, uint16 minDataSize) 
+{ 
+    //Extracts the type and the length. Positions m_pos to point to the data
+    m_pos = theBuf.Pos();
+    uint32 remaining = theBuf.Remaining();
+    if ( remaining < sizeof(S_WSC_TLV_HEADER) + minDataSize)
+        throw "insufficient buffer size";
+
+    if (theType != WscNtohs(*((uint16 *) m_pos)) ) 
+        throw "unexpected type";
+
+    m_type = theType;
+
+    m_pos += sizeof(uint16 ); // advance to length field
+
+    m_len = WscNtohs(*((uint16 *) m_pos));
+    if (minDataSize > m_len) 
+        throw "length field too small";
+    
+    if (m_len + sizeof(S_WSC_TLV_HEADER) > remaining) 
+        throw "buffer overflow error";
+    
+    m_pos += sizeof(uint16 ); // advance to data field
+    theBuf.Advance( 2 * sizeof(uint16 ));
+}
+
+void 
+cplxtlvbase::writeHdr(uint16 theType, uint16 length, BufferObj & theBuf)
+{
+    //serializes the type and length. 
+    //Positions m_pos to point to the start of length
+    uint8 temp[sizeof(uint32)];
+
+    m_type = theType;
+    m_len = length;
+
+    //Copy the Type
+    *(uint16 *)temp = WscHtons(m_type);
+    theBuf.Append(sizeof(uint16), temp);
+    
+    //Copy the length
+    *(uint16 *)temp = WscHtons(m_len);
+    m_pos = theBuf.Append(sizeof(uint16), temp);
+}
+

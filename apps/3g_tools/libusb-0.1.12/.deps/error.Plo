@@ -1,0 +1,139 @@
+error.lo: error.c \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/errno.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/features.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/uClibc_config.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/uClibc_arch_features.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/sys/cdefs.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/errno.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/linux/errno.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/asm/errno.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/asm-generic/errno-base.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/string.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/include/stddef.h \
+  usb.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/unistd.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/posix_opt.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/types.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/wordsize.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/kernel_types.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/typesizes.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/pthreadtypes.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/sched.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/confname.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/getopt.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/stdlib.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/sys/types.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/time.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/endian.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/endian.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/sys/select.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/select.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/sigset.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/time.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/sys/sysmacros.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/alloca.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/include-fixed/limits.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/include-fixed/syslimits.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/limits.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/posix1_lim.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/local_lim.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/linux/limits.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/uClibc_local_lim.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/posix2_lim.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/dirent.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/dirent.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/sys/syscall.h \
+  /home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/sysnum.h \
+  error.h
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/errno.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/features.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/uClibc_config.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/uClibc_arch_features.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/sys/cdefs.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/errno.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/linux/errno.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/asm/errno.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/asm-generic/errno-base.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/string.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/include/stddef.h:
+
+usb.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/unistd.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/posix_opt.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/types.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/wordsize.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/kernel_types.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/typesizes.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/pthreadtypes.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/sched.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/confname.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/getopt.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/stdlib.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/sys/types.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/time.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/endian.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/endian.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/sys/select.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/select.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/sigset.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/time.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/sys/sysmacros.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/alloca.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/include-fixed/limits.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/include-fixed/syslimits.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/limits.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/posix1_lim.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/local_lim.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/linux/limits.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/uClibc_local_lim.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/posix2_lim.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/dirent.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/dirent.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/sys/syscall.h:
+
+/home/project/svn/TL-MR3020_V1/build/gcc-4.3.3/build_mips/staging_dir/usr/bin/../lib/gcc/mips-linux-uclibc/4.3.3/../../../../mips-linux-uclibc/include/bits/sysnum.h:
+
+error.h:

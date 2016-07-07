@@ -1,0 +1,119 @@
+5c5
+< # management frames); ath0 for madwifi
+---
+> # management frames)
+8,12d7
+< # In case of madwifi driver, an additional configuration parameter, bridge,
+< # must be used to notify hostapd if the interface is included in a bridge. This
+< # parameter is not used with Host AP driver.
+< #bridge=br0
+< 
+48c43
+< # Interface for separate control program. If this is specified, hostapd
+---
+> # Interface for separate control program. If this is specified, wpa_supplicant
+60c55
+< # possible to run hostapd as root (since it needs to change network
+---
+> # possible to run wpa_supplicant as root (since it needs to change network
+64c59
+< # cases. By default, hostapd is configured to use gid 0 (root). If you
+---
+> # cases. By default, wpa_supplicant is configured to use gid 0 (root). If you
+104c99
+< ##### IEEE 802.1X-2004 related configuration ##################################
+---
+> ##### IEEE 802.1X (and IEEE 802.1aa/D4) related configuration #################
+109,131c104,106
+< # Optional displayable message sent with EAP Request-Identity. The first \0
+< # in this string will be converted to ASCII-0 (nul). This can be used to
+< # separate network info (comma separated list of attribute=value pairs); see,
+< # e.g., draft-adrangi-eap-network-discovery-07.txt.
+< #eap_message=hello
+< #eap_message=hello\0networkid=netw,nasid=foo,portid=0,NAIRealms=example.com
+< 
+< # WEP rekeying (disabled if key lengths are not set or are set to 0)
+< # Key lengths for default/broadcast and individual/unicast keys:
+< # 5 = 40-bit WEP (also known as 64-bit WEP with 40 secret bits)
+< # 13 = 104-bit WEP (also known as 128-bit WEP with 104 secret bits)
+< #wep_key_len_broadcast=5
+< #wep_key_len_unicast=5
+< # Rekeying period in seconds. 0 = do not rekey (i.e., set keys only once)
+< #wep_rekey_period=300
+< 
+< # EAPOL-Key index workaround (set bit7) for WinXP Supplicant (needed only if
+< # only broadcast keys are used)
+< eapol_key_index_workaround=0
+< 
+< # EAP reauthentication period in seconds (default: 3600 seconds; 0 = disable
+< # reauthentication).
+< #eap_reauth_period=3600
+---
+> # Use integrated EAP authenticator instead of external RADIUS authentication
+> # server
+> eap_authenticator=0
+133,151c108
+< # Use PAE group address (01:80:c2:00:00:03) instead of individual target
+< # address when sending EAPOL frames with driver=wired. This is the most common
+< # mechanism used in wired authentication, but it also requires that the port
+< # is only used by one station.
+< #use_pae_group_addr=1
+< 
+< ##### Integrated EAP server ###################################################
+< 
+< # Optionally, hostapd can be configured to use an integrated EAP server
+< # to process EAP authentication locally without need for an external RADIUS
+< # server. This functionality can be used both as a local authentication server
+< # for IEEE 802.1X/EAPOL and as a RADIUS server for other devices.
+< 
+< # Use integrated EAP server instead of external RADIUS authentication
+< # server. This is also needed if hostapd is configured to act as a RADIUS
+< # authentication server.
+< eap_server=0
+< 
+< # Path for EAP server user database
+---
+> # Path for EAP authenticator user database
+170,180d126
+< # Enable CRL verification.
+< # Note: hostapd does not yet support CRL downloading based on CDP. Thus, a
+< # valid CRL signed by the CA is required to be included in the ca_cert file.
+< # This can be done by using PEM format for CA certificate and CRL and
+< # concatenating these into one file. Whenever CRL changes, hostapd needs to be
+< # restarted to take the new CRL into use.
+< # 0 = do not verify CRLs (default)
+< # 1 = check the CRL of the user certificate
+< # 2 = check all CRLs in the certificate path
+< #check_crl=1
+< 
+186a133,151
+> # Optional displayable message sent with EAP Request-Identity
+> eap_message=hello
+> 
+> # WEP rekeying (disabled if key lengths are not set or are set to 0)
+> # Key lengths for default/broadcast and individual/unicast keys:
+> # 5 = 40-bit WEP (also known as 64-bit WEP with 40 secret bits)
+> # 13 = 104-bit WEP (also known as 128-bit WEP with 104 secret bits)
+> #wep_key_len_broadcast=5
+> #wep_key_len_unicast=5
+> # Rekeying period in seconds. 0 = do not rekey (i.e., set keys only once)
+> #wep_rekey_period=300
+> 
+> # EAPOL-Key index workaround (set bit7) for WinXP Supplicant (needed only if
+> # only broadcast keys are used)
+> eapol_key_index_workaround=0
+> 
+> # EAP reauthentication period in seconds (default: 3600 seconds; 0 = disable
+> # reauthentication).
+> #eap_reauth_period=3600
+194c159
+< ##### RADIUS client configuration #############################################
+---
+> ##### RADIUS configuration ####################################################
+246,247d210
+< ##### RADIUS authentication server configuration ##############################
+< 
+259,261d221
+< # Use IPv6 with RADIUS server (IPv4 will also be supported using IPv6 API)
+< #radius_server_ipv6=1
+< 

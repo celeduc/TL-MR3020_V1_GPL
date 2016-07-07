@@ -1,0 +1,31 @@
+
+<HTML><HEAD><TITLE></TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<SCRIPT language="JavaScript" src="/dynaform/custom.js" type="text/JavaScript"></SCRIPT>
+</head>
+
+
+<H1>LAN Help</H1>
+<P>You can configure the IP parameters of LAN on this page.
+<ul>
+
+<lI><B>MAC Address</B> - The physical address of the LAN ports, as seen from the LAN. The value can not be changed.</lI>
+<lI><B>Type</B> - Choosing dynamic IP to get IP address from DHCP server, or choosing static IP to config IP address manually.</lI>
+<lI><B>IP Address</B> - Enter the IP address of your system in dotted-decimal notation (factory default: <SCRIPT language="JavaScript">document.write(default_ip);</SCRIPT>).</lI>
+<lI><B>Subnet Mask</B> - An address code that determines the size of the network. Normally 255.255.255.0 is used as the subnet mask. </lI>
+<lI><B>Gateway</B> - The gateway should be in the same subnet as your IP address.</lI>
+
+</ul>
+
+<p><B>Note</B>: </p>
+<ol type=1>
+<LI>If you change the IP address, you must use the new IP address to login the system.
+<LI>If you select the type of dynamic IP, the DHCP server in this device will not startup.
+<LI>If the new IP address you set is not in the same subnet, the IP Address pool in the DHCP server will not take effect, until they are re-configured.
+<LI>The device will reboot automatically after you click the <B>Save</B> button. 
+</ol>  
+<P>Click the <B>Save</B> button to save your settings.
+<p><B>Note</B>: When you choose the <B>Dynamic IP</B> mode, the DHCP Server function will be disabled.
+</DIV>
+</BODY></HTML>
+

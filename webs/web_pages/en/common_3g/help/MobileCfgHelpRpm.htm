@@ -1,0 +1,33 @@
+
+<HTML><HEAD><TITLE></TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<SCRIPT language="JavaScript" src="../dynaform/custom.js" type="text/JavaScript"></SCRIPT>
+</head>
+
+<H1>3G/4G Help</H1>
+<p><B>Location</B> - Please select the location where you're enjoying the 3G/4G card.</p>
+<p><B>Mobile ISP</B> - Please select the ISP(Internet Service Provider) you apply to for 3G/4G service. The Device will show the default Dial Number and APN of that ISP.</p>
+<SCRIPT type="text/javascript">
+	if ( display_pin_settings != 0 )
+	{
+		document.write('<p><B>SIM/UIM PIN</B> - Enter the PIN code if the SIM/UIM Protection is enabled. Please note that 3 times of wrong PIN code will lock your SIM/UIM card. You need to unlock it on the PC using PUK code.<\/p>');
+		document.write('<p><B>Message</B> - The PIN infomation of your SIM/UIM card will display only if the PIN Protection is enabled. There are four types of messages:<\/p>');
+		document.write('<OL><b>PIN protection is enabled. Please input PIN code</b> : It means the the SIM/UIM card\'s PIN protection has been enabled and correct PIN code needs to be entered to access the Internet.<\/OL>');
+		document.write('<OL><b>The SIM/UIM card is locked. Please unlock the SIM/UIM card first with your PUK code on PC/Laptop</B> : It means the SIM/UIM card is on PUK locked status and you should unlock it using PUK code on your PC/Laptop.<\/OL>');	
+		document.write('<OL><b>PIN code verification is successful</b>: Status which indicates that PIN code verification has been successful.<\/OL>');
+		document.write('<OL><b>The PIN code is invalid, please check it and try again</b> : It means the entered PIN code is invalid and you should enter the correct PIN code.<font style="color:red">Note: If you enter the invalid PIN code three times, the SIM/UIM card will be locked automatically and you can only unlock on your PC/Laptop using the PUK code.<\/font><\/OL>');
+	}
+</SCRIPT>
+<p><B>Connect on Demand</B> - You can configure the Device to disconnect your Internet connection after a specified period of the Internet connectivity (<B>Max Idle Time</B>). If your Internet connection has been terminated due to inactivity, <B>Connect on Demand </B> enables the Device to automatically re-establish your connection as soon as you attempt to access the Internet again. If you wish to activate <B>Connect on Demand</B>, click the radio button. If you want your Internet connection to remain active at all times, enter <B>0</B> in the <B>Max Idle Time</B> field. Otherwise, enter the number of minutes you want to have elapsed before your Internet connection terminates.</p>
+<p><B>Note</B> - Sometimes the connection cannot be disconnected although you specify a time to <B>Max Idle Time</B> because some applications visit the Internet continually in the background.</p>
+<p> <B>Connect Automatically</B> - Connect automatically after the Device is disconnected. To use this option, click the radio button.</p>
+<p> <B>Connect Manually</B> - You can configure the Device to make it connect or disconnect manually. After a specified period of inactivity (<B>Max Idle Time</B>), the Device will disconnect your Internet connection, and not be able to re-establish your connection automatically as soon as you attempt to access the Internet again. To use this option, click the radio button. If you want your Internet connection to remain active at all times, enter <B>0</B> in the <B>Max Idle Time</B> field. Otherwise, enter the number in minutes that you wish to have the Internet connecting last unless a new link requested.</p>
+<p><B>Note</B> - Sometimes the connection cannot be disconnected although you specify a time to <B>Max Idle Time</B> because some applications visit the Internet continually in the background.</p>
+<p><B>Authentication Type</B> - Some ISPs need a specifical authentication type,  please confirm it with your ISP or keep it Auto. There are three choices:</p>
+<OL><b>Auto</b> : The Device will have dynamic negotiation with the dialing server and the <B>Autnentication Type </B>need not to be specified. The default type is Auto.</OL>
+<OL><b>PAP</b> : Password Authentication Protocol. This protocol allows the Device to establish authentication with the peer using two handshakes. Select this option if the ISP requires this authentication type.</OL>
+<OL><b>CHAP</b> : Challenge Handshake Authentication Protocol. This protocol allows the route to establish authentication with the peer using three handshakes and checking the peer identity periodically. Select this option if the ISP requires this authentication type.</OL>
+<p>Click the <B>Advanced Settings</B> button to set up the advanced options.</p>
+<p>Click the <B>Save</B> button to save your settings.</p>
+<p>Click the <B>Modem Settings</B> button if your 3G/4G USB Modem is not supported by the Device.</p>
+</BODY></HTML>

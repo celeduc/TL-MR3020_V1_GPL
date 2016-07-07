@@ -1,0 +1,227 @@
+<SCRIPT language=javascript src="../localiztion/str_err.js" type=text/javascript></SCRIPT>
+<SCRIPT language="JavaScript" src="../dynaform/custom.js" type="text/JavaScript"></SCRIPT>
+<SCRIPT language=javascript src="../localiztion/char_set.js" type=text/javascript></SCRIPT>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<HTML>
+<HEAD>
+<SCRIPT type="text/javascript"><!--
+var t_survey_zujian = new Array(
+"ssid_client",
+"mac_client",
+"rptSsid",
+"rptBssid",
+"mptBssid1",
+"mptBssid2",
+"mptBssid3",
+"mptBssid4",
+"channel",
+"wds_enable",//9
+"Region",
+"uni_wds_r",
+"secType",
+"wepSecret",
+"wepSecOpt",
+"keytype",
+"keynum",
+"key1",
+"key2",
+"key3",
+"key4",
+"length1",
+"length2",
+"length3",
+"length4",
+"pskSecOpt",
+"pskCipher",
+"pskSecret",
+"interval",
+1
+);
+
+function doBack(){
+	location.href="/userRpm/WzdWlanApRpm.htm?" + geturl(1) + "&session_id=" + session_id;
+	
+}
+function doRefresh()
+{
+	location.href="/userRpm/WzdWlanSiteSurveyRpm_AP.htm?" + geturl(0) + "&session_id=" + session_id;
+}
+function geturl(n)
+{
+	var url = "survey="+n;
+	var i = 0;
+	while(t_survey_zujian[i]!=1)
+	{
+		url += "&"+t_survey_zujian[i] + "=" + wzdSurvey[i];
+		i++;
+	}
+	return url;
+}
+
+var transMatrixHTML = new Array(
+	/&/g, "&amp;",
+	/\\/g, "&#92;",
+	/'/g, "&#39;",
+	/"/g, "&quot;",
+	/</g, "&lt;",
+	/>/g, "&gt;",
+	/ /g, "&nbsp;"
+);
+function transToHTML(str)
+{
+	for (var i = 0; i < transMatrixHTML.length; i+=2)
+	{
+		str = str.replace(transMatrixHTML[i], transMatrixHTML[i+1]);
+	}
+	return str;
+}
+var transMatrixURL = new Array(
+	/%/g, "%25",
+	/#/g, "%23",
+	/&/g, "%26",
+	/;/g, "%3B",
+	/\\/g, "%5C",
+	/'/g, "%27",
+	/"/g, "%22",
+	/</g, "%3C",
+	/>/g, "%3E",
+	/ /g, "%20",
+	/\+/g, "%2B",
+	/\=/g, "%3D"
+);
+function transToURL(str)
+{
+	for (var i = 0; i < transMatrixURL.length; i+=2)
+	{
+		str = str.replace(transMatrixURL[i], transMatrixURL[i+1]);
+	}
+	return str;
+}
+var bssidName = new Array(
+	"<span id=\"t_none\">none<\/span>",
+	"apBssid",
+	"staBssid",
+	"staBssid",
+	"rptBssid",
+	"pptBssid",
+	"mptBssid",
+	"rptBssid"
+);
+var ssidName = new Array(
+	"<span id=\"t_none\">none<\/span>",
+	"apSsid",
+	"staSsid",
+	"staSsid",
+	"rptSsid",
+	"pptSsid",
+	"mptSsid",
+	"rptSsid"
+);
+//--></SCRIPT>
+</HEAD>
+<BODY onload="LoadHelp('SiteSurveyHelpRpm.htm');setTagStr(document,'ntw_popup_site_survey');resize(this);" onResize="resize(this);">
+<center><form action="WzdWlanSiteSurveyRpm_AP.htm" enctype="multipart/form-data" method="get">
+<TABLE width="502" border="0" align="center" cellpadding="0" cellspacing="0" id="autoWidth">
+	<TR>
+		<TD class=h1 colspan=2 id="t_title">AP List</TD>
+	</TR>
+	<TR>
+		<TD class=blue colspan=2></TD>
+	</TR>
+	<TR>
+		<TD colspan="2"><TABLE width="502" border="0" cellspacing="0" cellpadding="0">
+          <TR>
+            <TD width="1" rowspan="15" class="vline"><BR></TD>
+            <TD width="500"><TABLE align="center" width="400" border="0" cellpadding="0" cellspacing="0" class="space">
+				<TR>
+                  <TD>
+				  <TABLE border="0" width="390">
+					<TR>					  
+							<TD><span id="t_ap_count">AP Count:</span>
+								<SCRIPT type="text/javascript">document.write(siteSurveyPara[1]);</SCRIPT>
+							</TD>
+					</TR>
+							<TABLE width="450" border="0" align="center" class="space" cellspacing="0" cellpadding="0">
+							<TR>
+								<TD colspan=2>
+									<TABLE border="1" width="450" align="center" cellspacing="0" cellpadding="0">
+									<TR align="center">
+										<TD style="FONT-WEIGHT:bold;" id="t_id">&nbsp;ID</TD>
+										<TD style="FONT-WEIGHT:bold;" id="t_bssid">&nbsp;BSSID</TD>
+										<TD style="FONT-WEIGHT:bold;" id="t_ssid">&nbsp;SSID</TD>
+										<TD style="FONT-WEIGHT:bold;" id="t_signal0">&nbsp;Signal</TD>
+										<TD style="FONT-WEIGHT:bold;" id="t_channel">&nbsp;Channel</TD>
+										<TD style="FONT-WEIGHT:bold;" id="t_security0">&nbsp;Security</TD>
+										<TD style="FONT-WEIGHT:bold;" id="t_choose">&nbsp;Choose</TD>
+									</TR>
+<SCRIPT type="text/javascript">
+var listLen = siteSurveyPara[1];
+
+if (listLen >0)
+{
+	var row = 0;
+	var statusIndex;
+	var idStart = 0;
+	for(var i = 0; i < listLen; i++)
+	{
+		row = i * 5;
+		idStart ++;
+		document.write('<tr align="center"><td>' + idStart + '<\/td>');
+		for (var j = 0; j <= 4; j++)
+		{
+			var content = siteList[row+j].toString() ? siteList[row+j] : " ";
+			if (j == 4)
+			{
+				document.write('<td>' + (content == 0 ? 'OFF' : 'ON') + '<\/td>');
+			}
+			else if (j == 2)
+			{
+				document.write('<td>' + transToHTML(content.toString()) + 'dB<\/td>');
+			}
+			else
+			{
+				document.write('<td>' + transToHTML(content.toString()) + '<\/td>');
+			}
+		}
+		if ((0 == siteSurveyPara[0]) || (1 == siteSurveyPara[0]))
+		{
+			document.write('<td>&nbsp;<\/td><\/tr>');
+		}
+		else
+		{
+			document.write('<td>' + '<a href="/userRpm/WzdWlanApRpm.htm?'+ geturl(2) + '&survey_ssid=' + transToURL(siteList[row + 1].toString()) + '&survey_mac=' + transToURL(siteList[row + 0].toString()) + '&survey_channel=' + transToURL(siteList[row + 3].toString()) + '&survey_sec=' + transToURL(siteList[row + 4].toString()) + "&session_id=" + session_id +'" id="t_conn" name="t_conn">Connect<\/a><\/td><\/tr>');
+		}
+	}
+}
+else
+{
+	document.write('<tr align="center"><td>&nbsp;<\/td><td>&nbsp;<\/td><td>&nbsp;<\/td><td>&nbsp;<\/td><td>&nbsp;<\/td><td>&nbsp;<\/td><td>&nbsp;<\/td><\/TR>');
+}
+</SCRIPT>
+									</TABLE>
+								</TD>
+							</TR>
+							</TABLE>
+					<TR>
+						<TD class="vline" rowspan="15"><BR></TD>
+					</TR>
+				</TABLE>
+				</TD>
+                </TR>
+				<TR>
+					<TD colspan=2 class=blue>&nbsp;</TD>
+				</TR>
+				<TR>
+					<TD align="center">
+						<INPUT name="Back" type="button" class="button" value="Back" onClick="doBack();">
+						<input class="button" id="Refresh" onclick="doRefresh(1);" type="button" value="Refresh">
+					</TD>
+				</TR>
+			</TD>
+		</TR>
+		</TD>
+	</TR>
+</table>
+</form></center>
+</BODY></html>
+

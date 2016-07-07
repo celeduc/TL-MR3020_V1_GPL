@@ -1,0 +1,27 @@
+<LINK href="../dynaform/css_help.css" rel=stylesheet>
+<!--<TP_C_TAG>-->
+<HTML><HEAD><TITLE></TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+</head>
+
+	 <H1>WAN Connection Type Help</H1>
+	 <P>The <B>Quick Setup</B> supports <span id=typeNum>five</span> popular types of connection. To make sure the connection type your ISP provides, please refer to the ISP.
+	 <P><B>Auto Detect</B> - If you don't know the connection type your ISP provides, use this option to allow the Quick Setup to search your Internet connection for servers and protocols and determine your ISP configuration. Make sure the cable is securely plugged into the WAN port before detection. The appropriate configuration page will be displayed when an active Internet service is successfully detected by the Device. </P>
+	 <P><strong>Dynamic IP </strong> - When the Device connects to a DHCP server, or the ISP supplies you with DHCP connection, please choose this type. The Device will get the IP address automatically from the DHCP server or the ISP if you choose the Dynamic IP type.
+	 <P><B>Static IP</B> - In this type, you should fill in the IP address, Subnet Mask, Default Gateway, and DNS IP address manually, which are specified by your ISP.
+	 <P><B>PPPoE/Russia PPPoE</B> - If you have applied ADSL to realize Dial-up service, you should choose this type. Under this condition, you should fill in both the User Name and Password that the ISP supplied.
+	 <P id = l2tp><B>L2TP/Russia L2TP </B> - In this type, you should fill in the username, password and IP address/Domain name of VPN Server.
+	 <P id = pptp><B>PPTP/Russia PPTP </B> - In this type, you should fill in the username, password and IP address/Domain name of VPN Server.
+	 <P>Click the <B>Next</B> button to continue or the <B>Back</B> button to go back to the previous page.
+<SCRIPT type="text/javascript">
+	var args = new Object();
+	args = getUrlParms();
+	if(args["l2tp"] == "0") document.getElementById("l2tp").style.display = "none";
+	if(args["pptp"] == "0") document.getElementById("pptp").style.display = "none";
+
+	if(args["l2tp"] == "0" && args["pptp"] == "0") document.getElementById("typeNum").innerHTML = "three";
+	if((args["l2tp"] == "0" && args["pptp"] != "0") ||
+		(args["l2tp"] != "0" && args["pptp"] == "0")) document.getElementById("typeNum").innerHTML = "four";
+	if(args["l2tp"] != "0" && args["pptp"] != "0") document.getElementById("typeNum").innerHTML = "five";
+</SCRIPT>
+

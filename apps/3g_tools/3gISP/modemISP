@@ -1,0 +1,28 @@
+vendorID=0x028a productID=0x1006 ISP=1  #U520
+
+vendorID=0x04cc productID=0x2259 ISP=2  #ASB-T920
+vendorID=0x04cc productID=0x225a ISP=2  #TU930
+
+vendorID=0x12d1 productID=0x1001 ISP=1  #E180 E1750 E2010 E169G E1762 E1750
+vendorID=0x12d1 productID=0x1001 ISP=0  #EC169c EC169 EC1260
+vendorID=0x12d1 productID=0x1003 ISP=1  #E230 E226 E176G E220
+vendorID=0x12d1 productID=0x140c ISP=0  #EC156 EC189 EC122
+vendorID=0x12d1 productID=0x1436 ISP=1  #E261 E1780
+vendorID=0x12d1 productID=0x14ac ISP=1  #E153
+vendorID=0x12d1 productID=0x1506 ISP=1  #E353
+vendorID=0x12d1 productID=0x1d09 ISP=2  #ET128 ET127
+
+vendorID=0x19d2 productID=0x0001 ISP=1  #MF622
+vendorID=0x19d2 productID=0x0003 ISP=2  #MU351 MU350
+vendorID=0x19d2 productID=0x0017 ISP=1  #MF668
+vendorID=0x19d2 productID=0x0031 ISP=1  #MF633 MF627 MF100 MF637U MF633BP+ MF626
+vendorID=0x19d2 productID=0x0079 ISP=2  #A356  
+vendorID=0x19d2 productID=0x0094 ISP=0  #AC583 AC560 AC591 AC582 AC590
+vendorID=0x19d2 productID=0x0152 ISP=0  #AC580
+vendorID=0x19d2 productID=0xfff1 ISP=0  #AC2766 AC8710 AC2716 AC2726 AC2736 AC2746
+
+vendorID=0x19f5 productID=0x9909 ISP=0  #ET300
+
+vendorID=0x1c9e productID=0x9603 ISP=1  #WM3080A-300U
+vendorID=0x1e0e productID=0xce16 ISP=0  #Dlink-DWM-162-U5   
+vendorID=0x1e89 productID=0x1a20 ISP=1  #SRT-H800

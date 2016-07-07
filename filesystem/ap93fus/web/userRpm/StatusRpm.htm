@@ -1,0 +1,376 @@
+
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<SCRIPT language="JavaScript">
+<!-- 
+function doRefresh()
+{
+location.href="/userRpm/StatusRpm.htm"; return true;
+}
+
+function doConnect(n)
+{
+var s = "&wan="+n;
+location.href="/userRpm/StatusRpm.htm?Connect=连 接"+s;return true;
+}
+
+function doDisConnect(n)
+{
+var s = "&wan="+n;
+location.href="/userRpm/StatusRpm.htm?Disconnect=断 线"+s;return true;
+}
+
+function doRenew(n)
+{var s = "&wan="+n;
+location.href="/userRpm/StatusRpm.htm?RenewIp=更 新"+s;return true;
+}
+
+function doRelease(n)
+{
+var s = "&wan="+n;
+location.href="/userRpm/StatusRpm.htm?ReleaseIp=释 放"+s;return true;
+}
+
+function doSecRenew(n)
+{
+	var s = "&wan="+n;
+	location.href="StatusRpm.htm?RenewSecIp=1"+s;return true;
+}
+
+function doSecRelease(n)
+{
+	var s = "&wan="+n;
+	location.href="StatusRpm.htm?ReleaseSecIp=1"+s;return true;
+}
+
+function doLogin(n)
+{
+var s = "&wan="+n;
+location.href="/userRpm/StatusRpm.htm?Login=登 录"+s;return true;
+}
+function doLogout(n)
+{
+var s = "&wan="+n;
+location.href="/userRpm/StatusRpm.htm?Logout=退 出"+s;return true;
+}
+
+//some string define
+//WAN_status string define
+var wanStatusStringArray = new Array( 
+" ",				//0
+"<font color=\"FF0000\">已禁用</font>",			//1
+"<font color=\"FF0000\">等待应答超时</font>",			//2
+"<font color=\"FF0000\">网线没有插好</font>",			//3
+"线路正常"				//4
+);
+
+var wlanTypeStringArray = new Array( 
+" ",
+"11b only",
+"11g only",
+"11n only",
+"11bg mixed",
+"11bgn mixed",
+" "
+);
+//WAN_type string define
+var wanTypeStringArray = new Array( 
+"",					//0
+"动态IP",					//1
+"静态IP",			//2
+"PPPoE",				//3
+"IEEE802.1X + 动态IP",	//4
+"IEEE802.1X + 静态IP",	//5
+"BPA",	//6
+"L2TP",	//7
+"PPTP",
+"DHCP+"
+);
+//802.1x login status string define
+var IEEE8021xLoginStringArray = new Array( 
+" ",				//0
+"未登录",		//1
+"登录中",	//2
+"登录成功"//3
+);
+//DHCP status string define
+var DHCPStringArray = new Array( 
+" ",				//0
+"正在获取..."		//1
+);
+var wlanChannelWidthArray = new Array(
+"",
+"20MHz",
+"自动",
+"40MHz"
+);
+
+-->
+</SCRIPT>
+</HEAD>
+<BODY>
+<CENTER>
+  <FORM action="StatusRpm.htm" enctype="multipart/form-data" method="get">
+    <!--  // LAN -->
+    <TABLE width="502" border="0" cellpadding="0" cellspacing="0" class="space">
+      <TR>
+        <TD width="7" class="title"><IMG src="/images/arc.gif" width="7" height="24"></TD>
+        <TD width="495" align="left" valign="middle" class="title">版本信息</TD>
+      </TR>
+      <TR>
+        <TD colspan="2"><TABLE width="502" border="0" cellspacing="0" cellpadding="0">
+            <TR>
+              <TD width="1" rowspan="15" class="vline"><BR></TD>
+              <TD width="500" height="50"><TABLE width="400" border="0" align="center" class="space">
+                  <TR>
+                    <TD width="100">当前软件版本：</TD>
+                    <TD><DIV id="fversion">-</DIV></TD>
+                  </TR>
+                  <TR>
+                    <TD>当前硬件版本：</TD>
+                    <TD><DIV id="hversion">-</DIV></TD>
+                  </TR>
+                </TABLE></TD>
+              <TD width="1" rowspan="15" class="vline"><BR></TD>
+            </TR>
+            <TR>
+              <TD class="hline"><IMG src="/images/empty.gif" width="1" height="1"></TD>
+            </TR>
+          </TABLE></TD>
+      </TR>
+    </TABLE>
+    <TABLE width="502" border="0" cellpadding="0" cellspacing="0" class="space">
+      <TR>
+        <TD width="7" class="title"><IMG src="/images/arc.gif" width="7" height="24"></TD>
+        <TD width="495" align="left" valign="middle" class="title">LAN口状态</TD>
+      </TR>
+      <TR>
+        <TD colspan="2"><TABLE width="502" border="0" cellspacing="0" cellpadding="0">
+            <TR>
+              <TD width="1" rowspan="15" class="vline"><BR></TD>
+              <TD width="500" height="50"><TABLE width="400" border="0" align="center" class="space">
+                  <TR>
+                    <TD width="110">MAC 地址：</TD>
+                    <TD width="320"><DIV id="lanMac">-</DIV></TD>
+                  </TR>
+                  <TR>
+                    <TD>IP地址：</TD>
+                    <TD><DIV id="lanIP">-</DIV></TD>
+                  </TR>
+                  <TR>
+                    <TD>子网掩码：</TD>
+                    <TD><DIV id="lanMask">-</DIV></TD>
+                  </TR>
+                </TABLE></TD>
+              <TD width="1" rowspan="15" class="vline"><BR></TD>
+            </TR>
+            <TR>
+              <TD class="hline"><IMG src="/images/empty.gif" width="1" height="1"></TD>
+            </TR>
+          </TABLE></TD>
+      </TR>
+    </TABLE>
+    <!-- temp -->
+    <SCRIPT language="JavaScript">
+<!--
+var maskType = lanPara[2];
+if (statusPara[0] == 1)
+{
+var wlanSta = (wlanPara[0] == 0)?"关闭":"启用";
+var wlanName =wlanPara[1];
+var wlanChannel=wlanPara[2];
+var wlanModeIndex=wlanPara[3];
+var wlanMac=wlanPara[4];
+var wlanIp=wlanPara[5];
+//Wireless
+//---draw table head
+document.write('<table width="502" border="0" cellpadding="0" cellspacing="0" class="space"><tr><td width="7" class="title"><img src="/images/arc.gif" width="7" height="24"></td><td width="495" align="left" valign="middle" class="title">无线状态</td></tr><tr><td colspan="2"><table width="502" border="0" cellspacing="0" cellpadding="0">	<tr><td width="1" rowspan="15" class="vline"><br> </td><td width="500" height="50"> <table width="400" border="0" align="center" class="space">');
+//---output data												
+document.write('<tr><td width="110" >无线功能：</td><td width="320">'+ wlanSta +'</td></tr>');
+document.write('<tr><td >SSID号：</td><td >'+ wlanName +'</td></tr>');
+document.write('<tr><td>信 道：</td><td>'+ wlanChannel +'</td></tr>');
+    document.write('<tr><td>模 式：</td><td >'+ wlanTypeStringArray[wlanModeIndex] +'</td></tr>');
+
+document.write('<TR><TD>频段带宽：</TD><td >'+ wlanChannelWidthArray[wlanPara[6]] +'</td>');
+document.write('<TR><TD class=Item >最大发送速率：</TD><td >'+ rateTable[(wlanPara[8]-1)/2] +'</td>');
+document.write('<tr><td>MAC 地址：</td><td>'+ wlanMac +'</td></tr>');
+document.write('<tr style = "display:none"><td>IP 地址：</td><td>'+ wlanIp +'</td></tr>');
+//---draw table bottom														
+document.write('</table></td><td width="1" rowspan="15" class="vline"><br> </td></tr><tr><td class="hline"><img src="/images/empty.gif" width="1" height="1"></td></tr></table></td></tr></table>');
+}
+//WAN
+var row = 0;
+var wanStatusIndex;
+var wanTypeIndex;
+var IEEE8021xStatusIndex;
+var DHCPBtnStatus;
+var DHCPStatusIndex;
+//---draw table head
+document.write('<table width="502" border="0" cellpadding="0" cellspacing="0" class="space"><tr><td width="7" class="title"><img src="/images/arc.gif" width="7" height="24"></td><td width="495" align="left" valign="middle" class="title">WAN口状态</td></tr><tr><td colspan="2"><table width="502" border="0" cellspacing="0" cellpadding="0">	<tr><td width="1" rowspan="15" class="vline"><br> </td><td width="500" height="50"> ');
+for (var i=1; i<=statusPara[1]; i++)	{
+	row = (i-1) * statusPara[2];
+//title and status
+//---more than one wan port
+if (statusPara[1] != 1){
+wanStatusIndex = wanPara[row];
+//---output data
+document.write('<table width="450" border="0" align="center" class="space"><TR bgcolor="#EBEBEB"><TD >WAN口：'+i+'&nbsp;&nbsp;' + wanStatusStringArray[wanStatusIndex] +'</td></TR></table>');
+}
+document.write('<table width="400" border="0" align="center" class="space">');
+//MAC address
+document.write('<tr><td width="110">MAC 地址：</td><td width="140">' + wanPara[row+1] +'</td><td width="171">&nbsp;</td></tr>');
+//IP Addr. & wan type
+wanTypeIndex = wanPara[row+3];
+document.write('<TR><TD >IP地址：</TD><TD>' + wanPara[row+2] +'</TD><TD>' + wanTypeStringArray[wanTypeIndex] +'</TD></TR>');
+//Subnet Mask
+document.write('<TR><TD >子网掩码：</TD><TD>' + wanPara[row+4] +'</TD>');
+//802.1x Type
+IEEE8021xStatusIndex = wanPara[row+6];
+if (wanPara[row+5] == 1)			//button is logout
+	document.write('<TD ><input name=Logout type=button class=button value="退 出" onClick="return doLogout(' + i +');">&nbsp;&nbsp;' + IEEE8021xLoginStringArray[IEEE8021xStatusIndex] +'</TD></TR>');
+else if 	(wanPara[row+5] == 2)	//button is login
+	document.write('<TD ><input name=Login type=button class=button value="登 录" onClick="return doLogin(' + i +');">&nbsp;&nbsp;' + IEEE8021xLoginStringArray[IEEE8021xStatusIndex] +'</TD></TR>');
+else								//not 802.1x
+	document.write('<TD>&nbsp;</TD></TR>');
+//Default Gateway
+document.write('<TR><TD >网关：</TD><TD>' + wanPara[row+7] +'</TD>');
+//DHCP status
+DHCPBtnStatus = (wanPara[row+9] == 0)?"disabled":" ";
+DHCPStatusIndex = wanPara[row+10];
+if (wanPara[row+8] == 1)			//DHCP release
+	document.write('<TD ><input name=ReleaseIp type=button class=button value="' + ((wanTypeIndex == 9) ? '断 开' : '释 放') + '" onClick="return doRelease(' + i +');" ' + DHCPBtnStatus +'>&nbsp;&nbsp;' + DHCPStringArray[DHCPStatusIndex] +'</TD></TR>');
+else if 	(wanPara[row+8] == 2)	//DHCP renew
+	document.write('<TD ><input name=RenewIp type=button class=button value="' + ((wanTypeIndex == 9) ? '连 接' : '更 新') + '" onClick="return doRenew(' + i +');" ' + DHCPBtnStatus +'>&nbsp;&nbsp;' + DHCPStringArray[DHCPStatusIndex] +'</TD></TR>');
+else								//DHCP disable
+	document.write('<TD>&nbsp;</TD></TR>');
+//Default Gateway
+document.write('<TR><TD >DNS 服务器：</TD><TD colspan=2>' + wanPara[row+11] +'</TD></TR>');	
+if(3==wanTypeIndex || 6==wanTypeIndex || 7==wanTypeIndex || 8==wanTypeIndex)
+{
+	document.write('<TR><TD >上网时间：</TD><TD>' + wanPara[row+12] +'</TD>');
+if (wanPara[row+13] == 0)
+	document.write('<TD><input name=Connect type=button class=button id=Connect  value=\"连 接\" onClick="return doConnect(' + i +');" ></TD></TR>');
+else if (wanPara[row+13] == 1)
+	document.write('<TD><input name=Disconnect type=button class=button id=Disconnect value=\"断 线\" onClick="return doDisConnect(' + i +');" ></TD></TR>');
+else if (wanPara[row+13] == 2)
+	document.write('<TD >正在连接……</TD></TR>');
+//else PPPoe disable	
+}
+	if(3==wanTypeIndex)
+	{
+		if(0!=wanPara[14])
+		{
+			var SecType = wanPara[14];
+			document.write('</TABLE></TD><td width="1" rowspan="15" class="vline"><br> </td></TR><TR><TD class=h2 colspan=3><b>&nbsp;&nbsp;&nbsp;&nbsp;第二连接</b></TD></TR>');
+			document.write('<TR><TD><TABLE width="400" border="0" align="center" class="space"><TR><TD width="110">IP 地址：</TD><TD  width="140">' + wanPara[15] +'</TD><TD width="180">' + wanTypeStringArray[SecType] +'</TD></TR>');
+			document.write('<TR><TD>子网掩码：</TD><TD>' + wanPara[16] +'</TD>');
+			if (1==SecType)
+			{
+				var SecDHCPStat = wanPara[17];
+				if (wanPara[18]==1)
+				{
+					document.write('<TD class=emp><input name=RenewSecIp type=button class=button value="更 新" onClick="return doSecRenew(' + i +');">&nbsp;&nbsp;' + DHCPStringArray[SecDHCPStat] +'</TD></TR>');
+				}
+				else if(wanPara[19]==1)
+				{
+					document.write('<TD class=emp><input name=ReleaseSecIp type=button class=button value="释 放" onClick="return doSecRelease(' + i +');">&nbsp;&nbsp;' + DHCPStringArray[SecDHCPStat] +'</TD></TR>');
+				}
+				else
+				{
+					document.write('<TD class=emp><input name=RenewSecIp type=button class=button value="更 新" onClick="return doSecRenew(' + i +');" disabled>&nbsp;&nbsp;' + DHCPStringArray[SecDHCPStat] +'</TD></TR>');
+				}			
+			}
+		}
+	}
+}
+if (0!=wanPara[14])
+{
+	document.write('</table></td></tr><tr><td class="hline"><img src="/images/empty.gif" width="1" height="1"></td></tr></table></td></tr></table>');
+}
+else
+{
+	document.write('</table></td><td width="1" rowspan="15" class="vline"><br> </td></tr><tr><td class="hline"><img src="/images/empty.gif" width="1" height="1"></td></tr></table></td></tr></table>');	
+}
+-->
+</SCRIPT>
+    <TABLE width="502" border="0" cellpadding="0" cellspacing="0" class="space">
+      <TR>
+        <TD width="7" class="title"><IMG src="/images/arc.gif" width="7" height="24"></TD>
+        <TD width="495" align="left" valign="middle" class="title">WAN口流量统计 </TD>
+      </TR>
+      <TR>
+        <TD colspan="2"><TABLE width="502" border="0" cellspacing="0" cellpadding="0">
+            <TR>
+              <TD width="1" rowspan="15" class="vline"><BR></TD>
+              <TD width="500" height="50"><TABLE width="400" border="0" align="center" class="space">
+                  <SCRIPT language="JavaScript">
+<!--
+if (statusPara[1] == 1){
+	document.write('<TR><td width="110">&nbsp;</td><TD>接收</TD><TD>发送</TD></TR>');
+	document.write('<TR><TD >字节数：</TD><TD width = "140">' + statistList[0] + '</TD><TD width ="160" >' + statistList[1] + '</TD></TR>');
+	document.write('<TR><TD >数据包数：</TD><TD >' + statistList[2] + '</TD><TD >' + statistList[3] + '</TD></TR>');
+}
+else
+{
+document.write('<tr><td>&nbsp;</td><td >接收字节数</td><td >发送字节数</td><td >接收数据包数</td><td >发送数据包数</td></tr>');
+var total1=0;
+var total2=0;
+var total3=0;
+var total4=0;
+for (var i=0; i<statusPara[1]; i++){
+	total1 = total1 + statistList[i*4];
+	total2 = total2 + statistList[i*4+1];
+	total3 = total3 + statistList[i*4+2];
+	total4 = total4 + statistList[i*4+3];
+}
+document.write('<tr><td >总数据</td><td >' + total1 + '</td><td >' + total2 + '</td><td >' + total3 + '</td><td >' + total4 + '</td></tr>');
+for (var i=1; i<=statusPara[1]; i++)
+	document.write('<tr><td >WAN口 ' + i + '</td><td >' + statistList[i*4-4] + '</td><td >' + statistList[i*4-3] + '</td><td >' + statistList[i*4-2] + '</td><td >' + statistList[i*4-1] + '</td></tr>');
+}
+-->
+</SCRIPT>
+                </TABLE></TD>
+              <TD width="1" rowspan="15" class="vline"><BR></TD>
+            </TR>
+            <TR>
+              <TD class="hline"><IMG src="../images/empty.gif" width="1" height="1"></TD>
+            </TR>
+          </TABLE></TD>
+      </TR>
+    </TABLE>
+    <TABLE width="500" border="0">
+      <TR>
+        <TD colspan=3><TABLE width="400" border="0" align="center">
+            <TR>
+              <TD  width="110">运行时间：</TD>
+              <TD width = "140"><DIV id="activeTime">-</DIV></TD>
+              <TD  width = "160" align="left"><INPUT name="Refresh"  class="button"  type="button" id="Refresh" value="刷 新" onClick="return doRefresh();"></TD>
+            </TR>
+          </TABLE></TD>
+      </TR>
+    </TABLE>
+  </FORM>
+</CENTER>
+</BODY>
+<HEAD>
+<META http-equiv="pragma" content="no-cache">
+</HEAD>
+</HTML>
+<SCRIPT language="JavaScript">
+<!--
+var timeout = statusPara[3];
+window.setTimeout("doRefresh()",timeout);
+var unDays		= parseInt(statusPara[4]/(24*60*60),10);
+var unHours 	= parseInt((statusPara[4]%(24*60*60))/(60*60),10);
+var unMinutes	= parseInt(((statusPara[4]%(24*60*60))%(60*60))/60,10);
+var unSeconds 	= ((statusPara[4]%(24*60*60))%(60*60))%60;
+unHours = (unHours < 10)?("0"+unHours):unHours;
+unMinutes = (unMinutes < 10)?("0"+unMinutes):unMinutes;
+unSeconds = (unSeconds < 10)?("0"+unSeconds):unSeconds;
+document.getElementById("activeTime").innerHTML = unDays+" 天 "+unHours+":"+unMinutes+":"+unSeconds;
+document.getElementById("fversion").innerHTML = statusPara[5];
+document.getElementById("hversion").innerHTML = statusPara[6];
+document.getElementById("lanMac").innerHTML = lanPara[0];
+document.getElementById("lanIP").innerHTML = lanPara[1];
+document.getElementById("lanMask").innerHTML = lanPara[2];
+-->
+</SCRIPT>

@@ -1,0 +1,64 @@
+#3020 lan and wan swapped.
+export CONFIG_ATHR_PHY_SWAP = 1
+
+#3020 have 3G
+export CONFIG_3G_TOOLS = 1
+export INCLUDE_3G = 1
+
+#declare specific product id
+export CONFIG_PID_MR302001=y
+
+export DEVICE_PORTABLE=y
+
+#jumpstart led gpio definition
+export GPIO_JUMPSTART_LED_BIT=26
+export GPIO_JUMPSTART_LED_ON=0
+
+#internet led gpio definition
+export GPIO_INTERNET_LED_BIT=27
+export GPIO_INTERNET_LED_ON=0
+
+#WLAN led gpio definition
+export GPIO_WLAN_LED_BIT=0
+export GPIO_WLAN_LED_ON=1
+
+#Reset fac default gpio definition
+export GPIO_RESET_FAC_BIT=11
+export GPIO_FAC_RST_HOLD_TIME=5
+export JUMPSTART_RST_MULTIPLEXED=y
+
+#muti-sysmode controlled by hardware
+export SUPPORT_HARDWARE_MULTI_MODE=y
+export SYS_MODE_GPIO_1=18
+export SYS_MODE_GPIO_2=20
+
+#usb power on/off
+export GPIO_USB_POWER_SUPPORT=8
+export GPIO_USB_POWER_ON=1
+
+export MODE_AP=y
+export MODE_APC_ROUTER=y
+export MODE_3G_ROUTER=y
+
+# CUSTOMIZED LOGIN PAGE
+export USE_CUSTOMIZED_LOGIN_PAGE_EN=1
+
+# FIRMWARE RECOVERY 
+export FIRMWARE_RECOVERY=1
+export FIRMWARE_RECOVERY_NAME=mr3020v1_tp_recovery.bin
+
+# BACKUP PID and VID
+export INCLUDE_EXPORT_PRODUCTINFO=y
+
+#Reduce power HT40 1dB HT20 0.5dB for 3020
+export REDUCE_PWR_FOR_3020=1
+
+# [lixiangkui] change wireless switch to:
+# 3G/4G           提供AP VAP开关
+# Normal router   不提供开关，ap on
+# AP              提供AP VAP开关
+# WISP            提供AP VAP开关
+# Client          不提供开关，ap down
+# Repeater        提供AP VAP开关
+# Bridge          提供AP VAP开关
+export CONFIG_CHANGE_WIRELESS_SWITCH=1

@@ -1,0 +1,17 @@
+#!/bin/sh
+
+for i in $@
+do
+	echo "" >> $i
+	a=`sed -n '/<TP_C_TAG>/=' $i`
+	b=`wc -l $i | awk '{print $1}'`
+	if [ "$a" == "" ]
+		then a=0;
+		b=`expr $b + 1`
+	fi
+	a=`expr $b - $a`
+	tail -n $a $i > $i.0
+	cp -f $i.0 $i
+	rm -f $i.0
+done
+

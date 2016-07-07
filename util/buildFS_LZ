@@ -1,0 +1,36 @@
+#!/bin/bash
+# [pangxing] If built on a x86_64 arch, use 64-bit libfakeroot.so, else use 32-bit one.
+arch=`uname -m`
+if [[ $arch == 'x86_64' ]]; then
+	export LD_LIBRARY_PATH=$TOPDIR/util/xutil/libfakeroot:/lib:/usr/lib
+	export LD_PRELOAD=libfakeroot-sysv.so
+	echo "load libfakeroot.so (x86_64) from $LD_LIBRARY_PATH: OK"
+fi
+
+echo "mkdev"
+rm -rf $INSTALL_ROOT_FOR_BOARD/dev/*
+$TOPDIR/util/mkdev.new
+#$TOPDIR/util/mkdev
+
+echo "xtest1 fakeroot, env value:"
+echo "FAKEROOTKEY=$FAKEROOTKEY"
+echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
+echo "LD_PRELOAD=$LD_PRELOAD"
+echo "xtest1 fakeroot, whoami: `whoami`"
+ls -l $INSTALL_ROOT_FOR_BOARD/dev/
+
+# use 32-bit libfakeroot.so
+export LD_LIBRARY_PATH=$TOPDIR/util/fakeroot/fakeroot/.libs:/lib:/usr/lib
+export LD_PRELOAD=libfakeroot.so
+echo "load libfakeroot.so (x86_32) from $LD_LIBRARY_PATH: OK"
+
+echo "mksquashfs4"
+# use "-processors 4" to fix bug found on Ubuntu 11 (x86_64): FATAL ERROR:lzma::compress failed memory allocation error
+$TOPDIR/util/mksquashfs4 $INSTALL_ROOT_FOR_BOARD $IMAGEPATH/$BOARD_TYPE-squashfs -noappend -always-use-fragments -all-root -processors 4
+
+echo "xtest2 fakeroot, env value:"
+echo "FAKEROOTKEY=$FAKEROOTKEY"
+echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"
+echo "LD_PRELOAD=$LD_PRELOAD"
+echo "xtest2 fakeroot, whoami: `whoami`"
+ls -l $INSTALL_ROOT_FOR_BOARD/dev/

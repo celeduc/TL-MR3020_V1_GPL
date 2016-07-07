@@ -1,0 +1,832 @@
+------------------------------------------------------------------------
+r21672 | zhouqiqiu@tp-link.net | 2013-06-19 01:12:48 -0700 (Wed, 19 Jun 2013) | 1 line
+
+[for all] merge to fix bug 32909
+------------------------------------------------------------------------
+r21638 | xiongliuzhong@tp-link.net | 2013-06-18 05:27:04 -0700 (Tue, 18 Jun 2013) | 1 line
+
+*)[for wr820n 1.0]use wr842n 4.0 temporarily, use gpio 12 for reset
+------------------------------------------------------------------------
+r21603 | zhangmenglong@tp-link.net | 2013-06-17 23:00:30 -0700 (Mon, 17 Jun 2013) | 1 line
+
+[for 3g]eject modem wm-d300
+------------------------------------------------------------------------
+r21584 | xiongliuzhong@tp-link.net | 2013-06-17 18:49:48 -0700 (Mon, 17 Jun 2013) | 1 line
+
+*)modify for using vxworks calibate linux
+------------------------------------------------------------------------
+r21558 | xiongliuzhong@tp-link.net | 2013-06-17 00:41:17 -0700 (Mon, 17 Jun 2013) | 1 line
+
+*)[for ap143]copy gpio driver from hornet
+------------------------------------------------------------------------
+r21552 | jimingting@tp-link.net | 2013-06-16 00:55:05 -0700 (Sun, 16 Jun 2013) | 1 line
+
+*) modify honeybee config, disable ATH_WDS_SUPPORT_APONLY and ATH_GPIO_LED.
+------------------------------------------------------------------------
+r21550 | jimingting@tp-link.net | 2013-06-15 23:41:15 -0700 (Sat, 15 Jun 2013) | 1 line
+
+*) modify honeybee config file.
+------------------------------------------------------------------------
+r21501 | zhouqiqiu@tp-link.net | 2013-06-13 01:28:34 -0700 (Thu, 13 Jun 2013) | 1 line
+
+[for all]update mode_switch.conf
+------------------------------------------------------------------------
+r21490 | zhoubin@tp-link.net | 2013-06-12 23:29:03 -0700 (Wed, 12 Jun 2013) | 1 line
+
+added for lan&wan swap
+------------------------------------------------------------------------
+r21417 | chengdanhao@tp-link.net | 2013-06-08 01:27:37 -0700 (Sat, 08 Jun 2013) | 1 line
+
+[for 3g]for BUG 32700, replace phone webpage files with files in oem directory.
+------------------------------------------------------------------------
+r21413 | chengdanhao@tp-link.net | 2013-06-08 00:59:58 -0700 (Sat, 08 Jun 2013) | 1 line
+
+[for 3g]for BUG 32700, replace phone webpage files with files in oem directory.
+------------------------------------------------------------------------
+r21406 | huanglifu@tp-link.net | 2013-06-07 23:44:44 -0700 (Fri, 07 Jun 2013) | 1 line
+
+[for 3g]for BUG 32700, replace phone webpage files with files in oem directory.
+------------------------------------------------------------------------
+r21388 | huanglifu@tp-link.net | 2013-06-07 18:43:38 -0700 (Fri, 07 Jun 2013) | 1 line
+
+[for 3g]for BUG 32700, replace phone webpage files with files in oem directory.
+------------------------------------------------------------------------
+r21370 | xiongliuzhong@tp-link.net | 2013-06-06 23:15:44 -0700 (Thu, 06 Jun 2013) | 1 line
+
+*)[for ap143]we donn't use art.ko temporary, for compile
+------------------------------------------------------------------------
+r21366 | xiongliuzhong@tp-link.net | 2013-06-06 23:00:20 -0700 (Thu, 06 Jun 2013) | 1 line
+
+*)[for ap143]we donn't use art.ko temporary, for compile
+------------------------------------------------------------------------
+r21365 | xiongliuzhong@tp-link.net | 2013-06-06 21:46:47 -0700 (Thu, 06 Jun 2013) | 1 line
+
+*)[for ap143] support compile mk_squashfs_build
+------------------------------------------------------------------------
+
+
+
+========================================================================
+
+
+
+------------------------------------------------------------------------
+r21363 | xiongliuzhong@tp-link.net | 2013-06-06 20:49:54 -0700 (Thu, 06 Jun 2013) | 1 line
+
+*)[for ap143] support compile kernel modules and wireless
+------------------------------------------------------------------------
+r21355 | zhouqiqiu@tp-link.net | 2013-06-06 20:03:05 -0700 (Thu, 06 Jun 2013) | 1 line
+
+[for all]add unsquashfs4
+------------------------------------------------------------------------
+r21323 | huxiaohu@tp-link.net | 2013-06-06 01:59:58 -0700 (Thu, 06 Jun 2013) | 1 line
+
+[for Honeybee] : fix compiling errors
+------------------------------------------------------------------------
+r21311 | xiongliuzhong@tp-link.net | 2013-06-06 00:21:47 -0700 (Thu, 06 Jun 2013) | 1 line
+
+[for ap143]to make wr820 1.0 firmware
+------------------------------------------------------------------------
+r21310 | xiongliuzhong@tp-link.net | 2013-06-06 00:18:10 -0700 (Thu, 06 Jun 2013) | 1 line
+
+[for ap143]add mksquashfs4-ap143, this is 4.1 version
+------------------------------------------------------------------------
+r21307 | xiongliuzhong@tp-link.net | 2013-06-05 23:36:55 -0700 (Wed, 05 Jun 2013) | 1 line
+
+[for wr820 1.0]copy conf from wr720nv4_cn.conf
+------------------------------------------------------------------------
+r21288 | zhouqiqiu@tp-link.net | 2013-06-05 19:01:29 -0700 (Wed, 05 Jun 2013) | 1 line
+
+[for all] add libhttpd_cn.a
+------------------------------------------------------------------------
+r21282 | jimingting@tp-link.net | 2013-06-05 18:37:27 -0700 (Wed, 05 Jun 2013) | 1 line
+
+[for ap143] modify makefile for ethernet.
+------------------------------------------------------------------------
+r21223 | jimingting@tp-link.net | 2013-06-04 19:04:27 -0700 (Tue, 04 Jun 2013) | 1 line
+
+[for ap143] undef UMAC_SUPPORT_ACFG for wlan driver.
+------------------------------------------------------------------------
+r21157 | xiongliuzhong@tp-link.net | 2013-06-03 05:49:07 -0700 (Mon, 03 Jun 2013) | 1 line
+
+[for ap143]support lzma compressed uboot
+------------------------------------------------------------------------
+r21151 | xiongliuzhong@tp-link.net | 2013-06-03 02:08:51 -0700 (Mon, 03 Jun 2013) | 1 line
+
+*)mknod devices same as hornet
+------------------------------------------------------------------------
+r21137 | jimingting@tp-link.net | 2013-06-02 22:59:23 -0700 (Sun, 02 Jun 2013) | 1 line
+
+[for ap143] add makefile and scripts for honeybee.
+------------------------------------------------------------------------
+r21124 | zhouqiqiu@tp-link.net | 2013-05-31 02:51:57 -0700 (Fri, 31 May 2013) | 1 line
+
+[for mw151rm3g 1.0]modify the PRODUCT_ID
+------------------------------------------------------------------------
+r21114 | zhouqiqiu@tp-link.net | 2013-05-31 00:53:18 -0700 (Fri, 31 May 2013) | 1 line
+
+[for mw&fwr]modify the PRODUCT_VERSION of mw and fwr config file
+------------------------------------------------------------------------
+r21100 | lijuan@tp-link.net | 2013-05-30 20:08:22 -0700 (Thu, 30 May 2013) | 1 line
+
+[]
+------------------------------------------------------------------------
+r21098 | lijuan@tp-link.net | 2013-05-30 20:05:26 -0700 (Thu, 30 May 2013) | 1 line
+
+[for all]add config switch for wireless encryption type, 1 auto, 2 tkip, 3 aes
+------------------------------------------------------------------------
+r21092 | zhouqiqiu@tp-link.net | 2013-05-30 18:06:43 -0700 (Thu, 30 May 2013) | 1 line
+
+[for all]add mkfirmware
+------------------------------------------------------------------------
+r21089 | zhouqiqiu@tp-link.net | 2013-05-30 05:41:58 -0700 (Thu, 30 May 2013) | 1 line
+
+[for all] update for phone web
+------------------------------------------------------------------------
+r21088 | zhouqiqiu@tp-link.net | 2013-05-30 05:41:12 -0700 (Thu, 30 May 2013) | 1 line
+
+[for all] update ChangeDefaultPwdRpm.htm for phone web
+------------------------------------------------------------------------
+r21063 | zhouqiqiu@tp-link.net | 2013-05-30 00:08:20 -0700 (Thu, 30 May 2013) | 1 line
+
+[for all]update css and htm
+------------------------------------------------------------------------
+r21043 | zhouqiqiu@tp-link.net | 2013-05-29 18:00:21 -0700 (Wed, 29 May 2013) | 1 line
+
+[for all]update WR703N 1.0 loginRpm.htm
+------------------------------------------------------------------------
+r21031 | zhouqiqiu@tp-link.net | 2013-05-29 03:01:36 -0700 (Wed, 29 May 2013) | 1 line
+
+[for all]update loginRpm.htm
+------------------------------------------------------------------------
+r21029 | zhangmenglong@tp-link.net | 2013-05-29 02:36:23 -0700 (Wed, 29 May 2013) | 1 line
+
+[for wlan]reset wlan status
+------------------------------------------------------------------------
+r21028 | zhouqiqiu@tp-link.net | 2013-05-29 02:30:38 -0700 (Wed, 29 May 2013) | 1 line
+
+[for all] fixed mksquashfs lzma error when CPU > 6 processors, such as new  IBM BuildServer.
+------------------------------------------------------------------------
+r21025 | zhouqiqiu@tp-link.net | 2013-05-29 02:11:15 -0700 (Wed, 29 May 2013) | 1 line
+
+[for all]how to update software with RSA from serial
+------------------------------------------------------------------------
+r21024 | zhouqiqiu@tp-link.net | 2013-05-29 02:03:00 -0700 (Wed, 29 May 2013) | 1 line
+
+[for all]update loginRpm.htm
+------------------------------------------------------------------------
+r21019 | zhouqiqiu@tp-link.net | 2013-05-29 00:49:13 -0700 (Wed, 29 May 2013) | 1 line
+
+[for all]update css and htm
+------------------------------------------------------------------------
+r21009 | zhouqiqiu@tp-link.net | 2013-05-28 23:56:40 -0700 (Tue, 28 May 2013) | 1 line
+
+[for all]modify Makefile to compile with libhttpd_cn.a
+------------------------------------------------------------------------
+r21008 | zhouqiqiu@tp-link.net | 2013-05-28 23:56:13 -0700 (Tue, 28 May 2013) | 1 line
+
+[for all]modify Makefile to compile a libhttpd_cn.a
+------------------------------------------------------------------------
+r21007 | zhouqiqiu@tp-link.net | 2013-05-28 23:54:48 -0700 (Tue, 28 May 2013) | 1 line
+
+[for all]plus the minor version
+------------------------------------------------------------------------
+r20987 | zhouqiqiu@tp-link.net | 2013-05-28 20:02:40 -0700 (Tue, 28 May 2013) | 1 line
+
+[for all] fixed mksquashfs lzma error when CPU > 6 processors, such as new  IBM BuildServer.
+------------------------------------------------------------------------
+r20983 | zhouqiqiu@tp-link.net | 2013-05-28 19:40:37 -0700 (Tue, 28 May 2013) | 1 line
+
+[for all]update for compiling in Build Server
+------------------------------------------------------------------------
+r20979 | zhouqiqiu@tp-link.net | 2013-05-28 19:10:23 -0700 (Tue, 28 May 2013) | 1 line
+
+[for all]modify the kernel modules path
+------------------------------------------------------------------------
+r20978 | dengyifan@tp-link.net | 2013-05-28 19:10:03 -0700 (Tue, 28 May 2013) | 1 line
+
+[for all]. first state logic: remove old-fashioned gFactoryDefault variable. usrconf_save()->ucSetClearFirstState() can do the work in a more smart & elegant way.
+------------------------------------------------------------------------
+r20977 | jimingting@tp-link.net | 2013-05-28 19:01:42 -0700 (Tue, 28 May 2013) | 1 line
+
+*) modify makefile for Beta FW.
+------------------------------------------------------------------------
+r20975 | jimingting@tp-link.net | 2013-05-28 18:57:22 -0700 (Tue, 28 May 2013) | 1 line
+
+*) modify makefile for RSA check.
+------------------------------------------------------------------------
+r20974 | zhouqiqiu@tp-link.net | 2013-05-28 18:54:40 -0700 (Tue, 28 May 2013) | 1 line
+
+[for all]modify the path
+------------------------------------------------------------------------
+r20971 | jimingting@tp-link.net | 2013-05-28 18:45:51 -0700 (Tue, 28 May 2013) | 1 line
+
+*) simplify makefile for RSA.
+------------------------------------------------------------------------
+r20969 | zhouqiqiu@tp-link.net | 2013-05-28 18:44:52 -0700 (Tue, 28 May 2013) | 1 line
+
+[for all]update js and css
+------------------------------------------------------------------------
+r20954 | zhouqiqiu@tp-link.net | 2013-05-28 04:32:24 -0700 (Tue, 28 May 2013) | 1 line
+
+[for all]modify Makefile to compile by Marco NO_CHECK_RSA_SIGNATURE
+------------------------------------------------------------------------
+r20947 | zhouqiqiu@tp-link.net | 2013-05-28 02:40:44 -0700 (Tue, 28 May 2013) | 1 line
+
+[for all] add pngs and modify htms, to support new HTTP authorization
+------------------------------------------------------------------------
+r20945 | zhouqiqiu@tp-link.net | 2013-05-28 02:16:40 -0700 (Tue, 28 May 2013) | 1 line
+
+[for all] update Makefile and spec file, for all CN products, chang the HTTP authorization of web server but not include EN products;2.support RSA checking
+------------------------------------------------------------------------
+r20944 | zhouqiqiu@tp-link.net | 2013-05-28 02:09:54 -0700 (Tue, 28 May 2013) | 1 line
+
+[for all]add make_flash_v2 tool to support RSA checking
+------------------------------------------------------------------------
+r20943 | zhouqiqiu@tp-link.net | 2013-05-28 02:08:56 -0700 (Tue, 28 May 2013) | 1 line
+
+[for all] 1.for all CN products, chang the HTTP authorization of web server but not include EN products;2.support RSA checking
+------------------------------------------------------------------------
+r20942 | zhouqiqiu@tp-link.net | 2013-05-28 02:07:05 -0700 (Tue, 28 May 2013) | 1 line
+
+[for all]for all CN products, chang the HTTP authorization of web server but not include EN products
+------------------------------------------------------------------------
+r20931 | zhangmenglong@tp-link.net | 2013-05-28 00:41:41 -0700 (Tue, 28 May 2013) | 1 line
+
+[for all]copy art data from 7f0000 to 3f0000 for 8M upgrade to 4M
+------------------------------------------------------------------------
+r20871 | lijuan@tp-link.net | 2013-05-27 13:46:51 -0700 (Mon, 27 May 2013) | 1 line
+
+[for all]for planet ddns
+------------------------------------------------------------------------
+r20836 | chengdanhao@tp-link.net | 2013-05-24 14:45:01 -0700 (Fri, 24 May 2013) | 1 line
+
+[for phone webpages]for BUG 32700, remove Work Mode tabs.
+------------------------------------------------------------------------
+r20818 | lijuan@tp-link.net | 2013-05-24 08:32:43 -0700 (Fri, 24 May 2013) | 1 line
+
+[for all]revert daylight saving function to befor rev20055
+------------------------------------------------------------------------
+r20808 | lijuan@tp-link.net | 2013-05-24 06:47:00 -0700 (Fri, 24 May 2013) | 1 line
+
+[for planet]fix ddns fake mac address bug
+------------------------------------------------------------------------
+r20692 | zhangmenglong@tp-link.net | 2013-05-21 02:38:34 -0700 (Tue, 21 May 2013) | 1 line
+
+[for wlan]if ath0 is not exist wlan status should set 0
+------------------------------------------------------------------------
+r20634 | zhouqiqiu@tp-link.net | 2013-05-20 01:15:41 -0700 (Mon, 20 May 2013) | 1 line
+
+[for all]In factory, some devices wireless is disabled when reset factory default setting.
+------------------------------------------------------------------------
+r20631 | zhouqiqiu@tp-link.net | 2013-05-20 00:23:34 -0700 (Mon, 20 May 2013) | 1 line
+
+[for all]In factory, some devices wireless is disabled when reset factory default setting.
+------------------------------------------------------------------------
+r20581 | zhangmenglong@tp-link.net | 2013-05-17 00:47:10 -0700 (Fri, 17 May 2013) | 1 line
+
+[for 12Uv2]add oem web pages
+------------------------------------------------------------------------
+r20580 | zhangmenglong@tp-link.net | 2013-05-17 00:44:57 -0700 (Fri, 17 May 2013) | 1 line
+
+[for 12uv2]add mr12uv2_cn.conf
+------------------------------------------------------------------------
+r20579 | zhangmenglong@tp-link.net | 2013-05-17 00:43:53 -0700 (Fri, 17 May 2013) | 1 line
+
+[for 12U02]add config file
+------------------------------------------------------------------------
+r20562 | zhouqiqiu@tp-link.net | 2013-05-16 20:52:07 -0700 (Thu, 16 May 2013) | 1 line
+
+[for modularly compiling]add libhttpd_phone_web.a
+------------------------------------------------------------------------
+r20561 | zhouqiqiu@tp-link.net | 2013-05-16 20:51:19 -0700 (Thu, 16 May 2013) | 1 line
+
+[for modularly compiling]for Makefile for compile Phone UI and no Phone UI
+------------------------------------------------------------------------
+r20560 | zhouqiqiu@tp-link.net | 2013-05-16 20:50:50 -0700 (Thu, 16 May 2013) | 1 line
+
+[for modularly compiling]for Makefile for compile Phone UI and no Phone UI
+------------------------------------------------------------------------
+r20547 | zhouqiqiu@tp-link.net | 2013-05-16 19:25:33 -0700 (Thu, 16 May 2013) | 1 line
+
+[for modularly compiling]for no phone UI compile
+------------------------------------------------------------------------
+r20546 | zhouqiqiu@tp-link.net | 2013-05-16 19:25:18 -0700 (Thu, 16 May 2013) | 1 line
+
+[for modularly compiling]for no phone UI compile
+------------------------------------------------------------------------
+r20543 | zhangmenglong@tp-link.net | 2013-05-16 18:48:53 -0700 (Thu, 16 May 2013) | 1 line
+
+[for httpd]add include directory for planet
+------------------------------------------------------------------------
+r20540 | lijuan@tp-link.net | 2013-05-16 18:46:48 -0700 (Thu, 16 May 2013) | 1 line
+
+[for WNRT-617G]can't build without this plus symbol
+------------------------------------------------------------------------
+r20539 | zhangmenglong@tp-link.net | 2013-05-16 18:27:36 -0700 (Thu, 16 May 2013) | 1 line
+
+[for httpd]add +
+------------------------------------------------------------------------
+r20516 | zhouqiqiu@tp-link.net | 2013-05-16 03:06:49 -0700 (Thu, 16 May 2013) | 1 line
+
+[for all] update libhttpd.a
+------------------------------------------------------------------------
+r20515 | zhouqiqiu@tp-link.net | 2013-05-16 03:05:27 -0700 (Thu, 16 May 2013) | 1 line
+
+[for all] add LibWebServ_s API httpGetSzMimeScreenSizeEntityKey
+------------------------------------------------------------------------
+r20513 | zhouqiqiu@tp-link.net | 2013-05-16 03:04:38 -0700 (Thu, 16 May 2013) | 1 line
+
+[for all] add function httpGetSzMimeScreenSizeEntityKey
+------------------------------------------------------------------------
+r20511 | lijuan@tp-link.net | 2013-05-16 02:40:33 -0700 (Thu, 16 May 2013) | 1 line
+
+[for WNRT-617G]add planet ddns
+------------------------------------------------------------------------
+r20502 | zhouqiqiu@tp-link.net | 2013-05-16 02:06:20 -0700 (Thu, 16 May 2013) | 1 line
+
+[for all]modify include head file path
+------------------------------------------------------------------------
+r20499 | zhouqiqiu@tp-link.net | 2013-05-16 01:55:08 -0700 (Thu, 16 May 2013) | 1 line
+
+[for all]modify include head file path
+------------------------------------------------------------------------
+r20498 | zhouqiqiu@tp-link.net | 2013-05-16 01:52:49 -0700 (Thu, 16 May 2013) | 1 line
+
+[for all]modify include head file path
+------------------------------------------------------------------------
+r20495 | zhouqiqiu@tp-link.net | 2013-05-16 01:28:00 -0700 (Thu, 16 May 2013) | 1 line
+
+[for all] modify Makefile
+------------------------------------------------------------------------
+r20494 | zhouqiqiu@tp-link.net | 2013-05-16 01:14:19 -0700 (Thu, 16 May 2013) | 1 line
+
+[for all] add explaination for modularly compile
+------------------------------------------------------------------------
+r20493 | zhouqiqiu@tp-link.net | 2013-05-16 01:12:24 -0700 (Thu, 16 May 2013) | 1 line
+
+[for all] add folder archive and include
+------------------------------------------------------------------------
+r20492 | zhouqiqiu@tp-link.net | 2013-05-16 01:08:38 -0700 (Thu, 16 May 2013) | 1 line
+
+[for all] Modify Makefiles to support modularly compiling
+------------------------------------------------------------------------
+r20491 | zhouqiqiu@tp-link.net | 2013-05-16 01:05:10 -0700 (Thu, 16 May 2013) | 1 line
+
+[for all] Move the head file to include and delete some head file to build the modem and LTE to be lib*.a
+------------------------------------------------------------------------
+r20490 | zhouqiqiu@tp-link.net | 2013-05-16 01:04:04 -0700 (Thu, 16 May 2013) | 1 line
+
+[for all]modify the Makefile and del some head file to build the modem and LTE to be lib*.a
+------------------------------------------------------------------------
+r20489 | zhouqiqiu@tp-link.net | 2013-05-16 00:59:57 -0700 (Thu, 16 May 2013) | 1 line
+
+[for all]modify the Makefile to build the libWebServ_s to be a libhttpd.a
+------------------------------------------------------------------------
+r20449 | zhangmenglong@tp-link.net | 2013-05-15 18:43:45 -0700 (Wed, 15 May 2013) | 1 line
+
+[for phone]for bug 32761
+------------------------------------------------------------------------
+r20382 | zhangmenglong@tp-link.net | 2013-05-14 00:10:29 -0700 (Tue, 14 May 2013) | 1 line
+
+[for 13U]modify the realm info
+------------------------------------------------------------------------
+r20332 | zhangmenglong@tp-link.net | 2013-05-09 19:07:26 -0700 (Thu, 09 May 2013) | 1 line
+
+[for 13U]add 13U oem pages
+------------------------------------------------------------------------
+r20331 | zhangmenglong@tp-link.net | 2013-05-09 19:05:24 -0700 (Thu, 09 May 2013) | 1 line
+
+[for 13U]add config file for 13U
+------------------------------------------------------------------------
+r20314 | jimingting@tp-link.net | 2013-05-09 03:17:48 -0700 (Thu, 09 May 2013) | 1 line
+
+-) delete mkfirmware code.
+------------------------------------------------------------------------
+r20225 | chengdanhao@tp-link.net | 2013-05-06 23:51:45 -0700 (Mon, 06 May 2013) | 1 line
+
+[for 3g]auto unlock pin, replace some number with macro.
+------------------------------------------------------------------------
+r20215 | chengdanhao@tp-link.net | 2013-05-06 19:45:24 -0700 (Mon, 06 May 2013) | 1 line
+
+[for all]do some change for each dial mode, make code more reliable.
+------------------------------------------------------------------------
+r20102 | wuchao@tp-link.net | 2013-05-02 00:49:57 -0700 (Thu, 02 May 2013) | 1 line
+
+[for all]enable Requested IP (option50) in DHCP Discover.
+------------------------------------------------------------------------
+r20101 | wuchao@tp-link.net | 2013-05-02 00:49:14 -0700 (Thu, 02 May 2013) | 1 line
+
+[for 3020ru]modify the static route table size.
+------------------------------------------------------------------------
+r20098 | chengdanhao@tp-link.net | 2013-05-02 00:18:55 -0700 (Thu, 02 May 2013) | 1 line
+
+[for pages]fix BUG 32085, and move the warning message to the bottom of 4 internet access modes.
+------------------------------------------------------------------------
+r20070 | wuchao@tp-link.net | 2013-04-28 02:11:35 -0700 (Sun, 28 Apr 2013) | 1 line
+
+[for all]add Caracas GMT time.
+------------------------------------------------------------------------
+r20055 | wuchao@tp-link.net | 2013-04-28 01:40:50 -0700 (Sun, 28 Apr 2013) | 1 line
+
+[for all]modify the Daylight Saving to be more reasonable.
+------------------------------------------------------------------------
+r20046 | chengdanhao@tp-link.net | 2013-04-28 00:36:03 -0700 (Sun, 28 Apr 2013) | 1 line
+
+[for 3g]add Hongkong 1010(4G), for BUG 32083
+------------------------------------------------------------------------
+r20045 | zhouqiqiu@tp-link.net | 2013-04-28 00:18:34 -0700 (Sun, 28 Apr 2013) | 1 line
+
+[for all]add the path for DDNS PheanutHull, when user starts PheanutHull DDNS, it is permitted to access the webserver through the domain.
+------------------------------------------------------------------------
+r20043 | dengyifan@tp-link.net | 2013-04-28 00:03:44 -0700 (Sun, 28 Apr 2013) | 1 line
+
+[for all]. Client bootup procedure re-design. up ath0 but hide ssid and encrypt with random AES key.
+------------------------------------------------------------------------
+r19969 | chengdanhao@tp-link.net | 2013-04-27 00:13:40 -0700 (Sat, 27 Apr 2013) | 1 line
+
+[for all]Unify all dial username and password length macro, change them to DIAL_USERNAME_LENGTH and DIAL_PASSWORD_LENGTH. Also fix BUG 32088.
+------------------------------------------------------------------------
+r19953 | zhouqiqiu@tp-link.net | 2013-04-26 19:46:47 -0700 (Fri, 26 Apr 2013) | 1 line
+
+[For 720 4.0]disable the software mode selection, because it conflicts the hardware mode selection
+------------------------------------------------------------------------
+r19932 | dengyifan@tp-link.net | 2013-04-25 23:59:53 -0700 (Thu, 25 Apr 2013) | 1 line
+
+[for Makefile.product] unify the usage of MACRO  WEB_SERVER
+------------------------------------------------------------------------
+r19921 | dengyifan@tp-link.net | 2013-04-25 20:05:49 -0700 (Thu, 25 Apr 2013) | 1 line
+
+[for all]. fix a logic error.
+------------------------------------------------------------------------
+r19889 | zhouqiqiu@tp-link.net | 2013-04-25 01:44:01 -0700 (Thu, 25 Apr 2013) | 1 line
+
+[for FWR162C-3G_1.0 & MW156RM3G_1.0] modify USB_EN GPIO from 8 to 22, for more contact Lidaode
+------------------------------------------------------------------------
+r19820 | zhouqiqiu@tp-link.net | 2013-04-24 02:54:02 -0700 (Wed, 24 Apr 2013) | 1 line
+
+[for FWR162C-3G_1.0] modify Makefile.product and add config.f162c01
+------------------------------------------------------------------------
+r19819 | zhouqiqiu@tp-link.net | 2013-04-24 02:49:21 -0700 (Wed, 24 Apr 2013) | 1 line
+
+[for FWR162C-3G_1.0] add fwr162c-3gv1.conf
+------------------------------------------------------------------------
+r19818 | zhouqiqiu@tp-link.net | 2013-04-24 02:48:18 -0700 (Wed, 24 Apr 2013) | 1 line
+
+[for FWR162C-3G_1.0] add web files
+------------------------------------------------------------------------
+r19811 | zhouqiqiu@tp-link.net | 2013-04-24 01:49:52 -0700 (Wed, 24 Apr 2013) | 1 line
+
+[for MW156RM3G_1.0 modify Makefile.product]
+------------------------------------------------------------------------
+r19806 | zhouqiqiu@tp-link.net | 2013-04-24 01:12:54 -0700 (Wed, 24 Apr 2013) | 1 line
+
+[for MW156RM3G_1.0] add config.m15601
+------------------------------------------------------------------------
+r19805 | zhouqiqiu@tp-link.net | 2013-04-24 01:10:00 -0700 (Wed, 24 Apr 2013) | 1 line
+
+[for MW156RM3G_1.0] changed the model name
+------------------------------------------------------------------------
+r19804 | zhouqiqiu@tp-link.net | 2013-04-24 00:59:34 -0700 (Wed, 24 Apr 2013) | 1 line
+
+[for MW156RM3G_1.0] add web files for MW156RM3G_1.0
+------------------------------------------------------------------------
+r19803 | zhouqiqiu@tp-link.net | 2013-04-24 00:56:14 -0700 (Wed, 24 Apr 2013) | 1 line
+
+[for mw156rm3g] add mw156rm3g.conf
+------------------------------------------------------------------------
+r19796 | zhouqiqiu@tp-link.net | 2013-04-23 23:39:14 -0700 (Tue, 23 Apr 2013) | 1 line
+
+update for tp domain
+------------------------------------------------------------------------
+r19773 | zhouqiqiu@tp-link.net | 2013-04-23 18:31:22 -0700 (Tue, 23 Apr 2013) | 1 line
+
+add option to make MW156RM3G
+------------------------------------------------------------------------
+r19770 | wuchao@tp-link.net | 2013-04-23 18:24:54 -0700 (Tue, 23 Apr 2013) | 1 line
+
+[for all]modify the FIRMWARE RECOVERY to decrease the effection.
+
+
+
+========================================================================
+
+
+
+------------------------------------------------------------------------
+r19715 | zhouqiqiu@tp-link.net | 2013-04-22 20:00:34 -0700 (Mon, 22 Apr 2013) | 1 line
+
+To fix the cpu loading 100% issue
+------------------------------------------------------------------------
+r19706 | zhouqiqiu@tp-link.net | 2013-04-22 18:41:36 -0700 (Mon, 22 Apr 2013) | 1 line
+
+for defend CSRF attack. Make login domain paramter can be changed by config files. It is need for Fast and Mercury
+------------------------------------------------------------------------
+r19704 | zhouqiqiu@tp-link.net | 2013-04-22 18:37:01 -0700 (Mon, 22 Apr 2013) | 1 line
+
+limits for garp times, merge for trunk_linux_hornet, version 19390
+------------------------------------------------------------------------
+r19605 | zhouqiqiu@tp-link.net | 2013-04-18 05:43:17 -0700 (Thu, 18 Apr 2013) | 1 line
+
+add patch for resist CSRF(Cross-Site Request Forgery) attack 
+------------------------------------------------------------------------
+r19553 | lijuan@tp-link.net | 2013-04-17 02:56:10 -0700 (Wed, 17 Apr 2013) | 1 line
+
+[for oem]change mr3020ru web to http://172.31.88.3:88/svn/WR841N/branch/branch_customize_t6/basic_oem/tl-mr3020v1_ru
+------------------------------------------------------------------------
+r19466 | lijuan@tp-link.net | 2013-04-15 19:54:44 -0700 (Mon, 15 Apr 2013) | 1 line
+
+[for all]fix bug27163
+------------------------------------------------------------------------
+r19454 | chengdanhao@tp-link.net | 2013-04-15 01:18:36 -0700 (Mon, 15 Apr 2013) | 1 line
+
+[for 3g]for BUG 31266, if we saved the PIN, put it into text box which is uesed to input PIN.
+------------------------------------------------------------------------
+r19354 | chengdanhao@tp-link.net | 2013-04-11 01:07:58 -0700 (Thu, 11 Apr 2013) | 1 line
+
+[for pages]add a validity judgement for Primary DNS.
+------------------------------------------------------------------------
+r19353 | chengdanhao@tp-link.net | 2013-04-11 01:03:43 -0700 (Thu, 11 Apr 2013) | 1 line
+
+[for pages]add a ';', help code more standard.
+------------------------------------------------------------------------
+r19351 | chengdanhao@tp-link.net | 2013-04-11 00:57:50 -0700 (Thu, 11 Apr 2013) | 1 line
+
+[for pages]fix BUG 31168, except the reserve DNS, other prameters must fill in and can not be invalid.
+------------------------------------------------------------------------
+r19340 | lijuan@tp-link.net | 2013-04-10 20:57:09 -0700 (Wed, 10 Apr 2013) | 1 line
+
+[for 3020ru]fix bug 30024
+------------------------------------------------------------------------
+r19328 | lijuan@tp-link.net | 2013-04-10 03:04:51 -0700 (Wed, 10 Apr 2013) | 1 line
+
+[for 3020ru]fix bug 30024
+------------------------------------------------------------------------
+r19327 | lijuan@tp-link.net | 2013-04-10 02:52:30 -0700 (Wed, 10 Apr 2013) | 1 line
+
+[for all]format html to fit localization products
+------------------------------------------------------------------------
+r19322 | dengyifan@tp-link.net | 2013-04-10 01:55:16 -0700 (Wed, 10 Apr 2013) | 1 line
+
+[for all]. remove global var for Quick Setup Wlan AP opermode selection.
+------------------------------------------------------------------------
+r19303 | dengyifan@tp-link.net | 2013-04-09 23:30:19 -0700 (Tue, 09 Apr 2013) | 1 line
+
+[for all]. fix wlan security conflict resolving invalid error.
+------------------------------------------------------------------------
+r19288 | wuchao@tp-link.net | 2013-04-09 19:29:47 -0700 (Tue, 09 Apr 2013) | 1 line
+
+[for all]fixed bug30723
+------------------------------------------------------------------------
+r19251 | huanglifu@tp-link.net | 2013-04-08 20:17:05 -0700 (Mon, 08 Apr 2013) | 1 line
+
+[for all]fix bug30010
+------------------------------------------------------------------------
+r19187 | huanglifu@tp-link.net | 2013-04-07 02:39:57 -0700 (Sun, 07 Apr 2013) | 1 line
+
+[for all]format code
+------------------------------------------------------------------------
+r19186 | huanglifu@tp-link.net | 2013-04-07 01:35:06 -0700 (Sun, 07 Apr 2013) | 1 line
+
+[for 3020ru]fix bug 29929
+------------------------------------------------------------------------
+r19173 | wuchao@tp-link.net | 2013-04-06 20:40:14 -0700 (Sat, 06 Apr 2013) | 1 line
+
+[for 3020]fixed bug30720
+------------------------------------------------------------------------
+r19137 | chengdanhao@tp-link.net | 2013-04-02 23:24:18 -0700 (Tue, 02 Apr 2013) | 1 line
+
+[for 3g]auto unlock PIN, modify function 'getPINFromFile', make it more safety. In 3/4G 'Quick Setup', add mutex for unlock PIN.
+------------------------------------------------------------------------
+r19116 | wuchao@tp-link.net | 2013-04-02 02:18:46 -0700 (Tue, 02 Apr 2013) | 1 line
+
+[for Firmware]add for Firmware Recovery
+------------------------------------------------------------------------
+r19115 | wuchao@tp-link.net | 2013-04-02 02:10:50 -0700 (Tue, 02 Apr 2013) | 1 line
+
+[for Firmware]changed for Firmware Recovery.
+------------------------------------------------------------------------
+r19114 | wuchao@tp-link.net | 2013-04-02 02:05:00 -0700 (Tue, 02 Apr 2013) | 1 line
+
+[for Firmware]open the Firmware Recovery function.
+------------------------------------------------------------------------
+r19025 | zhangmenglong@tp-link.net | 2013-03-29 01:56:12 -0700 (Fri, 29 Mar 2013) | 1 line
+
+[for 3g]modify the handle_card from 8M
+------------------------------------------------------------------------
+r18996 | zhangmenglong@tp-link.net | 2013-03-28 18:09:16 -0700 (Thu, 28 Mar 2013) | 1 line
+
+[for lte]add support for e392u-12 from england
+------------------------------------------------------------------------
+r18937 | zhangmenglong@tp-link.net | 2013-03-27 18:55:02 -0700 (Wed, 27 Mar 2013) | 1 line
+
+[for isp]add Optimus Kanguru for portugal
+------------------------------------------------------------------------
+r18890 | wuchao@tp-link.net | 2013-03-26 23:32:07 -0700 (Tue, 26 Mar 2013) | 1 line
+
+[for en]fixed bug 28794.
+------------------------------------------------------------------------
+r18889 | wuchao@tp-link.net | 2013-03-26 23:30:55 -0700 (Tue, 26 Mar 2013) | 1 line
+
+[for phone]change the file type.
+------------------------------------------------------------------------
+r18888 | wuchao@tp-link.net | 2013-03-26 23:29:38 -0700 (Tue, 26 Mar 2013) | 1 line
+
+[for cn]fix bug 30275.
+------------------------------------------------------------------------
+r18839 | zhangmenglong@tp-link.net | 2013-03-26 00:55:17 -0700 (Tue, 26 Mar 2013) | 1 line
+
+[for 720v4]add oem folder for 720v4
+------------------------------------------------------------------------
+r18838 | zhangmenglong@tp-link.net | 2013-03-26 00:53:13 -0700 (Tue, 26 Mar 2013) | 1 line
+
+[for 720v4]add 720v4 model.conf
+------------------------------------------------------------------------
+r18836 | zhangmenglong@tp-link.net | 2013-03-26 00:49:14 -0700 (Tue, 26 Mar 2013) | 1 line
+
+[for 720v4]add 720v4 config file
+------------------------------------------------------------------------
+r18835 | zhangmenglong@tp-link.net | 2013-03-26 00:48:11 -0700 (Tue, 26 Mar 2013) | 1 line
+
+[for 720v4]modify Makefile.product to support 720v4
+------------------------------------------------------------------------
+r18829 | huanglifu@tp-link.net | 2013-03-25 23:59:05 -0700 (Mon, 25 Mar 2013) | 1 line
+
+[for one port dut]add logic link to multi part dut
+------------------------------------------------------------------------
+r18823 | huanglifu@tp-link.net | 2013-03-25 22:59:02 -0700 (Mon, 25 Mar 2013) | 1 line
+
+[for one port dut]format ConnModeCfgRpm.htm
+------------------------------------------------------------------------
+r18822 | huanglifu@tp-link.net | 2013-03-25 22:58:15 -0700 (Mon, 25 Mar 2013) | 1 line
+
+[for one port dut]format ConnCfgRpm.htm
+------------------------------------------------------------------------
+r18817 | zhouqiqiu@tp-link.net | 2013-03-25 20:22:36 -0700 (Mon, 25 Mar 2013) | 1 line
+
+add judgement for pointer
+------------------------------------------------------------------------
+r18811 | zhouqiqiu@tp-link.net | 2013-03-25 19:35:28 -0700 (Mon, 25 Mar 2013) | 1 line
+
+delete assert, and add judgement to ulLength
+------------------------------------------------------------------------
+r18810 | zhouqiqiu@tp-link.net | 2013-03-25 19:33:50 -0700 (Mon, 25 Mar 2013) | 1 line
+
+merge from http://172.31.88.3:88/svn/WR841N/branch/branch_soho6_develop/atheros_platform_aquila/trunk_linux_hornet/ap121/linux/drivers/ethernet, version 18721. When the DUT boots, the vlan can not be created accidentally, the problem is resolved by zhoubin.
+------------------------------------------------------------------------
+r18635 | huanglifu@tp-link.net | 2013-03-20 00:01:17 -0700 (Wed, 20 Mar 2013) | 1 line
+
+[for oem]add web for ARNPR154U1. MSCR-13040-0
+------------------------------------------------------------------------
+r18607 | zhouqiqiu@tp-link.net | 2013-03-19 19:46:33 -0700 (Tue, 19 Mar 2013) | 1 line
+
+changed minor version from 01 to 02
+------------------------------------------------------------------------
+r18604 | chengdanhao@tp-link.net | 2013-03-19 19:35:19 -0700 (Tue, 19 Mar 2013) | 1 line
+
+[for pages]change the progarm logic, set the default username and passwrod empty in each dial mode.
+------------------------------------------------------------------------
+r18598 | chengdanhao@tp-link.net | 2013-03-19 18:52:43 -0700 (Tue, 19 Mar 2013) | 1 line
+
+[for pages]set the default username and passwrod empty in each dial mode.
+------------------------------------------------------------------------
+r18565 | dengyifan@tp-link.net | 2013-03-18 23:40:11 -0700 (Mon, 18 Mar 2013) | 1 line
+
+*) upgrade TDDP erase caldata function.
+------------------------------------------------------------------------
+r18483 | dengyifan@tp-link.net | 2013-03-15 05:39:49 -0700 (Fri, 15 Mar 2013) | 1 line
+
+[for all]. delete all DebugResult.htm & HttpDebugRpm.htm.
+------------------------------------------------------------------------
+r18482 | dengyifan@tp-link.net | 2013-03-15 05:36:41 -0700 (Fri, 15 Mar 2013) | 1 line
+
+[for all].  ALLOW ONLY TDDP TO ERASE ART!  BAN __HTTP_DEBUG_PAGES__.
+------------------------------------------------------------------------
+r18472 | chengdanhao@tp-link.net | 2013-03-15 01:08:16 -0700 (Fri, 15 Mar 2013) | 1 line
+
+[for pages]refer to BUG 30192, make the prompting mode of static ip items the same.
+------------------------------------------------------------------------
+r18466 | chengdanhao@tp-link.net | 2013-03-15 00:11:14 -0700 (Fri, 15 Mar 2013) | 1 line
+
+[for pages]add some comment for last modification.
+------------------------------------------------------------------------
+r18463 | chengdanhao@tp-link.net | 2013-03-14 23:27:07 -0700 (Thu, 14 Mar 2013) | 1 line
+
+[for pages]fix BUG 30192, make the prompting mode of static ip items the same.
+------------------------------------------------------------------------
+r18443 | dengyifan@tp-link.net | 2013-03-14 02:49:24 -0700 (Thu, 14 Mar 2013) | 1 line
+
+[for Webserver]. add a place to save WLAN security on AP mode.
+------------------------------------------------------------------------
+r18430 | dengyifan@tp-link.net | 2013-03-14 01:24:57 -0700 (Thu, 14 Mar 2013) | 1 line
+
+[for ALL]. donnot support WEP automatic authentication __only__ in STA related operation modes.
+------------------------------------------------------------------------
+r18426 | dengyifan@tp-link.net | 2013-03-14 00:55:54 -0700 (Thu, 14 Mar 2013) | 1 line
+
+[for AP.CN]. Quick Setup, Allow AP config WEP Automatic authentication.
+------------------------------------------------------------------------
+r18421 | dengyifan@tp-link.net | 2013-03-14 00:29:10 -0700 (Thu, 14 Mar 2013) | 1 line
+
+[for ALL]. allow WEP automatic: fix a AND/OR logic confusion.
+------------------------------------------------------------------------
+r18418 | dengyifan@tp-link.net | 2013-03-14 00:21:33 -0700 (Thu, 14 Mar 2013) | 1 line
+
+[for ALL]. allow WEP automatic authentication in AP.
+------------------------------------------------------------------------
+r18416 | dengyifan@tp-link.net | 2013-03-13 23:43:34 -0700 (Wed, 13 Mar 2013) | 1 line
+
+[for ALL]. allow WEP automatic authentication in AP.
+------------------------------------------------------------------------
+r18382 | zhouqiqiu@tp-link.net | 2013-03-13 02:17:55 -0700 (Wed, 13 Mar 2013) | 1 line
+
+For Turkey Huawei E177
+------------------------------------------------------------------------
+r18377 | wuchao@tp-link.net | 2013-03-13 01:08:35 -0700 (Wed, 13 Mar 2013) | 1 line
+
+[for all]fixed bug28794
+------------------------------------------------------------------------
+r18363 | dengyifan@tp-link.net | 2013-03-12 22:48:57 -0700 (Tue, 12 Mar 2013) | 1 line
+
+[for all] : 1. use minrate to tranmit EAP packet; 2. only allow one cipher for STA
+------------------------------------------------------------------------
+r18293 | dengyifan@tp-link.net | 2013-03-11 01:34:19 -0700 (Mon, 11 Mar 2013) | 1 line
+
+[for ALL]. do not allow WEP authentication use Automatic option.
+------------------------------------------------------------------------
+r18290 | dengyifan@tp-link.net | 2013-03-11 01:04:42 -0700 (Mon, 11 Mar 2013) | 1 line
+
+[for ALL]. web pages have eliminated WEP auto authentication, UC should replace default authentication to open-system.
+------------------------------------------------------------------------
+r18289 | dengyifan@tp-link.net | 2013-03-11 00:50:37 -0700 (Mon, 11 Mar 2013) | 1 line
+
+[for ALL]. do not allow WEP authentication use Automatic option.
+------------------------------------------------------------------------
+r18273 | zhangmenglong@tp-link.net | 2013-03-07 23:40:55 -0800 (Thu, 07 Mar 2013) | 1 line
+
+[for 3g]modify the switch cmd for A371b
+------------------------------------------------------------------------
+r18247 | chengdanhao@tp-link.net | 2013-03-07 01:18:30 -0800 (Thu, 07 Mar 2013) | 1 line
+
+[for 3g]auto unlock PIN.
+------------------------------------------------------------------------
+r18246 | chengdanhao@tp-link.net | 2013-03-07 01:18:01 -0800 (Thu, 07 Mar 2013) | 1 line
+
+[for 3g]auto unlock PIN.
+------------------------------------------------------------------------
+r18227 | zhangmenglong@tp-link.net | 2013-03-06 22:18:08 -0800 (Wed, 06 Mar 2013) | 1 line
+
+[for 3g]delete log
+------------------------------------------------------------------------
+r18225 | zhangmenglong@tp-link.net | 2013-03-06 22:15:23 -0800 (Wed, 06 Mar 2013) | 1 line
+
+[for 3g]fix the bug 29833 29844 29857
+------------------------------------------------------------------------
+r18202 | zhangmenglong@tp-link.net | 2013-03-06 01:01:30 -0800 (Wed, 06 Mar 2013) | 1 line
+
+[for 3g]add support mc760, delete at+cfun
+------------------------------------------------------------------------
+r18179 | zhouqiqiu@tp-link.net | 2013-03-05 18:41:33 -0800 (Tue, 05 Mar 2013) | 1 line
+
+merge from svn:http://172.31.88.3:88/svn/WR841N/branch/branch_soho6_develop/atheros_platform_aquila/trunk_linux_hornet/ap121/wlan,version 18155 and 18104. 18155 is for [for all] : fix beacon IE corruption in VeriWave Powersave test. 18104 is for [for all] :use memmove instead of memcpy to update beacon, beacause memcpy may destroy overlapped memeory once timlen changed. all change is update by huxiaohu.
+------------------------------------------------------------------------
+r18148 | dengyifan@tp-link.net | 2013-03-04 18:22:08 -0800 (Mon, 04 Mar 2013) | 1 line
+
+[for webserver] remove a redundant PRINTF_ECHO introduced before.
+------------------------------------------------------------------------
+r18004 | lijuan@tp-link.net | 2013-02-27 00:12:29 -0800 (Wed, 27 Feb 2013) | 1 line
+
+[for 3020ru]fix default wireless region from Romania to Russia'
+------------------------------------------------------------------------
+r17967 | zhouqiqiu@tp-link.net | 2013-02-26 16:48:20 -0800 (Tue, 26 Feb 2013) | 1 line
+
+spell error
+------------------------------------------------------------------------
+r17957 | zhouqiqiu@tp-link.net | 2013-02-26 01:44:25 -0800 (Tue, 26 Feb 2013) | 1 line
+
+delete assert, for bug 29249
+------------------------------------------------------------------------
+r17948 | wuchao@tp-link.net | 2013-02-25 23:15:37 -0800 (Mon, 25 Feb 2013) | 1 line
+
+[for pages]fixed bug 29442
+------------------------------------------------------------------------
+r17947 | wuchao@tp-link.net | 2013-02-25 23:13:05 -0800 (Mon, 25 Feb 2013) | 1 line
+
+[for pages]fixed bugs:29466 29442
+------------------------------------------------------------------------
+r17938 | lijuan@tp-link.net | 2013-02-25 19:15:28 -0800 (Mon, 25 Feb 2013) | 1 line
+
+[for 3020ru]fix default wireless region to russia
+------------------------------------------------------------------------
+r17867 | zhangmenglong@tp-link.net | 2013-02-21 00:13:03 -0800 (Thu, 21 Feb 2013) | 1 line
+
+[for 3g]for modem mc760 & u760, do not need at+cfun
+------------------------------------------------------------------------
+r17831 | lijuan@tp-link.net | 2013-02-20 01:36:12 -0800 (Wed, 20 Feb 2013) | 1 line
+
+[for 3020ru]translate location name to Russian
+------------------------------------------------------------------------
+r17817 | jimingting@tp-link.net | 2013-02-19 21:55:04 -0800 (Tue, 19 Feb 2013) | 1 line
+
+
+------------------------------------------------------------------------

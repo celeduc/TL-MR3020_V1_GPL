@@ -1,0 +1,217 @@
+
+<SCRIPT type="text/javascript"><!--
+function doBack(){location.href="/userRpm/WlanNetworkRpm.htm?newBridgessid=&ssid=" + transToURL(pagePara[0].toString())
+	                             + "&curRegion=" + pagePara[1]
+	                              + "&channel=" + pagePara[2] 
+	                              + "&chanWidth=" + pagePara[3]	
+	                              + "&mode=" + pagePara[4] 
+	                              + "&wrr=" + pagePara[5] 
+	                              + "&sb=" + pagePara[6]
+	                              + "&select=" + pagePara[7]
+	                              + "&rate=" + pagePara[8]
+									+"&session_id=" + session_id;
+}
+function doRefresh(rescan)
+{
+	location.href="/userRpm/popupSiteSurveyRpm_AP.htm?refresh=" + rescan
+	               + "&ssid=" + transToURL(pagePara[0].toString())
+	               + "&curRegion=" + pagePara[1]
+	               + "&channel=" + pagePara[2]
+	               + "&chanWidth=" + pagePara[3]
+	               + "&mode=" + pagePara[4]
+	               + "&wrr=" + pagePara[5]
+	               + "&sb=" + pagePara[6]
+	               + "&select=" + pagePara[7]
+	               + "&rate=" + pagePara[8]	
+	               + "&iMAC=" + siteSurveyPara[2]
+	               + "&iSSID=" + siteSurveyPara[3]
+					+"&session_id=" + session_id;
+}
+function onConnect(n)
+{
+	var iMAC = top.parent.opener.document.getElementById(siteSurveyPara[2]);
+	var iSSID = top.parent.opener.document.getElementById(siteSurveyPara[3]);
+	var channel = top.parent.opener.document.getElementById(siteSurveyPara[4]);
+
+	if(iMAC==null && iSSID==null)
+	{
+		//alert(str_pages.ntw_popup_site_survey.js_connect_fail);
+		alert(js_con_fail="connect fail");
+	}
+	
+	n = n*5;
+	if(iMAC != null)
+	{
+		if(checkMACRepeat(n)==true)
+		iMAC.value = siteList[n];
+	}
+	if(iSSID != null)
+	{
+		iSSID.value = siteList[n+1];
+	}
+	if(channel != null)
+	{
+		channel.value = siteList[n+3];
+	}
+	
+	top.close();
+}
+
+function checkMACRepeat(n)
+{
+	var mac = siteList[n];
+	var mptBssid = "mptBssid";
+	if(siteSurveyPara[2].indexOf(mptBssid) == -1)
+	{
+		return true;
+	}
+		
+	for(var i=1; i<=4; i++)
+	{
+		var iMac = top.parent.opener.document.getElementById(mptBssid+i).value;
+		if(mac == iMac)
+		{
+			return false;
+	}
+	}
+	
+	return true;
+}
+var transMatrixHTML = new Array(
+	/&/g, "&amp;",
+	/\\/g, "&#92;",
+	/'/g, "&#39;",
+	/"/g, "&quot;",
+	/</g, "&lt;",
+	/>/g, "&gt;",
+	/ /g, "&nbsp;"
+);
+function transToHTML(str)
+{
+	for (var i = 0; i < transMatrixHTML.length; i+=2)
+	{
+		str = str.replace(transMatrixHTML[i], transMatrixHTML[i+1]);
+	}
+	return str;
+}
+var transMatrixURL = new Array(
+	/%/g, "%25",
+	/#/g, "%23",
+	/&/g, "%26",
+	/;/g, "%3B",
+	/\\/g, "%5C",
+	/'/g, "%27",
+	/"/g, "%22",
+	/</g, "%3C",
+	/>/g, "%3E",
+	/ /g, "%20",
+	/\+/g, "%2B",
+	/\=/g, "%3D"
+);
+function transToURL(str)
+{
+	for (var i = 0; i < transMatrixURL.length; i+=2)
+	{
+		str = str.replace(transMatrixURL[i], transMatrixURL[i+1]);
+	}
+	return str;
+}
+var bssidName = new Array(
+	"<span id=\"t_none\">none<\/span>",
+	"apBssid",
+	"staBssid",
+	"staBssid",
+	"rptBssid",
+	"pptBssid",
+	"mptBssid",
+	"rptBssid"
+);
+var ssidName = new Array(
+	"<span id=\"t_none\">none<\/span>",
+	"apSsid",
+	"staSsid",
+	"staSsid",
+	"rptSsid",
+	"pptSsid",
+	"mptSsid",
+	"rptSsid"
+);
+//--></SCRIPT>
+<BODY onload="LoadHelp('SiteSurveyHelpRpm.htm');resize(this);" onResize="resize(this);">
+<center>
+	<form action="popupSiteSurveyRpm_AP.htm" enctype="multipart/form-data" method="get">
+		<TABLE id="autoWidth" border="0">
+			<TR><TD class=h1 colspan=2 id="t_title">AP List</TD></TR>
+			<TR><TD class=blue colspan=2></TD></TR>
+			<TR>
+				<TD><span id="t_ap_count">AP Count:</span>
+					<SCRIPT type="text/javascript">document.write(siteSurveyPara[1]);</SCRIPT>
+				</TD>
+			</TR>
+			<TR>
+				<TD><TABLE border="1" align="center" cellspacing="0" cellpadding="0">
+						<TR>
+							<TD style="FONT-WEIGHT:bold;" id="t_id">&nbsp;ID</TD>
+							<TD style="FONT-WEIGHT:bold;" id="t_bssid">&nbsp;BSSID</TD>
+							<TD style="FONT-WEIGHT:bold;" id="t_ssid">&nbsp;SSID</TD>
+							<TD style="FONT-WEIGHT:bold;" id="t_signal0">&nbsp;Signal</TD>
+							<TD style="FONT-WEIGHT:bold;" id="t_channel">&nbsp;Channel</TD>
+							<TD style="FONT-WEIGHT:bold;" id="t_security0">&nbsp;Security</TD>
+							<TD style="FONT-WEIGHT:bold;" id="t_choose">&nbsp;Choose</TD>
+						</TR>
+						<SCRIPT type="text/javascript">
+var listLen = siteSurveyPara[1];
+if (listLen >0)
+{
+	var row = 0;
+	var statusIndex;
+	var idStart = 0;
+	for(var i = 0; i < listLen; i++)
+	{
+		row = i * 5;
+		idStart ++;
+		document.write('<tr align="center"><td>' + idStart + '</td>');
+		for (var j = 0; j <= 4; j++)
+		{
+			var content = siteList[row+j].toString() ? siteList[row+j] : " ";
+			if (j == 4)
+			{
+				document.write('<td>' + (content == 0 ? 'OFF' : 'ON') + '</td>');
+			}
+			else if (j == 2)
+			{
+				document.write('<td>' + transToHTML(content.toString()) + 'dB<\/td>');
+			}
+			else
+			{
+				document.write('<td>' + transToHTML(content.toString()) + '</td>');
+			}
+		}
+		if ((0 == siteSurveyPara[0]) || (1 == siteSurveyPara[0]))
+		{
+			document.write('<td>&nbsp;<\/td><\/tr>');
+		}
+		else
+		{
+			document.write('<td>' + '<a href="" onClick="onConnect('+ i +');">Connect<\/a><\/td><\/tr>');}
+	}
+}
+else
+{
+	document.write('<tr align="center"><td>&nbsp;<\/td><td>&nbsp;<\/td><td>&nbsp;<\/td><td>&nbsp;<\/td><td>&nbsp;<\/td><td>&nbsp;<\/td><td>&nbsp;<\/td><\/TR>');
+}
+					</SCRIPT>
+					</table>
+				</TD>
+			</TR>
+			<TR>
+				<TD class=blue colspan=2></TD>
+			</TR>
+			<TR>
+				<TD colspan=2 class=mbtn><input class="button" id="Refresh" onclick="doRefresh(1);" type="button" value="Refresh"></TD>
+			</TR>
+		</TABLE>
+	</form>
+</center>
+</BODY></html>
+

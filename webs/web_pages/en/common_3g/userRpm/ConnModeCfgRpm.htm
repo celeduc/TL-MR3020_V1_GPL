@@ -1,0 +1,82 @@
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<SCRIPT type="text/javascript"><!--
+function doSubmit()
+{
+    var objs = document.getElementsByName("connmode");
+    var opt = 0;
+
+    for(i = 0; i < connModeParam[1]; i++)
+    {
+        if(objs[i].checked)
+        {
+            opt = i;
+        }
+    }
+    
+    if(opt == connModeParam[0])
+        return false;
+    
+    if( 0 == connModeParam[0] || connModeParam[0] == 2)
+    {
+        if(true == confirm(js_conn_info="This process will take a few seconds, please wait. Are you sure to continue?"))
+        {
+            return  true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    return true;
+}
+//--></SCRIPT>
+</HEAD>
+<BODY onLoad="setTagStr(document,'ntw_conn_mode_cfg');LoadHelp('ConnModeCfgHelpRpm.htm'); resize(this);" onResize="resize(this);">
+<CENTER>
+	<FORM action="ConnModeCfgRpm.htm" enctype="multipart/form-data" method="get" onSubmit="return doSubmit();">
+		<TABLE id="autoWidth">
+			<TR>
+				<TD class="h1" colspan="2" id="t_title">Internet Access</TD>
+			</TR>
+			<TR>
+				<TD class="blue" colspan="2"></TD>
+			</TR>
+			<TR><TD class="info" colspan="2" id="t_note_isp">The Device provides four Internet access modes for you to choose:</TD></TR>
+			<TR>
+				<TD class="clk">&nbsp;</TD>
+				<TD><INPUT name="connmode" id="connmode" type="radio" value="0"><B id="t_3gprime_opt">3G/4G Preferred</B> - <SPAN id="t_3gprime">Use 3G/4G as the primary access, WAN as a backup.</SPAN></TD>
+			</TR>
+			<TR>
+				<TD class="clk">&nbsp;</TD>
+				<TD><INPUT name="connmode" id="connmode" type="radio" value="1"><B id="t_3gonly_opt">3G/4G Only</B> - <SPAN id="t_3gonly">Only use 3G/4G as the access to the Internet.</SPAN></TD>
+			</TR>
+			<TR>
+				<TD class="clk">&nbsp;</TD>
+				<TD><INPUT name="connmode" id="connmode" type="radio" value="2"><B id="t_wanprime_opt">WAN Preferred</B> - <SPAN id="t_wanprime">Use WAN as the primary access, 3G/4G as a backup.</SPAN></TD>
+			</TR>
+			<TR>
+				<TD class="clk">&nbsp;</TD>
+				<TD><INPUT name="connmode" id="connmode" type="radio" value="3"><B id="t_wanonly_opt">WAN Only</B> - <SPAN id="t_wanonly">Only use WAN as the access to the Internet.</SPAN></TD>
+			</TR>
+			<TR>
+				<TD class="blue" colspan="2"></TD>
+			</TR>
+			<TR>
+				<TD  class="mbtn" colspan="2">
+					<SCRIPT type="text/javascript">
+						document.write('<input name="session_id" id="session_id" type="hidden" value="'+session_id +'">');
+					</SCRIPT>
+					<INPUT name="Save" type="submit" class="buttonBig" value="Save"></TD>
+			</TR>
+		</TABLE>			
+	</FORM>
+</CENTER>
+</BODY>
+<HEAD>
+<META http-equiv="pragma" content="no-cache">
+</HEAD>
+</HTML>
+<SCRIPT type="text/javascript"><!--
+var choose_mode = document.getElementsByName("connmode");
+choose_mode[connModeParam[0]].checked = true;
+--></SCRIPT>

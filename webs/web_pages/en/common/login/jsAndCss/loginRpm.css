@@ -1,0 +1,112 @@
+body{
+	font-family:Arial;
+	background-color:#e2e2e2;
+	margin:0px;
+	padding:0px;
+}
+#panelThre{
+	display:none;
+	margin-top:115px;
+	position:relative;
+}
+
+div.noteDiv{
+	width:490px;
+	color:#707171;
+}
+
+div.note{
+	font-family:Arial Bold;
+	width:70px;
+	font-size:14pt;
+	float:left;
+}
+
+div.info{
+	width:410px;
+	font-family:Arial Bold;
+	font-size:14pt;
+	text-align:left;
+	float:left;
+}
+
+div.picDiv{
+	height:320px;
+	width:503px;
+	position:relative;
+	margin-top:15px;
+	background-image:url(../images/loginPC.png);
+}
+
+input.pcAdmin{
+	font-family:Verdana regular;
+	font-size:14pt;
+	width:270px;
+	height:35px;
+	padding-left:60px;
+	padding-top:5px;
+	padding-bottom:5px;
+	margin-top:70px;
+	border:1px solid;
+	border-color:#DCDFDF;
+	color:#707171;
+	background-color:#ffffff;
+	background:url(../images/admin.png) left top no-repeat;
+}
+input.pcAdminFocus{
+	font-family:Verdana regular;
+	font-size:14pt;
+	width:270px;
+	height:35px;
+	padding-left:60px;
+	padding-top:5px;
+	padding-bottom:5px;
+	margin-top:70px;
+	border:1px solid;
+	border-color:#56E185;
+	color:#707171;
+	background-color:#ffffff;
+	background:url(../images/admin.png) left top no-repeat;
+}
+input.pcPassword{
+	width:270px;
+	height:35px;
+	font-size:14pt;
+	padding-left:60px;
+	padding-top:5px;
+	padding-bottom:5px;
+	margin-top:30px;
+	border:1px solid;
+	border-color:#DCDFDF;
+	color:#707171;
+	background-color:#ffffff;
+	background:url(../images/key.png) left top no-repeat;
+}
+input.pcPasswordFocus{
+	width:270px;
+	height:35px;
+	font-size:14pt;
+	padding-left:60px;
+	padding-top:5px;
+	padding-bottom:5px;
+	margin-top:30px;
+	border:1px solid;
+	border-color:#56E185;
+	color:#707171;
+	background-color:#ffffff;
+	background:url(../images/key.png) left top no-repeat;
+}
+
+input.loginBtn{
+	display:block;
+	width:120px;
+	height:35px;
+	border:0;
+	font-family:Arial;
+	font-size:14pt;
+	color:#ffffff;
+	margin-top:40px;
+	text-align:center;
+	background:url(../images/button.png) left;
+	cursor:pointer;
+}

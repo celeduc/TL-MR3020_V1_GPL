@@ -1,0 +1,160 @@
+<SCRIPT language="javascript" type="text/javascript">
+var wzdMacClone = new Array(
+0, "00-0A-EB-13-09-1A", "00-22-43-1F-23-CD", "00-0A-EB-13-09-1A",
+0,0 );
+</SCRIPT>
+
+<HTML>
+<TITLE>TL-WR741ND</TITLE>
+<HEAD>
+<META http-equiv=Pragma content=no-cache>
+<META http-equiv=Expires content="wed, 26 Feb 1997 08:21:57 GMT">
+<LINK href="../dynaform/css_main.css" rel=stylesheet>
+<SCRIPT language="JavaScript" src="../dynaform/common.js" type="text/JavaScript"></SCRIPT>
+<SCRIPT type="text/javascript"><!--
+//--></SCRIPT>
+<!--<TP_C_TAG>-->
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<SCRIPT type="text/javascript"><!--
+function Click()
+{
+	var evt = window.event || arguments[0];
+	evt.returnValue=false;
+}
+document.oncontextmenu=Click;
+//--></SCRIPT>
+<SCRIPT type="text/javascript"><!--//
+function radioClick(isNeedClone)
+{
+	if (isNeedClone == 0)
+	{
+		document.forms[0].CloneMAC.disabled = true;
+	}
+	else
+	{
+		document.forms[0].CloneMAC.disabled = false;
+	}
+}
+function doRestore()
+{
+	document.forms[0].wan_mac.value =  wzdMacClone[3];
+}
+function doClone()
+{
+    document.forms[0].wan_mac.value =  wzdMacClone[2];
+}
+
+function doSubmit()
+{
+	if(!is_macaddr(document.forms[0].wan_mac.value))
+	{
+		var element =document.forms[0].wan_mac;
+		if(element)
+		{
+			element.focus();
+			element.select();
+		}
+		return false;
+	}
+	return true;
+}
+		function goBack()
+        {
+            location.href = "WzdWanMacRpm.htm?Return=Back&session_id=" + session_id;
+        }
+		//-->
+</SCRIPT>
+</HEAD>
+<body onload="setTagStr(document,'ntw_wzd_wanmac');LoadHelp('WzdWanMacHelpRpm.htm');focusElement('Next');resize(this);" onresize="resize(this);">
+<CENTER>
+	<FORM action="WzdWanMacRpm.htm" enctype="multipart/form-data" method="get" onSubmit="return doSubmit();">
+	<TABLE id="autoWidth" border = "0">
+	</TBODY>
+		<TR>
+			<TD class="h1" colspan = "2" id="t_title">Quick Setup - MAC Clone</TD>
+		</TR>
+		<TR>
+			<TD class="blue" colspan = "2"></TD>
+        </TR>
+		<TR>
+			<TD class=info colspan=2 STYLE1>
+			<SPAN id = "tips_msg"></SPAN>
+			</TD>
+		</TR>
+        <TR>
+			<TD class="info" colspan="2" id="t_mac_info1" style="line-height:150%">
+			MAC(Media Access Control) address is a unique identifier that identifies your computer or device in the network.</br>
+			Some of the ISPs may register the MAC address of your computer which firstly connects to their services, and would</br>
+			not allow the Internet connection for any new computer or router.TP-LINK router can help you to "clone" or replicate</br>
+			the registered MAC address of your first computer.</TD>
+		</TR>
+		</br>
+		<TR>
+			<TD>&nbsp;</TD>
+		</TR>
+		<TR>
+			<TD  class="info" colspan="2" id="t_mac_info2" style="line-height:150%">
+			In most of the cases, there is no need to clone the MAC address. But if you can't get the Internet connection after</br>
+			Quick Setup, please run it again and clone the MAC address for a try. </TD>
+		</TR>
+		<TR>
+			<TD>&nbsp;</TD>
+		</TR>
+
+        <TR>
+			<TD class="info" colspan="2">
+				<INPUT name="is_need_clone" type="radio" value="1" onClick="doRestore()">&nbsp;
+				<span id="t_not_need_clone">No, I do NOT need to clone MAC address.</span>
+			</TD>
+		</TR>
+		<TR>
+			<TD class="info" colspan="2">
+				<INPUT name="is_need_clone" type="radio" value="0" onClick="doClone()">&nbsp;
+				<span id="t_need_clone">YES, I need to clone MAC address.</span>
+			</TD>
+		</TR>
+		<TR style="display:none">
+			<TD class=Item id="t_wan_mac_addr">WAN MAC Address:</TD>
+			<TD><input type="text" class="text" name ="wan_mac" size="18" maxlength="17">&nbsp;
+			<INPUT name="RestoreMAC" id="restore" type="button" class="buttonL" onClick="doRestore();" value="Restore Factory MAC"></TD>
+		</TR>
+		<TR style="display:none">
+			<TD class=Item id="t_pc_mac_addr">Your PC's MAC Address:</TD>
+			<TD><input type="text" class="text" name ="pc_mac" size="18" maxlength="17">&nbsp;
+			<INPUT name="CloneMAC" id="clone" type="button" class="buttonL" onClick="doClone();" value="Clone MAC Address"></TD>
+		</TR>
+		<TR>
+          <TD class=info colspan=2 id="t_item"><span style="color:#A52A2A">Note: please make sure your current computer is the one initially connected to your modem or ISP's device.</span></TD>
+        </TR>
+		<TR>
+			<TD class="blue" colspan = "2"></TD>
+		</TR>
+		<tr>
+			<td class="mbtn" colspan="2">
+				<input id="Return" name="Return" class="buttonBig" type="button" value="Back" onclick="goBack();">&nbsp;&nbsp;&nbsp;&nbsp;
+				<input id="Next" name="Next" class="buttonBig" type="submit" value="Next">
+				<input type="hidden" name="ClientId">
+				<SCRIPT type="text/javascript">
+					document.write('<input name="session_id" id="session_id" type="hidden" value="'+session_id +'">');
+				</SCRIPT>
+			</td>
+		</tr>
+
+	</TBODY>
+	</TABLE>
+	</FORM>
+</CENTER>
+</BODY>
+<HEAD>
+<META http-equiv="pragma" content="no-cache">
+</HEAD>
+</HTML>
+
+<SCRIPT type="text/javascript">
+document.forms[0].wan_mac.value = wzdMacClone[1];
+document.forms[0].pc_mac.value = wzdMacClone[2];
+document.forms[0].pc_mac.disabled = true;
+document.forms[0].CloneMAC.disabled = true;
+document.forms[0].ClientId.value=wzdMacClone[0];
+document.forms[0].is_need_clone[0].checked = true;
+</SCRIPT>

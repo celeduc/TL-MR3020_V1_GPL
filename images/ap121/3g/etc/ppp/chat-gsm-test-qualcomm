@@ -1,0 +1,8 @@
+TIMEOUT 5
+ABORT   'BUSY'
+ABORT   'NO ANSWER'
+ABORT   'ERROR'
+
+""	ATZ
+SAY	"Start...\n"
+OK

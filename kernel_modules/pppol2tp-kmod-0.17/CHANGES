@@ -1,0 +1,92 @@
+# -*- indented-text -*- # 
+
+This file is a history of changes made in each release.
+
+----------------------------------------------------------------------------
+V0.17, 13-AUG-2007
+
+IMPORTANT: THIS RELEASE HAS A KERNEL API CHANGE. 
+
+- Change SOL_PPPOL2TP value for all kernel versions to the value now
+  assigned in the official kernel tree. This change lets us release 
+  openl2tpd ready for the official kernel driver which will appear in
+  the 2.6.23 kernel. There are no functional changes.
+
+- Add a pppol2tp kernel driver patch for kernel 2.6.22.
+
+- Update out-of-tree pppol2tp_v26.c driver to compile for 2.6.22.
+
+----------------------------------------------------------------------------
+V0.16, 28-MAY-2007
+
+IMPORTANT: THIS RELEASE HAS A KERNEL API CHANGE. 
+
+- Reorder some fields in the structure returned by PPPIOCGL2TPSTATS
+  ioctl such that it is identical for 32-bit and 64-bit
+  architectures. This fixes binary compatibility problems for
+  32/64-bit userspace apps.
+
+- Add a pppol2tp kernel driver patch for kernel 2.6.21.
+
+- Add RPMs for FC5/FC6 2.6.20 and 2.6.21 kernel updates.
+
+- Update debian package directory. Debian packages coming soon!
+
+----------------------------------------------------------------------------
+V0.15, 26-FEB-2007
+
+- Add a pppol2tp kernel driver patch for kernel 2.6.20. Also fix
+  out-of-tree pppol2tp kernel module for compiling for 2.6.20.
+
+- Add RPMs for FC5 2.6.18 and 2.6.19 kernel updates.
+
+- Fix a makefile bug found by Christian Wiese (morfoh@opensde.org)
+  where if_pppol2tp.h was not added to the list of installed headers
+  which are installed by "make headers_install" when building the
+  kernel. This change is for the kernel patches from 2.6.18 onwards
+  when the headers_install build target was added.
+
+----------------------------------------------------------------------------
+V0.14, 2-DEC-2006
+
+- Apply a patch from michal.ruzicka@comstar.cz to the 2.6 driver to fix
+  use with IPSEC through NAT gateways.
+
+- Add a patch for kernel 2.6.19.
+
+- Remove the #include <linux/config.h> from the 2.6.18 patch and
+  conditionally from the out-of-tree pppol2tp_v26.c driver. From
+  2.6.18 onwards, config.h is included via a gcc "-include" directive.
+
+----------------------------------------------------------------------------
+V0.13, 8-OCT-2006
+
+- Add workaround to missing export of pppox_ioctl in pre-2.6.16
+  kernels.  Although this missing export error was corrected by some
+  distros in their early 2.6 kernels, several people are using
+  standard (kernel.org) kernels. The pppol2tp kernel module tries to
+  use pppox_ioctl() so for kernels before 2.6.16, we now use
+  pppol2tp_ioctl directly and duplicate some of the code from
+  pppox_ioctl.
+
+- Apply Cedric Schieli's netfilter patch to the 2.4 kernel driver.
+
+- Add 2.6.18 kernel patch.
+
+----------------------------------------------------------------------------
+V0.12, 17-SEP-2006
+
+- Import patch from schieli@users.sf.net to fix a problem when using
+  netfilter.
+
+----------------------------------------------------------------------------
+V0.11, 26-AUG-2006
+
+- Separate out the kernel PPPoL2TP module from the main OpenL2TP
+  release.
+
+- Add a kernel patch for 2.6.17 kernels.
+
+----------------------------------------------------------------------------
+
+Earlier releases were included in the OpenL2TP package.

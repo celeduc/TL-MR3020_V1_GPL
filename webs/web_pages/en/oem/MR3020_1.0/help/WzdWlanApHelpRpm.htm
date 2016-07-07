@@ -1,0 +1,83 @@
+
+<HTML><HEAD><TITLE></TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<script language="javascript" src="../dynaform/custom.js" type="text/javascript"></script>
+</head>
+<H1>Wireless Help</H1>
+<p><B>Access Point</B> - This operation mode allows wireless stations to access.</p>
+<ul>
+<LI>
+<b>Wireless Network Name(SSID)</b> - Enter a string of up to 32 characters. The same Name (SSID) must be assigned to all wireless devices in your network. The default SSID is set to be <B>
+	<script language="javascript" type="text/javascript">
+	document.write(wireless_ssid_prefix+'_xxxxxx');
+	</script>
+	</B>(xxxxxx indicates the last unique six characters of each Router's MAC address), which can ensure your wireless network security. But it is recommended strongly that you change your network name (SSID) to a
+  different value. This value is case-sensitive. For example, <b>MYSSID</b> is
+  NOT the same as <b>MySsid</b>.
+</LI>
+<LI><P><B>Region</B> - Select your region from the pull-down list. This field specifies the region where the wireless function of the Router can be used. It may be illegal to use the wireless function of the Router in a region other than one of those specified in this filed. If your country or region is not listed, please contact your local government agency for assistance.</P></LI>
+<LI><P><b>Channel</b> - This field determines which operating frequency will be used. It is not necessary to change the wireless channel unless you notice interference problems with another nearby access point. If you select auto, then the AP will select the best channel automatically.</P></LI>
+</ul>
+
+<p><B>Repeater</B> - In Repeater mode, the wireless repeater relays signal between its stations and the root AP for greater wireless range.</p>
+<ul>
+<LI><p><B>Repeater</B> - In Repeater mode, the AP with WDS disabled will relays data to an associated root AP. AP function is enabled meanwhile. The wireless repeater relays signal between its stations and the root AP for greater wireless range. Please input the MAC address of root AP in the field <B>"MAC Address"</B>.</p></LI>
+<LI><p><B>Name of remote AP(SSID)</B> - Enter the name of a remote AP(also called the SSID) that you want to access. Click the <B>Survey</B> button behind it, you can choose one of searching results to fill in this field.</p></LI>
+<LI><p><B>MAC Address</B> - Enter the MAC address of AP that you want to access. When you use the survey function to fulfill the <B>Name of remote AP(SSID)</B>, this field will be filled in automatically.</p></LI>
+<LI><p><B>Region</B> - This field determines which operating frequency will be used. To achieve more information, you can read the same glossary in Access Point part.</p></LI>
+</ul>
+
+<p><B>Bridge with AP</B> - This operation mode bridges two APs to connect two LANs.</p>
+<ul>
+<LI><p><B>Wireless Network Name(SSID)</B> - Enter a string of up to 32 characters. To achieve more information, you can read the same glossary in Access Point part.</p></LI>
+<LI><p><B>Region</B> - This field determines which operating frequency will be used. To achieve more information, you can read the same glossary in Access Point part.</p></LI>
+<LI><P><b>Channel</b> - This field determines which operating frequency will be used. To achieve more information, you can read the same glossary in Access Point part.</p></LI>
+<LI><P><b>SSID(to be bridged)</b> - The SSID of AP that you want to access. Click the <b>Survey</b> button behind it, you can choose one of searching results to fill in this field.</p></LI>
+<LI><P><b>BSSID(to be bridged)</b> - The BSSID of AP that you want to access. When you use the survey function to fulfill the SSID, this field will be filled in automatically.</p></LI>
+<LI><P><B>Key type</B> - This option should be chosen according to the remote AP's security configuration.</p></LI>
+<LI><P><B>WEP Index</B> - This option should be chosen if the key type is WEP(ASCII) or WEP(HEX). It indicates the index of the WEP key.</p></LI>
+<LI><P><B>Auth Type</B> - This option should be chosen if the key type is WEP(ASCII) or WEP(HEX). It indicates the authorization type of the root AP.</p></LI>
+<LI><P><B>Password</B> - If the AP your router is going to connect needs password, you need to fill the password in this blank.</p></LI>
+</ul>
+
+<p><B>Client</B> - This device will act as a wireless station to enable wired host(s) to access AP.</p>
+<ul>
+<LI><p><B>Wireless Network Name(SSID)</B> - Enter a string of up to 32 characters. To achieve more information, you can read the same glossary in Access Point part.</p></LI>
+</ul>
+
+<p><b>You can select one of the following security options: </B></p>
+<ul>
+<LI><P><b>None</b> - The wireless security function can be enabled or disabled. If you select "None", the wireless stations will be able to connect the Router without encryption. It is recommended strongly that you choose one of following options to enable security.</P></LI>
+
+<LI><P><B>WEP</B></p></LI>
+
+<p><B>Type</B> - You can select one of following types:</p>
+<ul>
+<lI><B>Open System</B> - Select 802.11 Open System authentication. </lI>
+<lI><B>Shared Key</B> - Select 802.11 Shared Key authentication.</lI>
+</ul>
+<p><B>WEP Key Format</B> - You can select <B>ASCII</B> or <B>Hexadecimal</B> format. ASCII Format stands for any combination of keyboard characters in the specified length. Hexadecimal format stands for any combination of hexadecimal digits (0-9, a-f, A-F) in the specified length.</p>
+<p><B>WEP Key settings</B> - Select which of the four keys will be used and enter the matching WEP key information for your network in the selected key radio button. These values must be identical on all wireless stations in your network. </p>
+<p><B>Key Type</B> - You can select the WEP key length (<B>64-bit</B>, or <B>128-bit</B>, or <B>152-bit</B>.) for encryption.<b>&quot;Disabled&quot;</b> means this WEP key entry is invalid.</p>
+
+<p>For <B>64-bit</B> encryption - You can enter 10 hexadecimal digits (any combination of 0-9, a-f, A-F, and null key is not permitted) or 5 ASCII characters. </p>
+<p>For <B>128-bit</B> encryption - You can enter 26 hexadecimal digits (any combination of 0-9, a-f, A-F, and null key is not permitted) or 13 ASCII characters.</p>
+<p>For <B>152-bit</B> encryption - You can enter 32 hexadecimal digits (any combination of 0-9, a-f, A-F, and null key is not permitted) or 16 ASCII characters.</p>
+
+<LI><P> <B>WPA/WPA2-Personal</B></LI> 
+<p><b>Version</b> - You can select one of following versions:</p>
+<ul>
+<lI><B>Automatic</B> - Select <B>WPA-Personal</B> or <B>WPA2-Personal</B> automatically based on the wireless station's capability and request.</lI>
+<lI> <B>WPA-Personal</B> - Pre-shared key of WPA.</lI>
+<lI> <B>WPA2-Personal</B> - Pre-shared key of WPA2. </lI>
+</ul>
+<p><B>Encryption</B>  - You can select either <B>Automatic</B>, or <B>TKIP</B> or <B>AES</B>.</p>
+<p><B>Password</B> - You can enter <B>ASCII</B> or <B>Hexadecimal</B> characters. For <B>Hexadecimal</B>, the length should be between 8 and 64 characters; for <B>ASCII</B>, the length should be between 8 and 63 characters.</p> 
+<p><B>Group Key Update Period</B> - Specify the group key update interval in seconds. The value can be either 0 or at least 30. Enter 0 to disable the update.</p>
+
+<LI><P><B>Use the Previous settings</B> - If you chose this option, wireless security configuration will not change ! </P></LI>
+</ul>
+
+
+
+

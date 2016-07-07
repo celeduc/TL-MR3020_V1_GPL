@@ -1,0 +1,55 @@
+<HTML><HEAD><TITLE></TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<script language="JavaScript" src="/dynaform/custom.js" type="text/JavaScript"></script>
+<META http-equiv=Pragma content=no-cache>
+<META http-equiv=Cache-Control content=no-cache>
+<META http-equiv=Expires content="wed, 26 Feb 1997 08:21:57 GMT">
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR></HEAD>
+<script language="JavaScript"><!--
+var mh ;
+var mv ;
+var hl = "StatusHelpRpm.htm";
+
+var newWin;
+var url="http://" + our_web_site;
+
+if(window.parent == window)	
+	window.location.href=url;
+function Click(){ window.event.returnValue=false;}
+document.oncontextmenu=Click;
+
+function NewW(){
+  if(newWin) newWin.close();   
+  newWin=window.open(url,"","scrollbars=yes,resizable=yes,toolbar=yes,status=yes,menubar=yes,scrollbar=yes,location=yes");	
+  return true;
+}
+function ShowUrl() { 
+  status=url;
+  return true;
+}
+function EraseUrl(){
+	status="";
+	return true;
+}
+var address;
+var errorFlag;
+function LoadPage(){
+	if(true == errorFlag)
+		parent.location.href = 'http://' + address;	
+}
+function LoadNewIp(){
+	errorFlag = true;
+	setTimeout("LoadPage()",3000);
+}
+function stopLoad(){
+	errorFlag = false;
+}
+</SCRIPT>
+<BODY background="/images/top_bg.jpg" leftMargin=0 topMargin=0 marginheight="0" marginwidth="0" >
+<table cellpadding=0 cellspacing=0 width="100%">
+<tr><td><table border="0" cellpadding="0" cellspacing="0" width="770">
+  <tr><td><a OnClick="return NewW();" onMouseOver="return ShowUrl();" onMouseOut="return EraseUrl();"><img src="/images/top1_1.jpg" border="0" style="cursor:hand";></a></td>
+   <td><img src="/images/top1_2.jpg" border="0"></td></tr>
+</table></td></tr>
+<tr><td><IMG height=5 src="/images/top2.jpg" width="100%" align=top border=0></td></tr></table>
+</BODY></HTML>

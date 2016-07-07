@@ -1,0 +1,30 @@
+Installation Instructions
+=========================
+
+1. Edit configurable settings in Makefile if needed, or simply
+   override the defaults when invoking make.
+
+2. Build and install the software.
+
+   make
+   make install
+
+   This installs the following files:
+   /lib/modules/<kernel-version>/kernel/extra/pppol2tp.ko
+   /usr/lib/pppol2tp-kmod/...
+
+   To install under a different root directory, say /tmp, use
+
+   make install DESTDIR=/tmp
+
+   To cross-compile, define CROSS_COMPILE to be the tool prefix, e.g.
+
+   make CROSS_COMPILE=ppc_7xx-
+
+Reporting problems
+==================
+
+Please report problems to openl2tp-users@lists.sourceforge.net or
+raise a bug at sourceforge.net/projects/openl2tp.
+
+

@@ -1,0 +1,46 @@
+#!/bin/sh
+
+if [ $TOOLCHAIN == gcc-3.4.4-2.16.1 ]
+then
+SRC_DIR=$TOPDIR/build/gcc-3.4.4-2.16.1/build_mips/lib
+DST_DIR=$INSTALL_ROOT/lib
+UCLIBC_VER=0.9.29
+else
+SRC_DIR=$TOPDIR/build/gcc-4.3.3/build_mips/staging_dir/lib
+DST_DIR=$INSTALL_ROOT/lib
+UCLIBC_VER=0.9.30
+fi
+
+mkdir -p $INSTALL_ROOT/lib
+
+cp -f $SRC_DIR/ld-uClibc-$UCLIBC_VER.so $DST_DIR/
+cp -f $SRC_DIR/libcrypt-$UCLIBC_VER.so $DST_DIR/
+cp -f $SRC_DIR/libdl-$UCLIBC_VER.so $DST_DIR/
+cp -f $SRC_DIR/libgcc_s.so.1 $DST_DIR/
+cp -f $SRC_DIR/libm-$UCLIBC_VER.so $DST_DIR/
+cp -f $SRC_DIR/libnsl-$UCLIBC_VER.so $DST_DIR/
+cp -f $SRC_DIR/libpthread-$UCLIBC_VER.so $DST_DIR/
+cp -f $SRC_DIR/libresolv-$UCLIBC_VER.so $DST_DIR/
+cp -f $SRC_DIR/librt-$UCLIBC_VER.so $DST_DIR/
+cp -f $SRC_DIR/libuClibc-$UCLIBC_VER.so $DST_DIR/
+cp -f $SRC_DIR/libutil-$UCLIBC_VER.so $DST_DIR/
+
+cd $DST_DIR/
+pwd
+
+ln -sf ld-uClibc-$UCLIBC_VER.so ld-uClibc.so.0
+ln -sf libuClibc-$UCLIBC_VER.so libc.so.0
+ln -sf libcrypt-$UCLIBC_VER.so libcrypt.so.0
+ln -sf libdl-$UCLIBC_VER.so libdl.so.0
+ln -sf libgcc_s.so.1 libgcc_s.so
+ln -sf libm-$UCLIBC_VER.so libm.so
+ln -sf libm-$UCLIBC_VER.so libm.so.0
+ln -sf libnsl-$UCLIBC_VER.so libnsl.so
+ln -sf libnsl-$UCLIBC_VER.so libnsl.so.0
+ln -sf libpthread-$UCLIBC_VER.so libpthread.so
+ln -sf libpthread-$UCLIBC_VER.so libpthread.so.0
+ln -sf libresolv-$UCLIBC_VER.so libresolv.so
+ln -sf libresolv-$UCLIBC_VER.so libresolv.so.0
+ln -sf librt-$UCLIBC_VER.so librt.so
+ln -sf librt-$UCLIBC_VER.so librt.so.0
+ln -sf libutil-$UCLIBC_VER.so libutil.so.0

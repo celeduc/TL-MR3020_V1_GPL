@@ -1,0 +1,11 @@
+prefix=/home/project/svn/TL-MR3020_V1/build/../apps/3g_tools/install_libusb_mips
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libusb
+Description: USB access library
+Version: 0.1.12
+Libs: -L${libdir} -lusb
+Cflags: -I${includedir}
+

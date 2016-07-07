@@ -1,0 +1,1 @@
+configedit.o: configedit.c

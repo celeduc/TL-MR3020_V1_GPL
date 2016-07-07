@@ -1,0 +1,397 @@
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<SCRIPT language="javascript" src="../localiztion/3g.js" type="text/javascript"></SCRIPT>
+<SCRIPT language="JavaScript" src="../dynaform/custom.js" type="text/JavaScript"></SCRIPT>
+<SCRIPT type="text/javascript"><!--
+var i;
+var tag;
+var timerId = 0;
+var accessTye = wzdMobileParam[11];
+
+function doBack()
+{
+	location.href = "/userRpm/Wzd3GTypeRpm.htm?Return=Back&session_id=" + session_id;
+}
+
+function doSubmit()
+{
+	var c;
+	var ch="0123456789*#";
+	if (document.getElementById("manualmobile").checked == true)
+	{
+		var element = document.getElementById("manualdn");
+		for (var i = 0; i < element.value.length; i++)
+		{
+			c = element.value.charAt(i);
+			if (ch.indexOf(c) == -1)
+			{
+				alert(js_wrong_dialnum = "The Dial Number must be composed of numbers, * and #.");
+				element.focus();
+				element.select();
+				return false;
+			}
+		}
+		document.getElementById("dialnum").value = document.getElementById("manualdn").value;
+		document.getElementById("apn").value = document.getElementById("manualapn").value;
+	}
+	else
+	{
+		document.getElementById("dialnum").value = document.getElementById("autodn").innerHTML;
+		document.getElementById("apn").value = document.getElementById("autoapn").innerHTML;	
+	}
+/*	var element = document.getElementById("pin");
+	if( -1 == getValidPin())
+    {
+        if(element)
+        {
+            element.focus();
+            element.select();
+        }
+        return false;
+    }	*/
+	return true;
+}
+
+function doCheck()
+{
+	if (document.getElementById("manualmobile").disabled != true)
+	{
+		if (document.getElementById("manualmobile").checked == true)
+		{
+			document.getElementById("manualdn").disabled = false;
+			document.getElementById("manualapn").disabled = false;
+			document.getElementById("username").readOnly = false;
+			document.getElementById("username").style.backgroundColor = "#FFFFFF";
+			document.getElementById("passwd").readOnly = false;
+			document.getElementById("passwd").style.backgroundColor = "#FFFFFF";
+			document.getElementById("selloc").disabled = true;
+			document.getElementById("isp").disabled = true;
+		}
+		else
+		{
+			document.getElementById("manualdn").disabled = true;
+			document.getElementById("manualapn").disabled = true;
+			document.getElementById("username").readOnly = true;
+			document.getElementById("username").style.backgroundColor = "#CDCDC1";
+			document.getElementById("passwd").readOnly = true;
+			document.getElementById("passwd").style.backgroundColor = "#CDCDC1";
+			document.getElementById("selloc").disabled = false;
+			document.getElementById("isp").disabled = false;
+		}
+	}
+	if (document.getElementById("isp").disabled == true)
+	{
+		document.getElementById("isppara").innerHTML = "";
+	}
+	else
+	{
+		displayPara();
+	}
+}
+
+function doBlur()
+{
+	if (mobileParam[0] ==0 || mobileParam[0] == 2 || mobileParam[1] != 2)
+	{
+		timerId = window.setTimeout("doRefresh()",10000);
+	}
+}
+
+function doFocus()
+{
+	if (timerId != 0)
+	{	
+		window.clearTimeout(timerId);
+	}
+	timerId = 0;
+}
+
+function style_display_on()
+{
+	if (window.ActiveXObject)
+	{ // IE
+		return "block";
+	}
+	else if (window.XMLHttpRequest)
+	{ // Mozilla, Safari,...
+		return "table-row";
+	}
+}
+
+function doRefresh()
+{
+	location.href = "../userRpm/Wzd3GTypeRpm.htm?session_id=" + session_id;
+}
+
+function displayISP()
+{
+	var locationname = "location" + document.getElementById("selloc").value;
+	var obj = document.getElementById("isp");
+
+	while((i = obj.options.length) > 0)
+	{
+		obj.remove(0);
+	}
+	
+	i = 0;
+	for (tag in w3gisp_js[locationname])
+	{
+		if (w3gisp_js[locationname][tag]["isp_name"] == undefined)
+		{
+			continue;
+		}
+		obj.options[i] = new Option(w3gisp_js[locationname][tag]["isp_name"], i);
+		i++;
+	}
+}
+
+function displayPara()
+{
+	var locationname = "location" + document.getElementById("selloc").value;
+	var isp = "isp" + document.getElementById("isp").value;
+	var dialnumvalue = w3gisp_js[locationname][isp]["dial_num"];
+	var apnvalue = w3gisp_js[locationname][isp]["apn"];
+    var username = w3gisp_js[locationname][isp]["username"];
+    var password = w3gisp_js[locationname][isp]["password"];
+	document.getElementById("manualdn").value = dialnumvalue;
+	document.getElementById("manualapn").value = apnvalue;
+	document.getElementById("isppara").innerHTML = "\"<SPAN id=\"autodn\" style=\"color:#003399;FONT-WEIGHT:bold;\">" + dialnumvalue
+			+ "<\/SPAN>\"&nbsp;&nbsp;<SPAN id=\"t_dft_apn\"> APN:<\/SPAN>&nbsp;\"<SPAN id=\"autoapn\" style=\"color:#003399;FONT-WEIGHT:bold;\">" + apnvalue + "<\/SPAN>\"";
+            
+    document.getElementById("username").value = username;
+    document.getElementById("passwd").value = password;  
+}
+
+function getValidPin()
+{	
+	var pinVal=document.getElementById("pin").value;
+    var ch="0123456789";
+    var i = 0;
+    var c;
+    var url;
+	/*
+	if(pinVal.length == 0)
+	{
+//		alert(js_enpty_pin="The PIN can not be empty.");
+        return -1;
+	}
+	if(pinVal.length < 4)
+	{
+//		alert(js_pin_len="The SIM PIN can not be less than 4 arabic numerals.");
+        return -1;
+	}
+	*/
+    for(i=0; i<pinVal.length; i++)
+    {
+        c = pinVal.charAt(i);
+        if(ch.indexOf(c) == -1)
+        {
+            if(pinVal != "hello123")
+            {
+                alert(js_invalid_pin="Invalid PIN, please check it.");
+                return -1;
+            }
+        }
+    }
+    return pinVal;
+}
+
+var pinMessage = new Array(
+"<SPAN id=\"t_msg_pin_not_enable\">PIN protection is disabled.</\SPAN>",
+"<SPAN id=\"t_msg_pin_enable\">PIN protection is enabled. Please input PIN code.</\SPAN>",
+"<SPAN id=\"t_puk_lock_msg\" style=\"color:red\">The SIM/UIM card is locked. Please unlock the SIM/UIM card first with your PUK code on PC/Laptop.</\SPAN>", 
+"<SPAN id=\"t_pin_err_msg\" style=\"color:red\">The PIN code is invalid. Please check it and try again.</\SPAN>",
+"<SPAN id=\"t_pin_success_msg\" style=\"color:green\">PIN code verification is successful.</\SPAN>",
+"<SPAN id=\"t_no_interface_msg\">Unknow PIN status, please insure that PIN protection is on disabled status and try again.</\SPAN>",
+"<SPAN id=\"t_not_executed\">The Device can not unlock the SIM/UIM card, please unlock the SIM/UIM card first with your PIN code on PC/Laptop.</\SPAN>",
+"<SPAN id=\"t_no_identifying\">Identifying 3G/4G modem.</\SPAN>"
+);
+
+//--></SCRIPT>
+
+<style type="text/css">
+<!--
+.STYLE2 {color: #66CC00}
+-->
+</style>
+
+</HEAD>
+<BODY onLoad="doCheck(); setTagStr(document,'wzd_3gtype');LoadHelp('Wzd3GTypeHelpRpm.htm'); resize(this);" onResize="resize(this);">
+<CENTER>
+	<FORM action="Wzd3GTypeRpm.htm" enctype="multipart/form-data" method="get" onSubmit="return doSubmit();">
+		<TABLE id="autoWidth">
+			<TR>
+				<TD class="h1" colspan="2" id="t_qs3g4g" name="t_qs3g4g">Quick Setup - 3G/4G</TD>
+			</TR>
+			<TR>
+				<TD class="blue" colspan="2"></TD>
+			</TR>
+			<TR id="line_order">
+				<TD height="31" colspan="2" class="info" STYLE1>
+				<STRONG>
+		
+<SCRIPT type="text/javascript">
+	var printfHtml = "";
+	if (wzdMobileParam[11] == 0)
+	{
+		printfHtml += "<B>Start &gt;&gt; Internet Access &gt;&gt; </B><SPAN class=\"STYLE2\">3G/4G</SPAN><B> &gt;&gt; WAN Connection Type &gt;&gt; Wireless &gt;&gt; Finish</B><TR><TR>";
+	}
+	else if (wzdMobileParam[11] == 1)
+	{			
+		printfHtml += "<B>Start &gt;&gt; Internet Access &gt;&gt; </B><SPAN class=\"STYLE2\">3G/4G</SPAN><B> &gt;&gt; Wireless &gt;&gt; Finish</B><TR><TR>";
+	}
+	else if (wzdMobileParam[11] == 2)
+	{
+		printfHtml += "<B>Start &gt;&gt; Internet Access &gt;&gt; WAN Connection Type &gt;&gt; </B><SPAN class=\"STYLE2\">3G/4G</SPAN><B> &gt;&gt; Wireless &gt;&gt; Finish</B><TR><TR>";
+	} 
+	else if (wzdMobileParam[11] == 3)
+	{
+		printfHtml += "";
+	}
+	document.write(printfHtml);			
+</SCRIPT>
+
+				</STRONG>
+				</TD>
+			</TR>		
+			<TR>
+				<TD height="62" colspan="2"><SPAN id="t_note_isp_1" style="padding-left:20">If your location or ISP is not listed, or the default Dial number / APN is not the latest one, or your ISP requires you to enter a new user <BR>name and password, </SPAN>
+				<SPAN id="t_note_isp_2">please enable</SPAN> <B id="t_note_isp_3">Set the Dial Number, APN, Username and Password manually</B> <SPAN id="t_note_isp_4">and fill in the right ones.</SPAN></TD>
+			</TR>
+			<TR>
+				<TD class="Item" id="t_location">Location:</TD>
+				<TD>
+					<SELECT id="selloc" name="selloc" onFocus="doFocus();" onChange="displayISP(); displayPara();">
+<SCRIPT type="text/javascript">
+i = 0;
+for (tag in w3gisp_js)
+{
+    i = parseInt(tag.substring(8,16));
+	document.write('<OPTION value=' + i + ' id="loc' + i + '">' + w3gisp_js[tag]["location_name"] + '<\/OPTION>');
+}
+</SCRIPT>
+					</SELECT>
+				</TD>
+			</TR>
+			<TR>
+				<TD class="Item" id="t_isp">Mobile ISP:</TD>
+				<TD>
+					<SELECT id="isp" name="isp" onFocus="doFocus();" onChange="displayPara()"></SELECT>
+				</TD>
+			</TR>
+            <TR>
+                <TD></TD>
+                <TD><SPAN id="t_dft_dn" name="t_dft_dn">&nbsp;Default Dial Number:</SPAN>&nbsp;<SPAN id="isppara"></SPAN></TD>
+            </TR>
+
+			<TR colspan="3" id="pin_input_area" style="display:none">
+                <TD class="Item" id="t_pin">SIM/UIM PIN:</TD>
+				<TD><input name="pin" id="pin" type="password" class="text" size="16" maxlength="16">&nbsp;</TD>
+            </TR>
+            <TR id="pin_msg_area" style="display:none">
+                <TD class="Item" id="t_pin_msg">Message:</TD>
+                <TD><SPAN id="pin_message"></SPAN></TD>
+            </TR>
+			<TR>
+				<TD class="Item" id="t_authentication_type">Authentication Type:</TD>
+				<TD>
+					<INPUT name="authtype" id="authtype" type="radio" value="0"><SPAN id="t_atuo">Auto</SPAN></INPUT>&nbsp;&nbsp;&nbsp;&nbsp;
+					<INPUT name="authtype" id="authtype" type="radio" value="1"><SPAN id="t_atuo">PAP</SPAN></INPUT>&nbsp;&nbsp;&nbsp;&nbsp;
+					<INPUT name="authtype" id="authtype" type="radio" value="2"><SPAN id="t_atuo">CHAP</SPAN></INPUT>
+				</TD>
+			</TR>
+			<TR>
+				<TD></TD>
+				<TD><SPAN id="t_notice"><font style="color:red">Notice</font>:  The default is Auto, do not change unless necessary.</SPAN></TD>
+			</TR>
+			<TR>
+				<TD></TD>
+				<TD><INPUT id="manualmobile" name="manualmobile" type="checkbox" value="manualmobile" onClick="doCheck()" onFocus="doFocus()"><SPAN id="t_manual_mobile">Set the Dial Number, APN, Username and Password manually</SPAN></INPUT></TD>
+			</TR>
+			<TR>
+				<TD class="Item" id="t_dial">Dial Number:</TD>
+				<TD><INPUT id="manualdn" name="manualdn" type="text" class="text" size="20" maxlength="118" onFocus="doFocus()" /></TD>
+			</TR>
+			<TR>
+				<TD class="Item" id="t_apn">APN:</TD>
+				<TD><INPUT id="manualapn" name="manualapn" type="text" class="text" size="20" maxlength="118" onFocus="doFocus()" /></TD>
+			</TR>
+			<TR>
+				<TD class="Item" id="t_user">Username:</TD>
+				<TD><INPUT id="username" name="username" type="text" class="text" size="20" maxlength="118" onFocus="doFocus()" />&nbsp;<SPAN id="t_optional" name="t_optional">(optional)</SPAN></TD>
+			</TR>
+			<TR>
+				<TD class="Item" id="t_pwd">Password:</TD>
+				<TD><INPUT id="passwd" name="passwd" type="password" class="text" size="20" maxlength="118" onFocus="doFocus()" />&nbsp;<SPAN id="t_optional" name="t_optional">(optional)</SPAN></TD>
+			</TR>
+			<TR>
+				<TD class="blue" colspan="2"></TD>
+			</TR>
+			<TR>
+				<TD>&nbsp;</TD>
+				<TD>
+					<INPUT id="dialnum" name="dialnum" type="hidden" value=""/>
+					<INPUT id="apn" name="apn" type="hidden" value=""/>
+					<INPUT id="pin" name="pin" type="hidden" value=""/>
+					<INPUT id="Return" name="Return" type="button" class="buttonBig" value="Back" onClick="doBack();"/>
+					&nbsp;&nbsp;
+					<INPUT id="Next" name="Next" type="submit" class="buttonBig" value="Next"/>
+					<SCRIPT type="text/javascript">
+						document.write('<input name="session_id" id="session_id" type="hidden" value="'+session_id +'">');
+					</SCRIPT>
+				</TD>
+			</TR>
+		</TABLE>			
+	</FORM>
+</CENTER>
+</BODY>
+</HTML>
+<SCRIPT type="text/javascript">
+document.getElementById("line_order").style.display="none";
+
+
+display_str=style_display_on();
+if(wzdMobileParam[1] == 2 && wzdMobileParam[15] == 1 && wzdMobileParam[13] != 0 && wzdMobileParam[13] != 5)
+{
+	document.getElementById("pin_input_area").style.display=(display_pin_settings)?display_str:"none";
+	document.getElementById("pin_msg_area").style.display=(display_pin_settings)?display_str:"none";
+}
+
+document.getElementById("selloc").value = wzdMobileParam[3];
+displayISP();
+document.getElementById("isp").value = wzdMobileParam[4];
+displayPara();
+document.getElementById("username").value = wzdMobileParam[5];
+document.getElementById("passwd").value = wzdMobileParam[6];
+document.getElementById("manualmobile").checked = wzdMobileParam[7] ? true : false;
+if (wzdMobileParam[7])
+{
+	document.getElementById("manualdn").value = wzdMobileParam[8];
+	document.getElementById("manualapn").value = wzdMobileParam[9];
+}
+else
+{
+	document.getElementById("manualdn").disabled = true;
+	document.getElementById("manualapn").disabled = true;
+}
+document.getElementById('pin').value = wzdMobileParam[12];
+if(wzdMobileParam[1] == 2 && wzdMobileParam[13] != 5 && wzdMobileParam[13] != 0)
+{
+	document.getElementById('pin_message').innerHTML = pinMessage[wzdMobileParam[13]];
+}
+else
+{
+	document.getElementById("pin_msg_area").style.display="none";
+}
+document.forms[0].authtype[wzdMobileParam[14]].checked = true;
+
+
+if(wzdMobileParam[13] == 3 || wzdMobileParam[13] == 1)
+{
+	document.getElementById("pin").disabled = false;
+}
+else
+{
+	document.getElementById("pin").disabled = true;
+}
+document.forms[0].Next.focus();
+</SCRIPT>

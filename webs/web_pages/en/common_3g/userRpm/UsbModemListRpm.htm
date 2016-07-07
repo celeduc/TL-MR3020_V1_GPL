@@ -1,0 +1,124 @@
+<SCRIPT type="text/javascript">
+var usbModemList = new Array(
+"vendor", 
+"model", 
+0,0 );
+var usbModemListParam = new Array(
+1, 
+1,
+3,
+8,
+0,0 );
+</SCRIPT>
+<HTML>
+<HEAD>
+<TITLE>UsbModemList</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META http-equiv=Pragma content=no-cache>
+<META http-equiv=Cache-Control content=no-cache>
+<META http-equiv=Expires content="wed, 26 Feb 1997 08:21:57 GMT">
+<LINK href="../dynaform/css_main.css" rel=stylesheet>
+<SCRIPT language=javascript src="../dynaform/common.js" type=text/javascript></SCRIPT>
+<!--<TP_C_TAG>-->
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<SCRIPT type="text/javascript"><!--
+function doDelAll()
+{
+	if(!confirm(js_del_all="Are you sure to delete all the entries?"))
+	{
+		return;
+	}
+    else
+    {
+        location.href="/userRpm/UsbModemListRpm.htm?DelAll=DelAll&session_id=" + session_id;
+    }
+}
+function doAdd(nPage)
+{
+	location.href="/userRpm/UsbModemUploadRpm.htm?session_id=" + session_id;
+}
+function ResetStatus(strInfo)
+{
+	window.status=strInfo;
+	return true;
+}
+//--></SCRIPT>
+</HEAD>
+<BODY onLoad="setTagStr(document,'ntw_usb_modem_list');LoadHelp('UsbModemHelpRpm.htm'); resize(this);" onResize="resize(this);">
+<CENTER>
+	<FORM action="UsbModemListRpm.htm" enctype="multipart/form-data" method="get" onSubmit="return doSubmit();">
+		<TABLE id="autoWidth">
+			<TR>
+				<TD class=h1 id = "t_title">3G/4G USB Modem Settings</TD>
+			</TR>
+			<TR>
+				<TD class=blue></TD>
+			</TR>
+			<TR>
+				<TD>
+					<TABLE width="570" border="0" align="center" cellpadding="0" cellspacing="0" class="space">
+						<TR>
+							<TD class=ListM><B id="t_id">ID</B></TD>
+							<TD class=ListM><B id="t_vendor_name">Vendor</B></TD>
+							<TD class=ListM><B id="t_model_name">Model</B></TD>
+							<TD class=ListM><B id="t_delete">Delete</B></TD>
+						</TR>
+<SCRIPT type="text/javascript">
+if (usbModemListParam[1]>0)
+{
+	var row = 0;
+	var IdStart = (usbModemListParam[0] - 1) * usbModemListParam[3];
+	var curId = 0;
+	var showId = 0;
+	for (i = 0; i < usbModemListParam[1]; i++)
+	{
+		curId = IdStart + i;
+		showId = curId + 1;
+		row = i * usbModemListParam[2];		
+		document.write('<TR><TD class=ListM>'+ showId + '<\/TD>');
+		document.write('<TD class=ListM >'+ usbModemList[row] +'<\/TD>');
+		document.write('<TD class=ListM >'+ usbModemList[row + 1] +'<\/TD>');
+		document.write('<TD class=ListM>'
+						+ '<a href=\"/userRpm/UsbModemListRpm.htm?Del=' + curId  + '&session_id=' + session_id +'\" OnMouseOver=\"return ResetStatus(\'Delete\');\"><span name=\"t_delete\" id =\"t_delete\">Delete<\/span><\/a>'
+						+ '<\/td><\/tr>'
+						);
+	}
+}
+</SCRIPT>
+					</TABLE>
+				</TD>
+			</TR>
+			<TR><TD></TD></TR>
+			<TR>
+				<TD colspan=2>
+					<INPUT type="button" id="Add" value="Add New..." name="Add" class="buttonBig" onClick="doAdd();">
+					&nbsp;
+					<INPUT type="button" id="DelAll" value="Delete All" name="DelAll" class="buttonBig" onClick="doDelAll();">
+				</TD>
+			</TR>
+			<TR>
+				<TD class=blue></TD>
+			</TR>
+			<TR>
+				<TD class="mbtn">
+					<SCRIPT type="text/javascript">
+						document.write('<input name="session_id" id="session_id" type="hidden" value="'+session_id +'">');
+						document.write('<INPUT name=Back type=button class=buttonBig value=Back onClick="location.href=\'/userRpm/MobileCfgRpm.htm?session_id=' + session_id +'\'">');
+					</SCRIPT>
+				</TD>
+			</TR>
+		</TABLE>			
+	</FORM>
+</CENTER>
+</BODY>
+</HTML>
+<SCRIPT type="text/javascript">
+if (usbModemListParam[4] == true)
+{
+	document.getElementById("Add").disabled = true;
+}
+if (usbModemListParam[1] == 0)
+{
+	document.getElementById("DelAll").disabled = true;
+}
+</SCRIPT>

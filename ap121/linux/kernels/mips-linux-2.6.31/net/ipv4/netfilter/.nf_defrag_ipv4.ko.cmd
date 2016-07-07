@@ -1,0 +1,1 @@
+cmd_net/ipv4/netfilter/nf_defrag_ipv4.ko := mips-linux-uclibc-ld -r  -m elf32btsmip  --build-id -o net/ipv4/netfilter/nf_defrag_ipv4.ko net/ipv4/netfilter/nf_defrag_ipv4.o net/ipv4/netfilter/nf_defrag_ipv4.mod.o

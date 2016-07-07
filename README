@@ -1,0 +1,12 @@
+TP-LINK GPL code readme
+ 
+1. This package contains all GPL code used by TP-LINK TL-MR3020 Router.
+2. All components have been built successfully on Ubuntu 14.04. 
+3. Compiling components in this package on platforms other than Ubuntu 14.04 may cause unexpected results. 
+4. Recommended using "root" or "sudo" command to build the code. 
+5. After building the code, you will get uboot, linux kernel, and upgrade firmware. You can upgrade the firmware to your router through web management page.
+ 
+Build Instructions 
+1. Enter TL-MR3020_V1_GPL/build/
+2. Issue the following command: 
+	./build_mr3020v1_en.sh

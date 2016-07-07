@@ -1,0 +1,554 @@
+
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<SCRIPT language="javascript" src="../localiztion/3g.js" type="text/javascript"></SCRIPT>
+<SCRIPT language="JavaScript" src="../dynaform/custom.js" type="text/JavaScript"></SCRIPT>
+<SCRIPT type="text/javascript"><!--
+var i;
+var tag;
+var timerId = 0;
+
+var mobileLinkStat = new Array(
+"<span id=\"t_disconnect\">Disconnected<\/span>",
+"<span id=\"t_connect\">Connected<\/span>",
+"<span id=\"t_connecting\">Connecting...<\/span>",
+"<span id=\"t_connecting\">Charging...<\/span>"
+);
+
+var pinMessage = new Array(
+"<span id=\"t_msg_pin_not_enable\">PIN protection is disabled.</\span>",
+"<span id=\"t_msg_pin_enable\">PIN protection is enabled. Please input PIN code.</\span>",
+"<span id=\"t_puk_lock_msg\" style=\"color:red\">The SIM/UIM card is locked. Please unlock the SIM/UIM card first with your PUK code on PC/Laptop.</\span>", 
+"<span id=\"t_pin_err_msg\" style=\"color:red\">The PIN code is invalid. Please check it and try again.</\span>",
+"<span id=\"t_pin_success_msg\" style=\"color:green\">PIN code verification is successful.</\span>",
+"<span id=\"t_no_interface_msg\">Unknow PIN status, please insure that your SIM/UIM is on unlock status.</\span>",
+"<span id=\"t_not_executed\">Unlock SIM/UIM failed, please unlock it on you PC/Laptop using the PIN code.</\span>",
+"<span id=\"t_no_identifying\">Identifying 3G/4G modem.</\span>"
+);
+
+
+function setWindowTop()
+{
+	window.scroll(0, 0);
+}
+
+function doRefresh()
+{
+	location.href = "../userRpm/MobileCfgRpm.htm"+"?session_id="+session_id;
+}
+
+function doBlur()
+{
+	if (mobileParam[0] ==0 || mobileParam[0] == 2 || mobileParam[1] != 2 || mobileParam[11] == 2)
+	{
+		timerId = window.setTimeout("doRefresh()",10000);
+	}
+}
+
+function doFocus()
+{
+	if (timerId != 0)
+	{
+		window.clearTimeout(timerId);
+	}
+	timerId = 0;
+}
+
+function style_display_on()
+{
+	if (window.ActiveXObject)
+	{ // IE
+		return "block";
+	}
+	else if (window.XMLHttpRequest)
+	{ // Mozilla, Safari,...
+		return "table-row";
+	}
+}
+
+function displayLocation()
+{
+	var i = 0;
+	var selLocObj = document.getElementById("selloc");
+	
+	if(selLocObj.options.length > 0)
+	{
+		selLocObj.options.remove(0);
+	}
+	
+	for(tag in w3gisp_js)
+	{
+		i = parseInt(tag.substring(8,16));
+		var locOption = document.createElement("OPTION");
+		
+		locOption.id = "loc" +i;
+		locOption.value = i;
+		locOption.text = w3gisp_js[tag]["location_name"];
+		selLocObj.options.add(locOption);
+	}
+}
+
+
+function displayISP()
+{
+	var locationname = "location" + document.getElementById("selloc").value;
+	var obj = document.getElementById("isp");
+     
+	while((i = obj.options.length) > 0)
+	{
+		obj.remove(0);
+	}
+	
+	i = 0;
+	for (tag in w3gisp_js[locationname])
+	{
+		if (w3gisp_js[locationname][tag]["isp_name"] == undefined)
+		{
+			continue;
+		}
+		obj.options[i] = new Option(w3gisp_js[locationname][tag]["isp_name"], i);
+		i++;
+	}
+}
+
+function getValidPin(pinVal)
+{
+	var checkPattern = new RegExp("^[0-9]+$");
+    
+	if (pinVal.length == 0)
+	{
+		alert(js_enpty_pin="The SIM PIN can not be empty.");
+        return false;
+	}
+	if(pinVal.length < 4)
+	{
+		alert(js_pin_len="The SIM PIN can not be less than 4 arabic numerals.");
+        return false;
+	}
+	
+	if(!checkPattern.test(pinVal))
+	{
+		if(pinVal != "hello123")
+		{
+			alert(js_invalid_pin="Invalid PIN, please check it.");
+			return false;
+		}
+	}
+
+    return pinVal;
+}
+
+function displayPara()
+{
+	var locationname = "location" + document.getElementById("selloc").value;
+	var isp = "isp" + document.getElementById("isp").value;
+	
+	if (mobileParam[7] == 0)
+	{
+		/* use list to save 3g para */
+		document.getElementById("username").value = w3gisp_js[locationname][isp]["username"];
+		document.getElementById("passwd").value = w3gisp_js[locationname][isp]["password"];
+		document.getElementById("apn").value = w3gisp_js[locationname][isp]["apn"];
+		document.getElementById("dial_num").value = w3gisp_js[locationname][isp]["dial_num"];
+	}
+	else
+	{
+		document.getElementById("username").value = mobileParam[5];
+		document.getElementById("passwd").value = mobileParam[6];
+		document.getElementById("apn").value = mobileParam[9];
+		document.getElementById("dial_num").value = mobileParam[8];
+	}
+}
+
+function doJudgeDisableAll()
+{
+	if (mobileParam[0] == 3)
+	{
+		disableTag(document, "INPUT");
+		disableTag(document, "SELECT");
+		document.getElementById("dis_wanonly").style.display = "";
+	}
+	else if (mobileParam[0] == 0 || mobileParam[0] == 2)
+	{
+		var modeStr;
+		if (mobileParam[0] == 0)
+		{
+			document.getElementById("curmode").innerHTML = '<SPAN id="t_note_auto2">3G/4G preferred</SPAN>';
+		}
+		else if (mobileParam[0] == 2)
+		{
+			document.getElementById("curmode").innerHTML = '<SPAN id="t_note_auto3">WAN preferred</SPAN>';
+		}
+		document.getElementById("dis_linktype").style.display = "";
+		disableTag(document, "INPUT", "radio");
+		document.getElementById("connect").disabled = true;
+		document.getElementById("disconnect").disabled = true;
+		document.getElementById("maxidle").disabled = true;
+	}
+	else
+	{
+		if (mobileParam[11] == 2)
+		{
+			document.getElementById("maxidle").disabled = true;
+		}
+		else
+		{
+			document.getElementById("maxidle").disabled = false;
+		}
+	}
+	
+	if (mobileParam[7] == 1)
+	{
+		document.getElementById("selloc").disabled = true;
+		document.getElementById("isp").disabled = true;
+		document.getElementById("tip_msg_area").style.display = "";
+	}
+
+	showSelTtyPort();
+}
+
+function doClick(value)
+{
+	if (value == 2)
+	{
+		document.getElementById("maxidle").disabled = true;
+	}
+	else
+	{
+		document.getElementById("maxidle").disabled = false;
+	}
+}
+
+function doAdvance()
+{
+	location.href = "/userRpm/MobileCfgAdvRpm.htm?adv=1&selloc=" 
+					+ document.getElementById("selloc").value 
+					+ "&isp="+document.getElementById("isp").value
+					+ "&session_id=" + session_id;
+}
+
+function doSubmit()
+{
+	var c;
+	var ch="0123456789*#";
+	
+	if (mobileParam[11] != 2)
+	{
+		element = document.getElementById("maxidle");
+		if(element.value =="" || !is_number(element.value, 0, 99))
+		{
+			alert(js_wrong_time = "The Max Idle Time should be an integer between 0 and 99.");	
+			element.focus();
+			element.select();
+			return false;
+		}
+	}
+	setWindowTop();
+	return true;
+}
+
+function setTtyPort()
+{
+	var obj = document.getElementById("seltty");
+	var i = 0;
+
+	if(typeof(setTtyVal) == 'undefined' || '' == setTtyVal)
+	{
+		return;
+	}
+	for(; i < obj.options.length; i++)
+	{
+		if(setTtyVal == obj.options[i].value)
+		{
+			obj.options[i].selected = true;
+			break;
+		}
+	}
+}
+
+function showSelTtyPort()
+{
+	var obj = document.getElementById("ttyport");
+
+	if(typeof(isShow) == 'undefined' || '' == isShow || 0 == isShow)
+	{
+		obj.style.display = "none";
+	}
+	else if(1 == isShow)
+	{
+		obj.style.display = "show";
+	}
+}
+//--></SCRIPT>
+</HEAD>
+<BODY onLoad="doJudgeDisableAll();setTagStr(document,'ntw_mobile_setting');LoadHelp('MobileCfgHelpRpm.htm'); resize(this);" onResize="resize(this);">
+<CENTER>
+	<FORM action="MobileCfgRpm.htm" enctype="multipart/form-data" method="get" onSubmit="return doSubmit();">
+		<TABLE id="autoWidth">
+			<TR>
+				<TD class="h1" colspan="2" id="t_title">3G/4G</TD>
+			</TR>
+			<TR>
+				<TD class="blue" colspan="2"></TD>
+			</TR>
+			<TR id="dis_wanonly" style="display:none">
+				<TD colspan="2" style="padding-left:20">
+					<SPAN id="t_note_wanonly1">3G/4G settings is unavailable as the Internet Access is <B>WAN Only</B>.&nbsp;</SPAN><SPAN id="t_note_wanonly2">Please change settings on </SPAN>
+					<SCRIPT type="text/javascript">
+					document.write('<a href="ConnModeCfgRpm.htm?session_id=' + session_id +'">');
+					</SCRIPT>
+					<SPAN id="t_note_wanonly3" style="font-weight:bold">Internet Access</SPAN></a><SPAN id="t_note_wanonly4"> if you want to use 3G/4G.</SPAN><BR>
+				</TD>
+			</TR>
+			<TR>
+				<TD class="Item" id="t_3g_card">3G/4G USB Modem:</TD>
+				<TD id="modem_name"></TD>
+			</TR>
+			<TR>
+				<TD colspan="2" style="padding-left:20"><SPAN id="t_note_isp_1">If your location or ISP is not listed, or the default Dial number / APN is not the latest one, or your ISP requires you to <BR>enter a new username and password, </SPAN>
+				<SPAN id="t_note_isp_2">please click</SPAN>&nbsp;<B id="t_note_isp_3">Advanced Settings</B>&nbsp;<SPAN id="t_note_isp_4">to set them manually.</SPAN></TD>
+			</TR>
+			<TR>
+				<TD class="Item" id="t_location">Location:</TD>
+				<TD>
+					<SELECT id="selloc" name="selloc" onFocus="doFocus()" onBlur="doBlur()" onChange="displayISP();displayPara();"></SELECT>
+				</TD>
+			</TR>
+			<TR>
+				<TD class="Item" id="t_isp">Mobile ISP:</TD>
+				<TD>
+					<SELECT id="isp" name="isp" onFocus="doFocus()" onBlur="doBlur()" onChange="displayPara()">
+					</SELECT>
+					<SPAN id="isppara"></SPAN>
+				</TD>
+			</TR>
+			</TR>
+			<TR id="ttyport">
+				<TD class="Item" id="t_tty">TTY PORT:</TD>
+				<TD>
+					<SELECT id="seltty" name="seltty" onFocus="doFocus()" onBlur="doBlur()">
+						<option id="tty0" name="tty0" value="0">default</option>
+						<option id="tty1" name="tty1" value="1">ttyUSB0</option>
+						<option id="tty2" name="tty2" value="2">ttyUSB1</option>
+						<option id="tty3" name="tty3" value="3">ttyUSB2</option>
+						<option id="tty4" name="tty4" value="4">ttyUSB3</option>
+						<option id="tty5" name="tty5" value="5">ttyUSB4</option>
+						<option id="tty6" name="tty6" value="6">ttyUSB5</option>
+						<option id="tty7" name="tty7" value="7">ttyACM0</option>
+						<option id="tty8" name="tty8" value="8">ttyACM1</option>
+						<option id="tty9" name="tty9" value="9">ttyACM2</option>
+						<option id="tty10" name="tty10" value="10">ttyACM3</option>
+						<option id="tty11" name="tty11" value="11">ttyACM4</option>
+						<option id="tty12" name="tty12" value="12">ttyACM5</option>
+					</SELECT>
+					<SCRIPT type="text/javascript">
+						setTtyPort();
+					</SCRIPT>
+				</TD>
+			</TR>
+			<TR colspan="3" id="pin_input_area" style="display:none">
+                <TD class="Item" id="t_pin">SIM/UIM PIN:</TD>
+				<TD><input name="pin" id="pin" type="password" class="text" size="16" maxlength="16">&nbsp;
+				</TD>
+            </TR>
+
+			<!-- added by ZQQ 2012.02.20-->
+			<tr id="pin_msg_area" style="display:none">
+			<td class="Item" id="t_pin_msg">Message:</td>
+			<td ><SPAN id="pin_message"></SPAN></td>
+			</tr>
+			<!-- end added by ZQQ 2012.02.20-->
+            <TR id="tip_msg_area" style="display:none">
+				<TD colspan="2" style="padding-left:20px"><SPAN id="t_tip_msg" style="color:red;">You have set the Dial Number and APN manually, if you want to modify, please enter the advance page.</SPAN></TD>
+			</TR>	
+			<TR><TD>&nbsp;</TD></TR>
+			<TR id="dis_linktype" style="display:none"><TD colspan="2" style="padding-left:20px"><SPAN id=\"t_note_auto1\">The current <B>Internet Access</B> is </SPAN> <B><SPAN id="curmode"></SPAN></B>. <SPAN id=\"t_note_auto4\">The Connection Mode and Max Idle Time could not be set manually.</SPAN></TD></TR>
+			<TR>
+				<TD class="Item" id="t_conn_mode">Connection Mode:</TD>
+				<TD><INPUT name="linktype" id="linktype" type="radio" value="1" onFocus="doFocus()" onBlur="doBlur()" onClick="doClick(this.value)"><SPAN id="t_conn_demand">Connect on Demand</SPAN></TD>
+			</TR>
+			<TR>
+				<TD class="Item">&nbsp;</TD>
+				<TD><INPUT name="linktype" id="linktype" type="radio" value="2" onFocus="doFocus()" onBlur="doBlur()" onClick="doClick(this.value)"><SPAN id="t_conn_auto">Connect Automatically</SPAN></TD>
+			</TR>
+			<TR>
+				<TD class="Item">&nbsp;</TD>
+				<TD><INPUT name="linktype" id="linktype" type="radio" value="3" onFocus="doFocus()" onBlur="doBlur()" onClick="doClick(this.value)"><SPAN id="t_conn_manual">Connect Manually</SPAN></TD>
+			</TR>
+			<TR>
+				<TD class="Item">&nbsp;</TD>
+				<TD><SPAN id="t_max_idle">Max Idle Time:</SPAN>&nbsp;<INPUT name="maxidle" id="maxidle" type="text" class="text" size="2" maxlength="2" onFocus="doFocus()" onBlur="doBlur()">&nbsp;<SPAN id="t_note_idle">minutes (0 means remain active at all times)</SPAN></TD>
+			</TR>
+			<TR><TD>&nbsp;</TD></TR>
+			
+			<TR>
+			<TD class="Item" id="t_authentication_type">Authentication Type:</TD>
+			<TD><INPUT name="authtype" id="authtype" type="radio" value="0"><span id="t_atuo">Auto</span>&nbsp;&nbsp;&nbsp;&nbsp;
+				<INPUT name="authtype" id="authtype" type="radio" value="1"><span id="t_pap">PAP</span>&nbsp;&nbsp;&nbsp;&nbsp;
+				<INPUT name="authtype" id="authtype" type="radio" value="2"><span id="t_chap">CHAP</span>
+			</TD>
+			</TR>
+			<TR>
+			<TD class="Item">&nbsp;</TD>
+			<TD><span id="t_notice"><font style="color:red">Notice</font>: The default is Auto, do not change unless necessary.</span></TD>
+			</TR>
+			<TR><TD>&nbsp;</TD></TR>
+			<TR>
+				<TD></TD>
+				<TD class="emp">
+					<INPUT name="username" id="username" type="hidden"/>
+					<INPUT name="passwd" id="passwd" type="hidden"/>
+					<INPUT name="apn" id="apn" type="hidden"/>
+					<INPUT name="dial_num" id="dial_num" type="hidden"/>
+					
+					<INPUT name="Connect" id="connect" type="submit" class="button" value="Connect">&nbsp;&nbsp;
+					<INPUT name="Disconnect" type="submit" id="disconnect" class="buttonLL" value="Disconnect">&nbsp;
+					
+					<SPAN id="linkstatus"></SPAN>
+				</TD>
+			</TR>
+			<TR>
+				<TD class="blue" colspan="2"></TD>
+			</TR>
+			<TR>
+				<TD></TD>
+				<TD>
+				<INPUT id="Advanced" name="Advanced" type="button" class="buttonBigL" value="Advanced Settings" onClick="doAdvance();">
+					&nbsp;&nbsp;
+				<INPUT name="Save" type="submit" class="buttonBig" value="Save">
+					&nbsp;&nbsp;
+				<SCRIPT type="text/javascript">
+					document.write('<INPUT name="CardSet" id="CardSet" type="button" class="buttonBigL" value="Modem Settings" onClick="document.location.href=\'../userRpm/UsbModemListRpm.htm?session_id=' + session_id +'\'">');
+					document.write('<input name="session_id" id="session_id" type="hidden" value="'+session_id +'">');
+				</SCRIPT>
+				</TD>
+			</TR>
+		</TABLE>			
+	</FORM>
+</CENTER>
+</BODY>
+</HTML>
+<SCRIPT type="text/javascript">
+display_str=style_display_on();
+if(mobileParam[1] == 2 && mobileParam[20] == 1 && mobileParam[18] != 0 && mobileParam[18] != 5)
+{
+	document.getElementById("pin_input_area").style.display=(display_pin_settings)?display_str:"none";
+	document.getElementById("pin_msg_area").style.display=(display_pin_settings)?display_str:"none";
+}
+else
+{
+	document.getElementById("pin_input_area").style.display="none";
+	document.getElementById("pin_msg_area").style.display="none";
+}
+displayLocation();
+if(mobileParam[18] == 2)//PIN result: SIM LOCK
+{
+//	disableTag(document, "INPUT");
+//	disableTag(document, "SELECT");
+//	document.getElementById("Advanced").disabled = false;
+}
+if (mobileParam[1] == 2 || mobileParam[1] == 5)//Modem link.
+{
+	//document.getElementById("modem_name").innerHTML = mobileParam[2];
+	document.getElementById("modem_name").innerHTML = "<SPAN id=\"t_name\">Identified<\/SPAN>";
+}
+else if (mobileParam[1] == 0)//Modem unlink.
+{
+	document.getElementById("modem_name").innerHTML = "<SPAN id=\"t_not_plug\">Unplugged.<\/SPAN>";
+}
+else if (mobileParam[1] == 1)//Modem handling.
+{
+	document.getElementById("modem_name").innerHTML = "<SPAN id=\"t_ident\">Identifying...<\/SPAN>";
+} 
+else if (mobileParam[1] == 3)//Modem unsupport.
+{
+	document.getElementById("modem_name").innerHTML = "<SPAN id=\"t_not_avail1\">Unknown Modem. Please configure the modem on <\/SPAN><a href=\"./UsbModemListRpm.htm?session_id=" + session_id + "\"><SPAN id=\"t_not_avail2\">Modem Settings<\/SPAN><\/a><SPAN id=\"t_not_avail3\"> manually.<\/SPAN>";
+}
+document.getElementById("selloc").value = mobileParam[3];
+displayISP();
+document.getElementById("isp").value = mobileParam[4];
+displayPara();
+
+document.getElementById("maxidle").value = mobileParam[10];
+document.getElementsByName("linktype")[mobileParam[11] - 1].checked = true;
+
+if (mobileParam[1] == 2)
+{
+	document.getElementById("linkstatus").innerHTML = mobileLinkStat[mobileParam[12]];
+}
+else
+{
+	document.getElementById("linkstatus").innerHTML = mobileLinkStat[0];
+}
+
+document.getElementById("linkstatus").innerHTML = mobileLinkStat[mobileParam[12]];
+
+if (mobileParam[0] == 0 || mobileParam[0] == 2 || mobileParam[1] != 2 || mobileParam[11] == 2 || mobileParam[12] == 2)
+{
+	timerId = window.setTimeout("doRefresh()",12000);
+}
+
+//Not 3G/4G Prefer or WAN Prefer mode.
+if(mobileParam[0] != 0 && mobileParam[0] != 2)
+{	
+	//if pin is unlock or pin is disable.
+	if((mobileParam[18] == 5) || (mobileParam[18] == 4) || (mobileParam[18] == 0) || ((mobileParam[11] - 1) != 1))
+	{
+		if(mobileParam[1] == 2)
+		{
+			document.getElementById("connect").disabled = mobileParam[12] ? true : false;
+			document.getElementById("disconnect").disabled = mobileParam[12] ? false : true;
+		}
+		else
+		{
+			document.getElementById("connect").disabled = true;
+			document.getElementById("disconnect").disabled = true;
+		}
+	}
+	else if ((mobileParam[11] - 1) == 1)//Connect Mode is "Connect Automatically".
+	{
+		if(mobileParam[1] == 2)//Modem state is up.
+		{
+			document.getElementById("connect").disabled = mobileParam[12] ? true : false;
+			document.getElementById("disconnect").disabled = mobileParam[12] ? false : true;
+		}
+		else
+		{
+			document.getElementById("connect").disabled = true;
+			document.getElementById("disconnect").disabled = true;
+		}
+	}
+	else
+	{
+		document.getElementById("disconnect").disabled = true;
+		document.getElementById("connect").disabled = true;
+	}
+}
+
+if(mobileParam[12] == 1 || mobileParam[1] != 2)
+{
+	document.getElementById("connect").disabled = true;
+}
+document.getElementsByName("authtype")[mobileParam[19]].checked = true;
+document.getElementById('pin').value = mobileParam[17];
+if(mobileParam[1] == 2 && mobileParam[18] != 5 && mobileParam[18] != 0)
+{
+	document.getElementById("pin_message").innerHTML = pinMessage[mobileParam[18]];
+}
+else
+{
+	document.getElementById("pin_msg_area").style.display="none";
+}
+if(mobileParam[18] == 3 || mobileParam[18] == 1)
+{
+	document.getElementById("pin").disabled = false;
+}
+else
+{
+	document.getElementById("pin").disabled = true;
+}
+if (mobileParam[18] == 1 || mobileParam[18] == 2 || mobileParam[18] == 3)
+{
+	document.getElementById("connect").disabled = true;
+	document.getElementById("disconnect").disabled = true;
+}
+</SCRIPT>
